@@ -1,0 +1,22 @@
+{
+    "status": 
+    {"code": 1, 
+    "err": "null", 
+    "msg": "null", 
+    "totalRecords": 13
+    }, 
+    "data": 
+    [
+        {"categoryId": 1003.0, "publish": true, "global": false, "class_id": 19990, "name": "Sweat", "form": 213411666368054.0, "classname": "Sweat"}, 
+        {"categoryId": "null", "publish": false, "global": false, "class_id": 21260, "name": "RPM Spinning", "form": "null", "classname": "null"}, 
+        {"categoryId": "null", "publish": false, "global": false, "class_id": 21651, "name": "Zumba", "form": "null", "classname": "null"}, 
+        {"categoryId": 1004.0, "publish": true, "global": true, "class_id": 21979, "name": "Daily Work Out", "form": 213411666368054.0, "classname": "Daily Work Out"}, 
+        {"categoryId": "null", "publish": false, "global": false, "class_id": 22379, "name": "Yoga", "form": "null", "classname": "null"}, 
+        {"categoryId": "null", "publish": false, "global": false, "class_id": 23804, "name": "Squidlets 1 ", "form": "null", "classname": "null"}, 
+        {"categoryId": "null", "publish": false, "global": false, "class_id": 23910, "name": "Squidlets 1 ", "form": "null", "classname": "null"},
+         {"categoryId": "null", "publish": false, "global": false, "class_id": 23037, "name": "Zumba", "form": "null", "classname": "null"}, 
+         {"categoryId": "null", "publish": false, "global": false, "class_id": 24062, "name": "Body Pump", "form": "null", "classname": "null"}, 
+         {"categoryId": "null", "publish": false, "global": false, "class_id": 24324, "name": "Power Yoga", "form": "null", "classname": "null"}, 
+         {"categoryId": "null", "publish": false, "global": false, "class_id": 24925, "name": "Level 5 Bikram Yoga", "form": "null", "classname": "null"}, 
+         {"categoryId": "null", "publish": false, "global": false, "class_id": 25140, "name": "Pilates 101", "form": "null", "classname": "null"}, 
+         {"categoryId": "null", "publish": false, "global": false, "class_id": 25359, "name": "Tribe TBD Class Testing", "form": "null", "classname": "null"}]}

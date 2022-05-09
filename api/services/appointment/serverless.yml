@@ -1,0 +1,251 @@
+service: ${self:custom.parentFile.service}-srvc-appointment
+org: ${self:custom.parentFile.org}
+app: ${self:custom.parentFile.app}
+
+frameworkVersion: '3'
+useDotenv: true
+projectDir: ../..
+
+provider:
+  name: aws
+  runtime: python3.8
+  lambdaHashingVersion: 20201221
+  region: ${self:custom.parentFile.provider.region}
+  stage: ${self:custom.parentFile.provider.stage}
+  profile: ${self:custom.parentFile.provider.profile}
+  timeout: ${self:custom.parentFile.provider.timeout}
+  environment: ${file(../../env-${self:provider.stage}.yml)}
+  layers:
+    - arn:aws:lambda:us-east-1:770693421928:layer:Klayers-python38-numpy:25
+    - arn:aws:lambda:us-east-1:770693421928:layer:Klayers-python38-pandas:48
+  iam:
+    role:
+      statements:
+        - Effect: 'Allow'
+          Action:
+            - secretsmanager:GetSecretValue
+          Resource:
+            - ${self:custom.parentFile.custom.${self:provider.stage}.secret_arn_cognito}
+            - ${self:custom.parentFile.custom.${self:provider.stage}.secret_arn_mindbody}
+            - ${self:custom.parentFile.custom.${self:provider.stage}.secret_arn_drchrono}
+            - ${self:custom.parentFile.custom.${self:provider.stage}.secret_arn_vimeo}
+            - ${self:custom.parentFile.custom.${self:provider.stage}.secret_arn_jotform}
+            - ${self:custom.parentFile.custom.${self:provider.stage}.secret_arn_twilio}
+        - Effect: Allow
+          Action:
+            - dynamodb:DescribeTable
+            - dynamodb:Query
+            - dynamodb:Scan
+            - dynamodb:GetItem
+            - dynamodb:PutItem
+            - dynamodb:UpdateItem
+            - dynamodb:DeleteItem
+          Resource:
+            - arn:aws:dynamodb:*:*:table/${self:provider.stage}-Mworx-Client
+            - arn:aws:dynamodb:*:*:table/${self:provider.stage}-Mworx-Config
+            - arn:aws:dynamodb:*:*:table/${self:provider.stage}-Mworx-Self-Care
+            - arn:aws:dynamodb:*:*:table/atomic_ids
+        - Effect: Allow
+          Action:
+            - s3:GetObject
+            - s3:PutObject
+            - s3:ListBucket
+          Resource:
+            - "arn:aws:s3:::bucket-for-content/*"
+
+resources:
+  Resources:
+    MindworxApiAuthorizer:
+      Type: AWS::ApiGateway::Authorizer
+      Properties:
+        Name: MindworxApiUser
+        AuthorizerResultTtlInSeconds: 300
+        IdentitySource: method.request.header.Authorization
+        RestApiId: !Ref ApiGatewayRestApi
+        Type: COGNITO_USER_POOLS
+        ProviderARNs:
+           - ${self:custom.parentFile.custom.${self:provider.stage}.cognito_arn}
+
+functions:
+  list_recommended_appts:
+    handler: handlers/bookable_item.list_recommended_appts
+    events:
+      - http:
+          path: /book/appts
+          method: GET
+          cors: true
+  list_appt:
+    handler: handlers/appointment.list_appt
+    events:
+      - http:
+          path: /appt_list
+          method: GET
+          cors: true
+
+  add_appt:
+    handler: handlers/appointment.add_appt
+    events:
+      - http:
+          path: /appts/add
+          method: POST
+          cors: true
+
+  cancel_appt:
+    handler: handlers/appointment.cancel_appt
+    events:
+      - http:
+          path: /cancel/{id}
+          method: GET
+          cors: true
+ 
+
+  consult_bookable_items:
+    handler: handlers/bookable_item.consult_bookable_items
+    events:
+      - http:
+          path: /consult
+          method: GET
+          cors: true
+
+
+  
+  list_bookable_items:
+    handler: handlers/bookable_item.list_bookable_items
+    timeout: 30
+    events:
+      - http:
+          path: /bookable/items/{id}
+          method: GET
+          cors: true
+
+
+
+  session_times:
+    handler: handlers/bookable_item.session_times
+    timeout: 30
+    events:
+      - http:
+          path: /session_time/{id}
+          method: GET
+          cors: true
+
+
+  list_patient_appts:
+    handler: handlers/patient_appt.list_patient_appts
+    events:
+      - http:
+          path: /patient/appts
+          method: GET
+          cors: true
+
+  add_patient_appointment:
+    handler: handlers/patient_appt.add_patient_appointment
+    events:
+      - http:
+          path: /patient/add_appts
+          method: POST
+          cors: true
+
+  get_cancel_appt:
+    handler: handlers/appointment.get_cancel_appt
+    events:
+      - http:
+          path: /cancel/summary/{id}
+          method: GET
+          cors: true
+
+
+  get_reschedule_appt:
+    handler: handlers/appointment.get_reschedule_appt
+    events:
+      - http:
+          path: /reschedule/appt/{id}
+          method: GET
+          cors: true
+  reschedule:
+    handler: handlers/appointment.reschedule
+    events:
+      - http:
+          path: /reschedule/appt
+          method: POST
+          cors: true 
+
+
+  check_in:
+    handler: handlers/appointment.check_in
+    events:
+      - http:
+          path: /checkin/{id}
+          method: GET
+          cors: true
+
+
+  join_now:
+    handler: handlers/appointment.join_now
+    events:
+      - http:
+          path: /join/{id}
+          method: GET
+          cors: true
+
+  pay_appt:
+    handler: handlers/appointment.pay_appt
+    events:
+      - http:
+          path: /appt/pay
+          method: POST
+          cors : true
+  landing_appt:
+    handler: handlers/appointment.landing_appt
+    events:
+      - http:
+          path: /landing/appts
+          method: GET
+          cors : true
+ 
+  list_categories:
+    handler: handlers/appointment.list_categories
+    events:
+      - http:
+          path: /categories/{type}
+          method: GET
+          cors : true
+ 
+
+custom:
+  parentFile: ${file(../../serverless.yml)}
+
+  customDomain:
+    domainName: ${self:custom.parentFile.custom.customDomain.domainName}
+    basePath: 'appointment'
+    stage: '${self:provider.stage}'
+    createRoute53Record: true
+
+  packageExternal:
+    external:
+      - '../../shared'
+      - '../../infrastructure'
+      - '../../providers'
+
+  pythonRequirements:
+    usePoetry: true
+    useDownloadCache: true
+    useStaticCache: false
+    invalidateCaches: false
+    slim: true
+
+    noDeploy:
+      - pytest
+
+package:
+  individually: false
+  excludeDevDependencies: false
+  patterns:
+    - '!.vscode/**'
+    - '!.pytest_cache/**'
+    - '!.aws-sam/**'
+
+plugins:
+  - serverless-domain-manager
+  - serverless-python-requirements
+  - serverless-package-external

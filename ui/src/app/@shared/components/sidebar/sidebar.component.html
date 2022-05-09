@@ -1,0 +1,36 @@
+<mat-sidenav-container class="mw-menu">
+	<mat-sidenav
+		#sidenav
+		*ngIf="showMenu"
+		mode="push"
+		opened="true"
+		[fixedInViewport]="true"
+		[fixedTopGap]="50"
+		mat-disable-backdrop
+		#start
+		style="width: 100px; position: fixed; top: 50px !important; bottom: 0"
+		fxLayoutAlign="space-around center"
+		fxLayoutGap="20px"
+		class="p-l-10 p-t-10"
+	>
+		<div>
+			<ng-container *ngFor="let item of dockBasicItems">
+				<a
+					class="mw-menu__item m-b-15"
+					fxLayout="column"
+					fxLayoutAlign="center center"
+					routerLinkActive="mw-menu__item__active"
+					(click)="sideBarClicked(item.routerLink)"
+				>
+					<div
+						fxLayoutAlign="center center"
+						class="mw-menu__item__icon"
+					>
+						<mat-icon color="primary">{{item.icon}}</mat-icon>
+					</div>
+					<div class="mw-menu__label">{{item.label}}</div>
+				</a>
+			</ng-container>
+		</div>
+	</mat-sidenav>
+</mat-sidenav-container>

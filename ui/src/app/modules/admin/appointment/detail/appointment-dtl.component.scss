@@ -1,0 +1,228 @@
+@import 'src/app/@theme/colors';
+:host {
+	padding-right: 12px;
+	margin-left: 6.5rem;
+}
+.mat-tab-group {
+	flex-direction: row;
+
+	::ng-deep {
+		.mat-tab-body-wrapper {
+			flex-direction: column;
+			width: 100%;
+		}
+		mat-tab-header {
+			flex-direction: column;
+			border-bottom: 0px solid transparent;
+			border-right: 1px solid rgba(0, 0, 0, 0.12);
+			.mat-tab-label.mat-tab-label-active {
+				border-right: 5px solid $primary-yellow;
+				opacity: 1;
+			}
+			.mat-tab-label {
+				max-width: 100%;
+				min-width: 100%;
+				display: flex;
+				place-content: flex-start;
+				align-items: center;
+				height: 50px;
+				padding-left: 0px;
+			}
+			.mat-tab-label-container {
+				flex-direction: column;
+
+				.mat-tab-labels {
+					flex-direction: column;
+				}
+
+				mat-ink-bar {
+					left: initial !important;
+					bottom: initial;
+					right: 0;
+					width: 2px !important;
+					height: initial;
+				}
+			}
+		}
+	}
+}
+
+:host-context(.dark) mat-tab-group[vertical] ::ng-deep mat-tab-header {
+	border-right: 1px solid rgba(255, 255, 255, 0.12);
+}
+.mw-create-appt-config {
+	padding: 12px 0px;
+	&__threeGrid {
+		width: 30%;
+	}
+	&__fundingsource {
+		align-items: center;
+		font: 500 14px / 20px 'Poppins';
+	}
+	&__header {
+		font: 500 18px / 20px 'Poppins';
+	}
+	&__companyname {
+		font: 500 14px / 20px 'Poppins';
+	}
+
+	&__username {
+		color: $primary-grey-g2;
+		font: 500 18px / 20px 'Poppins';
+	}
+	&__scrollbar {
+		height: 450px;
+		overflow-y: auto;
+		display: block !important;
+	}
+	&__step1 {
+		&__title {
+			font: 500 18px / 20px 'Poppins';
+		}
+
+		&__avtarBox {
+			height: 70px;
+			width: 70px;
+			border: 3px solid $primary-grey-g2;
+			border-radius: 50px;
+			position: relative;
+
+			&__avtar {
+				background-size: 100% 100%;
+				height: 64px;
+				width: 64px;
+				border-radius: 50%;
+				flex-shrink: 0;
+				object-fit: cover;
+			}
+			&__create-icon {
+				position: absolute;
+				right: -5px;
+				bottom: 0px;
+				border: 1px solid $primary-grey-g2;
+				border-radius: 50%;
+				background: $bg-white;
+			}
+			&__create-icon1 {
+				font-size: 14px;
+				height: 18px !important;
+				width: 20px !important;
+				left: 3px;
+				position: relative;
+				top: 1px;
+				color: $primary-grey-g2;
+			}
+			&__create-files {
+				height: 20px !important;
+				width: 20px !important;
+				border-radius: 50%;
+				left: 0px;
+				position: absolute;
+				opacity: 0;
+			}
+		}
+	}
+	&__w {
+		width: 100%;
+	}
+	&__grid {
+		display: block !important;
+	}
+	&__threeGrid {
+		width: 30%;
+	}
+	&__actions {
+		background: $bg-white;
+	}
+}
+.mw-create-class-config {
+	padding: 12px 0px;
+	&__grid {
+		display: block !important;
+	}
+	&__dd {
+		font-size: 12px;
+	}
+	&__threeGrid {
+		width: 30%;
+	}
+	&__scrollbar {
+		height: 450px;
+		overflow-y: auto;
+		display: block !important;
+	}
+	&__fundingsource {
+		align-items: center;
+		font: 500 14px / 20px 'Poppins';
+	}
+	&__header {
+		font: 500 18px / 20px 'Poppins';
+	}
+	&__companyname {
+		font: 500 14px / 20px 'Poppins';
+	}
+
+	&__username {
+		color: $primary-grey-g2;
+		font: 500 18px / 20px 'Poppins';
+	}
+	&__step1 {
+		&__title {
+			font: 500 18px / 20px 'Poppins';
+		}
+
+		&__avtarBox {
+			height: 70px;
+			width: 70px;
+			border: 3px solid $primary-grey-g2;
+			border-radius: 50px;
+			position: relative;
+
+			&__avtar {
+				background-size: 100% 100%;
+				height: 64px;
+				width: 64px;
+				border-radius: 50%;
+				flex-shrink: 0;
+				object-fit: cover;
+			}
+			&__create-icon {
+				position: absolute;
+				right: -5px;
+				bottom: 0px;
+				border: 1px solid $primary-grey-g2;
+				border-radius: 50%;
+				background: $bg-white;
+			}
+			&__create-icon1 {
+				font-size: 14px;
+				height: 18px !important;
+				width: 20px !important;
+				left: 3px;
+				position: relative;
+				top: 1px;
+				color: $primary-grey-g2;
+			}
+			&__create-files {
+				height: 20px !important;
+				width: 20px !important;
+				border-radius: 50%;
+				left: 0px;
+				position: absolute;
+				opacity: 0;
+			}
+		}
+	}
+	&__w {
+		width: 100%;
+	}
+	&__grid {
+		display: block !important;
+	}
+	&__threeGrid {
+		width: 30%;
+	}
+	&__actions {
+		background: $bg-white !important;
+	}
+}

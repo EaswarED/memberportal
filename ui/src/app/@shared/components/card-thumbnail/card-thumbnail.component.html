@@ -1,0 +1,57 @@
+<div
+	class="mw-cc"
+	*ngFor="let item of cardData; let i = index"
+	fxFlex
+	fxLayout="row"
+>
+	<mat-card
+		class="mw-cc__card mat-elevation-z3"
+		fxLayout="column"
+		fxLayoutAlign="start center"
+	>
+		<img
+			class="mw-cc__image"
+			mat-card-image
+			src="assets/images/classes.jpg"
+			[alt]="item.name"
+		/>
+		<button
+			class="mw-cc__btn"
+			(click)="onCallAction(item.id)"
+			mat-raised-button
+			color="primary"
+		>
+			Call to Action
+		</button>
+
+		<mat-card-content
+			fxLayout="column"
+			fxLayoutAlign="start center"
+			fxLayoutGap="10px"
+		>
+			<div class="mw-cc__title">{{item.name}}</div>
+			<!-- <div class="mat-caption mw-cc__desc">
+				{{item.description | mworxTruncate: maxLenBIO:true:'' }}
+
+				<button
+					(click)="onReadMoreLess('M', i)"
+					*ngIf="readBTN && item.description && item.description !== ''"
+					class="mw-cc__moreBtn"
+					mat-button
+					type="button"
+				>
+					Read More...
+				</button>
+				<button
+					(click)="onReadMoreLess('L', i)"
+					*ngIf="!readBTN && item.description && item.description !== ''"
+					class="mw-cc__moreBtn"
+					mat-button
+					type="button"
+				>
+					Read less
+				</button>
+			</div> -->
+		</mat-card-content>
+	</mat-card>
+</div>

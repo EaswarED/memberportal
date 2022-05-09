@@ -1,0 +1,158 @@
+// @import '/src/app/@theme/colors';
+
+:host {
+	display: block;
+	padding-right: 12px;
+	margin-left: 6.5rem;
+	margin-top: 10px;
+}
+@import '/src/app/@theme/colors';
+::ng-deep .mw-create-app {
+	.mat-calendar-body-cell.selected {
+		background-color: $primary-yellow-bg !important;
+		border-radius: 50%;
+	}
+}
+.mw-create-app {
+	padding: 0;
+	&__caption {
+		font-size: 12px;
+		color: $grey-text-g1;
+	}
+	&__loading {
+		position: absolute;
+		width: 100%;
+		background: rgb(255 255 255 / 50%);
+		height: 100%;
+		z-index: 1;
+		margin-left: -30px;
+	}
+
+	&__step1 {
+		&__avtarBox {
+			height: 60px;
+			width: 60px;
+			border: 3px solid $primary-yellow-bg;
+			border-radius: 50px;
+
+			&__avtar {
+				height: 50px;
+				width: 50px;
+				border-radius: 50%;
+				flex-shrink: 0;
+				object-fit: cover;
+			}
+			&__avtar1 {
+				background-image: url('../../../../assets/images/woman.svg');
+				height: 50px;
+				width: 50px;
+				border-radius: 50%;
+				flex-shrink: 0;
+				object-fit: cover;
+			}
+		}
+
+		&__moreBtn {
+			font-size: 12px;
+			padding-left: 3px;
+			line-height: 14px;
+		}
+	}
+
+	&__step2 {
+		&__calendar {
+			width: 350px !important;
+			border: 1px solid $primary-grey-border;
+			border-radius: 5px;
+		}
+
+		&__timeBtn {
+			margin: 10px;
+			padding: 3px 15px;
+			border-radius: 5px !important;
+
+			&__selected {
+				color: $primary-black;
+				background-color: $primary-yellow-bg;
+			}
+		}
+
+		&__price {
+			width: 450px;
+			max-height: 500px;
+			&__prepaid {
+				background-color: $primary-grey-g1;
+				padding: 12px;
+				border-radius: 5px;
+				width: 100%;
+			}
+
+			&__prepaidDisabled {
+				color: $grey-text-g1;
+			}
+
+			&__session {
+				padding: 12px;
+				font-size: 12px;
+			}
+		}
+	}
+
+	&__step3 {
+		width: 450px;
+		max-height: 500px;
+		overflow: scroll;
+		&__prepaid {
+			background-color: $primary-grey-g1;
+			padding: 12px;
+			border-radius: 5px;
+		}
+
+		&__prepaidDisabled {
+			color: $grey-text-g1;
+		}
+
+		&__session {
+			padding: 12px;
+			font-size: 12px;
+		}
+	}
+
+	&__step4 {
+		&__payment {
+			border-left: 3px solid $primary-grey-border;
+			padding-left: 50px;
+
+			&__payTypes {
+				height: 80px;
+			}
+		}
+	}
+
+	&__stepActions {
+		padding: 20px;
+	}
+}
+
+@media only screen and (max-width: 600px) {
+	.mw-create-app {
+		&__step2 {
+			&__calendarsection {
+				width: 100%;
+			}
+			&__calendar {
+				width: 100% !important;
+			}
+		}
+		.mat-stroked-button {
+			font-size: 11px;
+			display: block;
+		}
+	}
+}
+@media only screen and (max-width: 960px) {
+	:host {
+		margin-left: 0rem;
+		padding: 14px 20px;
+	}
+}

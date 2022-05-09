@@ -1,0 +1,11 @@
+{
+    "status": {"code": 1, 
+    "err": null, 
+    "msg": null, 
+    "totalRecords": 3
+    }, 
+    "data": 
+    [
+    {"name": "Healthy Yoga", "staffId": "100000011", "classList": [], "groupList": [], "apptList": [],"content_list":["Friday Morning Meditation 12.10.21"]}, 
+    {"name": "Sweat", "staffId": "100000015", "classList": [], "groupList": ["19365"], "apptList": ["23"],"content_list":["Holiday Meditation 2: Holiday Stress Management"]}, 
+    {"name": "Nutrition Consultation", "staffId": "100000258", "classList": ["19990"], "groupList": [], "apptList": ["23"],"content_list":[]}]}

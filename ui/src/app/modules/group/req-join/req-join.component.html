@@ -1,0 +1,126 @@
+<mat-card fxFill fxFlex class="create-app p-t-20">
+	<mat-card-title class="p-l-20 m-b-20">Join Group</mat-card-title>
+	<mat-card-subtitle class="p-l-15"
+		>Please follow the steps below to join your group. Some group sessions
+		require approval and you will receive a phone call from a care
+		coordinator to approve your request.</mat-card-subtitle
+	>
+	<mat-card-content style="position: relative">
+		<mat-divider></mat-divider>
+		<div
+			*ngIf="isLoading"
+			fxLayoutAlign="center center"
+			class="mw-create-app__loading"
+		>
+			<mat-spinner style="margin: 0 auto"></mat-spinner>
+		</div>
+		<form [formGroup]="formGroup">
+			<div
+				class="mw-create-app__step1 p-30"
+				fxLayout.lt-md="column"
+				fxLayout="row"
+				fxLayoutGap="40px"
+				fxLayoutAlign="start start"
+				fxLayoutAlign.lt-md="start start"
+			>
+				<div fxFlex.gt-sm="400px" fxLayout="column" fxLayoutGap="12px">
+					<div
+						fxLayout="row"
+						fxLayout.lt-md="column"
+						fxLayoutAlign="space-between center"
+					>
+						<span class="p-b-15"> Category</span>
+						<mat-form-field
+							fxFlex="235px"
+							fxFlex.lt-md
+							appearance="outline"
+						>
+							<mat-label>Choose a Category</mat-label>
+							<mat-select
+								formControlName="categoryCtrl"
+								[disabled]="bookingId"
+								(selectionChange)="onCategoryChange()"
+								[(value)]="categoryId"
+								required
+							>
+								<mat-option
+									*ngFor="let rec of categoryList"
+									[value]="rec.SK"
+									>{{ rec['Details.Name']}}</mat-option
+								>
+							</mat-select>
+							<mat-error> Category is Required! </mat-error>
+						</mat-form-field>
+					</div>
+
+					<div
+						fxLayout="row"
+						fxLayout.lt-md="column"
+						fxLayoutAlign="space-between center"
+						*ngIf="categoryId"
+					>
+						<span class="p-b-15"> Group</span>
+						<mat-form-field
+							fxFlex="235px"
+							fxFlex.lt-md
+							appearance="outline"
+						>
+							<mat-label>Choose a Group</mat-label>
+							<mat-select
+								(selectionChange)="onGroupChange()"
+								formControlName="groupCtrl"
+								[disabled]="bookingId"
+								[(value)]="groupDescId"
+								required
+							>
+								<mat-option
+									*ngFor="let rec of selectedGroupList"
+									[value]="rec.DescId"
+									>{{ rec.Name }}
+								</mat-option>
+							</mat-select>
+							<mat-error> Class is Required! </mat-error>
+						</mat-form-field>
+					</div>
+				</div>
+			</div>
+			<mat-divider></mat-divider>
+
+			<div
+				class="mw-create-app__stepActions"
+				fxLayoutAlign="center center"
+				fxLayoutGap="15px"
+			>
+				<div fxFlex></div>
+				<button
+					mat-stroked-button
+					type="button"
+					color="primary"
+					(click)="cancel()"
+				>
+					Cancel
+				</button>
+				<button
+					mat-stroked-button
+					*ngIf="isRequestJoin"
+					color="primary"
+					type="button"
+					(click)="onNextGroupBTN()"
+					[disabled]="!groupDescId"
+				>
+					Request to Join
+				</button>
+				<button
+					mat-stroked-button
+					*ngIf="isBookNow"
+					color="primary"
+					type="button"
+					(click)="onBookGroupBTN()"
+					[disabled]="isDisable"
+				>
+					Book
+				</button>
+			</div>
+		</form>
+	</mat-card-content>
+</mat-card>

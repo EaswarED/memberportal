@@ -1,0 +1,49 @@
+@import '/src/app/@theme/colors';
+
+:host {
+	display: block;
+}
+
+.mw-weekly-view {
+	&__card {
+		height: auto;
+		border-radius: 25px;
+		border: 1px solid $grey-text-g1;
+		max-width: 90px;
+		min-width: 90px;
+		text-align: center;
+	}
+	&__dpicker {
+		width: 12px;
+		visibility: hidden;
+	}
+
+	&__date_bar {
+		display: block;
+		max-width: 60%;
+		font-weight: bold;
+		font-size: larger;
+		box-shadow: none;
+	}
+	&__loading {
+		position: absolute;
+		width: 100%;
+		background: rgba(255, 255, 255, 0.5);
+		height: 100%;
+		z-index: 1;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+	}
+	&__timeBtn {
+		margin: 10px;
+		padding: 3px 15px;
+		border-radius: 5px !important;
+
+		&__selected {
+			color: $primary-black;
+			background-color: $primary-yellow-bg;
+		}
+	}
+}

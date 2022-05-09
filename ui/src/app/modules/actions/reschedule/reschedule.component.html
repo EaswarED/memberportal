@@ -1,0 +1,52 @@
+<div fxLayout="row" fxLayoutAlign="center start" class="p-t-20">
+	<div fxLayout="column" fxLayoutGap="20px">
+		<div fxLayout="column" fxLayoutGap="10px" fxLayoutAlign="center center">
+			<div fxFlex fxLayout="row">
+				<img src="assets/images/cancel.png" class="p-r-15" />
+				<div class="mw-dialog-congrat__title">Are You Sure</div>
+			</div>
+			<div class="mw-dialog-congrat__sub-title m-t-10 m-b-20">
+				Would you like to reschedule your {{pageTitle}}?
+			</div>
+
+			<div fxFlex fxLayout="row" class="p-b-20 p-l-20 p-r-20">
+				<button
+					mat-stroked-button
+					(click)="handleYes()"
+					class="m-l-20"
+					[mat-dialog-close]="true"
+				>
+					Yes, Reschedule
+				</button>
+				<button mat-stroked-button class="m-l-20" (click)="handleNo()">
+					No, Don't Reschedule
+				</button>
+			</div>
+			<div
+				fxFlex
+				fxLayout="row"
+				fxLayoutGap="30px"
+				class="mw-dialog-congrat__info p-20"
+			>
+				<div
+					fxFlex="3px"
+					fxLayoutAlign="center center"
+					class="mw-dialog-congrat__info__icon"
+					*ngIf="cancel_type == 'L'"
+				>
+					<mat-icon>info</mat-icon>
+				</div>
+				<div
+					class="mw-dialog-congrat__info__content"
+					*ngIf="cancel_type == 'L'"
+				>
+					<div class="mw-dialog-congrat__info__title">
+						Per our cancelation policy, any request (cancel or
+						reschedule) <br />made within 24hrs of your booked
+						appointment will not be refunded.
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

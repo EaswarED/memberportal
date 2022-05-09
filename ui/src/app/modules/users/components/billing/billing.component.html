@@ -1,0 +1,68 @@
+<div class="mw-billing" fxLayout="column" fxLayoutGap="30px">
+	<mat-card class="p-0">
+		<mat-card-title class="p-l-15 p-t-15">Billing</mat-card-title>
+		<mat-card-subtitle class="p-l-15">
+			Your billing will be listed below. You can download your bills
+		</mat-card-subtitle>
+		<mat-divider></mat-divider>
+		<div
+			fxLayout.lt-md="column"
+			class="p-l-15 p-r-15"
+			fxLayoutAlign="start center"
+		>
+			<div fxFlex></div>
+			<div
+				fxLayout="row"
+				fxLayoutAlign="start center"
+				fxLayout.lt-md="row"
+			>
+				<mat-form-field class="p-t-5">
+					<mat-label>From</mat-label>
+					<input matInput [matDatepicker]="picker1" />
+					<mat-datepicker-toggle
+						matSuffix
+						[for]="picker1"
+					></mat-datepicker-toggle>
+					<mat-datepicker #picker1></mat-datepicker>
+				</mat-form-field>
+			</div>
+			<div
+				fxLayout="row"
+				fxLayoutAlign="start center"
+				fxLayout.lt-md="row"
+			>
+				<mat-form-field class="p-l-15 p-t-5">
+					<mat-label>To</mat-label>
+					<input
+						matInput
+						[matDatepicker]="picker2"
+						[formControl]="serializedDate"
+					/>
+					<mat-datepicker-toggle
+						matSuffix
+						[for]="picker2"
+					></mat-datepicker-toggle>
+					<mat-datepicker #picker2></mat-datepicker>
+				</mat-form-field>
+			</div>
+		</div>
+		<mw-data-table
+			[columnDefs]="apptBillingColumnDefs"
+			[rowData]="apptBilling"
+			[frameworkComponents]="frameworkComponents"
+			[paginationPageSize]="paginationPageSize"
+			[defaultColDef]="defaultColDef"
+			[context]="context_data_hb"
+		>
+		</mw-data-table>
+		<mat-label class="mw-billing__dd p-l-15"> {{HeaderUNUSED}} </mat-label>
+		<mw-data-table
+			[columnDefs]="apptBillingUnusedColumnDefs"
+			[rowData]="apptBillingUnused"
+			[paginationPageSize]="paginationPageSize"
+			[defaultColDef]="defaultColDef"
+			[context]="context_data_hbu"
+		>
+		</mw-data-table>
+	</mat-card>
+</div>

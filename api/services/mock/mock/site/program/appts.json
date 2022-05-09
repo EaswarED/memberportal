@@ -1,0 +1,22 @@
+{
+    "status": {
+        "code": 1,
+        "err": null,
+        "msg": null,
+        "totalRecords": 3
+    },
+    "data": [
+        {
+            "id": 1,
+            "name": "Personal Training"
+        },
+        {
+            "id": 2,
+            "name": "Court Rentals"
+        },
+        {
+            "id": 14,
+            "name": "Membership Consultation"
+        }
+    ]
+}

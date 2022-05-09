@@ -1,0 +1,64 @@
+@import '/src/app/@theme/colors';
+
+.mw-card {
+	&__title {
+		font: 500 18px / 20px 'Poppins';
+	}
+	&__example-header-image {
+		background-position: top;
+
+		background-size: 100% 100%;
+		height: 70px;
+		width: 70px;
+		margin: 0 auto;
+		border: 5px solid $primary-grey-g2;
+	}
+
+	&__content-list {
+		background-attachment: fixed;
+		background-position: top;
+		width: 600px;
+		max-width: 600px;
+		min-width: 600px;
+		&__thumb {
+			text-align: center;
+			display: inline-block;
+		}
+	}
+	&__name {
+		white-space: wrap;
+		width: 120px;
+		overflow: hidden;
+	}
+	&__example-header-image.active {
+		background-size: 100% 100%;
+		height: 70px;
+		width: 70px;
+		border: 5px solid $primary-yellow;
+	}
+}
+
+::ng-deep .mw-card {
+	.mat-card {
+		background: transparent;
+		box-shadow: none !important;
+	}
+	.mat-card-header-text {
+		display: none;
+	}
+}
+
+@media only screen and (max-width: 600px) {
+	.mw-card {
+		&__content-list {
+			width: 100%;
+			max-width: 100%;
+			min-width: 100%;
+			text-align: center;
+			&__thumb {
+				text-align: center;
+				display: inline-block;
+			}
+		}
+	}
+}

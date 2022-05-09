@@ -1,0 +1,57 @@
+@import 'src/app/@theme/colors';
+
+:host {
+	padding-right: 12px;
+	margin-left: 6.5rem;
+	display: block;
+}
+.mat-tab-group {
+	::ng-deep {
+		.mat-tab-header {
+			border-bottom: 1px solid transparent;
+		}
+		.mat-tab-label.mat-tab-label-active {
+			opacity: 1;
+		}
+		.mat-tab-label {
+			width: 100%;
+		}
+	}
+}
+.mw-online-form-configuration {
+	padding: 12px 0px;
+	&__listOption {
+		font-size: 14px;
+		border: 1px solid #d0d2d5;
+		margin: 0px 0px 20px 0px;
+		border-radius: 10px;
+	}
+
+	&_onappoint {
+		text-align: center;
+	}
+
+	&_subtitle {
+		font-style: italic;
+		text-align: center;
+		color: $primary-grey-g2;
+		padding: 50px 0px 20px 0px;
+	}
+
+	&__center {
+		margin: auto;
+		width: 100%;
+		margin-top: 5%;
+		margin-bottom: 4%;
+	}
+
+	&__header {
+		width: 100%;
+		// color: $primary-grey-g2;
+		font-size: 18px;
+	}
+	&__table {
+		width: 100%;
+		min-width: 100%;
+	}
+}

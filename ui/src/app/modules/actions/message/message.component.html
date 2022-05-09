@@ -1,0 +1,24 @@
+<!-- cancelled Appointment, Classes and Groups -->
+<div class="mw-dialog-message">
+	<div
+		fxLayout="row"
+		fxLayoutGap="10px"
+		class="mw-dialog-congrat__close"
+		fxLayoutAlign="start start"
+	>
+		<div class="p-t-10 p-l-20">{{data.item.fullname}}</div>
+		<div fxFlex></div>
+		<button mat-icon-button (click)="handleNo()">
+			<mat-icon>close</mat-icon>
+		</button>
+	</div>
+
+	<div
+		fxLayout="column"
+		fxLayoutGap="10px"
+		class="p-20"
+		fxLayoutAlign="start start"
+	>
+		{{data.item.subject}}
+	</div>
+</div>

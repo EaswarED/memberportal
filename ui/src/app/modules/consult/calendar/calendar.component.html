@@ -1,0 +1,106 @@
+<div class="mw-consult-calendar" fxLayout="row">
+	<div *ngIf="isLoading" fxLayoutAlign="center center" class="loading">
+		<mat-spinner style="margin: 0 auto"></mat-spinner>
+	</div>
+	<div fxFlex></div>
+	<div fxLayout="row" fxFlex fxLayoutAlign="center center">
+		<button
+			mat-icon-button
+			mwlCalendarPreviousView
+			[view]="view"
+			[(viewDate)]="viewDate"
+			(viewDateChange)="closeOpenMonthViewDay()"
+			color="primary"
+			class="m-r-10"
+		>
+			<mat-icon>keyboard_arrow_left</mat-icon>
+		</button>
+		<h3 class="date_title m-0" mwlCalendarToday [(viewDate)]="viewDate">
+			{{ viewDate | calendarDate:(view + 'ViewTitle'):'en' }}
+		</h3>
+		<button
+			mat-icon-button
+			mwlCalendarNextView
+			[view]="view"
+			[(viewDate)]="viewDate"
+			(viewDateChange)="closeOpenMonthViewDay()"
+			color="primary"
+			class="m-l-10"
+		>
+			<mat-icon>keyboard_arrow_right</mat-icon>
+		</button>
+	</div>
+	<div fxFlex fxLayoutAlign="end end">
+		<div fxLayout="row">
+			<button
+				mat-stroked-button
+				color="primary"
+				(click)="setView(CalendarView.Week)"
+				[ngClass]="{'mw-consult-calendar__active': view === CalendarView.Week}"
+				class="m-r-10"
+			>
+				Week
+			</button>
+			<button
+				mat-stroked-button
+				color="primary"
+				class="btn btn-primary"
+				(click)="setView(CalendarView.Day)"
+				[ngClass]="{'mw-consult-calendar__active': view === CalendarView.Day}"
+			>
+				Day
+			</button>
+		</div>
+	</div>
+</div>
+<br />
+<div class="mw-consult-calendar" [ngSwitch]="view">
+	<mwl-calendar-week-view
+		*ngSwitchCase="CalendarView.Week"
+		[viewDate]="viewDate"
+		[events]="events"
+		[refresh]="refresh"
+		(eventClicked)="handleEvent($event.event)"
+	>
+	</mwl-calendar-week-view>
+	<mwl-calendar-day-view
+		*ngSwitchCase="CalendarView.Day"
+		[viewDate]="viewDate"
+		[events]="events"
+		[refresh]="refresh"
+		(eventClicked)="handleEvent($event.event)"
+	>
+	</mwl-calendar-day-view>
+</div>
+
+<!-- Everything you see below is just for the demo, you don't need to include it in your app -->
+
+<!-- <br /><br /><br /> -->
+
+<!-- <ng-template #modalContent let-close="close">
+	<div class="modal-header">
+		<h5 class="modal-title">Event action occurred</h5>
+		<button type="button" class="close" (click)="close()">
+			<span aria-hidden="true">&times;</span>
+		</button>
+	</div>
+	<div class="modal-body">
+		<div>
+			Action:
+			<pre>{{ modalData?.action }}</pre>
+		</div>
+		<div>
+			Event:
+			<pre>{{ modalData?.event | json }}</pre>
+		</div>
+	</div>
+	<div class="modal-footer">
+		<button
+			type="button"
+			class="btn btn-outline-secondary"
+			(click)="close()"
+		>
+			OK
+		</button>
+	</div>
+</ng-template> -->

@@ -1,0 +1,37 @@
+{
+    "status": 
+    {"code": 1, 
+    "err": null, 
+    "msg": null, 
+    "totalRecords": 2}, 
+    "data": [
+    {
+    "sessionTypeName": "null",
+     "programId": "null", 
+     "description": "null", 
+     "className": "null", 
+     "name": "Yoga", 
+     "categoryId": 1006,
+     "categoryName":"Nutrition",
+     "class_id": 19365.0, 
+     "global": true, 
+     "publish": false, 
+     "form": 213411666368054, 
+     "open_ended": false
+     
+     },
+     {"sessionTypeId": "null",
+     "sessionTypeName": "null", 
+     "programId": "null", 
+     "description": "null", 
+     "className": "null", 
+     "name": "Healthy Yoga", 
+     "categoryId": 1005, 
+     "categoryName":"Group theraphy",
+     "class_id": 25354.0, 
+     "global": false, 
+     "publish": false, 
+     "form": 213408640435047,
+     "open_ended": true
+     }]
+     }

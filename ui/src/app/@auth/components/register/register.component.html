@@ -1,0 +1,1230 @@
+<div fxLayoutAlign="center center" fxlayout="column" style="height: 100%">
+	<div fxLayout.lt-md="column" fxLayout="row" class="mw-create-profile">
+		<mat-card fxFlex="980px" fxFlex.lt-md class="p-t-20 p-l-20 p-r-20">
+			<mat-card-title class="p-l-20 p-b-10" fxLayoutAlign="center center"
+				>Create Profile</mat-card-title
+			>
+			<mat-divider></mat-divider>
+			<mat-card-content>
+				<div
+					*ngIf="isLoading"
+					fxLayoutAlign="center center"
+					class="mw-create-profile__loading"
+				>
+					<mat-spinner style="margin: 0 auto"></mat-spinner>
+				</div>
+				<form [formGroup]="profileFormGroup">
+					<mat-stepper
+						#appointmentStepper
+						[orientation]="(stepperOrientation | async)!"
+						formArrayName="formArray"
+						labelPosition="bottom"
+						linear
+					>
+						<mat-step>
+							<ng-template matStepLabel
+								>Personal Details</ng-template
+							>
+
+							<ng-template matStepContent>
+								<div
+									fxLayout="row"
+									fxLayout.lt-sm="column"
+									class="mw-create-profile__htitle p-b-20"
+									fxLayoutAlign="center center"
+									fxLayoutGap="6px"
+								>
+									<mat-label>Company Code</mat-label>
+									<mat-form-field
+										class="example-full-width"
+										appearance="outline"
+									>
+										<input
+											type="text"
+											placeholder="Enter Company Code"
+											aria-label="Choose Company ID"
+											matInput
+											[formControl]="myControl"
+											[(ngModel)]="companyId"
+										/>
+
+										<!-- <mat-autocomplete
+											#auto="matAutocomplete"
+											[displayWith]="displayFn"
+											(optionSelected)="getCompanies($event.option.value)"
+										>
+											<mat-option
+												*ngFor="let dataSourceItem of filteredOptions | async"
+												[value]="dataSourceItem"
+											>
+												{{dataSourceItem.Name}}
+											</mat-option>
+										</mat-autocomplete> -->
+									</mat-form-field>
+									<!-- <mat-label
+										class="mw-create-profile__search p-l-5"
+										aria-label="Search company id"
+										(click)="filter()"
+									>
+										<mat-icon>search</mat-icon>
+									</mat-label> -->
+								</div>
+								<div
+									fxLayout="row"
+									class="mw-create-profile__htitle p-b-20"
+									fxLayoutAlign="center center"
+									fxLayoutGap="6px"
+									*ngIf="selectedItem&&selectedItem.length>0;else nocompany"
+								>
+									{{selectedItem[0].Name}} -
+									{{selectedItem[0].City}}
+								</div>
+								<ng-template #nocompany>
+									<div
+										fxLayout="row"
+										class="mw-create-profile__htitle p-b-20"
+										fxLayoutAlign="center center"
+										fxLayoutGap="6px"
+										*ngIf="selectedItem&&selectedItem.length===0"
+									>
+										Invalid Code!
+									</div>
+								</ng-template>
+								<mat-divider></mat-divider>
+
+								<div
+									class="
+										mw-create-profile__stepActions
+										p-l-20 p-t-20 p-r-20 p-b-0
+									"
+									fxLayoutAlign="center center"
+									fxLayoutGap="15px"
+								>
+									<div fxFlex></div>
+									<div
+										class="
+											mw-create-profile__stepActions__signin
+											p-b-10
+										"
+										fxLayoutAlign="center center"
+									>
+										Already have an Account?
+										<a
+											class="
+												mw-create-profile__stepActions__signin__a
+												m-l-10
+											"
+											(click)="goToSignIn()"
+											>Sign In</a
+										>
+									</div>
+
+									<div fxFlex></div>
+									<button
+										mat-stroked-button
+										color="primary"
+										(click)="filter()"
+										type="button"
+										class="
+											mw-create-profile__stepActions__btn
+										"
+									>
+										Next
+									</button>
+								</div>
+							</ng-template>
+						</mat-step>
+
+						<mat-step
+							formGroupName="0"
+							[stepControl]="formArray?.get([0])!"
+						>
+							<ng-template matStepLabel>
+								<div>Contact Details</div>
+							</ng-template>
+							<ng-template matStepContent>
+								<div
+									fxLayout="row"
+									class="
+										mw-create-profile__htitle
+										p-b-10 p-t-15
+									"
+									fxLayoutAlign="center center"
+									fxLayoutGap="6px"
+								>
+									{{selectedItem[0].Name}}-
+									{{selectedItem[0].City}}
+								</div>
+								<div
+									class="
+										mw-create-profile__step1
+										p-t-20 p-b-30
+									"
+									fxLayout.lt-md="column"
+									fxLayout="row"
+									fxLayoutAlign="start start"
+									*ngIf="selectedItem"
+								>
+									<div
+										fxLayout="column"
+										style="width: 100%"
+										fxLayoutGap="12px"
+									>
+										<div
+											fxLayout.lt-md="column"
+											fxLayout="row"
+											fxLayoutGap="20px"
+											fxLayoutAlign="space-between center"
+										>
+											<mat-form-field
+												fxFlex
+												fxFlex.lt-md="80px"
+												appearance="outline"
+											>
+												<mat-label
+													class="
+														mw-create-profile__step1__label
+													"
+													>First name</mat-label
+												>
+												<input
+													matInput
+													formControlName="givenName"
+													[(ngModel)]="fnameCtrl"
+												/>
+											</mat-form-field>
+											<mat-form-field
+												fxFlex
+												fxFlex.lt-md="80px"
+												appearance="outline"
+											>
+												<mat-label
+													class="
+														mw-create-profile__step1__label
+													"
+													>Last name</mat-label
+												>
+												<input
+													matInput
+													formControlName="familyname"
+													[(ngModel)]="lnameCtrl"
+												/>
+											</mat-form-field>
+										</div>
+
+										<div
+											fxLayout.lt-md="column"
+											fxLayoutGap="20px"
+											fxLayout="row"
+											fxLayoutAlign="space-between center"
+										>
+											<mat-form-field
+												fxFlex="230px"
+												fxFlex.lt-md="80px"
+												appearance="outline"
+												style="margin-right: 10px"
+												class="p-r-5"
+											>
+												<mat-label
+													class="
+														mw-create-profile__step1__label
+													"
+													>No gender selected
+												</mat-label>
+												<mat-select
+													formControlName="gender"
+													[(ngModel)]="genderCtrl"
+												>
+													<mat-option value="Male"
+														>Male</mat-option
+													>
+													<mat-option value="Female"
+														>Female</mat-option
+													>
+													<mat-option
+														value="Would rather not
+														say"
+														>Would rather not
+														say</mat-option
+													>
+												</mat-select>
+											</mat-form-field>
+											<mat-form-field
+												appearance="outline"
+												fxFlex="230px"
+												fxFlex.lt-md="80px"
+												class="p-l-5"
+											>
+												<mat-label
+													class="
+														mw-create-profile__step1__label
+													"
+													>Birth date</mat-label
+												>
+												<input
+													[max]="maxDate"
+													matInput
+													[matDatepicker]="picker"
+													formControlName="birthdate"
+													[(ngModel)]="dobCtrl"
+												/>
+												<mat-datepicker-toggle
+													matSuffix
+													[for]="picker"
+												></mat-datepicker-toggle>
+												<mat-datepicker
+													#picker
+												></mat-datepicker>
+											</mat-form-field>
+										</div>
+
+										<div
+											fxLayout.lt-md="column"
+											fxLayout="row"
+											fxLayoutGap="20px"
+											fxLayoutAlign="space-between center"
+										>
+											<mat-form-field
+												fxFlex
+												fxFlex.lt-md="80px"
+												appearance="outline"
+											>
+												<mat-label
+													class="
+														mw-create-profile__step1__label
+													"
+													>Password</mat-label
+												>
+												<input
+													matInput
+													placeholder="Password"
+													[type]="passwords ? 'password' : 'text'"
+													formControlName="password"
+													[(ngModel)]="pwdCtrl"
+													minlength="8"
+												/>
+												<mat-icon
+													matSuffix
+													(click)="passwords = !passwords"
+													>{{passwords ?
+													'visibility_off' :
+													'visibility'}}</mat-icon
+												>
+											</mat-form-field>
+											<mat-form-field
+												fxFlex
+												fxFlex.lt-md="80px"
+												appearance="outline"
+											>
+												<mat-label
+													class="
+														mw-create-profile__step1__label
+													"
+													>Confirm password</mat-label
+												>
+												<input
+													matInput
+													placeholder="Password"
+													[type]="cpassword ? 'password' : 'text'"
+													formControlName="cpassword"
+													[(ngModel)]="cpwdCtrl"
+													minlength="8"
+												/>
+												<mat-icon
+													matSuffix
+													(click)="cpassword = !cpassword"
+													>{{cpassword ?
+													'visibility_off' :
+													'visibility'}}</mat-icon
+												>
+											</mat-form-field>
+										</div>
+										<div
+											fxLayout="column"
+											class="
+												mw-create-profile__step1__label1
+											"
+											*ngIf="pwdCtrl !== cpwdCtrl"
+											style="
+												color: red;
+												font-size: 12px;
+												margin-top: -10px;
+												margin-bottom: 8px;
+											"
+										>
+											New Password and Confirm Password
+											must be Same.
+										</div>
+										<div
+											fxLayout="column"
+											class="
+												mw-create-profile__step1__label1
+											"
+										>
+											password must be at least 8
+											characters with 1 uppercase,symbols
+											and numbers
+										</div>
+										<div
+											fxLayout.lt-md="column"
+											fxLayout="row"
+											style="width: 100%"
+											fxLayoutGap="10px"
+											fxLayoutAlign="space-between center"
+										>
+											<mat-form-field
+												fxFlex
+												fxFlex.lt-md="80px"
+												appearance="outline"
+											>
+												<mat-label
+													class="
+														mw-create-profile__step1__label
+													"
+													>+1 Phone</mat-label
+												>
+												<input
+													matInput
+													formControlName="phonenumber"
+													[(ngModel)]="phoneCtrl"
+												/>
+											</mat-form-field>
+											<mat-form-field
+												fxLayout.lt-md="column"
+												fxFlex.lt-md="80px"
+												fxFlex
+												appearance="outline"
+											>
+												<mat-label
+													class="
+														mw-create-profile__step1__label
+													"
+													>Email</mat-label
+												>
+												<input
+													matInput
+													formControlName="email"
+													[(ngModel)]="emailCtrl"
+													[email]="true"
+												/>
+											</mat-form-field>
+										</div>
+									</div>
+									<div
+										class="create-app__step2 p-l-30"
+										fxLayout.lt-md="column"
+										fxLayout="column"
+										fxLayoutGap="12px"
+										fxLayoutAlign="start center"
+									>
+										<div
+											fxLayout.lt-md="column"
+											fxLayout="row"
+											fxLayoutGap="20px"
+											fxLayoutAlign="space-between center"
+											style="width: 100%"
+										>
+											<mat-form-field
+												fxFlex
+												appearance="outline"
+											>
+												<mat-label>
+													<mat-label
+														class="
+															mw-create-profile__step1__label
+														"
+														>Address</mat-label
+													>
+												</mat-label>
+												<input
+													matInput
+													formControlName="address"
+													[(ngModel)]="addressCtrl"
+												/>
+											</mat-form-field>
+										</div>
+										<div
+											fxLayout.lt-md="column"
+											fxLayout="row"
+											fxLayoutGap="10px"
+											fxLayoutAlign="space-between center"
+											style="width: 100%"
+										>
+											<div
+												fxLayout="row"
+												fxLayoutGap="10px"
+												fxLayout.lt-lg="column"
+												style="width: 100%"
+											>
+												<mat-form-field
+													fxFlex="200px"
+													fxFlex.lt-lg="80px"
+													fxFlex.lt-md
+													appearance="outline"
+												>
+													<mat-label>
+														<mat-label
+															class="
+																mw-create-profile__step1__label
+															"
+															>City</mat-label
+														>
+													</mat-label>
+													<input
+														matInput
+														formControlName="locale"
+														[(ngModel)]="cityCtrl"
+													/>
+												</mat-form-field>
+												<mat-form-field
+													fxFlex="200px"
+													fxFlex.lt-lg="80px"
+													fxFlex.lt-md
+													appearance="outline"
+												>
+													<mat-label
+														class="
+															mw-create-profile__step1__label
+														"
+														>State</mat-label
+													>
+													<mat-select
+														formControlName="custom:State"
+														[(ngModel)]="stateCtrl"
+													>
+														<mat-option
+															*ngFor="let city of cities"
+															[value]="city.code"
+														>
+															{{city.name}}
+														</mat-option>
+													</mat-select>
+												</mat-form-field>
+											</div>
+										</div>
+										<div
+											fxflex
+											fxLayout="column"
+											fxLayoutGap="20px"
+											fxLayoutAlign="start start"
+											style="width: 100%"
+										>
+											<div
+												fxLayout="row"
+												fxLayoutGap="10px"
+												fxLayout.lt-lg="column"
+												style="width: 100%"
+											>
+												<mat-form-field
+													fxFlex="200px"
+													fxFlex.lt-lg="80px"
+													fxFlex.lt-md
+													appearance="outline"
+												>
+													<mat-label
+														class="
+															mw-create-profile__step1__label
+														"
+														>Country</mat-label
+													>
+													<mat-select
+														formControlName="zoneinfo"
+														[(ngModel)]="countryCtrl"
+													>
+														<mat-option
+															*ngFor="let country of countries"
+															[value]="country.code"
+														>
+															{{country.name}}
+														</mat-option>
+													</mat-select>
+												</mat-form-field>
+
+												<mat-form-field
+													fxFlex="200px"
+													fxFlex.lt-lg="80px"
+													fxFlex.lt-md
+													appearance="outline"
+												>
+													<mat-label>
+														<mat-label
+															class="
+																mw-create-profile__step1__label
+															"
+															>Postal</mat-label
+														>
+													</mat-label>
+													<input
+														matInput
+														formControlName="custom:PostalCode"
+														[(ngModel)]="postalCtrl"
+													/>
+												</mat-form-field>
+											</div>
+										</div>
+										<div
+											fxflex
+											fxLayout="column"
+											fxLayoutGap="20px"
+											fxLayoutAlign="start start"
+											style="width: 100%"
+										>
+											<mat-label
+												class="
+													mw-create-profile__step1__label
+												"
+												>Contact Preference</mat-label
+											>
+											<mat-radio-group
+												fxflex
+												fxLayout="row"
+												fxLayout.lt-md="column"
+												aria-label="Select an option"
+												formControlName="contact"
+												[(ngModel)]="contactCtrl"
+											>
+												<mat-radio-button
+													value="P"
+													fxflex
+													color="primary"
+													class="
+														mw-create-profile__step1__label
+														p-r-25
+													"
+													(change)="onChangeContact($event)"
+													>Phone</mat-radio-button
+												>
+												<mat-radio-button
+													value="E"
+													color="primary"
+													class="
+														mw-create-profile__step1__label
+													"
+													(change)="onChangeContact($event)"
+													fxflex
+													>Email</mat-radio-button
+												>
+											</mat-radio-group>
+										</div>
+									</div>
+								</div>
+								<mat-divider></mat-divider>
+
+								<div
+									class="
+										mw-create-profile__stepActions
+										p-l-20 p-t-20 p-r-20 p-b-0
+									"
+									fxLayoutAlign="center center"
+									fxLayoutGap="15px"
+								>
+									<button
+										mat-stroked-button
+										color="primary"
+										matStepperPrevious
+										type="button"
+										class="
+											mw-create-profile__stepActions__btn
+										"
+									>
+										Back
+									</button>
+									<div fxFlex></div>
+
+									<div
+										class="
+											mw-create-profile__stepActions__signin
+											p-b-10
+										"
+										fxLayoutAlign="center center"
+									>
+										Already have an Account?
+										<a
+											class="
+												mw-create-profile__stepActions__signin__a
+												m-l-10
+											"
+											(click)="goToSignIn()"
+											>Sign In</a
+										>
+									</div>
+									<div fxFlex></div>
+									<button
+										[disabled]="pwdCtrl !== cpwdCtrl"
+										mat-stroked-button
+										color="primary"
+										matStepperNext
+										type="button"
+										class="
+											mw-create-profile__stepActions__btn
+										"
+									>
+										Next
+									</button>
+								</div>
+							</ng-template>
+						</mat-step>
+
+						<!-- <mat-step
+							formGroupName="1"
+							[stepControl]="formArray?.get([1])!"
+						>
+							<ng-template matStepLabel>
+								<div>Patient Details</div>
+							</ng-template>
+							<ng-template matStepContent>
+								<div
+									class="
+										mw-create-profile__step1
+										p-t-30 p-b-30
+									"
+									fxLayout.lt-md="column"
+									fxLayout="row"
+									fxLayoutAlign="start start"
+									*ngIf="selectedItem"
+								>
+									<div
+										fxLayout="column"
+										style="width: 100%"
+										fxLayoutGap="12px"
+									>
+										<div
+											fxLayout.lt-md="column"
+											fxLayout="row"
+											fxLayoutAlign="space-between center"
+										></div>
+										<div
+											fxLayout.lt-md="column"
+											fxLayout="row"
+											fxLayoutGap="20px"
+											fxLayoutAlign="space-between center"
+										>
+											<mat-form-field
+												fxFlex
+												fxFlex.lt-md="80px"
+												appearance="outline"
+											>
+												<mat-label
+													class="
+														mw-create-profile__step1__label
+													"
+													>Race
+												</mat-label>
+												<mat-select
+													formControlName="raceName"
+													[(ngModel)]="raceCtrl"
+												>
+													<mat-option
+														*ngFor="let race of races"
+														[value]="race.code"
+													>
+														{{race.name}}
+													</mat-option>
+												</mat-select>
+											</mat-form-field>
+											<mat-form-field
+												fxFlex
+												fxFlex.lt-md="80px"
+												appearance="outline"
+											>
+												<mat-label
+													class="
+														mw-create-profile__step1__label
+													"
+													>Ethinicity
+												</mat-label>
+												<mat-select
+													formControlName="ethinicityName"
+													[(ngModel)]="ethinicityCtrl"
+												>
+													<mat-option
+														*ngFor="let ethinicity of ethinicities"
+														[value]="ethinicity.code"
+													>
+														{{ethinicity.name}}
+													</mat-option>
+												</mat-select>
+											</mat-form-field>
+										</div>
+										<div
+											fxLayout.lt-md="column"
+											fxLayout="row"
+											fxLayoutGap="20px"
+											fxLayoutAlign="space-between center"
+										>
+											<mat-form-field
+												fxFlex
+												fxFlex.lt-md="80px"
+												appearance="outline"
+											>
+												<mat-label
+													class="
+														mw-create-profile__step1__label
+													"
+													>Social Security</mat-label
+												>
+												<input
+													matInput
+													placeholder="Social Security"
+													[type]="'text'"
+													formControlName="socialSecurity"
+													[(ngModel)]="socialSecurityCtrl"
+												/>
+											</mat-form-field>
+											<mat-form-field
+												fxFlex
+												fxFlex.lt-md="80px"
+												appearance="outline"
+											>
+												<mat-label
+													class="
+														mw-create-profile__step1__label
+													"
+													>Preferred language
+												</mat-label>
+												<mat-select
+													formControlName="preferredLanguage"
+													[(ngModel)]="preferredLanguageCtrl"
+												>
+													<mat-option
+														*ngFor="let language of languages"
+														[value]="language.code"
+													>
+														{{language.name}}
+													</mat-option>
+												</mat-select>
+											</mat-form-field>
+										</div>
+
+										<div
+											fxLayout.lt-md="column"
+											fxLayout="row"
+											fxLayoutGap="20px"
+											fxLayoutAlign="space-between center"
+										>
+											<mat-form-field
+												fxFlex
+												fxFlex.lt-md="80px"
+												appearance="outline"
+											>
+												<mat-label
+													class="
+														mw-create-profile__step1__label
+													"
+													>Emergency Phone</mat-label
+												>
+												<input
+													matInput
+													formControlName="emergencyPhone"
+													[(ngModel)]="emergencyPhoneCtrl"
+												/>
+											</mat-form-field>
+											<mat-form-field
+												fxLayout.lt-md="column"
+												fxFlex.lt-md="80px"
+												fxFlex
+												appearance="outline"
+											>
+												<mat-label
+													class="
+														mw-create-profile__step1__label
+													"
+													>Emergency contact
+													name</mat-label
+												>
+												<input
+													matInput
+													formControlName="emergencyContact"
+													[(ngModel)]="emergencyContactCtrl"
+												/>
+											</mat-form-field>
+										</div>
+									</div>
+								</div>
+								<mat-divider></mat-divider>
+
+								<div
+									class="
+										mw-create-profile__stepActions
+										p-l-20 p-t-20 p-r-20 p-b-0
+									"
+									fxLayoutAlign="center center"
+									fxLayoutGap="15px"
+								>
+									<button
+										mat-stroked-button
+										color="primary"
+										matStepperPrevious
+										type="button"
+										class="
+											mw-create-profile__stepActions__btn
+										"
+									>
+										Back
+									</button>
+									<div fxFlex></div>
+
+									<div
+										class="
+											mw-create-profile__stepActions__signin
+											p-b-10
+										"
+										fxLayoutAlign="center center"
+									>
+										Already have an Account?
+										<a
+											class="
+												mw-create-profile__stepActions__signin__a
+												m-l-10
+											"
+											(click)="goToSignIn()"
+											>Sign In</a
+										>
+									</div>
+									<div fxFlex></div>
+									<button
+										mat-stroked-button
+										color="primary"
+										matStepperNext
+										type="button"
+										class="
+											mw-create-profile__stepActions__btn
+										"
+									>
+										Next
+									</button>
+								</div>
+							</ng-template>
+						</mat-step> -->
+
+						<mat-step
+							formGroupName="1"
+							[stepControl]="formArray?.get([1])!"
+						>
+							<ng-template matStepLabel
+								>Liability Waiver</ng-template
+							>
+							<ng-template matStepContent>
+								<div
+									class="create-app__step3 p-30"
+									fxLayout.lt-md="column"
+									fxLayout="row"
+									fxLayoutGap="50px"
+									fxLayoutAlign="center center"
+								>
+									<div
+										fxLayout="column"
+										style="width: 100%"
+										fxLayoutGap="12px"
+									>
+										<div
+											fxLayout="column"
+											fxLayoutGap="5px"
+											fxLayoutAlign="start"
+										>
+											<span
+												class="
+													p-b-8
+													mw-create-profile__step1__label
+												"
+											>
+												Liability Waiver</span
+											>
+											<div
+												class="
+													mw-create-profile__step1__label
+													mw-create-profile__step1__section
+												"
+											>
+												<h3
+													fxLayoutAlign="center center"
+													class="
+														m-0
+														mw-create-profile__step1__agr-header
+													"
+												>
+													Optimall Mind care, llc
+												</h3>
+												<h3
+													fxLayoutAlign="center center"
+													class="
+														m-0 m-b-10
+														mw-create-profile__step1__agr-sub-header
+													"
+												>
+													Term of service
+												</h3>
+												<div>
+													Lorem ipsum, dolor sit amet
+													consectetur adipisicing
+													elit. Laboriosam ex fugit
+													officiis officia doloribus
+													alias eligendi cumque fuga,
+													iure quasi assumenda
+													distinctio, quae animi,
+													molestiae vel. Quis itaque
+													quaerat delectus. Lorem
+													ipsum, dolor sit amet
+													consectetur adipisicing
+													elit. Laboriosam ex fugit
+													officiis officia doloribus
+													alias eligendi cumque fuga,
+													iure quasi assumenda
+													distinctio, quae animi,
+													molestiae vel. Quis itaque
+													quaerat delectus.
+												</div>
+												<br />
+												<div>
+													Lorem ipsum, dolor sit amet
+													consectetur adipisicing
+													elit. Laboriosam ex fugit
+													officiis officia doloribus
+													alias eligendi cumque fuga,
+													iure quasi assumenda
+													distinctio, quae animi,
+													molestiae vel. Quis itaque
+													quaerat delectus. Lorem
+													ipsum, dolor sit amet
+													consectetur adipisicing
+													elit. Laboriosam ex fugit
+													officiis officia doloribus
+													alias eligendi cumque fuga,
+													iure quasi assumenda
+													distinctio, quae animi,
+													molestiae vel. Quis itaque
+													quaerat delectus. Lorem
+													ipsum, dolor sit amet
+													consectetur adipisicing
+													elit. Laboriosam ex fugit
+													officiis officia doloribus
+													alias eligendi cumque fuga,
+													iure quasi assumenda
+													distinctio, quae animi,
+													molestiae vel. Quis itaque
+													quaerat delectus.
+												</div>
+												<br />
+												Lorem ipsum, dolor sit amet
+												consectetur adipisicing elit.
+												Laboriosam ex fugit officiis
+												officia doloribus alias eligendi
+												cumque fuga, iure quasi
+												assumenda distinctio, quae
+												animi, molestiae vel. Quis
+												itaque quaerat delectus. Lorem
+												ipsum, dolor sit amet
+												consectetur adipisicing elit.
+												Laboriosam ex fugit officiis
+												officia doloribus alias eligendi
+												cumque fuga, iure quasi
+												assumenda distinctio, quae
+												animi, molestiae vel. Quis
+												itaque quaerat delectus. Lorem
+												ipsum, dolor sit amet
+												consectetur adipisicing elit.
+												Laboriosam ex fugit officiis
+												officia doloribus alias eligendi
+												cumque fuga, iure quasi
+												assumenda distinctio, quae
+												animi, molestiae vel. Quis
+												itaque quaerat delectus. Lorem
+												ipsum, dolor sit amet
+												consectetur adipisicing elit.
+												Laboriosam ex fugit officiis
+												officia doloribus alias eligendi
+												cumque fuga, iure quasi
+												assumenda distinctio, quae
+												animi, molestiae vel. Quis
+												itaque quaerat delectus. Lorem
+												ipsum, dolor sit amet
+												consectetur adipisicing elit.
+												Laboriosam ex fugit officiis
+												officia doloribus alias eligendi
+												cumque fuga, iure quasi
+												assumenda distinctio, quae
+												animi, molestiae vel. Quis
+												itaque quaerat delectus. Lorem
+												ipsum, dolor sit amet
+												consectetur adipisicing elit.
+												Laboriosam ex fugit officiis
+												officia doloribus alias eligendi
+												cumque fuga, iure quasi
+												assumenda distinctio, quae
+												animi, molestiae vel. Quis
+												itaque quaerat delectus. Lorem
+												ipsum, dolor sit amet
+												consectetur adipisicing elit.
+												Laboriosam ex fugit officiis
+												officia doloribus alias eligendi
+												cumque fuga, iure quasi
+												assumenda distinctio, quae
+												animi, molestiae vel. Quis
+												itaque quaerat delectus. Lorem
+												ipsum, dolor sit amet
+												consectetur adipisicing elit.
+												Laboriosam ex fugit officiis
+												officia doloribus alias eligendi
+												cumque fuga, iure quasi
+												assumenda distinctio, quae
+												animi, molestiae vel. Quis
+												itaque quaerat ure quasi
+												assumenda distinctio, quae
+												animi, molestiae vel. Quis
+												itaque quaerat delectus. Lorem
+												ipsum, dolor sit amet
+												consectetur adipisicing elit.
+												Laboriosam ex fugit officiis
+												officia doloribus alias eligendi
+												cumque fuga, iure quasi
+												assumenda distinctio, quae
+												animi, molestiae vel. Quis
+												itaque quaerat delectus. Lorem
+												ipsum, dolor sit amet
+												consectetur adipisicing elit.
+												Laboriosam ex fugit officiis
+												officia doloribus alias eligendi
+												cumque fuga, iure quasi
+												assumenda distinctio, quae
+												animi, molestiae vel. Quis
+												itaque quaerat delectus.
+											</div>
+
+											<section class="example-section">
+												<mat-checkbox
+													color="primary"
+													formControlName="waiver"
+													[(ngModel)]="waiverCtrl"
+													class="
+														mw-create-profile__step1__label
+													"
+													>I agree to the mindworx
+													liability
+													Waiver</mat-checkbox
+												>
+											</section>
+										</div>
+									</div>
+								</div>
+								<mat-divider></mat-divider>
+
+								<div
+									class="
+										mw-create-profile__stepActions
+										p-l-20 p-t-20 p-r-20 p-b-0
+									"
+									fxLayoutAlign="center center"
+									fxLayoutGap="15px"
+								>
+									<button
+										mat-stroked-button
+										color="primary"
+										matStepperPrevious
+										type="button"
+										class="
+											mw-create-profile__stepActions__btn
+										"
+									>
+										Back
+									</button>
+									<div fxFlex></div>
+
+									<div
+										class="
+											mw-create-profile__stepActions__signin
+											p-b-10
+										"
+										fxLayoutAlign="center center"
+									>
+										Already have an Account?
+										<a
+											class="
+												mw-create-profile__stepActions__signin__a
+												m-l-10
+											"
+											(click)="goToSignIn()"
+										>
+											Sign In</a
+										>
+									</div>
+									<div fxFlex></div>
+									<button
+										[disabled]="!waiverCtrl"
+										mat-stroked-button
+										color="primary"
+										type="button"
+										(click)="handleClick()"
+										class="
+											mw-create-profile__stepActions__btn
+										"
+									>
+										Create Account
+									</button>
+								</div>
+							</ng-template>
+						</mat-step>
+					</mat-stepper>
+				</form>
+			</mat-card-content>
+		</mat-card>
+
+		<div
+			fxFlex="250px"
+			fxFlex.lt-md="100%"
+			fxLayout="column"
+			fxLayout.lt-md="row"
+			fxLayout.lt-sm="column"
+			class="mw-create-profile__started-section p-t-50 p-l-20 p-r-20"
+		>
+			<div
+				fxLayout="column"
+				fxFlex.lt-md="200px"
+				fxflex
+				fxLayoutAlign="center center"
+				class="p-l-10 p-r-10 mw-create-profile__started-img-section"
+			>
+				<img
+					class="mw-create-profile__logo"
+					src="assets/images/login.png"
+					title="Home"
+					alt="Home"
+				/>
+				<div
+					fxflex
+					fxLayoutAlign="center center"
+					class="mw-create-profile__find p-t-0 p-0"
+				>
+					Find your
+					<span
+						class="
+							mw-create-profile__bright
+							m-l-3 m-r-3
+							mw-create-profile__primarycolor
+						"
+					>
+						bright
+					</span>
+					side
+				</div>
+			</div>
+
+			<div fxLayout.lt-md="column">
+				<span class="mw-create-profile__white">
+					<div class="mw-create-profile__content m-t-50">
+						Ready to go?
+					</div>
+					<div class="mw-create-profile__content m-t-10">
+						Let's get started!
+					</div>
+				</span>
+			</div>
+
+			<div fxflex></div>
+			<div
+				fxflex
+				fxLayoutAlign="center center"
+				class="mw-create-profile__circle m-t-10 m-r-10 m-b-10"
+			></div>
+		</div>
+	</div>
+</div>

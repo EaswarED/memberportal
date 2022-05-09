@@ -1,0 +1,17 @@
+@import 'src/app/@theme/colors';
+
+// TO match styleguide
+.mat-raised-button,
+.mat-stroked-button,
+.mat-flat-button {
+	border-radius: 50px !important;
+}
+
+// Setting default padding to 0 to better handle styling
+.mat-horizontal-content-container {
+	padding: 0 !important;
+}
+
+.mat-vertical-content-container {
+	margin-left: 0 !important;
+}

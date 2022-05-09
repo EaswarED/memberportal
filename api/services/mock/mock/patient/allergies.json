@@ -1,0 +1,26 @@
+{
+    "previous": null,
+    "results": [
+        {
+            "id": 15249845,
+            "doctor": 292542,
+            "patient": 98269600,
+            "rxnorm": "228783",
+            "reaction": "Headache",
+            "snomed_reaction": "25064002",
+            "status": "active",
+            "notes": "Flushing, feelings of tingling"
+        },
+        {
+            "id": 15249886,
+            "doctor": 292542,
+            "patient": 98269600,
+            "rxnorm": "",
+            "reaction": "Rashes",
+            "snomed_reaction": "",
+            "status": "active",
+            "notes": "Bacterial infections"
+        }
+    ],
+    "next": null
+}

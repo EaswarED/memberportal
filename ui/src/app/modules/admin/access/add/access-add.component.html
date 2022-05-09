@@ -1,0 +1,284 @@
+<mat-card class="p-0 mw-access-add">
+	<mat-card-title class="p-l-15 p-t-15">Add Permission</mat-card-title>
+	<mat-card-subtitle class="p-l-15">
+		Follow these steps to recommend services and content to members.&nbsp;
+	</mat-card-subtitle>
+	<mat-divider></mat-divider>
+
+	<mat-card-content>
+		<mat-stepper
+			#stepper
+			[orientation]="(stepperOrientation | async)!"
+			labelPosition="bottom"
+			linear
+		>
+			<mat-step completed="false">
+				<ng-template matStepLabel>Permission Type</ng-template>
+
+				<ng-template matStepContent>
+					<div
+						class="mw-access-add__step1 p-30"
+						fxLayout="column"
+						fxLayoutGap="25px"
+					>
+						<h4 class="p-b-15" fxLayoutAlign="start center">
+							Type of Permission
+						</h4>
+						<div fxLayoutAlign="center center">
+							<mat-radio-group
+								fxLayoutGap="15px"
+								fxLayoutAlign="center start"
+								color="primary"
+								fxLayout="column"
+								(change)="handleAccessChange($event)"
+							>
+								<div fxLayout="column">
+									<div
+										class="
+											mw-create-app__step2__price__session
+										"
+										fxFill
+										fxFlex="100%"
+										fxLayoutGap="15px"
+										fxLayoutAlign="start center"
+									>
+										<mat-radio-button
+											[value]="CONST.ACCESS_PROMOTION_TYPE_GLOBAL"
+											required
+										>
+										</mat-radio-button>
+										<span fxFlex>Global</span>
+									</div>
+								</div>
+
+								<div fxLayout="column">
+									<div
+										class="
+											mw-create-app__step2__price__session
+										"
+										fxFill
+										fxFlex="100%"
+										fxLayoutGap="15px"
+										fxLayoutAlign="start center"
+									>
+										<mat-radio-button
+											[value]="CONST.ACCESS_PROMOTION_TYPE_COMPANY"
+											required
+										>
+										</mat-radio-button>
+										<span fxFlex>Company</span>
+									</div>
+								</div>
+								<div fxLayout="column">
+									<div
+										class="
+											mw-create-app__step2__price__session
+										"
+										fxFill
+										fxFlex="100%"
+										fxLayoutGap="15px"
+										fxLayoutAlign="start center"
+									>
+										<mat-radio-button
+											[value]="CONST.ACCESS_PROMOTION_TYPE_USER"
+											required
+										>
+										</mat-radio-button>
+										<span fxFlex>Member</span>
+									</div>
+								</div>
+							</mat-radio-group>
+						</div>
+					</div>
+					<mat-divider></mat-divider>
+
+					<div
+						class="mw-access-add__stepActions"
+						fxLayoutAlign="center center"
+						fxLayoutGap="15px"
+					>
+						<div fxFlex></div>
+						<button
+							mat-stroked-button
+							type="button"
+							color="primary"
+							(click)="cancel()"
+						>
+							Cancel
+						</button>
+						<button
+							mat-stroked-button
+							color="primary"
+							matStepperNext
+							type="button"
+							*ngIf="promotionType !== CONST.ACCESS_PROMOTION_TYPE_GLOBAL"
+							(click)="goToStep2()"
+						>
+							Next
+						</button>
+						<button
+							mat-stroked-button
+							color="primary"
+							matStepperNext
+							type="button"
+							*ngIf="promotionType === CONST.ACCESS_PROMOTION_TYPE_GLOBAL"
+							(click)="saveAccess()"
+						>
+							Save Permission
+						</button>
+					</div>
+				</ng-template>
+			</mat-step>
+			<mat-step completed="false">
+				<ng-template matStepLabel>Selection</ng-template>
+
+				<ng-template matStepContent>
+					<div
+						fxLayout="row"
+						*ngIf="promotionType === CONST.ACCESS_PROMOTION_TYPE_COMPANY"
+					>
+						<h4 class="p-20" fxLayoutAlign="start center">
+							Select the companies you want to receive the
+							permission
+						</h4>
+					</div>
+					<div
+						fxLayout="row"
+						*ngIf="promotionType === CONST.ACCESS_PROMOTION_TYPE_USER"
+					>
+						<h4 class="p-20" fxLayoutAlign="start center">
+							Search for the members to give the permission.
+						</h4>
+					</div>
+					<div
+						fxLayout="row"
+						fxLayoutAlign="center center"
+						*ngIf="promotionType === CONST.ACCESS_PROMOTION_TYPE_USER"
+					>
+						<mat-form-field fxFlex="200px" appearance="outline">
+							<mat-label>Search by Name</mat-label>
+							<input matInput [(ngModel)]="searchByName" />
+						</mat-form-field>
+						<div class="p-b-15 m-l-10">
+							<button
+								mat-icon-button
+								color="primary"
+								(click)="onSearch()"
+							>
+								<mat-icon style="font-size: 35px"
+									>search</mat-icon
+								>
+							</button>
+						</div>
+					</div>
+					<div
+						fxLayout="row"
+						fxLayoutAlign="center center"
+						*ngIf="searchData$"
+					>
+						<mw-data-table
+							[columnDefs]="promotionType === CONST.ACCESS_PROMOTION_TYPE_COMPANY ? companyColumnDefs : userColumnDefs"
+							[rowData]="searchData$ | async"
+							[frameworkComponents]="frameworkComponents"
+							[paginationPageSize]="CONST.DEFAULT_GRID_PAGE_SIZE"
+							rowSelection="multiple"
+							(rowSelectionChanged)="rowSelectionChanged($event)"
+							class="mw-access-add__gridList"
+						>
+						</mw-data-table>
+					</div>
+
+					<mat-divider></mat-divider>
+
+					<div
+						class="mw-access-add__stepActions"
+						fxLayoutAlign="center center"
+						fxLayoutGap="15px"
+					>
+						<div fxFlex></div>
+						<button
+							mat-stroked-button
+							color="primary"
+							type="button"
+							(click)="cancel()"
+						>
+							Cancel
+						</button>
+						<button
+							mat-stroked-button
+							color="primary"
+							(click)="goBack()"
+							type="button"
+						>
+							Back
+						</button>
+						<button
+							mat-stroked-button
+							color="primary"
+							matStepperNext
+							(click)="goToStep3()"
+							type="button"
+						>
+							Next
+						</button>
+					</div>
+				</ng-template>
+			</mat-step>
+			<mat-step>
+				<ng-template matStepLabel>
+					<div>Complete</div>
+				</ng-template>
+
+				<ng-template matStepContent>
+					<h4 class="p-20" fxLayoutAlign="start center">
+						Please confirm your changes
+					</h4>
+					<div fxLayout="row" fxLayoutAlign="center center">
+						<mw-data-table
+							[columnDefs]="promotionType === CONST.ACCESS_PROMOTION_TYPE_COMPANY ? selectedCompanyColumnDefs: selectedUserColumnDefs"
+							[rowData]="selectedRows"
+							[frameworkComponents]="frameworkComponents"
+							[paginationPageSize]="CONST.DEFAULT_GRID_PAGE_SIZE"
+							class="mw-access-add__halfGridList"
+						>
+						</mw-data-table>
+					</div>
+
+					<mat-divider></mat-divider>
+
+					<div
+						class="mw-access-add__stepActions"
+						fxLayoutAlign="center center"
+						fxLayoutGap="15px"
+					>
+						<div fxFlex></div>
+						<button
+							mat-stroked-button
+							type="button"
+							color="primary"
+							(click)="cancel()"
+						>
+							Cancel
+						</button>
+						<button
+							mat-stroked-button
+							color="primary"
+							(click)="goBack()"
+							type="button"
+						>
+							Back
+						</button>
+						<button
+							mat-stroked-button
+							color="primary"
+							type="button"
+							(click)="saveAccess()"
+						>
+							Save Permission
+						</button>
+					</div>
+				</ng-template>
+			</mat-step>
+		</mat-stepper>
+	</mat-card-content>
+</mat-card>

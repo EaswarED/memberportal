@@ -1,0 +1,8 @@
+requests==2.23.0
+flask == 1.1.2
+itsdangerous==1.1.0
+markupsafe==1.1.1
+stripe == 2.49.0
+sendgrid == 6.9.7
+werkzeug==0.16.1
+PyJWT == 2.3.0

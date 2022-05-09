@@ -1,0 +1,77 @@
+@import 'src/app/@theme/colors';
+
+:host {
+	padding-right: 12px;
+	margin-left: 6.5rem;
+	display: block;
+}
+::ng-deep.mw-admin-portal {
+	&__expansion-panel {
+		box-shadow: none;
+	}
+	&__expansion-panel-title {
+		font-size: 14px;
+		font-weight: 400;
+	}
+	&__header-title {
+		margin-bottom: 0px;
+	}
+	// &__grid-list {
+	// }
+	// &__grid-list-tile {
+	// }
+	&__grid-list-thumb {
+		position: relative;
+		&__icon-thumb {
+			&__icon .mat-icon {
+				font-size: 60px;
+				color: $primary-grey-g2;
+				height: 60px;
+				width: 60px;
+			}
+			&__icon-small .mat-icon {
+				font-size: 20px;
+				color: $primary-yellow;
+			}
+		}
+	}
+}
+
+.mw-admin-portal {
+	padding: 12px 0px;
+	&__expansion-panel {
+		box-shadow: none;
+	}
+	&__dropdown {
+		font: 400 10px / 20px 'Poppins';
+	}
+	&__expansion-panel-title {
+		font-size: 14px;
+		font-weight: 400;
+	}
+	&__header-title {
+		margin-bottom: 0px;
+	}
+	// &__grid-list {
+	// }
+	// &__grid-list-tile {
+	// }
+	&__grid-list-thumb {
+		position: relative;
+		&__icon-thumb {
+			position: relative;
+			&__icon {
+				font-size: 25px;
+			}
+			&__icon-small {
+				bottom: 0px;
+				left: 45px;
+				position: absolute;
+			}
+		}
+		&__title {
+			font: 500 14px / 20px 'Poppins';
+			color: $primary-grey-g2;
+		}
+	}
+}

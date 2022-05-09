@@ -1,0 +1,155 @@
+<div class="mw-onpatient" fxLayout="column">
+	<mat-card>
+		<mat-card-title>Check In</mat-card-title>
+		<mat-card-subtitle
+			>Please check in for your upcoming appointment here.
+		</mat-card-subtitle>
+		<mat-divider> </mat-divider>
+
+		<div fxLayout="column">
+			<mat-card-title
+				fxFlex
+				fxLayoutAlign="center center"
+				class="mw-onpatient__header p-t-25 p-b-25"
+				>Please click on each of the below forms and submit them piror
+				to your appointment.</mat-card-title
+			>
+
+			<mat-card-title class="mw-onpatient__center">
+				<mat-grid-list cols="1">
+					<mat-spinner *ngIf="isLoading"> </mat-spinner>
+					<mat-list class="mw-onpatient_list">
+						<mat-list-item
+							class="mw-onpatient__listOption"
+							color="primary"
+							*ngFor="let option of formList"
+							[selected]="option.isValid"
+							style="width: 100%; cursor: pointer"
+							[ngStyle]="{'pointer-events':option.isValid === true ?'none':'auto'}"
+						>
+							<div
+								fxLayout="row"
+								style="width: 100%"
+								*ngIf="option.formId === onpatientAdditionalInfo"
+								(click)="btnClicked('phq')"
+							>
+								<span
+									style="width: 100%"
+									class="mw-onpatient__btn"
+									>PHQ9 Scale</span
+								><img
+									[src]="option.isValid? 'assets/images/checked.png':'assets/images/unchecked.png'"
+								/>
+							</div>
+
+							<div
+								fxLayout="row"
+								style="width: 100%"
+								*ngIf="option.formId === gad"
+								(click)="btnClicked('gad')"
+							>
+								<span
+									style="width: 100%"
+									class="mw-onpatient__btn"
+									>GAD 7</span
+								><img
+									[src]="option.isValid? 'assets/images/checked.png':'assets/images/unchecked.png'"
+								/>
+							</div>
+
+							<div
+								fxLayout="row"
+								style="width: 100%"
+								*ngIf="option.formId === fan"
+								(click)="btnClicked('fan')"
+							>
+								<span
+									style="width: 100%"
+									class="mw-onpatient__btn"
+									>FAN 8</span
+								><img
+									[src]="option.isValid? 'assets/images/checked.png':'assets/images/unchecked.png'"
+								/>
+							</div>
+
+							<div
+								fxLayout="row"
+								style="width: 100%"
+								*ngIf="option.formId === medicalInfo"
+								(click)="btnClicked('medical')"
+							>
+								<span
+									style="width: 100%"
+									class="mw-onpatient__btn"
+									>Medical Information</span
+								><img
+									[src]="option.isValid? 'assets/images/checked.png':'assets/images/unchecked.png'"
+								/>
+							</div>
+							<div
+								fxLayout="row"
+								style="width: 100%"
+								*ngIf="option.formId === newPatient"
+								(click)="btnClicked('new')"
+							>
+								<span
+									style="width: 100%"
+									class="mw-onpatient__btn"
+									>New Patient</span
+								><img
+									[src]="option.isValid? 'assets/images/checked.png':'assets/images/unchecked.png'"
+								/>
+							</div>
+							<div
+								fxLayout="row"
+								style="width: 100%"
+								*ngIf="option.formId !== onpatientAdditionalInfo && option.formId !== medicalInfo && option.formId !== newPatient && option.formId !== gad && option.formId !== fan && option.formId !== phq"
+							>
+								<div
+									(click)="onClick(option.formId)"
+									style="width: 100%"
+								>
+									{{ option.name }}
+								</div>
+								<img
+									[src]="option.isValid? 'assets/images/checked.png':'assets/images/unchecked.png'"
+								/>
+							</div>
+						</mat-list-item>
+					</mat-list>
+				</mat-grid-list>
+			</mat-card-title>
+		</div>
+		<mat-card-subtitle class="mw-onpatient_subtitle"
+			>If you are having trouble checking in to your appointment, please
+			email care@yourmindworx.com.
+		</mat-card-subtitle>
+
+		<mat-divider></mat-divider>
+
+		<div
+			class="mw-create-app__stepActions p-t-10"
+			fxLayoutAlign="center center"
+			fxLayoutGap="15px"
+		>
+			<div fxFlex></div>
+			<button
+				mat-stroked-button
+				type="button"
+				color="primary"
+				(click)="goBack()"
+			>
+				Cancel
+			</button>
+			<button
+				mat-raised-button
+				color="primary"
+				(click)="onClientAppt()"
+				[disabled]="!lastChecked || isLoading"
+			>
+				<span class="p-l-5 p-r-10"> Submit</span>
+				<mat-icon>arrow_right_alt</mat-icon>
+			</button>
+		</div>
+	</mat-card>
+</div>

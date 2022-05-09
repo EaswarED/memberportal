@@ -1,0 +1,199 @@
+<div fxLayoutAlign="center center" class="mw-sign-in" fxLayout="colum">
+	<div fxLayout.lt-md="column" fxLayout.lt-sm="column" fxLayout="row">
+		<mat-card class="mw-sign-in__section p-t-50 p-l-20 p-r-20">
+			<mat-card-title fxLayoutAlign="center center">
+				<span class="mw-sign-in__welcome p-r-5"> Welcome </span>
+				Back!
+			</mat-card-title>
+			<mat-card-content>
+				<div
+					*ngIf="isLoading"
+					fxLayoutAlign="center center"
+					class="mw-sign-in__loading"
+				>
+					<mat-spinner style="margin: 0 auto"></mat-spinner>
+				</div>
+				<form>
+					<div
+						class="mw-sign-in__step1 p-20"
+						fxLayout="column"
+						fxLayoutGap="15px"
+						fxLayoutAlign="center center"
+					>
+						<div
+							fxLayoutGap="10px"
+							fxLayoutAlign="space-between center"
+							fxLayout="column"
+						>
+							<mat-form-field class="example-full-width">
+								<mat-icon
+									matPrefix
+									class="mw-sign-in__icon p-r-10"
+									>alternate_email</mat-icon
+								>
+								<mat-label>Email</mat-label>
+								<input
+									type="email"
+									[(ngModel)]="username"
+									matInput
+									*ngIf="!clientId;else clientselect"
+								/>
+
+								<ng-template #clientselect>
+									<input
+										type="email"
+										[value]="username"
+										matInput
+										(click)="onChangeEvent()"
+									/>
+								</ng-template>
+							</mat-form-field>
+						</div>
+
+						<div
+							fxLayoutGap="10px"
+							fxLayoutAlign="space-between center"
+						>
+							<mat-form-field fxFlex>
+								<mat-icon
+									matPrefix
+									class="mw-sign-in__icon p-r-10"
+									>lock_open</mat-icon
+								>
+								<mat-label>Password</mat-label>
+								<input
+									type="password"
+									[(ngModel)]="password"
+									matInput
+								/>
+							</mat-form-field>
+						</div>
+						<mat-form-field
+							appearance="fill"
+							class="example-full-width"
+							style="font-size: 12px"
+						>
+							<mat-label>Login as</mat-label>
+							<mat-select
+								[(ngModel)]="clientId"
+								(selectionChange)="populateLogin($event)"
+							>
+								<ng-container *ngFor="let login of client">
+									<mat-option [value]="login.id"
+										>{{login.client}}</mat-option
+									>
+								</ng-container>
+							</mat-select>
+						</mat-form-field>
+						<mat-error
+							*ngIf="isValid"
+							style="
+								color: red;
+								font-size: 12px;
+								margin-top: -10px;
+								margin-bottom: -8px;
+							"
+							class="m-0"
+						>
+							Please Enter Username & Password!!.
+						</mat-error>
+						<button
+							mat-stroked-button
+							color="$grey"
+							class="mw-sign-in__grey"
+							(click)="handleLogin()"
+						>
+							Sign In
+						</button>
+						<mat-label
+							class="mw-sign-in__primarycolor"
+							[mat-dialog-close]="true"
+							(click)="forgot()"
+							>Forgot Password ?</mat-label
+						>
+						<mat-label class="mw-sign-in__not-account m-t-25"
+							>Don't have an Account?
+							<span
+								class="mw-sign-in__primarycolor"
+								[mat-dialog-close]="true"
+								(click)="register()"
+							>
+								<a class="mw-sign-in__size"> Create one </a>
+							</span>
+						</mat-label>
+					</div>
+				</form>
+			</mat-card-content>
+		</mat-card>
+
+		<div
+			fxFlex="250px"
+			fxFlex.lt-md="100%"
+			fxLayout="column"
+			fxLayout.lt-md="row"
+			fxLayout.lt-sm="column"
+			class="mw-sign-in__started-section p-t-50 p-l-20 p-r-20"
+		>
+			<div
+				fxLayout="column"
+				fxFlex.lt-md="200px"
+				fxflex
+				fxLayoutAlign="center center"
+				class="p-l-10 p-r-10"
+			>
+				<img
+					class="mw-sign-in__logo"
+					src="assets/images/login.png"
+					title="Home"
+					alt="Home"
+				/>
+				<div
+					fxflex
+					fxLayoutAlign="center center"
+					class="mw-sign-in__find p-t-0 p-0"
+				>
+					Find your
+					<span class="mw-sign-in__bright m-l-3 m-r-3"> bright </span>
+					side
+				</div>
+			</div>
+
+			<div fxLayout.lt-md="column">
+				<span class="mw-sign-in__white">
+					<div class="mw-sign-in__content m-t-50">Ready to go?</div>
+					<div class="mw-sign-in__content m-t-10">
+						Let's get started!
+					</div>
+				</span>
+			</div>
+
+			<div fxflex></div>
+			<div
+				fxflex
+				fxLayoutAlign="center center"
+				class="mw-sign-in__circle m-t-10 m-r-10 m-b-10"
+			></div>
+
+			<button
+				mat-raised-button
+				(click)="consult()"
+				class="mw-sign-in__consult"
+				color="primary"
+			>
+				Book a consult
+			</button>
+		</div>
+	</div>
+</div>
+
+<div
+	class="mat-body"
+	fxLayoutAlign="end end"
+	style="position: fixed; bottom: 0; width: 100%"
+	*ngIf="lastBuildDt"
+>
+	Build Date:
+	<span class="mw-sign-in__primarycolor p-l-5 p-r-2"
+		>{{ lastBuildDt | date:'MMM d, y, h:mm a'}}</span
+	>
+</div>

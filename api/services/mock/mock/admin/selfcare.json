@@ -1,0 +1,116 @@
+{
+    "total": 6,
+    "page": 1,
+    "per_page": 25,
+    "paging": {
+        "next": "/users/146792368/videos?page=2",
+        "previous": null,
+        "first": "/users/146792368/videos?page=1",
+        "last": "/users/146792368/videos?page=2"
+    },
+    "data": [
+        {
+            "type": "video",
+            "name": "Friday Morning Meditation 12.10.21",
+            "categories":"Coaching",
+            "categoryId": "1008",
+            "categoryName":"Meditation",
+            "description": "What can we do to support a loved one who is questioning their sexual orientation or gender? It can be hard to know exactly what to say or how to be supportive for someone going through this oft-difficult time. Today we will explore what your loved one is going through and what you can say or do to be helpful and supportive.",
+            "created_time": "2021-12-02T01:51:12+00:00",
+            "end_time": "2021-12-02T05:51:12+00:00",
+            "global": true, 
+            "publish": false
+        },
+        {
+            "type": "video",
+            "name": "Camping - Tent",
+            "categories":"Coaching",
+            "categoryId": "1007",
+            "categoryName":"Meditation", 
+            "description": "A cartoon can be a satirical or humorous drawing, a series of illustrations",
+            "created_time": "2021-12-02T03:51:12+00:00",
+            "end_time": "2021-12-02T05:51:12+00:00",
+            "global": false, 
+            "publish": false
+            
+        },
+       
+        {
+            "type": "video",
+            "name": "Holiday Meditation 2: Holiday Stress Management",
+            "categories":"HealthCare",
+            "categoryId": "1010",
+            "categoryName":"Health Care",
+            "description": "With the holiday season midway, many of us anticipate traveling and being with family which can be a challenge. \nJoin our meditation and take a moment to focus on the NOW and your own inner peace, and see if you can change your outlook instead of circumstances.",
+            "created_time": "2021-12-01T05:51:12+00:00",
+            "global": false, 
+            "publish": true,
+            "end_time": "2021-12-02T05:51:12+00:00"
+        },
+        {
+            "type": "video",
+            "name": "Coping with Grief & Loss During the Holidays",
+            "categories":"Meditation",
+            "categoryId": "1007",
+            "categoryName":"Meditation",
+            "description": "While the holidays can be full of cheer for many, there are also those who feel grief and loss particularly strongly at this time. The holidays can be a time of navigating loss and loneliness, feeling overwhelmed, facing strained family relationships, and missing traditions that have been lost as we age and lose people from our lives. \n\nA Mindworx expert will teach employees strategies to cope with current or unexpected grief and loss during the holidays, which can also be applicable to other moments throughout your life when it comes to experiencing tragic events.",
+            "created_time": "2021-11-25T11:51:12+00:00",
+            "end_time": "2021-12-02T05:51:12+00:00",
+            "global": false, 
+            "publish": false
+        },
+        {
+            "type": "video",
+            "name": "Meditation Day - 2 minute meditation",
+            "categories":"Meditation",
+            "categoryId": "1009",
+            "categoryName":"Mental Health",
+            "description": "World Meditation day",
+            "created_time": "2021-11-25T13:51:12+00:00",
+            "end_time": "2021-12-02T05:51:12+00:00",
+            "global": false, 
+            "publish": false,
+            "staffId":"null",
+            "companies":"null"
+            
+        },
+        {
+            "type": "video",
+            "name": "Graduation Celebration",
+            "categories":"Mental Health",
+            "description": "IT’S OUR PASSION TO SEE OUR CUSTOMERS' BUSINESS GROW\nOur core values reflect the importance of long-term relationships, as we pride ourselves in collaborating and sharing knowledge with all of our clients. We deliver engaging, authentic interactive experiences that strengthen communication",
+            "categoryId": "1008",
+            "categoryName":"Mental Health",
+            "created_time": "2021-12-02T14:51:12+00:00",
+            "end_time": "2021-12-02T05:51:12+00:00",
+            "global": false, 
+            "publish": false
+            
+        },
+        {
+            "type": "video",
+            "name": "Recording Button",
+            "description": "IT’S OUR PASSION TO SEE OUR CUSTOMERS' BUSINESS GROW\nOur core values reflect the importance of long-term relationships, as we pride ourselves in collaborating and sharing knowledge with all of our clients. We deliver engaging, authentic interactive experiences that strengthen communication",
+            "categories":"Mental Health",
+            "categoryId": "1008",
+            "categoryName":"Mental Health",
+            "created_time": "2021-12-02T14:51:12+00:00",
+            "end_time": "2021-12-02T05:51:12+00:00",
+            "global": false, 
+            "publish": false
+            
+        },
+        {
+            "type": "pdf",
+            "name": "pdf",
+            "description": "IT’S OUR PASSION TO SEE OUR CUSTOMERS' BUSINESS GROW\nOur core values reflect the importance of long-term relationships, as we pride ourselves in collaborating and sharing knowledge with all of our clients. We deliver engaging, authentic interactive experiences that strengthen communication",
+            "categories":"Coaching",
+            "categoryId": "1008",
+            "categoryName":"Mental Health",
+            "created_time": "2021-12-02T14:51:12+00:00",
+            "end_time": "2021-12-02T05:51:12+00:00",
+            "global": false, 
+            "publish": false
+            
+        }
+        ]}

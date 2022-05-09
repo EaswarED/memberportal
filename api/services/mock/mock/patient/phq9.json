@@ -1,0 +1,371 @@
+{
+    "previous": null,
+    "results": [
+        
+        {
+            "archived": false,
+            "id": 113818057,
+            "name": "PHQ9 Scale",
+            "data_type": "Header",
+            "required": false,
+            "clinical_note_template": 4244887,
+            "allowed_values": []
+        },
+        {
+            "archived": false,
+            "id": 113818058,
+            "name": "1.Little interest or pleasure doing things",
+            "data_type": "String",
+            "required": false,
+            "clinical_note_template": 4244887,
+            "allowed_values": [
+                "0 - Not at all",
+                "1 - Several days",
+                "2 - More than half day",
+                "3 - Nearly every days"
+            ]
+        },
+        {
+            "archived": false,
+            "id": 113818059,
+            "name": "2. Feeling down / depressed / hopeless",
+            "data_type": "String",
+            "required": false, 
+            "clinical_note_template": 4244887,
+            "allowed_values": [
+                "0 - Not at all",
+                "1 - Several days",
+                "2 - More than half day",
+                "3 - Nearly every days"
+            ]
+        },
+        {
+            "archived": false,
+            "id": 115579334,
+            "name": "3.Trouble falling or staying asleep,or sleeping",
+            "data_type": "String",
+            "required": false,  
+            "clinical_note_template": 4244887,
+            "allowed_values": [
+                "0 - Not at all",
+                "1 - Several days",
+                "2 - More than half day",
+                "3 - Nearly every days"
+            ]
+        },
+        {
+            "archived": false,
+            "id": 115579335,
+            "name": "4.Feeling tired and having little energy",
+            "data_type": "String",
+            "required": false,  
+            "clinical_note_template": 4244887,
+            "allowed_values": [
+                "0 - Not at all",
+                "1 - Several days",
+                "2 - More than half day",
+                "3 - Nearly every days"
+            ]
+        },
+        {
+            "archived": false,
+            "id": 115579336,
+            "name": "5.Poor appetite or over eating",
+            "data_type": "String",
+            "required": false, 
+            "clinical_note_template": 4244887,
+            "allowed_values": [
+                "0 - Not at all",
+                "1 - Several days",
+                "2 - More than half day",
+                "3 - Nearly every days"
+            ]
+        },
+        {
+            "archived": false,
+            "id": 115579337,
+            "name": "6.Feeling bad about yourself/feeling a failure/feeing you have let people down",
+            "data_type": "String",
+            "required": false,  
+            "clinical_note_template": 4244887,
+            "allowed_values": [
+                "0 - Not at all",
+                "1 - Several days",
+                "2 - More than half day",
+                "3 - Nearly every days"
+            ]
+        },
+        {
+            "archived": false,
+            "id": 115579338,
+            "name": "7.Trouble concentrating on things, such as reading newspaper/watching TV",
+            "data_type": "String",
+            "required": false, 
+            "clinical_note_template": 4244887,
+            "allowed_values": [
+                "0 - Not at all",
+                "1 - Several days",
+                "2 - More than half day",
+                "3 - Nearly every days"
+            ]
+        },
+        {
+            "archived": false,
+            "id": 115579339,
+            "name": "8.Moving/speaking so slow that other people could have noticed/the opposite",
+            "data_type": "String",
+            "required": false, 
+            "clinical_note_template": 4244887,
+            "allowed_values": [
+                "0 - Not at all",
+                "1 - Several days",
+                "2 - More than half day",
+                "3 - Nearly every days"
+            ]
+        },
+        {
+            "archived": false,
+            "id": 115579340,
+            "name": "9.Thoughts that would be better off dead or of hurting",
+            "data_type": "String",
+            "required": false,  
+            "clinical_note_template": 4244887,
+            "allowed_values": [
+                "0 - Not at all",
+                "1 - Several days",
+                "2 - More than half day",
+                "3 - Nearly every days"
+            ]
+        },
+        {
+            "archived": false,
+            "id": 115579341,
+            "name": "GAD 7",
+            "data_type": "Header",
+            "required": false,  
+            "clinical_note_template": 4244887,
+            "allowed_values": []
+        },
+        {
+            "archived": false,
+            "id": 115579342,
+            "name": "1.Feeling nervous , anxious or an edge",
+            "data_type": "String",
+            "required": false,    
+            "clinical_note_template": 4244887,
+            "allowed_values": [
+                "0 - Not at all",
+                "1 - Several days",
+                "2 - More than half day",
+                "3 - Nearly every days"
+            ]
+        },
+        {
+            "archived": false,
+            "id": 115579343,
+            "name": "2.Not being able to stop or control worrying",
+            "data_type": "String",
+            "required": false,   
+            "clinical_note_template": 4244887,
+            "allowed_values": [
+                "0 - Not at all",
+                "1 - Several days",
+                "2 - More than half day",
+                "3 - Nearly every days"
+            ]
+        },
+        {
+            "archived": false,
+            "id": 115579344,
+            "name": "3.Worrying too much about different things",
+            "data_type": "String",
+            "required": false,    
+            "clinical_note_template": 4244887,
+            "allowed_values": [
+                "0 - Not at all",
+                "1 - Several days",
+                "2 - More than half day",
+                "3 - Nearly every days"
+            ]
+        },
+        {
+            "archived": false,
+            "id": 115579345,
+            "name": "4.Trouble Relaxing",
+            "data_type": "String",
+            "required": false,    
+            "clinical_note_template": 4244887,
+            "allowed_values": [
+                "0 - Not at all",
+                "1 - Several days",
+                "2 - More than half day",
+                "3 - Nearly every days"
+            ]
+        },
+        {
+            "archived": false,
+            "id": 115579346,
+            "name": "5.Being so restless that it's hard to sit still",
+            "data_type": "String",
+            "required": false,   
+            "clinical_note_template": 4244887,
+            "allowed_values": [
+                "0 - Not at all",
+                "1 - Several days",
+                "2 - More than half day",
+                "3 - Nearly every days"
+            ]
+        },
+        {
+            "archived": false,
+            "id": 115579347,
+            "name": "6.Become easily annoyed or irritable",
+            "data_type": "String",
+            "required": false,   
+            "clinical_note_template": 4244887,
+            "allowed_values": [
+                "0 - Not at all",
+                "1 - Several days",
+                "2 - More than half day",
+                "3 - Nearly every days"
+            ]
+        },
+        {
+            "archived": false,
+            "id": 115579348,
+            "name": "7.Feeling afraid as if something awful might happened",
+            "data_type": "String",
+            "required": false,  
+            "clinical_note_template": 4244887,
+            "allowed_values": [
+                "0 - Not at all",
+                "1 - Several days",
+                "2 - More than half day",
+                "3 - Nearly every days"
+            ]
+        },
+        {
+            "archived": false,
+            "id": 115579349,
+            "name": "8.Added Comments",
+            "data_type": "String",
+            "required": false,   
+            "clinical_note_template": 4244887,
+            "allowed_values": []
+        },
+        {
+            "archived": false,
+            "id": 115579350,
+            "name": "FAN 8",
+            "data_type": "Header",
+            "required": false,
+            "clinical_note_template": 4244887,
+            "allowed_values": []
+        },
+        {
+            "archived": false,
+            "id": 115579351,
+            "name": "1.Do you feel depressed or anxious or have sleep difficulties(not enough)",
+            "data_type": "String",
+            "required": false, 
+            "clinical_note_template": 4244887,
+            "allowed_values": [
+                "Good",
+                "Medium",
+                "Bad"
+            ]
+        },
+        {
+            "archived": false,
+            "id": 115579352,
+            "name": "2.Do you have fatigue, low energy or mental fog?",
+            "data_type": "String",
+            "required": false,   
+            "clinical_note_template": 4244887,
+            "allowed_values": [
+                "Good",
+                "Medium",
+                "Bad"
+            ]
+        },
+        {
+            "archived": false,
+            "id": 115579353,
+            "name": "3.Do you have chronic pain or signs of inflammations(swelling redness, heat,pain)",
+            "data_type": "String",
+            "required": false,
+            "clinical_note_template": 4244887,
+            "allowed_values": [
+                "Good",
+                "Medium",
+                "Bad"
+            ]
+        },
+        {
+            "archived": false,
+            "id": 115579354,
+            "name": "4.How well are you meeting your nutrition goats?",
+            "data_type": "String",
+            "required": false,
+            "clinical_note_template": 4244887,
+            "allowed_values": [
+                "Good",
+                "Medium",
+                "Bad"
+            ]
+        },
+        {
+            "archived": false,
+            "id": 115579355,
+            "name": "5.How mindful are you of what you eat?",
+            "data_type": "String",
+            "required": false,
+            "clinical_note_template": 4244887,
+            "allowed_values": [
+                "Good",
+                "Medium",
+                "Bad"
+            ]
+        },
+        {
+            "archived": false,
+            "id": 115579356,
+            "name": "6. Do you have digestive difficulties like constipation, diarrhea ,bloating , gas?",
+            "data_type": "String",
+            "required": false,
+            "clinical_note_template": 4244887,
+            "allowed_values": [
+                "Good",
+                "Medium",
+                "Bad"
+            ]
+        },
+        {
+            "archived": false,
+            "id": 115579357,
+            "name": "7.Do you eat a healthy balanced diet?",
+            "data_type": "String",
+            "required": false,
+            "clinical_note_template": 4244887,
+            "allowed_values": [
+                "Good",
+                "Medium",
+                "Bad"
+            ]
+        },
+        {
+            "archived": false,
+            "id": 115579358,
+            "name": "8.How is your relationships with food? ",
+            "data_type": "String",
+            "required": false,
+            "clinical_note_template": 4244887,
+            "allowed_values": [
+                "Good",
+                "Medium",
+                "Bad"
+            ]
+        }
+    ],
+    "next": null
+}

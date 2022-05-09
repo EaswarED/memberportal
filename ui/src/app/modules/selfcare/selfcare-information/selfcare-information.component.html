@@ -1,0 +1,177 @@
+<div class="mw-selfcare-information" fxLayout="column" fxLayoutGap="0px">
+	<mat-card class="p-0">
+		<div
+			*ngIf="isLoading"
+			fxLayoutAlign="center center"
+			class="mw-selfcare-information__loading"
+		>
+			<mat-spinner style="margin: 0 auto"></mat-spinner>
+		</div>
+		<div
+			fxLayout="row"
+			fxLayout.lt-md="column"
+			fxLayoutAlign="start center"
+		>
+			<div fxLayaout="column">
+				<mat-card-title class="p-l-20 p-t-15">{{name}}</mat-card-title>
+			</div>
+			<div fxFlex></div>
+			<span class="p-r-20 p-b-10"
+				><button
+					mat-stroked-button
+					type="button"
+					color="primary"
+					(click)="goBack()"
+				>
+					Back
+				</button></span
+			>
+		</div>
+
+		<mat-divider></mat-divider>
+		<div fxLayout="row">
+			<div
+				fxLayout="column"
+				class="p-l-15 p-r-15"
+				fxLayoutAlign="start start"
+				fxLayoutGap="15px"
+				style="width: 100%"
+			>
+				<div
+					fxLayout="column"
+					style="width: 100%; position: relative"
+					class="p-l-25"
+					fxLayoutAlign="center center"
+				>
+					<div
+						fxLayout="row"
+						fxFlex
+						fxLayoutAlign="start center"
+						style="width: 100%"
+					>
+						<!-- [innerHtml]="rec.embed_html | mworxSafe" -->
+						<div
+							class="mw-selfcare-information__iframe"
+							*ngIf="uri"
+						>
+							<iframe
+								id="myFrame"
+								[src]="uri"
+								width="100%"
+								height="350"
+								frameborder="0"
+								allow="autoplay; fullscreen; picture-in-picture"
+								allowfullscreen
+								title="{{name}}"
+								class="m-t-30"
+								#iframe
+							></iframe>
+						</div>
+					</div>
+					<!-- <div class="p-t-10" fxLayout="column" style="width: 100%">
+						<span class="mw-selfcare-information__title"
+							>{{name}}</span
+						>
+					</div> -->
+				</div>
+				<div class="p-l-25 m-t-15">
+					<mat-tab-group>
+						<mat-tab label="What you'll learn">
+							<div fxLayout="column" class="p-t-20">
+								<div fxFlex fxLayoutGap="5px" fxLayout="row">
+									<mat-icon>check</mat-icon>
+									<span>Breath Easliy</span>
+								</div>
+							</div>
+						</mat-tab>
+						<mat-tab label="Video Content">
+							<div class="p-t-20">{{description}}</div>
+						</mat-tab>
+					</mat-tab-group>
+				</div>
+			</div>
+
+			<div
+				fxLayout="column"
+				fxFlex="25%"
+				fxLayoutAlign="start start"
+				fxLayoutGap="30px"
+				class="
+					p-t-20
+					mw-selfcare-information__border-right
+					p-l-20 p-r-20
+				"
+			>
+				<div fxFlex class="m-b-50 mw-selfcare-information__title">
+					Related Videos
+				</div>
+				<div
+					fxLayout="column"
+					fxLayout.lt-md="row wrap"
+					fxLayoutAlign="center center"
+					fxLayoutGap="25px"
+					style="width: 100%"
+				>
+					<ng-container
+						*ngFor="let rec of related_video_list; let i =index"
+					>
+						<div
+							class="m-b-100 mw-selfcare-information__thumb"
+							fxFlex="0 1 calc(33.3% - 32px)"
+							fxFlex.lt-md="0 1 calc(100% - 32px)"
+							(click)="onRelatedClick(rec)"
+							*ngIf="rec.type==='V'"
+						>
+							<div class="card">
+								<img
+									src="{{rec.base_link}}"
+									alt="Thumbnail"
+									class="thumbnail"
+								/>
+								<div fxLayout="column" class="content">
+									<div
+										fxLayout="row"
+										fxLayoutAlign="center center"
+									>
+										<span
+											class="
+												mw-selfcare-information__name
+												p-l-5 p-t-5
+												m-b-5
+												mw-selfcare-information__w
+											"
+											matTooltip="{{rec.contentName}}"
+											matTooltipPosition="above"
+										>
+											{{rec.contentName}}
+										</span>
+										<span
+											class="
+												m-b-5
+												p-r-10
+												mw-selfcare-information__w
+											"
+											fxLayoutAlign="end end"
+										>
+										</span>
+									</div>
+									<mat-progress-bar
+										mode="determinate"
+										value="{{rec.duration}}"
+									></mat-progress-bar>
+								</div>
+							</div>
+						</div>
+					</ng-container>
+				</div>
+			</div>
+		</div>
+
+		<mat-divider></mat-divider>
+		<div
+			class="mw-selfcare-information__stepActions p-10"
+			fxLayoutAlign="center center"
+			fxLayoutGap="15px"
+		></div>
+	</mat-card>
+</div>

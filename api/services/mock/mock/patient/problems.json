@@ -1,0 +1,33 @@
+{
+    "previous": null,
+    "results":[
+        {
+            "id": 44859893, 
+    "doctor": 292542, 
+    "patient": 98269600, 
+    "notes": "Diagonisis and conditions", 
+    "name": "Erythrocyte sequestration", 
+    "date_diagnosis": "2021-10-25", 
+    "icd_code": "R71.8"
+    }, 
+    {
+        "id": 45070829, 
+        "doctor": 292542, 
+        "patient": 98269600, 
+        "notes": "finding", 
+        "name": "sequestration", 
+        "date_diagnosis": "2021-11-02", 
+        "icd_code": ""
+        }, 
+        {
+            "id": 45070855, 
+            "doctor": 292542,
+             "patient": 98269600, 
+             "notes": "Allergic due to disorder", 
+             "name": "Perennial allergic rhinitis with seasonal variation (disorder)", 
+             "date_diagnosis": "2018-07-25", 
+             "icd_code": "J30.89"
+            }
+            
+            ]
+        }

@@ -1,0 +1,89 @@
+<div class="mw-class" fxLayout="column" fxLayoutGap="30px">
+	<mat-card class="p-0">
+		<mat-card-title class="p-l-15 p-t-15"
+			>Classes & Webinars</mat-card-title
+		>
+		<mat-card-subtitle class="p-l-15">
+			Your scheduled and recommended classes are listed below. &nbsp;
+			{{(isReadMore) ? description : description | slice:0:10}}
+			<span *ngIf="!isReadMore">...</span>
+			<a
+				href="javascript:;"
+				class="mw-class__moreBtn"
+				(click)="handleMoreLess()"
+				>{{ isReadMore ? 'Read Less': 'Read More' }}</a
+			></mat-card-subtitle
+		>
+
+		<mat-divider></mat-divider>
+		<div
+			fxLayout.lt-md="column"
+			class="p-l-15 p-r-15 p-t-15"
+			fxLayoutAlign="start center"
+		>
+			<button mat-raised-button color="primary" (click)="bookClasses()">
+				<mat-icon inline>add_circle_outline</mat-icon>
+				<span>&nbsp; Book</span>
+			</button>
+			<div fxFlex></div>
+			<div
+				fxLayout="row"
+				fxLayoutAlign="start center"
+				fxLayout.lt-md="row"
+			>
+				<div class="mw-class__dd p-t-15">
+					<mat-form-field appearance="outline">
+						<mat-label>Time Period</mat-label>
+						<mat-select
+							[(value)]="selectedFilter"
+							(selectionChange)="refreshList()"
+						>
+							<mat-option
+								*ngFor="let item of dateFilterList"
+								[value]="item.code"
+							>
+								{{item.name}}
+							</mat-option>
+						</mat-select>
+					</mat-form-field>
+					<mat-form-field class="mw-class__dpicker">
+						<mat-label>Choose a date</mat-label>
+						<input matInput [matDatepicker]="picker" />
+						<mat-datepicker #picker></mat-datepicker>
+					</mat-form-field>
+					<button mat-icon-button (click)="openCalendar()">
+						<mat-icon color="primary">date_range</mat-icon>
+					</button>
+					<button mat-icon-button></button>
+				</div>
+			</div>
+		</div>
+		<mw-data-table
+			[columnDefs]="columnDefs"
+			[rowData]="filteredGridList"
+			[frameworkComponents]="frameworkComponents"
+			[context]="gridContext"
+			[paginationPageSize]="CONST.LANDING_GRID_PAGE_SIZE"
+		>
+		</mw-data-table>
+	</mat-card>
+
+	<div class="mat-title">Browse our classes and webinars</div>
+	<mw-carousel-card
+		fxFlex="300px"
+		[carouselData]="categoryData$ | async"
+		(clickEvent)="openCard($event)"
+		[isDisplay]="!showCard"
+		*ngIf="!showCard"
+	></mw-carousel-card>
+
+	<mw-card-data
+		[cardList]="cardList"
+		[title]="selectedCategory['Details.Name']"
+		(closeEvent)="handleClose()"
+		(doActions)="callToAction($event)"
+		[code]="CONST.CLASS_TYPE_CLASS"
+		*ngIf="showCard"
+	>
+	</mw-card-data>
+</div>

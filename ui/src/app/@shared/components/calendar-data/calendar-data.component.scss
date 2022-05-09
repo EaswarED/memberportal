@@ -1,0 +1,33 @@
+@import 'src/app/@theme/colors';
+.mw-calendar {
+	width: 100%;
+	margin: 0 auto;
+	height: 550px;
+}
+
+::ng-deep {
+	.mw-calendar {
+		.fc-daygrid-event:hover {
+			cursor: default;
+			background-color: transparent;
+		}
+
+		.fc-header-toolbar {
+			.fc-toolbar-chunk {
+				display: flex;
+				div {
+					display: flex;
+					place-content: center center;
+					align-items: center;
+					button {
+						background: $primary-yellow;
+						color: $primary-grey-g2;
+						border: 1px solid $primary-yellow;
+						margin-left: 10px;
+						margin-right: 10px;
+					}
+				}
+			}
+		}
+	}
+}

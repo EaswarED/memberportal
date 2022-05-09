@@ -1,0 +1,57 @@
+{
+    "total": 2,
+    "page": 1,
+    "per_page": 25,
+    "paging": {
+        "next": "/videos/651933855/videos?filter=related&page=2",
+        "previous": null,
+        "first": "/videos/651933855/videos?filter=related&page=1",
+        "last": "/videos/651933855/videos?filter=related&page=12393"
+    },
+    "data": [
+        {
+            "name": "Kitty",
+            "type": "video",
+            "categories":"Meditation",
+            "link": "https://vimeo.com/586660339",
+            "base_link": "https://i.vimeocdn.com/video/1316340025-8a1c6e5e0c2149c250ab0424a5125ca7a30474fe652633667a5247a6921306eb-d",
+            "duration": 30
+        },
+        {
+            "name": "SpectrumTestOne",
+            "type": "video",
+            "categories":"Meditation",
+            "link": "https://vimeo.com/586661099",
+            "base_link": "https://i.vimeocdn.com/video/1316378725-4facf276f92721e07098111c22efa289c88eb8bf6763994ab8ec8f759a4f867f-d",
+            "duration": 25
+
+        },
+        {
+            "name": "Jayme-teaser-final",
+            "type": "video",
+            "categories":"Coaching",
+            "link": "https://vimeo.com/545491176",
+            "base_link": "https://i.vimeocdn.com/video/1129358110-b42751de256e78aee8c375d81d97eaa49128d8bc9118ea3379f1c2e78c261216-d",
+            "duration": 58
+
+        },
+        {
+            "name": "MWX_Intro Video",
+            "type": "video",
+            "categories":"Coaching",
+            "link": "https://vimeo.com/540767630",
+            "base_link": "https://i.vimeocdn.com/video/1119346142-9f7d6d9ed888875bec556adb1c973050b4e3925a836893e2dedc157875568314-d",
+            "duration": 3
+
+        },
+        {
+            "name": "MWX_Intro Video",
+            "type": "video",
+            "categories":"HealthCare",
+            "link": "https://vimeo.com/540767630",
+            "base_link": "https://i.vimeocdn.com/video/1119346142-9f7d6d9ed888875bec556adb1c973050b4e3925a836893e2dedc157875568314-d",
+            "duration": 3
+
+        }
+    ]
+}

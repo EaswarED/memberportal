@@ -1,0 +1,84 @@
+<mw-card fxFlex class="dash-card">
+	<div cardTitle>{{title}}</div>
+
+	<div cardBody class="dash-card__scroll">
+		<mat-spinner *ngIf="!cardItems"> </mat-spinner>
+		<div *ngIf="cardItems && cardItems.length > 0; else no_available">
+			<div *ngFor="let item of cardItems; let i = index">
+				<div
+					fxFlex
+					fxLayout="row"
+					fxLayoutAlign="start center"
+					class="dash-card__item"
+					*ngIf="i<=5 && item;"
+				>
+					<div
+						fxFlex
+						fxFlexOffset="10px"
+						fxLayoutAlign="start start"
+						fxLayout="column"
+					>
+						<div fxFlex>{{item.Name}}</div>
+						<div
+							*ngIf="(item.StartDateTime | bookingStatusLabel: isGroup : item : classType)"
+						>
+							<span
+								fxLayout="column"
+								fxLayoutAlign="center center"
+								class="dash-card__timer mat-warn"
+								*ngIf="(item.StartDateTime | countdown | async); let countdownVal"
+							>
+								<span fxFlex>
+									Starts in: {{ countdownVal | callback:
+									watchBookingStatus : this }}
+								</span>
+							</span>
+						</div>
+					</div>
+					<div
+						fxLayoutAlign="center center"
+						class="dash-card__loading"
+						*ngIf="isLoading && (item.StartDateTime | bookingStatusLabel: isGroup : item : classType); let bookingLabel;"
+					>
+						<mat-spinner
+							*ngIf="bookingLabel ==='Join Now' && item.BookingId == selectedItem?.BookingId"
+							[diameter]="30"
+						></mat-spinner>
+					</div>
+					<button
+						*ngIf="(item.StartDateTime | bookingStatusLabel: isGroup : item : classType); else readOnlyStatus; let bookingLabel;"
+						class="mat-primary dash-card__btn"
+						fxFlex="25"
+						mat-stroked-button
+						[ngClass]="item.BookingId | bookingStatusButtonAccent"
+						(click)="handleClick(item, bookingLabel)"
+						[disabled]="bookingLabel ==='Booked' || bookingLabel ==='Checked In'"
+					>
+						{{ bookingLabel }}
+					</button>
+					<ng-template #readOnlyStatus>
+						<mat-label
+							fxFlex="25"
+							class="mat-accent dash-card__btn"
+							fxLayoutAlign="center center"
+						>
+							{{ item.AppointmentStatus }}
+						</mat-label>
+					</ng-template>
+				</div>
+			</div>
+		</div>
+
+		<ng-template #no_available>
+			<div *ngIf="cardItems">No Data Available</div>
+		</ng-template>
+	</div>
+	<button
+		cardActions
+		mat-raised-button
+		color="primary"
+		(click)="handleClick(null)"
+	>
+		View All
+	</button>
+</mw-card>

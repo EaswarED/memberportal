@@ -1,0 +1,21 @@
+<div
+	fxFlex
+	fxLayoutAlign="start end"
+	fxLayout="row"
+	fxLayoutGap="9px"
+	*ngFor="let rec of actionList"
+>
+	<button
+		mat-icon-button
+		(click)="btnClicked(rec.action)"
+		class="mat-primary"
+	>
+		<div *ngIf="isDefault">
+			<mat-icon *ngIf="!data.SK">{{rec.addIcon}}</mat-icon>
+			<mat-icon *ngIf="data.SK">{{rec.editIcon}}</mat-icon>
+		</div>
+		<div *ngIf="!isDefault">
+			<mat-icon>{{rec.icon}}</mat-icon>
+		</div>
+	</button>
+</div>

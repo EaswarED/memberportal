@@ -1,0 +1,20 @@
+<swiper fxFill class="mw-carousel" [config]="config">
+	<ng-container *ngFor="let item of carouselData">
+		<ng-template *ngIf="item.type==='V'" swiperSlide>
+			<div
+				*ngIf="item.type==='V'"
+				class="mw-carousel__playpause"
+				(click)="selfcare(item)"
+			></div>
+			<img
+				*ngIf="item.type==='V'"
+				class="mw-carousel__image mat-elevation-z5"
+				[src]="item.base_link"
+				[alt]="item.contentName"
+			/>
+			<div *ngIf="item.type==='V'" class="mw-carousel__caption">
+				{{item.contentName}}
+			</div>
+		</ng-template>
+	</ng-container>
+</swiper>

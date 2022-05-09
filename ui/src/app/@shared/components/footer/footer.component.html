@@ -1,0 +1,11 @@
+<mat-toolbar class="mw-footer">
+	<div class="mat-body" style="width: 100%" fxLayoutAlign="center center">
+		© 2021 Mindworx. All rights reserved
+	</div>
+	<div class="mat-body" fxFlex fxLayoutAlign="end end" *ngIf="lastBuildDt">
+		Build Date:
+		<span class="mw-footer__color p-l-5 p-r-2"
+			>{{ lastBuildDt | date:'MMM d, y, h:mm a'}}</span
+		>
+	</div>
+</mat-toolbar>

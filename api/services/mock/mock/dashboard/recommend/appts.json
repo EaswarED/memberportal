@@ -1,0 +1,90 @@
+{
+    "status": {
+        "code": 1,
+        "err": null,
+        "msg": null,
+        "totalRecords": 66
+    },
+    "data": [
+        {
+            "bookingId": 100046492,
+             "classId": 0, 
+             "name": "Nutrition Consultation",
+             "startDateTime": "2022-01-03T15:00:00",
+             "sessionId": 23,
+             "progId": 1
+             }, 
+             {
+             "bookingId": 100046493.0,
+             "classId": 0,
+             "name": "60 Min 1on1",
+             "startDateTime": "2022-01-04T13:00:00", 
+             "sessionId": 200, 
+             "progId": 1
+             }, 
+             {"bookingId": 0, 
+             "classId": 0, 
+             "name": "120 min Reservation",
+             "startDateTime": 0,
+             "sessionId": 266,
+             "progId": 2
+             }, 
+             {
+             "bookingId": 0, 
+             "classId": 0, 
+             "name": "60 min Reservation", 
+             "startDateTime": 0, 
+             "sessionId": 265, 
+             "progId": 2
+             }, 
+             {
+             "bookingId": 0,
+             "classId": 0, 
+             "name": "90 min Reservation", 
+             "startDateTime": 0, 
+             "sessionId": 214, 
+             "progId": 2
+             }, 
+             {
+             "bookingId": 0, 
+             "classId": 0, 
+             "name": "60 min 2on1", 
+             "startDateTime": 0, 
+             "sessionId": 267, 
+             "progId": 1
+             }, 
+             {
+             "bookingId": 0, 
+             "classId": 0, 
+             "name": "60 min 3on1", 
+             "startDateTime": 0, 
+             "sessionId": 268, 
+             "progId": 1
+             }, 
+             
+             {
+            "bookingId": 0, 
+            "classId": 0, 
+            "name": "Personal Training Consult", 
+            "startDateTime": 0, 
+            "sessionId": 264, 
+            "progId": 1
+            }, 
+            {
+            "bookingId": 0, 
+            "classId": 0, 
+            "name": "Facility Tour", 
+            "startDateTime": 0, 
+            "sessionId": 203, 
+            "progId": 14
+            }, 
+            {
+            "bookingId": 0, 
+            "classId": 0, 
+            "name": "Membership Consultation", 
+            "startDateTime": 0, 
+            "sessionId": 204, 
+            "progId": 14
+            }
+    ]
+}

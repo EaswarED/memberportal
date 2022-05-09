@@ -1,0 +1,75 @@
+@import 'src/app/@theme/colors';
+
+:host {
+	padding-right: 12px;
+	margin-left: 6.5rem;
+	display: block;
+}
+
+.mw-promotion {
+	padding: 12px 0px;
+	&__title {
+		height: 50px;
+	}
+	&__loading {
+		position: absolute;
+		background: $bg-op-white;
+		width: 100%;
+		height: 100%;
+		z-index: 2;
+	}
+	&__gridList {
+		width: 100%;
+	}
+	&__dd {
+		font-size: 10px;
+	}
+
+	&__dpicker {
+		width: 12px;
+		visibility: hidden;
+	}
+}
+
+mat-tab-group {
+	flex-direction: row;
+
+	::ng-deep {
+		mat-tab-header {
+			flex-direction: column;
+			border-bottom: 0px solid transparent;
+			border-right: 1px solid rgba(0, 0, 0, 0.12);
+
+			.mat-tab-label-container {
+				flex-direction: column;
+
+				.mat-tab-label-active {
+					opacity: 1;
+				}
+				.mat-tab-label {
+					display: flex;
+					place-content: flex-start;
+					align-items: center;
+					width: 100%;
+					padding: 0px;
+				}
+				.mat-tab-labels {
+					flex-direction: column;
+				}
+
+				mat-ink-bar {
+					left: initial !important;
+					bottom: initial;
+					right: 0;
+					width: 2px !important;
+					height: initial;
+				}
+			}
+		}
+	}
+
+	::ng-deep .mat-tab-body-wrapper {
+		flex-direction: column;
+		width: 100%;
+	}
+}

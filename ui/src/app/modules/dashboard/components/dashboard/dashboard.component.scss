@@ -1,0 +1,12 @@
+:host {
+	display: block;
+	padding: 24px 0;
+	margin-left: 6.5rem;
+}
+
+@media only screen and (max-width: 960px) {
+	:host {
+		margin-left: 0rem;
+		padding: 14px 20px;
+	}
+}

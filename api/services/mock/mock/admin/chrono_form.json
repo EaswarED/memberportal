@@ -1,0 +1,20 @@
+{
+    "status": 
+    {"code": 1, 
+    "err": "null", 
+    "msg": "null", 
+    "totalRecords": 2
+    }, 
+    "data": 
+    [{
+        "id": "4244887", 
+        "name": "onpatient Additional Info",
+        "validity":"1m"
+         
+    }, 
+    {
+        "id": "4244888", 
+        "name": "onpatient Reasons For Visit",
+        "validity":""
+    }]
+}

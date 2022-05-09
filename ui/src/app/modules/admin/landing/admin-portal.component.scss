@@ -1,0 +1,123 @@
+@import 'src/app/@theme/colors';
+
+:host {
+	display: block;
+	padding-right: 12px;
+	margin-left: 6.5rem;
+}
+::ng-deep.mw-admin-portal-configuration {
+	&__expansion-panel {
+		box-shadow: none;
+	}
+	&__expansion-panel-title {
+		font-size: 14px;
+		font-weight: 400;
+	}
+	&__header-title {
+		margin-bottom: 0px;
+	}
+	// &__grid-list {
+	// }
+	&__grid-list-tile:hover {
+		cursor: pointer;
+	}
+	&__grid-list-thumb {
+		position: relative;
+		&__icon-thumb {
+			&__icon .mat-icon {
+				font-size: 60px;
+				color: $primary-grey-g2;
+				height: 60px;
+				width: 60px;
+			}
+			&__icon-small .mat-icon {
+				font-size: 20px;
+				color: $primary-yellow;
+			}
+		}
+	}
+}
+
+.mw-admin-portal-configuration {
+	padding: 12px 0px;
+	&__expansion-panel {
+		box-shadow: none;
+	}
+	&__expansion-panel-title {
+		font-size: 14px;
+		font-weight: 400;
+	}
+	&__header-title {
+		margin-bottom: 0px;
+	}
+	// &__grid-list {
+	// 	width: 100% !important;
+	// }
+	&__grid-list-tile {
+		max-width: 300px !important;
+		min-width: 300px;
+	}
+	&__border-bottom {
+		border-bottom: 1px solid $grey-text-g1;
+	}
+
+	&__border-left {
+		border-left: 1px solid $grey-text-g1;
+	}
+	&__border-right {
+		border-right: 1px solid $grey-text-g1;
+	}
+	&__border-left {
+		border-left: 1px solid $grey-text-g1;
+	}
+	&__no-border-right {
+		border-right: 0px solid $grey-text-g1;
+	}
+	&__grid-list-thumb {
+		position: relative;
+		&__icon-thumb {
+			position: relative;
+			&__icon {
+				font-size: 25px;
+			}
+			&__icon-small {
+				bottom: 0px;
+				left: 45px;
+				position: absolute;
+			}
+		}
+		&__title {
+			font: 500 14px / 20px 'Poppins';
+			color: $primary-grey-g2;
+		}
+	}
+}
+@media only screen and (max-width: 1192px) {
+	.mw-admin-portal-configuration {
+		&__grid-list-tile {
+			max-width: 35% !important;
+			min-width: 35%;
+		}
+	}
+}
+
+@media only screen and (max-width: 959px) {
+	.mw-admin-portal-configuration {
+		&__grid-list-tile {
+			max-width: 350px !important;
+			min-width: 350px;
+		}
+		&__border-left {
+			border-left: 0px solid $primary-grey-g2;
+		}
+		&__border-right {
+			border-right: 0px solid $primary-grey-g2;
+		}
+	}
+}
+@media only screen and (max-width: 960px) {
+	:host {
+		margin-left: 0rem;
+		padding: 14px 20px;
+	}
+}

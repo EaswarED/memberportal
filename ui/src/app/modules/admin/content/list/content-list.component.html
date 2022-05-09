@@ -1,0 +1,66 @@
+<div class="mw-admin-portal" fxLayout="column" fxLayoutGap="30px">
+	<mat-card class="p-0">
+		<div fxLayout="row" fxLayoutAlign="start center">
+			<div>
+				<button
+					mat-icon-button
+					color="primary"
+					(click)="onBackAction()"
+				>
+					<mat-icon>keyboard_arrow_left</mat-icon>
+				</button>
+			</div>
+			<div>
+				<mat-card-title class="p-t-15"
+					><span fxFlex>Self Care</span></mat-card-title
+				>
+				<mat-card-subtitle>
+					Choose a record below to edit its configuration.
+				</mat-card-subtitle>
+			</div>
+		</div>
+
+		<mat-divider></mat-divider>
+
+		<div
+			fxLayout="row"
+			fxLayout.lt-md="column"
+			class="p-l-15 p-r-15 m-b-10"
+			fxLayoutAlign="start center"
+		>
+			<button
+				mat-raised-button
+				color="primary"
+				class="m-t-10"
+				(click)="btnClicked()"
+			>
+				<mat-icon inline>add_circle_outline</mat-icon>
+				<span>&nbsp; Add</span>
+			</button>
+			<span fxFlex></span>
+			<div fxFlex="250px" class="m-t-10 mw-admin-portal__dropdown">
+				<mat-form-field fxFlex appearance="outline">
+					<mat-label>Choose Category</mat-label>
+					<mat-select
+						[(ngModel)]="categoryId"
+						(selectionChange)="refreshList()"
+					>
+						<mat-option value="0">All Records</mat-option>
+						<mat-option
+							*ngFor="let rec of categoryList$ | async"
+							[value]="rec.SK"
+							>{{ rec['Details.Name'] }}</mat-option
+						>
+					</mat-select>
+				</mat-form-field>
+			</div>
+		</div>
+		<mw-data-table
+			[columnDefs]="columnDefs"
+			[rowData]="filteredGridList"
+			[frameworkComponents]="frameworkComponents"
+			[context]="gridContext"
+		>
+		</mw-data-table>
+	</mat-card>
+</div>

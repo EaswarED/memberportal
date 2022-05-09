@@ -1,0 +1,113 @@
+<div fxLayoutAlign="center center" fxLayout="colum" style="height: 100%">
+	<div fxLayout.lt-md="column" class="mw-forget-password" fxLayout="row">
+		<mat-card class="mw-forget-password__section p-t-50 p-l-20 p-r-20">
+			<mat-card-title fxLayoutAlign="center center">
+				<span class="mw-forget-password__forget m-r-5"> Forgot </span>
+				Password
+			</mat-card-title>
+			<mat-card-subtitle class="p-t-20" fxLayoutAlign="center center">
+				<span> </span>
+				Don't worry, happens to the best of us</mat-card-subtitle
+			>
+			<mat-card-content>
+				<form>
+					<div
+						class="mw-forget-password__step1 p-20"
+						fxLayout="column"
+						fxLayoutGap="15px"
+						fxLayoutAlign="center center"
+					>
+						<div
+							fxLayoutGap="10px"
+							fxLayoutAlign="space-between center"
+							class="mw-forget-password__w"
+						>
+							<mat-form-field class="mw-forget-password__w">
+								<mat-label class="mw-forget-password__labeltext"
+									>Your email or username</mat-label
+								>
+								<input [(ngModel)]="username" matInput />
+							</mat-form-field>
+						</div>
+
+						<button
+							[disabled]="!username"
+							mat-stroked-button
+							class="mw-forget-password__grey"
+							(click)="forget()"
+						>
+							Email me a recovery link
+						</button>
+						<mat-label
+							class="
+								mw-forget-password__not-account
+								m-t-25
+								p-t-25
+							"
+							>Don't have an Account?
+							<span
+								class="mw-forget-password__primarycolor"
+								(click)="goToRegister()"
+							>
+								Create one
+							</span>
+						</mat-label>
+					</div>
+				</form>
+			</mat-card-content>
+		</mat-card>
+
+		<div
+			fxFlex="250px"
+			fxFlex.lt-md="100%"
+			fxLayout="column"
+			fxLayout.lt-md="row"
+			fxLayout.lt-sm="column"
+			class="mw-forget-password__started-section p-t-50 p-l-20 p-r-20"
+		>
+			<div
+				fxLayout="column"
+				fxFlex.lt-md="200px"
+				fxflex
+				fxLayoutAlign="center center"
+				class="p-l-10 p-r-10"
+			>
+				<img
+					class="mw-forget-password__logo"
+					src="assets/images/login.png"
+					title="Home"
+					alt="Home"
+				/>
+				<div
+					fxflex
+					fxLayoutAlign="center center"
+					class="mw-forget-password__find p-t-0 p-0"
+				>
+					Find your
+					<span class="mw-forget-password__bright m-l-3 m-r-3">
+						bright
+					</span>
+					side
+				</div>
+			</div>
+
+			<div fxLayout.lt-md="column">
+				<span class="mw-forget-password__white">
+					<div class="mw-forget-password__content m-t-50">
+						Ready to go?
+					</div>
+					<div class="mw-forget-password__content m-t-10">
+						Let's get started!
+					</div>
+				</span>
+			</div>
+
+			<div fxflex></div>
+			<div
+				fxflex
+				fxLayoutAlign="center center"
+				class="mw-forget-password__circle m-t-10 m-r-10 m-b-10"
+			></div>
+		</div>
+	</div>
+</div>

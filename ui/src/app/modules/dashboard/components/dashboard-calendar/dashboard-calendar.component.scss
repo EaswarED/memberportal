@@ -1,0 +1,39 @@
+@import 'src/app/@theme/colors';
+
+.mw-calendar-dashboard {
+	position: relative;
+	&__close {
+		position: absolute;
+		top: -10px;
+		right: 0;
+	}
+	&__appointmentBTN {
+		border-radius: 10px !important;
+		&__icon {
+			color: $bg-white;
+			background: $primary-yellow;
+			border-bottom-left-radius: 10px;
+			border-top-left-radius: 10px;
+		}
+	}
+	&__groupBTN {
+		border-radius: 10px !important;
+		color: $primary-blue;
+		&__icon {
+			color: $bg-white;
+			background: $primary-blue;
+			border-bottom-left-radius: 10px;
+			border-top-left-radius: 10px;
+		}
+	}
+	&__classBTN {
+		border-radius: 10px !important;
+		color: $primary-grey-g2;
+		&__icon {
+			color: $bg-white;
+			background: $primary-grey-g2;
+			border-bottom-left-radius: 10px;
+			border-top-left-radius: 10px;
+		}
+	}
+}

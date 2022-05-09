@@ -1,0 +1,9 @@
+@import '/src/app/@theme/colors';
+
+.mw-footer {
+	background-color: $primary-bg;
+	border-top: 1px solid $primary-grey-border;
+	&__color {
+		color: $primary-yellow;
+	}
+}

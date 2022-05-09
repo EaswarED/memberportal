@@ -1,0 +1,100 @@
+{
+    "status": {
+        "code": 1,
+        "err": null,
+        "msg": null,
+        "totalRecords": 11
+    },
+    "data": [
+        {
+            "appointmentId": 0, 
+            "bookingId": 21979, 
+            "name": "Work out of the day", 
+            "startDateTime": "2022-01-03T14:30:00", 
+            "sessionId": 251, 
+            "progId": 26
+            }, 
+            {
+            "appointmentId": 0, 
+            "bookingId": 23037, 
+            "name": "Spinning", 
+            "startDateTime": "2022-01-04T13:00:00", 
+            "sessionId": 207, 
+            "progId": 26
+            }, 
+            {
+                "appointmentId": 0, 
+                "bookingId": 23038, 
+                "name": "Explosive Speed Training", 
+                "startDateTime": "2022-01-04T16:00:00", 
+                "sessionId": 207, 
+                "progId": 26
+            }, 
+            
+            
+            {
+            "appointmentId": 0, 
+            "bookingId": 0, 
+            "name": "Explosive Speed Training", 
+            "startDateTime": 0, 
+            "sessionId": 257, 
+            "progId": 26
+            }, 
+            {
+            "appointmentId": 0, 
+            "bookingId": 0, 
+            "name": "Goalie Training", 
+            "startDateTime": 0, 
+            "sessionId": 258, 
+            "progId": 26
+            }, 
+            {
+            "appointmentId": 0, 
+            "bookingId": 0, 
+            "name": "Group Swim Lessons", 
+            "startDateTime": 0, 
+            "sessionId": 242, 
+            "progId": 26
+            }, 
+            {
+            "appointmentId": 0, 
+            "bookingId": 0, 
+            "name": "Kickboxing", 
+            "startDateTime": 0, 
+            "sessionId": 254, 
+            "progId": 26
+            }, 
+            {
+            "appointmentId": 0, 
+            "bookingId": 0, 
+            "name": "Les Mills", 
+            "startDateTime": 0, 
+            "sessionId": 206, 
+            "progId": 26
+            }, 
+            {
+            "appointmentId": 0, 
+            "bookingId": 0, 
+            "name": "Pilates ", 
+            "startDateTime": 0, 
+            "sessionId": 70, 
+            "progId": 26
+            }, 
+            {
+            "appointmentId": 0, 
+            "bookingId": 0, 
+            "name": "Swim", 
+            "startDateTime": 0, 
+            "sessionId": 253, 
+            "progId": 26
+            }, 
+            {
+            "appointmentId": 0, 
+            "bookingId": 0, 
+            "name": "Yoga ", 
+            "startDateTime": 0, 
+            "sessionId": 68, 
+            "progId": 26
+            }
+    ]
+}

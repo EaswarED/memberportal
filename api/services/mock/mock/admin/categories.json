@@ -1,0 +1,67 @@
+{"status": 
+    {"code": 1, 
+    "err": null, 
+    "msg": null, 
+    "totalRecords": 10}, 
+    "data": [
+    {
+    "type": "A", 
+    "description": "Mindworx makes relaxes", 
+    "categoryId": "1001", 
+    "categoryName": "Personal Training"
+    }, 
+    {
+    "type": "A", 
+    "description": "Session will blast your muscles and get you ready for that bathing suit!", 
+    "categoryId": "1002", 
+    "categoryName": "Group Personal training"
+    }, 
+    {
+    "type": "C", 
+    "description": "Fitness assessments are a series of tests that measures and monitors students", 
+    "categoryId": "1003", 
+    "categoryName": "Fitness Assessment"
+    }, 
+    {
+    "type": "C", 
+    "description": "As the name suggests, this class places a strong and fast demand on one\\u2019s awareness", 
+    "categoryId": "1004", 
+    "categoryName": "Healthy Yoga"
+    }, 
+    {
+    "type": "G", 
+    "description": "Group therapy is a form of psychotherapy that involves one or more therapists working with several people at the same time.", 
+    "categoryId": "1005", 
+    "categoryName": "Group theraphy"
+    }, 
+    {
+    "type": "G", 
+    "description": "By working with a Mindworx\\u2122 nutrition coach, you will learn how your diet directly correlates to your mental health", 
+    "categoryId": "1006", 
+    "categoryName": "Nutrition"
+    }, 
+    {
+    "type": "SC", 
+    "description": "By working with a Mindworx\\u2122 Meditation coach, you will calm the  mind ", 
+    "categoryId": "1007", 
+    "categoryName": "Meditation"
+    }, 
+    {"type": "SC", 
+    "description": "Supports a learner or client in achieving a specific personal or professional goal by providing training and guidance", 
+    "categoryId": "1008", 
+    "categoryName": "Coaching"
+    }, 
+    {
+    "type": "SC", 
+    "description": "Mental health includes our emotional, psychological, and social well-being", 
+    "categoryId": "1009", 
+    "categoryName": "Mental Health"
+    }, 
+    {
+    "type": "SC", 
+    "description": "Mindworx is offering free mental wellness workshops and classes for individuals and businesses to help manage the anxiety ", 
+    "categoryId": "1010", 
+    "categoryName": "Health Care"
+    }
+    ]
+    } 

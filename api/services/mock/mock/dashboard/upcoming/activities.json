@@ -1,0 +1,61 @@
+{
+    "status": {
+        "code": 1,
+        "err": null,
+        "msg": null,
+        "totalRecords": 2
+    },
+    "data": [
+        {
+            "id": 23, 
+            "programId": 1, 
+            "staffId": 100000258, 
+            "activityName": "Nutrition Consultation", 
+            "staffName": "Carrie Cakan", 
+            "startDateTime": "2022-01-02T10:30:00", 
+            "type": "A", 
+            "appointmentStatus": "Booked"
+            }, 
+            {
+            "id": 23, 
+            "programId": 1, 
+            "staffId": 100000258, 
+            "activityName": "Nutrition Consultation", 
+            "staffName": "Carrie Cakan", 
+            "startDateTime": "2022-01-03T07:30:00", 
+            "type": "A", 
+            "appointmentStatus": "Booked"
+            }, 
+            {
+            "id": 200, 
+            "programId": 1, 
+            "staffId": 100000258, 
+            "activityName": "60 Min 1on1", 
+            "staffName": "Carrie Cakan", 
+            "startDateTime": "2022-01-03T12:00:00", 
+            "type": "A", 
+            "appointmentStatus": "Booked"
+            }, 
+            {
+            "id": 264, 
+            "programId": 1, 
+            "staffId": 100000258, 
+            "activityName": "Personal Training Consult", 
+            "staffName": "Carrie Cakan", 
+            "startDateTime": "2022-01-04T10:30:00", 
+            "type": "A", 
+            "appointmentStatus": "Booked"
+            }, 
+            {
+            "id": 251, 
+            "programId": 26, 
+            "staffId": 100000259, 
+            "activityName": "Daily Work Out", 
+            "staffName": "Jake Hay", 
+            "startDateTime": "2022-01-05T06:30:00", 
+            "type": "C", 
+            "appointmentStatus": "NoShow"
+            }
+           
+    ]
+}

@@ -1,0 +1,56 @@
+<div class="mw-appointment-configuration" fxLayout="column" fxLayoutGap="30px">
+	<mat-card class="p-0">
+		<div fxLayout="row" fxLayoutAlign="start center">
+			<div>
+				<button
+					mat-icon-button
+					color="primary"
+					(click)="onBackAction()"
+				>
+					<mat-icon>keyboard_arrow_left</mat-icon>
+				</button>
+			</div>
+			<div>
+				<mat-card-title class="p-t-15">{{name}}</mat-card-title>
+				<mat-card-subtitle>
+					Configure form builder...
+				</mat-card-subtitle>
+			</div>
+		</div>
+		<mat-divider></mat-divider>
+		<div
+			fxLayout="column"
+			fxLayout.lt-md="column"
+			class="p-t-25"
+			fxLayoutAlign="start center"
+		>
+			<div
+				fxFlex="100%"
+				fxLayout="row"
+				fxLayout.lt-md="column"
+				fxLayoutAlign="start center"
+				class="mw-appointment-configuration__w p-l-15 p-r-15"
+			>
+				<!-- <button
+					mat-raised-button
+					color="primary"
+					class="m-b-10"
+					(click)="onAddConfiguration()"
+				>
+					<mat-icon inline>add_circle_outline</mat-icon>
+					<span>&nbsp; Add</span>
+				</button> -->
+				<div fxFlex></div>
+			</div>
+			<div fxFlex fxLayout="column">
+				<div>
+					<iframe
+						[src]="urlSafe"
+						style="min-width: 850px; height: 600px; border: none"
+					>
+					</iframe>
+				</div>
+			</div>
+		</div>
+	</mat-card>
+</div>

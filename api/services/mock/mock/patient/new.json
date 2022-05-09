@@ -1,0 +1,114 @@
+{
+    "previous": null,
+    "results": [
+        {
+            "archived": false,
+            "id": 117132798,
+            "name": "Where did you find us?",
+            "data_type": "String",
+            "required": false,
+            "comment": "",
+            "clinical_note_template": 4256775,
+            "allowed_values": []
+        },
+        {
+            "archived": false,
+            "id": 117132799,
+            "name": "If referred, by whom?",
+            "data_type": "String",
+            "required": false,
+            "comment": "",
+            "clinical_note_template": 4256775,
+            "allowed_values": []
+        },
+        {
+            "archived": false,
+            "id": 117132801,
+            "name": "Anything you'd like us to know before your appointment",
+            "data_type": "String",
+            "required": false,
+            "comment": "",
+            "clinical_note_template": 4256775,
+            "allowed_values": []
+        },
+        {
+            "archived": false,
+            "id": 117132802,
+            "name": "General Practitioner and contact info",
+            "data_type": "String",
+            "required": false,
+            "comment": "",
+            "clinical_note_template": 4256775,
+            "allowed_values": []
+        },
+        {
+            "archived": false,
+            "id": 117132803,
+            "name": "Current Therapist and Contact info(if applicable)",
+            "data_type": "String",
+            "required": false,
+            "comment": "",
+            "clinical_note_template": 4256775,
+            "allowed_values": []
+        },
+        {
+            "archived": false,
+            "id": 117132804,
+            "name": "Please list any Specialists you see and specialty",
+            "data_type": "String",
+            "required": false,
+            "comment": "",
+            "clinical_note_template": 4256775,
+            "allowed_values": []
+        },
+        {
+            "archived": false,
+            "id": 117132806,
+            "name": "Are you currently in Therapy?",
+            "data_type": "NullCheckbox",
+            "required": false,
+            "comment": "",
+            "clinical_note_template": 4256775,
+            "allowed_values": []
+        },
+        {
+            "archived": false,
+            "id": 117132807,
+            "name": "If so,  how often?",
+            "data_type": "String",
+            "required": false,
+            "comment": "",
+            "clinical_note_template": 4256775,
+            "allowed_values": []
+        },
+        {
+            "archived": false,
+            "id": 117176261,
+            "name": "Do you currently see any of the following?",
+            "data_type": "String",
+            "required": false,
+            "comment": "",
+            "clinical_note_template": 4256775,
+            "allowed_values": [
+                "Chiropactor",
+                "Life Coach",
+                "General Practitioner"
+            ]
+        },
+        {
+            "archived": false,
+            "id": 117176262,
+            "name": "What services you are interested in ?",
+            "data_type": "String",
+            "required": false,
+            "comment": "",
+            "clinical_note_template": 4256775,
+            "allowed_values": [
+                "Individual Therapy",
+                "Group Therapy",
+                "Individual Coaching"
+            ]
+        }
+    ],
+    "next": null
+}

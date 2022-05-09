@@ -1,0 +1,95 @@
+{
+    "status":{
+       "code":1,
+       "err":null,
+       "msg":null,
+       "totalRecords":17
+    },
+    "data":[
+       {
+          "id":4244876,
+          "name":"H&P CC / History of Present Illness",
+          "doctor":292542
+       },
+       {
+          "id":4244877,
+          "name":"H&P Med / Fam / Social History",
+          "doctor":292542
+       },
+       {
+          "id":4244878,
+          "name":"H&P Review of Systems",
+          "doctor":292542
+       },
+       {
+          "id":4244879,
+          "name":"H&P Physical Exam",
+          "doctor":292542
+       },
+       {
+          "id":4244880,
+          "name":"H&P Assessment",
+          "doctor":292542
+       },
+       {
+          "id":4244881,
+          "name":"H&P Plan",
+          "doctor":292542
+       },
+       {
+          "id":4244882,
+          "name":"SOAP Subjective",
+          "doctor":292542
+       },
+       {
+          "id":4244883,
+          "name":"SOAP Objective",
+          "doctor":292542
+       },
+       {
+          "id":4244884,
+          "name":"SOAP Assessment",
+          "doctor":292542
+       },
+       {
+          "id":4244885,
+          "name":"SOAP Plan",
+          "doctor":292542
+       },
+       {
+          "id":4244886,
+          "name":"Medications & Allergies",
+          "doctor":292542
+       },
+       {
+          "id":4244887,
+          "name":"onpatient Additional Info",
+          "doctor":292542
+       },
+       {
+          "id":4244888,
+          "name":"onpatient Reasons For Visit",
+          "doctor":292542
+       },
+       {
+          "id":4256775,
+          "name":"New Patient",
+          "doctor":292542
+       },
+       {
+          "id":4256776,
+          "name":"Medical Informations",
+          "doctor":292542
+       },
+       {
+          "id":4256777,
+          "name":"Gad",
+          "doctor":292542
+       },
+       {
+          "id":4256800,
+          "name":"Sas",
+          "doctor":292542
+       }
+    ]
+ }

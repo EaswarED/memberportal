@@ -1,0 +1,205 @@
+<mat-card fxFill fxFlex class="book-a-consult p-t-20">
+	<mat-card-title class="book-a-consult__title p-l-20"
+		>Book a Consult</mat-card-title
+	>
+	<mat-card-subtitle class="book-a-consult__caption p-l-20"
+		>Our care coordinators are here to help you figure out the best-fit
+		therapist for your needs
+	</mat-card-subtitle>
+	<mat-divider></mat-divider>
+	<mat-card-content>
+		<form [formGroup]="bookFormGroup">
+			<mat-stepper
+				#stepper
+				[orientation]="(stepperOrientation | async)!"
+				formArrayName="formArray"
+				labelPosition="bottom"
+				[selectedIndex]="selectedIndexstep"
+			>
+				<mat-step
+					formGroupName="0"
+					[stepControl]="formArray?.get([0])!"
+				>
+					<ng-template matStepLabel>Select Time</ng-template>
+
+					<ng-template matStepContent>
+						<mw-calendar
+							(doActions)="bookConsult($event)"
+						></mw-calendar>
+						<mat-divider></mat-divider>
+
+						<div
+							class="book-a-consult__stepActions"
+							fxLayoutAlign="center center"
+							fxLayoutGap="15px"
+						>
+							<div fxFlex></div>
+
+							<button
+								mat-stroked-button
+								color="primary"
+								type="button"
+								class="book-a-consult__stepActions__btn"
+								(click)="nxtClick()"
+							>
+								Next
+							</button>
+						</div>
+					</ng-template>
+				</mat-step>
+
+				<mat-step
+					formGroupName="1"
+					[stepControl]="formArray?.get([1])!"
+				>
+					<ng-template matStepLabel>
+						<div>Confirm Appointment</div>
+					</ng-template>
+					<ng-template matStepContent>
+						<div
+							class="book-a-consult__step2 p-30"
+							fxLayout="column"
+							fxLayoutGap="20px"
+							fxLayoutAlign="start start"
+						>
+							<div
+								*ngIf="isLoading"
+								fxLayoutAlign="center center"
+								class="book-a-consult__loading"
+							>
+								<mat-spinner
+									style="margin: 0 auto"
+								></mat-spinner>
+							</div>
+							<div
+								fxFlex
+								fxLayout="row"
+								fxLayoutGap="30px"
+								class="book-a-consult__step2__info p-20"
+							>
+								<div
+									fxFlex
+									fxLayoutAlign="center center"
+									class="book-a-consult__step2__info__icon"
+								>
+									<mat-icon>info</mat-icon>
+								</div>
+								<div
+									class="book-a-consult__step2__info__content"
+								>
+									<div
+										class="
+											book-a-consult__step2__info__title
+										"
+									>
+										Your Consultation Appointment is Ready
+									</div>
+									<div
+										class="
+											book-a-consult__step2__info__sub-title
+										"
+									>
+										Please click "Confirm Appointment to
+										Finalize"
+									</div>
+								</div>
+							</div>
+							<div
+								fxFlex
+								fxLayout="row"
+								fxLayoutGap="10px"
+								class="book-a-consult__step2__confirm p-20"
+							>
+								<div class="book-a-consult__step2__confirm__w">
+									<div
+										class="
+											book-a-consult__step2__confirm__title
+											m-b-10
+										"
+									>
+										Mindworx
+									</div>
+									<div
+										class="
+											book-a-consult__step2__confirm__sub-title
+											m-b-10
+										"
+									>
+										Your Consult Booking
+									</div>
+									<div
+										class="
+											book-a-consult__step2__confirm__sub-title
+										"
+									>
+										<span
+											*ngIf="getTime.datas.startisAM; else evening"
+											>MORNING</span
+										>
+										<ng-template #evening
+											><span>EVENING</span></ng-template
+										>
+										| {{getTime.datas.time}} EST |
+										{{getTime.datas.startDate | date}}
+									</div>
+								</div>
+								<div
+									class="
+										book-a-consult__step2__confirm__Actions
+									"
+									fxLayoutAlign="center center"
+								>
+									<button
+										class="
+											book-a-consult__step2__confirm__Actions__btn
+										"
+										mat-stroked-button
+										color="primary"
+										(click)="onBookConsult()"
+									>
+										Confirm Appointment
+									</button>
+								</div>
+							</div>
+							<div fxFlex fxLayout="row" fxLayoutGap="30px">
+								<div
+									class="book-a-consult__step2__call-section"
+								>
+									*You will receive a phone call from your
+									care coordinator at the designated time
+								</div>
+							</div>
+						</div>
+						<mat-divider></mat-divider>
+
+						<div
+							class="book-a-consult__stepActions"
+							fxLayoutAlign="center center"
+							fxLayoutGap="15px"
+						>
+							<div fxFlex></div>
+							<button
+								mat-stroked-button
+								color="primary"
+								matStepperPrevious
+								type="button"
+								class="book-a-consult__stepActions__btn"
+							>
+								Back
+							</button>
+							<button
+								mat-stroked-button
+								color="warn"
+								type="button"
+								class="book-a-consult__stepActions__btn"
+								(click)="cancel()"
+							>
+								Cancel
+							</button>
+						</div>
+					</ng-template>
+				</mat-step>
+			</mat-stepper>
+		</form>
+	</mat-card-content>
+</mat-card>

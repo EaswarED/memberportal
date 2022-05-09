@@ -1,0 +1,25 @@
+{
+	"dependencies": {
+		"serverless-python-requirements": "^5.1.1"
+	},
+	"scripts": {
+		"deploy": "npm run admin && npm run appt && npm run class && npm run client && npm run dashboard && npm run form && npm run group && npm run mock && npm run sale && npm run selfcare && npm run service && npm run site && npm run staff",
+		"admin": "cd ./services/admin && serverless deploy -s $STAGE",
+		"appt": "cd ./services/appointment && serverless deploy -s $STAGE",
+		"class": "cd ./services/class && serverless deploy -s $STAGE",
+		"client": "cd ./services/client && serverless deploy -s $STAGE",
+		"dashboard": "cd ./services/dashboard && serverless deploy -s $STAGE",
+		"form": "cd ./services/form && serverless deploy -s $STAGE",
+		"group": "cd ./services/group && serverless deploy -s $STAGE",
+		"mock": "cd ./services/mock && serverless deploy -s $STAGE",
+		"sale": "cd ./services/sale && serverless deploy -s $STAGE",
+		"selfcare": "cd ./services/selfcare && serverless deploy -s $STAGE",
+		"service": "cd ./services/service && serverless deploy -s $STAGE",
+		"site": "cd ./services/site && serverless deploy -s $STAGE",
+		"staff": "cd ./services/staff && serverless deploy -s $STAGE"
+	},
+	"devDependencies": {
+		"serverless-domain-manager": "^5.1.5",
+		"serverless-package-external": "^1.3.3"
+	}
+}

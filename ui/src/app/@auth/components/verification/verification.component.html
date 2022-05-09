@@ -1,0 +1,82 @@
+<div fxLayoutAlign="center center" fxlayout="column" style="height: 100%">
+	<div
+		fxFlex="750px"
+		fxLayout.lt-md="column"
+		fxLayout="row"
+		class="mw-verification-profile"
+	>
+		<mat-card fxFlex class="p-t-20 p-l-20 p-r-20">
+			<mat-card-title class="p-l-20 p-b-10" fxLayoutAlign="center center"
+				>Enter Verification Code</mat-card-title
+			>
+			<mat-divider></mat-divider>
+			<mat-card-subtitle
+				fxLayoutAlign="center center"
+				class="p-l-20 p-t-40"
+			>
+				You should have received a verification code via email or text.
+				<br />
+				Please enter it here to complete your
+				registration.</mat-card-subtitle
+			>
+			<mat-card-content>
+				<div
+					*ngIf="isLoading"
+					fxLayoutAlign="center center"
+					class="mw-verification-profile__loading"
+				>
+					<mat-spinner style="margin: 0 auto"></mat-spinner>
+				</div>
+				<div
+					fxLayout="column"
+					fxLayout.lt-sm="row"
+					class="mw-verification-profile__htitle m-t-75 m-b-100"
+					fxLayoutAlign="center center"
+				>
+					<div fxLayout="row">
+						<mat-form-field appearance="outline" class="m-t-10">
+							<mat-label>Code </mat-label>
+							<input matInput [(ngModel)]="code" type="text" />
+						</mat-form-field>
+					</div>
+					<div fxLayout="row">
+						<button
+							mat-raised-button
+							color="primary"
+							(click)="sendAgain()"
+						>
+							Send again
+						</button>
+					</div>
+				</div>
+			</mat-card-content>
+			<mat-divider></mat-divider>
+			<div
+				fxLayout="row"
+				fxLayout.lt-sm="column"
+				class="mw-verification-profile__htitle"
+				fxLayoutAlign="center center"
+				class="p-t-15"
+			>
+				<div class="p-r-20">
+					<button
+						mat-raised-button
+						color="primary"
+						(click)="goToSignIn()"
+					>
+						Cancel
+					</button>
+				</div>
+				<div class="p-l-20 p-r-20">
+					<button
+						mat-raised-button
+						color="primary"
+						(click)="Verify()"
+					>
+						Verify
+					</button>
+				</div>
+			</div>
+		</mat-card>
+	</div>
+</div>

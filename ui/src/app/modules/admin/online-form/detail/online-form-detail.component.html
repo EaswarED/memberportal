@@ -1,0 +1,79 @@
+<div class="mw-online-form-configuration" fxLayout="column" fxLayoutGap="30px">
+	<mat-card class="p-0 mw-online-form-configuration__card">
+		<div
+			*ngIf="isLoading"
+			fxLayoutAlign="center center"
+			class="mw-online-form-configuration__loading"
+		>
+			<mat-spinner style="margin: 0 auto"></mat-spinner>
+		</div>
+		<mat-card-title fxLayoutAlign="start center"
+			><span fxFlex>{{pageTitle}}</span>
+			<span>
+				<button
+					mat-icon-button
+					color="primary"
+					(click)="onClosePopup()"
+				>
+					<mat-icon>close</mat-icon>
+				</button></span
+			>
+		</mat-card-title>
+
+		<div
+			fxLayout="column"
+			fxLayout.lt-md="column"
+			class="p-t-25"
+			fxLayoutAlign="start start"
+		>
+			<div
+				fxFlex="100%"
+				fxLayout="row"
+				fxLayout.lt-md="column"
+				fxLayoutAlign="start start"
+				class="mw-online-form-configuration__w p-l-15 p-r-15"
+			>
+				<div
+					class="mw-create-class-config__step1 p-10"
+					fxLayout.lt-lg="column"
+					fxLayout="column"
+					fxLayoutAlign="start start"
+				>
+					<div
+						fxFlex
+						fxLayoutAlign="space-between center"
+						fxLayout="row"
+						class="mw-create-class-config__w"
+					>
+						<mat-label fxFlex="120px" class="p-b-15"
+							>Frequency</mat-label
+						>
+						<mat-form-field fxFlex="380px" appearance="outline">
+							<mat-select [(ngModel)]="validityM" required>
+								<mat-option
+									*ngFor="let rec of timePeriod"
+									[value]="rec.code"
+									>{{ rec.name }}</mat-option
+								>
+							</mat-select>
+						</mat-form-field>
+					</div>
+					<div
+						fxFlex
+						fxLayoutAlign="end end"
+						fxLayout="row"
+						class="mw-online-form-configuration__w"
+					>
+						<button
+							mat-flat-button
+							color="primary"
+							(click)="doSave()"
+						>
+							Save
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</mat-card>
+</div>

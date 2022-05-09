@@ -1,0 +1,53 @@
+<div class="mw-calendar-dashboard">
+	<h2 mat-dialog-title>
+		Your Monthly Schedule
+		<button
+			mat-icon-button
+			color="primary"
+			class="mw-calendar-dashboard__close"
+			aria-label="Close Calendar"
+			mat-dialog-close
+		>
+			<mat-icon>close</mat-icon>
+		</button>
+	</h2>
+
+	<mw-calendar-data [calendarData]="calendarDashboardData"></mw-calendar-data>
+
+	<mat-dialog-actions align="center">
+		<button
+			mat-stroked-button
+			class="mw-calendar-dashboard__appointmentBTN m-r-20 p-0 p-r-15"
+			color="primary"
+			(click)="gotoApptsLanding()"
+			mat-dialog-close
+		>
+			<mat-icon
+				class="mw-calendar-dashboard__appointmentBTN__icon m-r-10 p-10"
+				>event</mat-icon
+			>{{apptCount}} Appointments
+		</button>
+		<button
+			mat-stroked-button
+			class="mw-calendar-dashboard__groupBTN m-r-20 p-0 p-r-15"
+			color="primary"
+			(click)="gotoGroupLanding()"
+			mat-dialog-close
+		>
+			<mat-icon class="mw-calendar-dashboard__groupBTN__icon m-r-10 p-10"
+				>groups</mat-icon
+			>{{groupCount}} Groups
+		</button>
+		<button
+			mat-stroked-button
+			class="mw-calendar-dashboard__classBTN m-r-20 p-0 p-r-15"
+			color="primary"
+			(click)="gotoClassLanding()"
+			mat-dialog-close
+		>
+			<mat-icon class="mw-calendar-dashboard__classBTN__icon m-r-10 p-10"
+				>accessibility</mat-icon
+			>{{classCount}} Classes
+		</button>
+	</mat-dialog-actions>
+</div>

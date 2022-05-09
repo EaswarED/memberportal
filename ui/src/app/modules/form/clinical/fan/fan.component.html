@@ -1,0 +1,208 @@
+<mat-card fxFill fxFlex class="create-clientphq p-t-20">
+	<mat-card-title class="create-clientphq__header p-l-20"
+		>FAN 8</mat-card-title
+	>
+	<mat-card-subtitle class="p-l-20"
+		>To Confirm your appointment, fill out all the field and click
+		submit</mat-card-subtitle
+	>
+	<mat-divider></mat-divider>
+	<mat-card-content>
+		<form [formGroup]="phqFormGroup" #options="ngForm">
+			<div
+				fxLayout="row"
+				class="create-clientphq__htitle p-30"
+				fxLayoutAlign="center center"
+				fxLayoutGap="12px"
+			>
+				FAN 8
+			</div>
+			<div
+				*ngIf="isLoading"
+				fxLayoutAlign="center center"
+				class="mw-sign-in__loading"
+			>
+				<mat-spinner style="margin: 0 auto"></mat-spinner>
+			</div>
+			<div
+				class="create-clientphq__step1 p-l-30 p-r-30"
+				fxLayout.lt-md="column"
+				fxLayout="row"
+				fxLayoutGap="20px"
+				fxLayoutAlign="start start"
+			>
+				<div fxLayout="column" fxFlex fxLayoutAlign="start start">
+					<ng-container *ngFor="let item of clientphq; let i = index">
+						<div
+							fxLayout="column"
+							fxLayoutGap="12px"
+							style="width: 100%"
+							*ngIf="i<5 && item.data_type === 'String'"
+						>
+							<div
+								fxLayout="column"
+								fxLayoutGap="10px"
+								fxLayoutAlign="start"
+							>
+								<input
+									formControlName="phq_template_{{i}}"
+									value="{{item.clinical_note_template}}"
+									type="hidden"
+									[(ngModel)]="item.clinical_note_template"
+								/>
+								<span
+									class="create-clientphq__step1__label"
+									*ngIf="item.allowed_values.length !== 0"
+								>
+									{{item.name}}</span
+								>
+								<mat-form-field
+									fxFlex="80px"
+									appearance="outline"
+									class="create-clientphq__step1__form-field"
+									*ngIf="item.allowed_values.length !== 0"
+								>
+									<mat-select
+										formControlName="phq_{{i}}"
+										required
+										class="
+											create-clientphq__step1__label__select
+										"
+									>
+										<mat-option
+											class="
+												create-clientphq__step2__label__option
+											"
+											*ngFor="let option of item.allowed_values"
+											value="{{option}}"
+											>{{option}}</mat-option
+										>
+									</mat-select>
+								</mat-form-field>
+								<mat-form-field
+									class="example-full-width"
+									appearance="outline"
+									*ngIf="item.allowed_values.length === 0"
+								>
+									<mat-label>{{item.name}}</mat-label>
+									<input
+										matInput
+										required
+										formControlName="phq_{{i}}"
+										placeholder=""
+									/>
+								</mat-form-field>
+
+								<input
+									formControlName="phq_id_{{i}}"
+									value="{{item.id}}"
+									type="hidden"
+									[(ngModel)]="item.id"
+								/>
+							</div>
+						</div>
+					</ng-container>
+				</div>
+				<div fxLayout="column" fxFlex fxLayoutAlign="start start">
+					<ng-container *ngFor="let item of clientphq; let i = index">
+						<div
+							fxLayout="column"
+							fxLayoutGap="12px"
+							style="width: 100%"
+							*ngIf="i>4 && i<=10 && item.data_type !== 'Subheader'"
+						>
+							<div
+								fxLayout="column"
+								fxLayoutGap="10px"
+								fxLayoutAlign="start"
+							>
+								<input
+									formControlName="phq_template_{{i}}"
+									value="{{item.clinical_note_template}}"
+									type="hidden"
+									[(ngModel)]="item.clinical_note_template"
+								/>
+								<span
+									class="create-clientphq__step1__label"
+									*ngIf="item.allowed_values.length !== 0"
+								>
+									{{item.name}}</span
+								>
+								<mat-form-field
+									fxFlex="80px"
+									appearance="outline"
+									class="create-clientphq__step1__form-field"
+									*ngIf="item.allowed_values.length !== 0"
+								>
+									<mat-select
+										formControlName="phq_{{i}}"
+										required
+										class="
+											create-clientphq__step1__label__select
+										"
+									>
+										<mat-option
+											class="
+												create-clientphq__step2__label__option
+											"
+											*ngFor="let option of item.allowed_values"
+											value="{{option}}"
+											>{{option}}</mat-option
+										>
+									</mat-select>
+								</mat-form-field>
+
+								<input
+									formControlName="phq_id_{{i}}"
+									value="{{item.id}}"
+									type="hidden"
+									[(ngModel)]="item.id"
+								/>
+								<mat-form-field
+									class="example-full-width"
+									appearance="outline"
+									*ngIf="item.allowed_values.length === 0"
+								>
+									<mat-label>{{item.name}}</mat-label>
+									<input
+										matInput
+										required
+										formControlName="phq_{{i}}"
+										placeholder=""
+									/>
+								</mat-form-field>
+							</div>
+						</div>
+					</ng-container>
+				</div>
+			</div>
+
+			<mat-divider></mat-divider>
+
+			<div
+				class="create-clientphq__stepActions"
+				fxLayoutAlign="center center"
+				fxLayoutGap="15px"
+			>
+				<div fxFlex></div>
+				<button
+					_ngcontent-lpj-c325=""
+					mat-raised-button
+					color="primary"
+					(click)="goBack()"
+				>
+					<span> Cancel</span>
+				</button>
+
+				<button
+					[disabled]="!options.valid"
+					mat-raised-button
+					color="primary"
+					(click)="btnClicked($event)"
+				>
+					<span> Save</span>
+				</button>
+			</div>
+		</form>
+	</mat-card-content>
+</mat-card>

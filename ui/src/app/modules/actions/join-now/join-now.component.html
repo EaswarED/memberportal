@@ -1,0 +1,30 @@
+<div fxLayout="row" fxLayoutAlign="start center">
+	<h4>Join Now</h4>
+	<span fxFlex></span>
+	<button mat-icon-button (click)="handleClose()">
+		<mat-icon>close</mat-icon>
+	</button>
+</div>
+<div
+	fxLayout="column"
+	class="m-t-100"
+	style="position: relative"
+	fxLayoutAlign="center center"
+>
+	<span class="m-b-10"
+		>Please wait while we connect you to your session.
+	</span>
+	<a
+		class="p-l-15"
+		href="{{url}}"
+		target="_blank"
+		*ngIf="url;else errorTemplate"
+	>
+		<button mat-raised-button color="primary" type="button">Join</button>
+	</a>
+	<ng-template #errorTemplate>
+		<div fxLayoutAlign="center center">
+			<mat-spinner [diameter]="50"></mat-spinner>
+		</div>
+	</ng-template>
+</div>

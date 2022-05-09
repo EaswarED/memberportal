@@ -1,0 +1,119 @@
+{
+    "previous": null,
+    "results": [
+        {
+            "archived": false,
+            "id": 116627496,
+            "name": "FAN 8",
+            "data_type": "Header",
+            "required": false,
+            "clinical_note_template": 4256775,
+            "allowed_values": []
+        },
+        {
+            "archived": false,
+            "id": 116627497,
+            "name": "1.Do you feel depressed or anxious or have sleep difficulties(not enough)",
+            "data_type": "String",
+            "required": false,
+            "clinical_note_template": 4256775,
+            "allowed_values": [
+                "Good",
+                "Medium",
+                "Bad"
+            ]
+        },
+        {
+            "archived": false,
+            "id": 116627498,
+            "name": "2.Do you have fatigue, low energy or mental fog?",
+            "data_type": "String",
+            "required": false,
+            "clinical_note_template": 4256775,
+            "allowed_values": [
+                "Good",
+                "Medium",
+                "Bad"
+            ]
+        },
+        {
+            "archived": false,
+            "id": 116627499,
+            "name": "3.Do you have chronic pain or signs of inflammations(swelling redness, heat,pain)",
+            "data_type": "String",
+            "required": false,
+            "clinical_note_template": 4256775,
+            "allowed_values": [
+                "Good",
+                "Medium",
+                "Bad"
+            ]
+        },
+        {
+            "archived": false,
+            "id": 116627500,
+            "name": "4.How well are you meeting your nutrition goats?",
+            "data_type": "String",
+            "required": false,
+            "clinical_note_template": 4256775,
+            "allowed_values": [
+                "Good",
+                "Medium",
+                "Bad"
+            ]
+        },
+        {
+            "archived": false,
+            "id": 116627501,
+            "name": "5.How mindful are you of what you eat?",
+            "data_type": "String",
+            "required": false,
+            "clinical_note_template": 4256775,
+            "allowed_values": [
+                "Good",
+                "Medium",
+                "Bad"
+            ]
+        },
+        {
+            "archived": false,
+            "id": 116627502,
+            "name": "6. Do you have digestive difficulties like constipation, diarrhea ,bloating , gas?",
+            "data_type": "String",
+            "required": false,
+            "clinical_note_template": 4256775,
+            "allowed_values": [
+                "Good",
+                "Medium",
+                "Bad"
+            ]
+        },
+        {
+            "archived": false,
+            "id": 116627503,
+            "name": "7.Do you eat a healthy balanced diet?",
+            "data_type": "String",
+            "required": false, 
+            "clinical_note_template": 4256775,
+            "allowed_values": [
+                "Good",
+                "Medium",
+                "Bad"
+            ]
+        },
+        {
+            "archived": false,
+            "id": 116627504,
+            "name": "8.How is your relationships with food? ",
+            "data_type": "String",
+            "required": false,
+            "clinical_note_template": 4256775,
+            "allowed_values": [
+                "Good",
+                "Medium",
+                "Bad"
+            ]
+        }
+    ],
+    "next": null
+}

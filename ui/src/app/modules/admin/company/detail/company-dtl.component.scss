@@ -1,0 +1,109 @@
+@import '/src/app/@theme/colors';
+:host {
+	padding-right: 12px;
+	margin-left: 6.5rem;
+	display: block;
+}
+.mw-company-detail {
+	padding: 12px 0px;
+	.table {
+		width: 100%;
+	}
+	&__mat-tab-group {
+		flex-direction: column;
+
+		::ng-deep .mat-tab-list .mat-tab-labels .mat-tab-label-active {
+			border-bottom: 2px solid $primary-yellow;
+			font-size: 14px;
+			opacity: 1;
+		}
+		::ng-deep {
+			mat-tab-header {
+				flex-direction: row;
+				border-bottom: 0px solid transparent;
+				border-right: 1px solid rgba(0, 0, 0, 0.12);
+
+				.mat-tab-label-container {
+					flex-direction: column;
+
+					.mat-tab-labels {
+						flex-direction: row;
+					}
+
+					.mat-tab-label {
+						justify-content: center;
+						display: flex;
+					}
+
+					mat-ink-bar {
+						left: initial !important;
+						bottom: initial;
+						right: 0;
+						width: 2px !important;
+						height: initial;
+					}
+				}
+			}
+		}
+
+		::ng-deep .mat-tab-body-wrapper {
+			flex-direction: row;
+			width: 100%;
+		}
+	}
+	&__column-size {
+		width: 50%;
+	}
+}
+mw-data-table {
+	width: 100%;
+}
+
+mat-tab-group {
+	flex-direction: row;
+
+	::ng-deep {
+		mat-tab-header {
+			flex-direction: column;
+			border-bottom: 0px solid transparent;
+			border-right: 1px solid rgba(0, 0, 0, 0.12);
+
+			.mat-tab-label-container {
+				flex-direction: column;
+
+				.mat-tab-labels {
+					flex-direction: column;
+					display: flex;
+					place-content: flex-start;
+					align-items: center;
+				}
+				.mat-tab-label {
+					display: flex;
+					place-content: flex-start;
+					align-items: center;
+					width: 100%;
+					padding: 0px;
+				}
+				.mat-tab-label-active {
+					opacity: 1;
+				}
+				mat-ink-bar {
+					left: initial !important;
+					bottom: initial;
+					right: 0;
+					width: 2px !important;
+					height: initial;
+				}
+			}
+		}
+	}
+
+	::ng-deep .mat-tab-body-wrapper {
+		flex-direction: column;
+		width: 100%;
+	}
+}
+
+:host-context(.dark) mat-tab-group[vertical] ::ng-deep mat-tab-header {
+	border-right: 1px solid rgba(255, 255, 255, 0.12);
+}

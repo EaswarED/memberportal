@@ -1,0 +1,277 @@
+<div class="mw-company-detail" fxLayoutGap="30px">
+	<mat-card class="p-0" fxLayout="column">
+		<div fxLayout="row" fxLayoutAlign="start center">
+			<div>
+				<button
+					class="mw-categories__backBTN"
+					mat-icon-button
+					color="primary"
+					(click)="goBack()"
+				>
+					<mat-icon>keyboard_arrow_left</mat-icon>
+				</button>
+			</div>
+			<div>
+				<mat-card-title class="p-t-15 p-b-10" *ngIf="name"
+					>{{name}}</mat-card-title
+				>
+				<ng-template #nameTemplate>
+					<mat-card-title class="p-t-15">New Company</mat-card-title>
+				</ng-template>
+			</div>
+		</div>
+
+		<mat-divider></mat-divider>
+		<mat-spinner *ngIf="isLoading"> </mat-spinner>
+		<mat-tab-group
+			class="mw-company-information__main-group"
+			fxFlex
+			fxFlexLayout="column"
+			class="m-t-10"
+		>
+			<mat-tab>
+				<ng-template mat-tab-label>
+					<mat-icon class="p-l-10 p-r-10">info</mat-icon>
+					Company info
+				</ng-template>
+				<div
+					fxLayout="column"
+					fxLayoutAlign="start start"
+					class="p-t-20 p-l-20"
+				>
+					<div fxLayout="row" fxLayoutAlign="space-around center">
+						<div
+							fxFlex
+							fxLayoutAlign="start start"
+							fxLayout="column"
+							fxLayoutGap="10px"
+						>
+							<div
+								fxLayout.lt-md="column"
+								fxLayout="row"
+								fxLayoutGap="20px"
+								fxLayoutAlign="space-between center"
+								style="width: 100%"
+								class="m-t-5 p-t-5"
+							>
+								<mat-form-field fxFlex>
+									<mat-label>
+										<mat-label>Name</mat-label>
+									</mat-label>
+									<input matInput [(ngModel)]="name" />
+									<mat-error> Name is Required! </mat-error>
+								</mat-form-field>
+							</div>
+							<div
+								fxLayout.lt-md="column"
+								fxLayout="row"
+								fxLayoutGap="20px"
+								fxLayoutAlign="space-between center"
+								style="width: 100%"
+							>
+								<mat-form-field fxFlex>
+									<mat-label>
+										<mat-label>Company Code</mat-label>
+									</mat-label>
+									<input matInput [(ngModel)]="companyCode" />
+									<mat-error>
+										companyCode is Required!
+									</mat-error>
+								</mat-form-field>
+							</div>
+
+							<div
+								fxLayout.lt-md="column"
+								fxLayout="row"
+								fxLayoutGap="20px"
+								fxLayoutAlign="space-between center"
+								style="width: 100%"
+							>
+								<mat-form-field
+									fxFlex="100%"
+									fxFlex.lt-md="80px"
+								>
+									<mat-label>E-Mail</mat-label>
+									<input
+										matInput
+										[(ngModel)]="companyData.Email"
+									/>
+
+									<mat-error> Email is Required! </mat-error>
+								</mat-form-field>
+								<mat-form-field
+									fxLayout.lt-md="column"
+									fxFlex.lt-md="80px"
+									fxFlex="100%"
+								>
+									<mat-label>Phone </mat-label>
+									<input
+										matInput
+										[(ngModel)]="companyData.MobilePhone"
+									/>
+								</mat-form-field>
+							</div>
+
+							<div
+								fxLayout.lt-md="column"
+								fxLayout="row"
+								fxLayoutGap="20px"
+								fxLayoutAlign="space-between center"
+								style="width: 100%"
+							>
+								<mat-form-field fxFlex>
+									<mat-label>
+										<mat-label>Address</mat-label>
+									</mat-label>
+									<input
+										matInput
+										[(ngModel)]="companyData.AddressLine1"
+									/>
+									<mat-error> Address is required</mat-error>
+								</mat-form-field>
+							</div>
+							<div
+								fxLayout.lt-md="column"
+								fxLayout="row"
+								fxLayoutGap="10px"
+								fxLayoutAlign="space-between center"
+							>
+								<div
+									fxLayout="row"
+									fxLayoutGap="10px"
+									fxLayout.lt-lg="column"
+								>
+									<mat-form-field
+										fxFlex="150px"
+										fxFlex.lt-lg="80px"
+										fxFlex.lt-md
+									>
+										<mat-label>
+											<mat-label>City</mat-label>
+										</mat-label>
+										<input
+											matInput
+											[(ngModel)]="companyData.City"
+										/>
+									</mat-form-field>
+									<mat-form-field
+										fxFlex="150px"
+										fxFlex.lt-lg="80px"
+										fxFlex.lt-md
+									>
+										<mat-label>
+											<mat-label> State</mat-label>
+										</mat-label>
+										<!-- <mat-select>
+											<mat-option
+												value="Alene"
+												[(ngModel)]="companyData.State"
+											>
+												[(ngModel)]="stateCd"
+												New York
+											</mat-option>
+										</mat-select> -->
+										<input
+											matInput
+											[(ngModel)]="companyData.State"
+										/>
+										<mat-error>
+											State is Required
+										</mat-error>
+									</mat-form-field>
+								</div>
+								<div
+									fxLayout="row"
+									fxLayoutGap="10px"
+									fxLayout.lt-lg="column"
+								>
+									<mat-form-field
+										fxFlex="150px"
+										fxFlex.lt-lg="80px"
+										fxFlex.lt-md
+									>
+										<mat-label>
+											<mat-label>Country</mat-label>
+										</mat-label>
+										<!-- <mat-select>
+											<mat-option
+												value="Chasidy"
+												[(ngModel)]="companyData.Country"
+											>
+												USA
+											</mat-option>
+										</mat-select> -->
+
+										<input
+											matInput
+											[(ngModel)]="companyData.Country"
+										/>
+										<mat-error>Country Required</mat-error>
+									</mat-form-field>
+									<mat-form-field
+										fxFlex="150px"
+										fxFlex.lt-lg="80px"
+										fxFlex.lt-md
+									>
+										<mat-label>
+											<mat-label>Zip</mat-label>
+										</mat-label>
+										<input
+											matInput
+											[(ngModel)]="companyData.PostalCode"
+										/>
+										<mat-error>Zip Required</mat-error>
+									</mat-form-field>
+								</div>
+							</div>
+							<div
+								fxLayout.lt-md="column"
+								fxLayout="row"
+								fxLayoutGap="20px"
+								fxLayoutAlign="space-between center"
+								style="width: 100%"
+							>
+								<div
+									fxFlex="100%"
+									fxFlex.lt-lg="250px"
+									fxFlex.lt-md
+								>
+									<mat-label>Contact Preference</mat-label>
+									<mat-radio-group>
+										<mat-radio-button
+											value="1"
+											color="primary"
+											class="m-t-20 p-l-30"
+											>Phone</mat-radio-button
+										>
+										<mat-radio-button
+											value="2"
+											color="primary"
+											class="p-l-30 p-b-20"
+											>E-Mail</mat-radio-button
+										></mat-radio-group
+									>
+									<mat-error></mat-error>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<mat-divider></mat-divider>
+				<div
+					fxLayout="column"
+					fxLayoutAlign="end end"
+					class="m-t-20 p-r-30 p-b-20"
+				>
+					<button
+						mat-raised-button
+						color="primary"
+						(click)="doSave()"
+					>
+						Save
+					</button>
+				</div>
+			</mat-tab>
+		</mat-tab-group>
+	</mat-card>
+</div>

@@ -1,0 +1,28 @@
+{
+    "total": 9,
+    "page": 1,
+    "data": [
+            {
+                "name": "Personal Information",
+                "url": "personal-information",
+                "checked": false
+            },
+            {
+                "name": "PHQ9 Scale",
+                "url": "client-phq",
+                "checked": false
+            },
+            {
+                "name": "Medical Information",
+                "url": "create-medical",
+                "checked": false
+            },
+            {
+                "name": "New Patient",
+                "url": "new-patient",
+                "checked": false
+            }
+        ]
+           
+        
+    }

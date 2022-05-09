@@ -1,0 +1,159 @@
+service: ${self:custom.parentFile.service}-srvc-dynamo
+org: ${self:custom.parentFile.org}
+app: ${self:custom.parentFile.app}
+
+frameworkVersion: '3'
+useDotenv: true
+projectDir: '../..'
+
+provider:
+  name: aws
+  runtime: python3.8
+  lambdaHashingVersion: 20201221
+  region: ${self:custom.parentFile.provider.region}
+  stage: ${self:custom.parentFile.provider.stage}
+  profile: ${self:custom.parentFile.provider.profile}
+  timeout: ${self:custom.parentFile.provider.timeout}
+  environment: ${file(../../env-${self:provider.stage}.yml)}
+  layers:
+    - arn:aws:lambda:us-east-1:770693421928:layer:Klayers-python38-numpy:22
+    - arn:aws:lambda:us-east-1:770693421928:layer:Klayers-python38-pandas:43
+  iam:
+    role:
+      statements:
+        - Effect: 'Allow'
+          Action:
+            - secretsmanager:GetSecretValue
+          Resource:
+            - ${self:custom.parentFile.custom.dev.secret_arn_cognito}
+            - ${self:custom.parentFile.custom.dev.secret_arn_mindbody}
+            - ${self:custom.parentFile.custom.dev.secret_arn_drchrono}
+            - ${self:custom.parentFile.custom.dev.secret_arn_vimeo}
+            - ${self:custom.parentFile.custom.dev.secret_arn_jotform}
+            - ${self:custom.parentFile.custom.dev.secret_arn_twilio}
+
+functions:
+  list_group:
+    handler: handlers/test_dynamo.list_group
+
+  get_group:
+    handler: handlers/test_dynamo.get_group
+
+  save_group:
+    handler: handlers/test_dynamo.save_group # Should be POST
+
+  get_client:
+    handler: handlers/test_dynamo.get_client
+
+  save_client:
+    handler: handlers/test_dynamo.save_client # Should be POST
+
+  list_client_group:
+    handler: handlers/test_dynamo.list_client_group
+
+  request_join:
+    handler: handlers/test_dynamo.request_join # Should be POST
+
+  process_request:
+    handler: handlers/test_dynamo.process_request # Should be POST
+
+  log_client_phq9:
+    handler: handlers/test_dynamo.log_client_phq9 # Should be POST
+
+  list_company:
+    handler: handlers/test_dynamo.list_company
+
+  get_company:
+    handler: handlers/test_dynamo.get_company
+
+  save_company:
+    handler: handlers/test_dynamo.save_company # Should be POST
+
+  class_list:
+    handler: handlers/test_dynamo.class_list
+    
+  save_class:
+    handler: handlers/test_dynamo.save_class # Should be POST
+
+  list_category:
+    handler: handlers/test_dynamo.list_category
+
+  get_category:
+    handler: handlers/test_dynamo.get_category
+
+  save_category:
+    handler: handlers/test_dynamo.save_category # Should be POST
+  
+  vimeo_type:
+    handler: handlers/test_dynamo.vimeo_type
+
+  get_vimeo_type:
+    handler: handlers/test_dynamo.get_vimeo_type
+
+  save_vimeo_type:
+    handler: handlers/test_dynamo.save_vimeo_type # Should be POST
+
+  vimeo_content:
+    handler: handlers/test_dynamo.vimeo_content  
+  
+  save_vimeo_content:
+    handler: handlers/test_dynamo.save_vimeo_content # Should be POST  
+
+  test_vimeo:
+    handler: handlers/test_dynamo.test_vimeo
+
+  test_jotform:
+    handler: handlers/test_dynamo.test_jotform
+
+  save_form:
+    handler: handlers/test_dynamo.save_form
+
+  self_instructor:
+    handler: handlers/test_dynamo.self_instructor
+
+  test_email:
+    handler: handlers/test_email.test_email
+
+  test_dynamic_email:
+    handler: handlers/test_email.test_dynamic_email
+
+  test_payment_email:
+    handler: handlers/test_email.test_payment_email
+
+custom:
+  parentFile: ${file(../../serverless.yml)}
+
+  customDomain:
+    domainName: ${self:custom.parentFile.custom.customDomain.domainName}
+    basePath: 'dynamo'
+    stage: '${self:provider.stage}'
+    createRoute53Record: true
+
+  packageExternal:
+    external:
+      - '../../shared'
+      - '../../infrastructure'
+      - '../../providers'
+
+  pythonRequirements:
+    usePoetry: true
+    useDownloadCache: true
+    useStaticCache: false
+    invalidateCaches: false
+    slim: true
+
+    noDeploy:
+      - pytest
+
+package:
+  individually: false
+  excludeDevDependencies: false
+  patterns:
+    - '!.vscode/**'
+    - '!.pytest_cache/**'
+    - '!.aws-sam/**'
+
+plugins:
+  - serverless-domain-manager
+  - serverless-python-requirements
+  - serverless-package-external

@@ -1,0 +1,75 @@
+<mat-card fxLayout="column" class="mw-card" fxFlex>
+	<div fxLayout="row" fxLayoutAlign="start center">
+		<button mat-icon-button color="primary" (click)="goBack()">
+			<mat-icon> keyboard_arrow_left </mat-icon>
+		</button>
+
+		<mat-card-title class="m-0 mw-card__title">{{title}}</mat-card-title>
+	</div>
+	<div fxLayout="row" fxLayout.lt-md="column" class="p-t-20">
+		<div class="mw-card__content-list" *ngIf="cardList">
+			<span
+				class="mw-card__content__grid"
+				fxFlex
+				fxLayout="row wrap"
+				fxLayoutAlign="start start"
+			>
+				<div
+					class="mw-card__content-list__thumb"
+					*ngFor="let card of cardList"
+				>
+					<div (click)="onCardSelect(card)" class="m-10">
+						<img
+							class="mw-card__example-header-image"
+							mat-card-avatar
+							src="{{card['Details.ImageUrl']? card['Details.ImageUrl']: card['ClassDescription.ImageURL']}}"
+							onerror="this.src='assets/images/appointment/other-services/noimage.jpg'"
+							alt="alternative"
+							[ngClass]="card.SK === selectedCard.SK ? 'active' : ''"
+						/>
+						<p
+							class="mw-card__name m-t-10"
+							matTooltip="{{card['Details.Name']}}"
+							matTooltipPosition="above"
+						>
+							{{card['Details.Name']}}
+						</p>
+					</div>
+				</div>
+			</span>
+		</div>
+
+		<div fxLayout="row" fxFlex fxLayoutAlign="center" *ngIf="selectedCard">
+			<div>
+				<mat-card-content *ngIf="selectedCard">
+					<mat-card-subtitle
+						>{{selectedCard['Details.Name']}}</mat-card-subtitle
+					>
+					<div fxLayout="row" fxLayoutAlign="start start">
+						<p>
+							<img
+								class="mw-card__example-header-image"
+								mat-card-avatar
+								src="{{selectedCard['Details.ImageUrl']? selectedCard['Details.ImageUrl']: selectedCard['ClassDescription.ImageURL']}}"
+								onerror="this.src='assets/images/appointment/other-services/noimage.jpg'"
+								alt="alternative"
+								ngClass="active"
+								style="float: right; margin-left: 15px"
+							/>{{selectedCard['Details.Description']?
+							selectedCard['Details.Description']:
+							selectedCard['ClassDescription.Description']}}
+						</p>
+					</div>
+
+					<button
+						mat-raised-button
+						(click)="doAction()"
+						color="primary"
+					>
+						Book Now
+					</button>
+				</mat-card-content>
+			</div>
+		</div>
+	</div>
+</mat-card>

@@ -1,0 +1,72 @@
+{
+    "status": {
+        "code": 1,
+        "err": null,
+        "msg": null,
+        "totalRecords": 10
+    },
+    "data":[
+        {
+        "Id": 172, 
+        "Description": "<div><span style=\"color:#ff9900;\"><strong>Intense, military style workout. Be prepared for push-ups, bear-crawls, running and high knees to say the least! &nbsp;</strong></span></div>\r\n<div><span style=\"color:#ff9900;\"><strong><br/></strong></span></div>\r\n<div><span style=\"color:#ff9900;\"><strong>Meets two times a week for four weeks.</strong></span></div>", 
+        "ImageURL":null, 
+        "ProgramId": 10,
+        "Name":"Bootcamp",
+        "ProgramName":"Boot Camp",
+        "SessionTypeId": 208,
+        "SessionTypeName": "Bootcamp" 
+        }, 
+        
+        {
+         "Id": 221, 
+         "Description": "Do you want to get quick results? if you’re struggling with your mundane gym routine and feel like you’re just not getting the results you want. We aim to increase your ability in 10 components of fitness, Cardiovascular Endurance, Strength, Stamina, Agility, Flexibility, Balance, Power, Speed, Coordination and Accuracy. We also have a lot of fun getting you there.", 
+        "ImageURL": null ,
+        "ProgramId": 10,
+        "Name":"Boot Camp",
+        "ProgramName":"Membership",
+        "SessionTypeId": 208,
+        "SessionTypeName": "Bootcamp" 
+        }, 
+        {
+        "Id": 255, 
+        "Description": "<div>Welcome to our health club!! &nbsp;This session is used to get you up to speed on our world-class facility. &nbsp;</div>", 
+        "ImageURL": null,
+        "ProgramId": 10, 
+        "Name": "Orientation",
+        "ProgramName":"Boot Camp",
+        "SessionTypeId": 208,
+        "SessionTypeName": "Bootcamp" 
+            },
+        {
+        "Id": 289, 
+        "Description": "<div>Optimum Performance is a group fitness fat loss program that uses our unique &ldquo;Climb to the Peak&rdquo; system of metabolic circuit training designed to challenge, inspire and transform your body. This program was designed with two main goals in mind; one, is to help YOU get in the best shape of YOUR life (lean, ripped, strong and fit) and two, to give the experienced exerciser an opportunity to take their fitness to a whole new level and break through plateaus that have kept their fitness results limited.<br/><br/></div>\r\n<div>Meets for three months, twice a week. &nbsp;</div>",
+         "ImageURL": null, 
+         "ProgramId": 10, 
+         "Name":"Optimum Performance",
+         "ProgramName":"Boot Camp",
+         "SessionTypeId": 208,
+        "SessionTypeName": "Boot Camp" 
+         },
+         {
+            "Id": 307, 
+            "Description": "<div><span style=\"color:#0000ff;\">Join us every Tuesday morning as we help you burn fat, tone your body and get you ready for beach season!!! &nbsp;</span></div>\r\n<div>\r\n<ul>\r\n<li><span style=\"color:#000080;\">Registration costs $200 for all six weeks</span></li>\r\n<li><span style=\"color:#000080;\">Payment plans are available, with a $100 down payment</span></li>\r\n</ul>\r\n</div>",
+             "ImageURL":null, 
+             "ProgramId": 10, 
+             "Name":"Six Week Boot Camp",
+             "ProgramName":"Boot Camp",
+             "SessionTypeId": 208,
+            "SessionTypeName": "Boot Camp" 
+             },
+             {
+                "Id": 346, 
+                "Description": "<div><span style=\"color:#0000ff;\">Join us every Tuesday morning as we help you burn fat, tone your body and get you ready for beach season!!! &nbsp;</span></div>\r\n<div>\r\n<ul>\r\n<li><span style=\"color:#000080;\">Registration costs $200 for all six weeks</span></li>\r\n<li><span style=\"color:#000080;\">Payment plans are available, with a $100 down payment</span></li>\r\n</ul>\r\n</div>",
+                 "ImageURL": "https://clients-content.mindbodyonline.com/studios/demoapisandboxrestore/reservations/346.jpg?osv=637702196890000000", 
+                 "ProgramId": 23, 
+                 "Name":"Workshop",
+                 "ProgramName":"Workshops",
+                 "SessionTypeId": 262,
+                "SessionTypeName": "Intro WOD" 
+                 }  
+                        
+    ]
+}

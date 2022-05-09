@@ -1,0 +1,43 @@
+@import 'src/app/@theme/colors';
+
+:host {
+	display: block;
+	padding-right: 12px;
+	margin-left: 6.5rem;
+}
+
+.mw-appointments {
+	padding: 12px 0;
+	&__title {
+		height: 50px;
+	}
+	&__dd {
+		font-size: 10px;
+	}
+
+	&__dpicker {
+		width: 12px;
+		visibility: hidden;
+	}
+
+	&__expansion-panel {
+		box-shadow: none;
+	}
+	&__expansion-panel-title {
+		font-size: 14px;
+		font-weight: 400;
+	}
+	&__header-title {
+		margin-bottom: 0px;
+	}
+
+	&__moreBtn {
+		font: 400 12px / 20px 'Poppins';
+	}
+	.style {
+		flex-direction: row;
+		box-sizing: border-box;
+		display: flex;
+		width: 100%;
+	}
+}

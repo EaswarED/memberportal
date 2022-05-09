@@ -1,0 +1,70 @@
+<div class="mw-company-information" fxLayout="column" fxLayoutGap="30px">
+	<mat-card class="p-0">
+		<div fxLayout="row" fxLayoutAlign="start center">
+			<div>
+				<button mat-icon-button color="primary" (click)="goBack()">
+					<mat-icon>keyboard_arrow_left</mat-icon>
+				</button>
+			</div>
+			<div>
+				<mat-card-title class="p-t-15">{{name}}</mat-card-title>
+				<mat-card-subtitle>{{description}}</mat-card-subtitle>
+			</div>
+		</div>
+
+		<mat-divider></mat-divider>
+		<mat-spinner *ngIf="isLoading"> </mat-spinner>
+
+		<form class="example-container p-30" #options="ngForm">
+			<mat-tab-group class="m-t-10">
+				<mat-tab>
+					<ng-template mat-tab-label>
+						<mat-icon class="p-l-10 p-r-10">settings</mat-icon>
+						Settings
+					</ng-template>
+					<div
+						fxLayout="column"
+						fxLayoutAlign="start start"
+						class="p-t-20 p-l-20"
+					>
+						<div
+							fxLayout.lt-md="column"
+							fxLayout="row"
+							fxLayoutGap="20px"
+							fxLayoutAlign="space-between center"
+							class="m-t-15 p-t-15"
+						>
+							<mat-label>Zoom Link</mat-label>
+							<mat-form-field
+								fxFlex="300px"
+								appearance="outline"
+								fxFlex.lt-md
+							>
+								<textarea
+									matInput
+									name="zoomLink"
+									[(ngModel)]="zoomLink"
+								></textarea>
+							</mat-form-field>
+						</div>
+					</div>
+				</mat-tab>
+			</mat-tab-group>
+			<mat-divider></mat-divider>
+			<div
+				fxLayout="column"
+				fxLayoutAlign="end end"
+				class="m-t-20 p-r-30 p-b-20"
+			>
+				<button
+					mat-raised-button
+					(click)="save()"
+					[disabled]="!options.valid"
+					color="primary"
+				>
+					Save
+				</button>
+			</div>
+		</form>
+	</mat-card>
+</div>

@@ -1,0 +1,124 @@
+<div class="mw-appointments" fxLayout="column" fxLayoutGap="30px">
+	<mat-card class="p-0">
+		<mat-card-title class="p-l-20 p-t-15">My Appointments</mat-card-title>
+		<mat-card-subtitle class="p-l-15">
+			Your scheduled and recommended appointments are listed below. {{
+			description | mworxTruncate: maxLenBIO:true:"" }}
+			<button
+				(click)="onReadMoreLess('M')"
+				*ngIf="readMoreBTN && description"
+				class="mw-appointments__moreBtn p-0"
+				mat-button
+				type="button"
+			>
+				Show More...
+			</button>
+			<button
+				(click)="onReadMoreLess('L')"
+				*ngIf="!readMoreBTN && description"
+				class="mw-appointments__moreBtn p-0"
+				mat-button
+				type="button"
+			>
+				Show less
+			</button>
+		</mat-card-subtitle>
+		<mat-divider></mat-divider>
+		<div
+			fxLayout="row"
+			fxLayout.lt-md="column"
+			class="p-l-15 p-r-15"
+			fxLayoutAlign="start center"
+		>
+			<button mat-raised-button color="primary" (click)="btnClicked()">
+				<mat-icon inline>add_circle_outline</mat-icon>
+				<span>&nbsp; Book</span>
+			</button>
+			<div fxFlex></div>
+			<div
+				fxLayout="row"
+				fxLayoutAlign="start center"
+				fxLayout.lt-md="row"
+			>
+				<div class="mw-appointments__dd p-t-15">
+					<mat-form-field appearance="outline">
+						<mat-label>Time Period</mat-label>
+						<mat-select
+							(selectionChange)="onPeriodChange($event)"
+							[(value)]="selectedPeriod"
+						>
+							<mat-option
+								*ngFor="let period of timePeriod"
+								[value]="period.code"
+							>
+								{{period.name}}
+							</mat-option>
+						</mat-select>
+					</mat-form-field>
+				</div>
+
+				<mat-form-field class="mw-appointments__dpicker">
+					<mat-label>Choose a date</mat-label>
+					<input matInput [matDatepicker]="picker" />
+					<mat-datepicker #picker></mat-datepicker>
+				</mat-form-field>
+				<button
+					mat-icon-button
+					*ngIf="isDisplayTable"
+					(click)="onListToCalendar('C')"
+				>
+					<mat-icon>calendar_today</mat-icon>
+				</button>
+				<button
+					mat-icon-button
+					*ngIf="isDisplayCalendar"
+					(click)="onListToCalendar('L')"
+				>
+					<mat-icon>list</mat-icon>
+				</button>
+			</div>
+		</div>
+		<mw-data-table
+			*ngIf="isDisplayTable"
+			[columnDefs]="columnDefs"
+			[rowData]="tableData"
+			[frameworkComponents]="frameworkComponents"
+			[paginationPageSize]="paginationPageSize"
+			[defaultColDef]="defaultColDef"
+			[context]="context_data"
+			[sortModel]="sortModel"
+		>
+		</mw-data-table>
+		<mw-calendar-data
+			[calendarData]="calendarApptData"
+			(onCalendarEventClick)="onCalendarEvent($event)"
+			(onCalendarEventClicks)="onCalendarEvents($event)"
+			*ngIf="isDisplayCalendar"
+		></mw-calendar-data>
+	</mat-card>
+
+	<div *ngIf="isDisplay" class="mat-title">Browse our other appointment</div>
+
+	<mw-carousel-card
+		fxFlex="300px"
+		[carouselData]="programList"
+		(newItemEvent)="onOpenTherapy($event)"
+		[isDisplay]="isDisplay"
+		*ngIf="isDisplay"
+	></mw-carousel-card>
+	<mw-card-data
+		[card_data]="isDisplayCard"
+		[isActiveData]="isActive"
+		[classData]="apptList"
+		[headerTitle]="title"
+		[selectedDescriptionLength]="maxLenBIO"
+		[readBTN]="readMoreBTN"
+		[selectedClassData]="selectedApptList"
+		(newItemEvent)="onClosedTherapy($event)"
+		(selectedClass)="selectedClass($event)"
+		(readMoreLess)="onReadMoreLess($event)"
+		(callActionToCreateEvent)="onCallTherapy($event)"
+		[code]="codeA"
+	>
+	</mw-card-data>
+</div>

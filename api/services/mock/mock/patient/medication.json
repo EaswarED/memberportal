@@ -1,0 +1,18 @@
+{
+    "previous": null,
+    "results": [
+        {
+            "id": 81372683,
+            "doctor": 292542,
+            "patient": 98269600,
+            "appointment": 190933329,
+            "notes": "Prevent vitamin deficiency due to poor diet",
+            "dosage_quantity": 5,
+            "indication": "Poor in Vitamins",
+            "signature_note": "prevent vitamin deficiency due to poor diet",
+            "name": "Fosfree oral tablet",
+            "status": "active"
+        }
+    ],
+    "next": null
+}

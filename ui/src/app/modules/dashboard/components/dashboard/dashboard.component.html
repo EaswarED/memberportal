@@ -1,0 +1,73 @@
+<div class="mw-dashboard" fxLayout="column" fxLayoutGap="9px">
+	<div
+		fxLayout.lt-md="column"
+		fxLayout="row"
+		fxFlex.gt-md="250px"
+		fxLayoutGap="10px"
+	>
+		<mw-dashboard-card
+			fxFlex
+			[classType]="CONST.CLASS_TYPE_APPOINTMENT"
+			[isLoading]="loading"
+			[selectedItem]="selectedData"
+			[cardItems]="recAppointments$ | async"
+			(btnClicked)="handleCardClick($event)"
+			(refreshCard)="refreshCardData($event)"
+		></mw-dashboard-card>
+
+		<mw-dashboard-card
+			fxFlex
+			[classType]="CONST.CLASS_TYPE_CLASS"
+			[isLoading]="loading"
+			[selectedItem]="selectedData"
+			[cardItems]="recClasses$ | async"
+			(btnClicked)="handleCardClick($event)"
+			(refreshCard)="refreshCardData($event)"
+		>
+		</mw-dashboard-card>
+
+		<mw-dashboard-card
+			fxFlex
+			[classType]="CONST.CLASS_TYPE_GROUP"
+			[isLoading]="loading"
+			[selectedItem]="selectedData"
+			[cardItems]="recGroups$ | async"
+			(btnClicked)="handleCardClick($event)"
+			(refreshCard)="refreshCardData($event)"
+		>
+		</mw-dashboard-card>
+	</div>
+
+	<div class="mat-title">Self Care</div>
+	<mw-carousel
+		fxFlex="275px"
+		(clickEvent)="handleClick($event)"
+		[carouselData]="recommendedContent$ | async"
+	></mw-carousel>
+
+	<mw-card fxFlex>
+		<div cardTitle fxFill fxLayoutAlign="start center">
+			<div fxFlex>Upcoming Activities</div>
+			<div>
+				<button
+					mat-icon-button
+					color="primary"
+					(click)="openCalendar()"
+				>
+					<mat-icon>date_range</mat-icon>
+				</button>
+			</div>
+		</div>
+		<div cardBody>
+			<mw-data-table
+				[columnDefs]="columnDefs"
+				[rowData]="activitiesList"
+				[frameworkComponents]="frameworkComponents"
+				[paginationPageSize]="CONST.LANDING_GRID_PAGE_SIZE"
+				[defaultColDef]="defaultColDef"
+				[context]="gridContext"
+			>
+			</mw-data-table>
+		</div>
+	</mw-card>
+</div>

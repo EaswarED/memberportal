@@ -1,0 +1,11 @@
+# Mindworx / Environment Specific
+# env-*.yml
+
+
+# Python distribution / packaging
+.Python
+__pycache__
+
+# AWS distribution / packaging
+.serverless
+node_modules

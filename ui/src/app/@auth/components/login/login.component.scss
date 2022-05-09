@@ -1,0 +1,93 @@
+@import '/src/app/@theme/colors';
+
+::ng-deep .mw-sign-in-section {
+	.mat-dialog-container {
+		padding: 100px;
+		border-radius: 30px;
+	}
+}
+
+::ng-deep.mat-form-field-disabled .mat-form-field-underline {
+	background-image: linear-gradient(
+		to right,
+		rgba(0, 0, 0, 0.42) 0,
+		rgba(0, 0, 0, 0.42) 33%,
+		rgb(0, 0, 0, 0.42) 0
+	) !important;
+	background-size: 4px 100% !important;
+	background-repeat: repeat-x !important;
+}
+
+.mw-sign-in {
+	position: relative;
+	height: 100% !important;
+	&__close {
+		position: absolute;
+		z-index: 1;
+		right: 5px;
+		top: 6px;
+		color: $primary-grey-g2;
+	}
+	&__started-section {
+		background: #dadada;
+	}
+	&__logo {
+		width: 100%;
+	}
+	&__loading {
+		position: absolute;
+		width: 100%;
+		background: rgb(255 255 255 / 50%);
+		height: 100%;
+		z-index: 1;
+		margin-left: -30px;
+		top: 0;
+	}
+	&__icon {
+		padding-right: 25px;
+		color: $primary-grey-g2;
+		font-size: 14px;
+	}
+	&__primarycolor {
+		color: $primary-yellow;
+		font: 500 14px / 20px 'Poppins';
+		cursor: pointer;
+	}
+	&__bright {
+		color: $primary-yellow;
+		font: 500 14px / 20px 'Poppins';
+	}
+	&__welcome {
+		color: $primary-yellow;
+		font: 500 24px / 24px 'Poppins';
+	}
+	&__grey {
+		color: $primary-grey-g2;
+		border: 1px solid $primary-grey-g2;
+	}
+	&__consult {
+		color: $primary-grey-g2;
+	}
+	&__white {
+		color: $primary-bg;
+		font: 500 24px / 24px 'Poppins';
+	}
+	&__find {
+		color: $bg-black-lighter;
+	}
+	&__size {
+		font: 500 14px / 20px 'Poppins';
+		cursor: pointer;
+	}
+	&__not-account {
+		font-size: 14px;
+		color: $primary-grey-g2;
+	}
+	&__circle {
+		height: 100px;
+		width: 100px;
+		border-radius: 50%;
+		border: 5px solid $primary-yellow;
+		margin: 0 auto;
+	}
+}

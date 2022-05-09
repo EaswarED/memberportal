@@ -1,0 +1,243 @@
+<div fxFlex class="mw-create-appt-config">
+	<mat-card class="p-0">
+		<div fxLayout="row" fxLayoutAlign="start center">
+			<div>
+				<button mat-icon-button color="primary" (click)="goBack()">
+					<mat-icon>keyboard_arrow_left</mat-icon>
+				</button>
+			</div>
+			<div>
+				<mat-card-title class="p-t-15" *ngIf="name; else nameTemplate"
+					>{{name}}</mat-card-title
+				>
+				<ng-template #nameTemplate>
+					<mat-card-title class="p-t-15"
+						>New Appointment</mat-card-title
+					>
+				</ng-template>
+				<mat-card-subtitle
+					class=""
+					*ngIf="description;else descriptionTemplate"
+				>
+					{{description}}
+				</mat-card-subtitle>
+				<ng-template #descriptionTemplate>
+					<mat-card-subtitle class=""
+						>Appointment text display here</mat-card-subtitle
+					>
+				</ng-template>
+			</div>
+		</div>
+
+		<mat-divider></mat-divider>
+		<mat-card-content>
+			<mat-spinner *ngIf="isLoading"> </mat-spinner>
+
+			<form class="example-container p-30" #options="ngForm">
+				<div fxLayout="column">
+					<mat-tab-group
+						[(selectedIndex)]="tabIndex"
+						[orientation]=""
+						fxFlex
+						fxFlexLayout="column"
+					>
+						<mat-tab fxFlexLayout="column">
+							<ng-template mat-tab-label>
+								<mat-icon class="p-r-10 p-l-10">style</mat-icon>
+								Type
+							</ng-template>
+							<div fxLayout="row">
+								<div
+									class="mw-create-appt-config__step1 p-30"
+									fxLayout.lt-lg="column"
+									fxLayout="column"
+									fxLayoutGap="20px"
+									fxLayoutAlign="start start"
+								>
+									<div
+										fxFlex
+										fxLayoutAlign="center center"
+										fxLayout="row"
+										class="mw-create-appt-config__w"
+									>
+										<mat-label fxFlex="120px" class="p-b-15"
+											>Category</mat-label
+										>
+										<mat-form-field
+											fxFlex
+											appearance="outline"
+										>
+											<mat-select
+												required
+												name="categoryId"
+												[(ngModel)]="categoryId"
+											>
+												<mat-option
+													*ngFor="let rec of categoryList"
+													[value]="rec.SK"
+													>{{ rec['Details.Name']
+													}}</mat-option
+												>
+											</mat-select>
+										</mat-form-field>
+									</div>
+									<div
+										fxFlex
+										fxLayoutAlign="center center"
+										fxLayout="row"
+										class="mw-create-appt-config__w"
+									>
+										<mat-label fxFlex="120px" class="p-b-15"
+											>Description</mat-label
+										>
+										<mat-form-field
+											fxFlex
+											appearance="outline"
+										>
+											<textarea
+												matInput
+												style="height: 60px"
+												name="description"
+												required
+												[(ngModel)]="description"
+											></textarea>
+											<mat-error>
+												Description is Required!
+											</mat-error>
+										</mat-form-field>
+									</div>
+								</div>
+							</div>
+						</mat-tab>
+						<mat-tab fxFlexLayout="column">
+							<ng-template mat-tab-label>
+								<mat-icon class="p-r-10 p-l-10">style</mat-icon>
+								Settings
+							</ng-template>
+							<div
+								fxFlex
+								fxFlexLayout="column"
+								fxLayoutAlign="start start"
+							>
+								<section
+									class="
+										example-section
+										mw-create-class-config__w
+										p-20
+										m-r-20
+									"
+								>
+									<h4>Choose Access:</h4>
+									<p>
+										<mat-checkbox
+											[checked]="isPublished"
+											(change)="onChangePublish($event)"
+											color="primary"
+											>Publish</mat-checkbox
+										>
+									</p>
+								</section>
+							</div>
+							<div
+								fxLayout="row"
+								fxFlexLayout="column"
+								fxLayoutAlign="start center"
+								class="
+									example-section
+									mw-create-class-config__w
+									p-20
+									m-r-20
+								"
+							>
+								<mat-label fxFlex="120px" class="p-b-15"
+									>ImageUrl</mat-label
+								>
+								<mat-form-field
+									fxFlex="300px"
+									appearance="outline"
+								>
+									<textarea
+										matInput
+										style="height: 60px"
+										[(ngModel)]="imageUrl"
+										required
+									></textarea>
+									<mat-error>
+										ImageUrl is Required!
+									</mat-error>
+								</mat-form-field>
+							</div>
+						</mat-tab>
+
+						<mat-tab>
+							<ng-template mat-tab-label>
+								<mat-icon class="p-r-10 p-l-10"
+									>settings_system_daydream</mat-icon
+								>
+								Forms
+							</ng-template>
+							<div
+								fxFlex
+								fxFlexLayout="column"
+								fxLayoutAlign="start start"
+							>
+								<section
+									class="
+										example-section
+										p-20
+										mw-create-class-config__w
+									"
+								>
+									<h4>Choose Non-Clinical Forms:</h4>
+									<p *ngFor="let rec of nonClinicalFormsList">
+										<mat-checkbox
+											[value]="rec.SK"
+											color="primary"
+											[checked]="savedForms && savedForms.indexOf(rec.SK) > -1"
+											(change)="onFormChange($event, rec)"
+											>{{rec['Details.Name']}}</mat-checkbox
+										>
+									</p>
+								</section>
+
+								<section
+									class="
+										example-section
+										p-20
+										mw-create-class-config__w
+									"
+								>
+									<h4>Choose Clinical Forms:</h4>
+									<p *ngFor="let rec of clinicalFormsList">
+										<mat-checkbox
+											[value]="rec.SK"
+											color="primary"
+											[checked]="savedForms && savedForms.indexOf(rec.SK) > -1"
+											(change)="onFormChange($event, rec)"
+											>{{rec.Name}}</mat-checkbox
+										>
+									</p>
+								</section>
+							</div>
+						</mat-tab>
+					</mat-tab-group>
+					<mat-toolbar
+						class="mw-create-appt-config__actions p-20"
+						fxFlex
+						fxLayoutAlign="end center"
+						fxLayoutGap="20px"
+					>
+						<button
+							mat-flat-button
+							(click)="doSave()"
+							[disabled]="!options.valid"
+							color="primary"
+						>
+							Save
+						</button>
+					</mat-toolbar>
+				</div>
+			</form>
+		</mat-card-content>
+	</mat-card>
+</div>

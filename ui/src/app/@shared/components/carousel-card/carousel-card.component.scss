@@ -1,0 +1,193 @@
+@import 'src/app/@theme/colors';
+
+// ::ng-deep {
+// 	.mw-cc {
+// 		.swiper-wrapper {
+// 			place-content: center center;
+// 		}
+// 	}
+// }
+.mw-cc {
+	position: relative;
+	padding-bottom: 3px;
+	padding-left: 100px !important;
+	padding-right: 100px !important;
+	&__card {
+		height: 300px;
+		// height: auto;
+		background: $bg-white;
+	}
+	&__image {
+		height: 227px;
+	}
+	&__title {
+		font-weight: 300;
+	}
+
+	&__btn {
+		position: absolute;
+		top: 72%;
+		line-height: 24px;
+		font-size: 9px;
+	}
+	&__moreBtn {
+		font-size: 11px;
+		padding-left: 3px;
+		line-height: 14px;
+		color: $primary-black;
+	}
+
+	&__desc {
+		color: $grey-text-g1;
+	}
+
+	@mixin swiper-nav {
+		height: 99%;
+		top: 0;
+		background-color: $bg-black-lighter;
+		width: 45px;
+		margin-top: 0;
+	}
+
+	::ng-deep .swiper-button-prev {
+		left: 0;
+		right: auto;
+		@include swiper-nav;
+	}
+
+	::ng-deep .swiper-button-next {
+		left: auto;
+		right: 0;
+		@include swiper-nav;
+	}
+}
+
+// for Responsiveness
+@media only screen and (max-width: 768px) {
+	::ng-deep {
+		.mw-cc {
+			position: relative;
+			padding-bottom: 3px;
+			padding-left: 0px !important;
+
+			.swiper-wrapper {
+				place-content: start start;
+			}
+		}
+	}
+}
+
+// @media only screen and (min-width: 992px) {
+// 	.mw-cc {
+// 		position: relative;
+// 		padding-bottom: 3px;
+// 		padding-left: 100px !important;
+// 		padding-right: 100px !important;
+
+// 		&__card {
+// 			height: auto;
+// 			background: $bg-white;
+// 		}
+// 		&__image {
+// 			height: 150px;
+// 		}
+// 		&__title {
+// 			font-weight: 300;
+// 		}
+
+// 		&__btn {
+// 			position: absolute;
+// 			top: 66%;
+// 			line-height: 24px;
+// 			font-size: 9px;
+// 		}
+// 		&__moreBtn {
+// 			font-size: 11px;
+// 			padding-left: 3px;
+// 			line-height: 14px;
+// 			color: $primary-black;
+// 		}
+
+// 		&__desc {
+// 			color: $grey-text-g1;
+// 		}
+
+// 		@mixin swiper-nav {
+// 			height: 99%;
+// 			top: 0;
+// 			background-color: $bg-black-lighter;
+// 			width: 45px;
+// 			margin-top: 0;
+// 		}
+
+// 		::ng-deep .swiper-button-prev {
+// 			left: 0;
+// 			right: auto;
+// 			@include swiper-nav;
+// 		}
+
+// 		::ng-deep .swiper-button-next {
+// 			left: auto;
+// 			right: 0;
+// 			@include swiper-nav;
+// 		}
+// 	}
+// }
+
+// @media only screen and (min-width: 1023px) {
+// 	.mw-cc {
+// 		position: relative;
+// 		padding-bottom: 3px;
+// 		padding-left: 100px !important;
+// 		padding-right: 100px !important;
+// 		// margin-left: 10px !important;
+// 		// margin-right: 10px !important;
+// 		&__card {
+// 			height: auto;
+// 			background: $bg-white;
+// 		}
+// 		&__image {
+// 			height: 210px;
+// 		}
+// 		&__title {
+// 			font-weight: 300;
+// 		}
+
+// 		&__btn {
+// 			position: absolute;
+// 			top: 72%;
+// 			line-height: 24px;
+// 			font-size: 9px;
+// 		}
+// 		&__moreBtn {
+// 			font-size: 11px;
+// 			padding-left: 3px;
+// 			line-height: 14px;
+// 			color: $primary-black;
+// 		}
+
+// 		&__desc {
+// 			color: $grey-text-g1;
+// 		}
+
+// 		@mixin swiper-nav {
+// 			height: 99%;
+// 			top: 0;
+// 			background-color: $bg-black-lighter;
+// 			width: 45px;
+// 			margin-top: 0;
+// 		}
+
+// 		::ng-deep .swiper-button-prev {
+// 			left: 0;
+// 			right: auto;
+// 			@include swiper-nav;
+// 		}
+
+// 		::ng-deep .swiper-button-next {
+// 			left: auto;
+// 			right: 0;
+// 			@include swiper-nav;
+// 		}
+// 	}
+// }

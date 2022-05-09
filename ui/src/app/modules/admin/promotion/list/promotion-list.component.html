@@ -1,0 +1,132 @@
+<div class="mw-promotion" fxLayout="column" fxLayoutGap="30px">
+	<mat-card class="p-0">
+		<div fxLayout="row" fxLayoutAlign="start center">
+			<div>
+				<button mat-icon-button color="primary" (click)="goBack()">
+					<mat-icon>keyboard_arrow_left</mat-icon>
+				</button>
+			</div>
+			<div>
+				<mat-card-title class="p-t-15"
+					><span fxFlex>Recommendation</span><span> </span
+				></mat-card-title>
+				<mat-card-subtitle>
+					Use these settings to promote services and content to
+					members and employees. Click the '+' sign to add a
+					recommendation and click on the company or client column to
+					remove a recommendation.
+				</mat-card-subtitle>
+			</div>
+		</div>
+		<mat-divider></mat-divider>
+
+		<mat-card-content fxLayout="column">
+			<div
+				class="mw-promotion__loading"
+				*ngIf="isLoading"
+				fxLayoutAlign="center center"
+			>
+				<mat-spinner style="margin: 0 auto"> </mat-spinner>
+			</div>
+			<mat-tab-group
+				fxFlex
+				fxFlexLayout="column"
+				[selectedIndex]="tabIndex"
+				(selectedTabChange)="tabChanged($event.index)"
+			>
+				<mat-tab fxFlexLayout="column">
+					<ng-template mat-tab-label>
+						<mat-icon class="p-r-10 p-l-10">event</mat-icon>
+						Appointments
+					</ng-template>
+
+					<div
+						class="mw-promotion-add__step1 p-30"
+						fxLayout="column"
+						fxLayoutGap="40px"
+						fxLayoutAlign="center start"
+						fxLayoutAlign.lt-md="center center"
+					>
+						<mw-data-table
+							[columnDefs]="columnDefs"
+							[rowData]="gridApptData$ | async"
+							[frameworkComponents]="frameworkComponents"
+							[context]="gridContext"
+							class="mw-promotion__gridList"
+						>
+						</mw-data-table>
+					</div>
+				</mat-tab>
+				<mat-tab>
+					<ng-template mat-tab-label>
+						<mat-icon class="p-r-10 p-l-10">accessibility</mat-icon>
+						Classes
+					</ng-template>
+					<div
+						class="mw-promotion-add__step1 p-30"
+						fxLayout="column"
+						fxLayoutGap="40px"
+						fxLayoutAlign="center start"
+						fxLayoutAlign.lt-md="center center"
+					>
+						<mw-data-table
+							[columnDefs]="columnDefs"
+							[rowData]="gridClassData$ | async"
+							[frameworkComponents]="frameworkComponents"
+							[context]="gridContext"
+							class="mw-promotion__gridList"
+						>
+						</mw-data-table>
+					</div>
+				</mat-tab>
+
+				<mat-tab>
+					<ng-template mat-tab-label>
+						<mat-icon class="p-r-10 p-l-10">groups</mat-icon>
+						Groups
+					</ng-template>
+					<div
+						class="mw-promotion-add__step1 p-30"
+						fxLayout="column"
+						fxLayoutGap="40px"
+						fxLayoutAlign="center start"
+						fxLayoutAlign.lt-md="center center"
+					>
+						<mw-data-table
+							[columnDefs]="columnDefs"
+							[rowData]="gridGroupData$ | async"
+							[frameworkComponents]="frameworkComponents"
+							[context]="gridContext"
+							class="mw-promotion__gridList"
+						>
+						</mw-data-table>
+					</div>
+				</mat-tab>
+				<mat-tab>
+					<ng-template mat-tab-label>
+						<mat-icon class="p-r-10 p-l-10"
+							>local_hospital</mat-icon
+						>
+						Contents
+					</ng-template>
+					<div
+						class="mw-promotion-add__step1 p-30"
+						fxLayout="column"
+						fxLayoutGap="40px"
+						fxLayoutAlign="center start"
+						fxLayoutAlign.lt-md="center center"
+					>
+						<mw-data-table
+							[columnDefs]="columnDefs"
+							[rowData]="gridContentData$ | async"
+							[frameworkComponents]="frameworkComponents"
+							[context]="gridContext"
+							class="mw-promotion__gridList"
+						>
+						</mw-data-table>
+					</div>
+				</mat-tab>
+			</mat-tab-group>
+		</mat-card-content>
+	</mat-card>
+</div>

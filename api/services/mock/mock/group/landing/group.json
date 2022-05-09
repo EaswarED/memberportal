@@ -1,0 +1,37 @@
+{
+    "status": {"code": 1, 
+    "err": null,
+     "msg": null, 
+     "totalRecords": 2},
+     "data": 
+    [
+    {
+    "class_id": 25406, 
+    "descId": 327,
+     "sessionTypeId": 250,
+     "descName": "Beginner Level",
+     "description": "Beginners recommended", 
+     "imageURL": "https://clients-content.mindbodyonline.com/studios/demoapisandboxrestore/reservations/327.jpg?osv=637604730750000000",
+     "sessionTypeName": "Hatha Yoga",
+     "programId": 27, 
+     "staffId": 100000314, 
+     "staffName": "Erin Coffey", 
+     "startDateTime":"2021-12-14T08:15:00",
+     "bookingStatus": "PaymentRequired"
+     },
+     {
+     "class_id": 25616,
+     "descId": 246, 
+     "sessionTypeId": 250,
+     "descName": "Healthy Yoga",
+     "description": "<div>learn yoga for healthy life</div>", 
+     "imageURL": "https://clients-content.mindbodyonline.com/studios/demoapisandboxrestore/reservations/246.jpg?osv=637604730750000000", 
+     "sessionTypeName": "Hatha Yoga", 
+     "programId": 27,
+     "staffId": 100000259,
+     "staffName": "Jake Hay",
+     "startDateTime":"2021-12-15T08:15:00",
+     "bookingStatus": "PaymentRequired"
+     }
+     ]
+     }

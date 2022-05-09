@@ -1,0 +1,98 @@
+{
+  "status": {
+      "code": 1,
+      "err": null,
+      "msg": null,
+      "totalRecords": 66
+  },
+  "data": [
+      {   "id": 19990,
+          "classScheduleId": 2267,
+          "sDate": "2021-11-25",
+          "eDate": "2021-11-25",
+          "Times":"08:00 AM",
+          "ETimes":"09:00 AM",
+          "startisAM": true,
+          "bookingStatus": "Free",
+           "staffName": "Carrie Cakan",
+            "staffId": 100000258,
+            "sessionTypeId": 257,
+            "sessionTypeName": "Explosive Speed Training",
+            "programName": "Classes",
+            "programId": 26
+            },
+          
+          {
+            "id": 19990,
+          "classScheduleId": 2264,
+          "sDate": "2021-11-25",
+          "eDate": "2021-11-25",
+          "times":"05:00 AM",
+          "eTimes":"06:00 AM",
+          "startisAM": true,
+          "bookingStatus": "Free",
+           "staffName": "Carrie Cakan",
+            "staffId": 100000258,
+            "sessionTypeId": 257,
+            "sessionTypeName": "Explosive Speed Training",
+            "programName": "Classes",
+            "programId": 26
+            },
+            
+          {
+            "id": 19990,
+          "classScheduleId": 2265,
+          "sDate": "2021-11-25",
+          "eDate": "2021-11-25",
+          "times":"06:00 AM",
+          "eTimes":"07:00 AM",
+          "startisAM": true,
+          "dailyStartTime": null,
+          "dailyEndTime": null,
+          "bookingStatus": "Free",
+           "staffName": "Carrie Cakan",
+            "staffId": 100000258,
+            "sessionTypeId": 257,
+            "sessionTypeName": "Explosive Speed Training",
+            "programName": "Classes",
+            "programId": 26
+            },  
+            {
+              "id": 19990,
+          "classScheduleId": 2266,
+          "sDate": "2021-11-25",
+          "eDate": "2021-11-25",
+          "times":"08:00 AM",
+          "eTimes":"09:00 AM",
+          "startisAM": true,
+          "dailyStartTime": null,
+          "dailyEndTime": null,
+          "bookingStatus": "Free",
+           "staffName": "Carrie Cakan",
+            "staffId": 100000258,
+            "sessionTypeId": 257,
+            "sessionTypeName": "Explosive Speed Training",
+            "programName": "Classes",
+            "programId": 26
+            },
+            {
+              "id": 19990,
+              "classScheduleId": 2267,
+              "sDate": "2021-12-01",
+              "eDate": "2021-12-01",
+              "times":"10:00 AM",
+              "eTimes":"11:00 AM",
+              "startisAM": true,
+              "dailyStartTime": null,
+              "dailyEndTime": null,
+              "bookingStatus": "Free",
+               "staffName": "Carrie Cakan",
+                "staffId": 100000258,
+                "sessionTypeId": 257,
+                "sessionTypeName": "Explosive Speed Training",
+                "programName": "Classes",
+                "programId": 26
+                }  
+
+  ]
+}

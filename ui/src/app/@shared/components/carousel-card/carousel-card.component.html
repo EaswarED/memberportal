@@ -1,0 +1,33 @@
+<swiper class="mw-cc" [config]="config">
+	<ng-template *ngFor="let item of carouselData ; let i = index" swiperSlide>
+		<mat-card
+			class="mw-cc__card mat-elevation-z3"
+			fxLayout="column"
+			fxLayoutAlign="start center"
+		>
+			<img
+				class="mw-cc__image"
+				mat-card-image
+				src="{{item['Details.ImageUrl']}}"
+				onerror="this.src='assets/images/appointment/other-services/noimage.jpg'"
+				alt="alternative"
+			/>
+			<button
+				class="mw-cc__btn"
+				(click)="handleclick(item)"
+				mat-raised-button
+				color="primary"
+			>
+				Explore
+			</button>
+
+			<mat-card-content
+				fxLayout="column"
+				fxLayoutAlign="start center"
+				fxLayoutGap="15px"
+			>
+				<div class="mw-cc__title m-t-5">{{item['Details.Name']}}</div>
+			</mat-card-content>
+		</mat-card>
+	</ng-template>
+</swiper>

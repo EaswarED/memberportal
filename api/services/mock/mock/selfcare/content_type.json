@@ -1,0 +1,30 @@
+{
+    "status":
+     {"code": 1, 
+     "err": null, 
+     "msg": null, 
+     "totalRecords": 4
+     }, 
+     "data": [
+     {
+     "code": "C01", 
+     "name": "Global",
+     "type" : "G"
+     }, 
+     {
+        "code": "C02", 
+        "name": "Favourites",
+        "type" : "F"
+     }, 
+     {
+        "code": "C03", 
+        "name": "My Content",
+        "type" : "content"
+     }, 
+     {
+        "code": "C04", 
+        "name": "My Company",
+        "type" : "company"
+     }
+     ]
+     }

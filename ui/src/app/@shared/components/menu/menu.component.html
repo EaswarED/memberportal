@@ -1,0 +1,21 @@
+<nav
+	class="mw-menu mat-elevation-z3 mw-header__menu m-t-10 m-b-10 p-t-5 p-b-5"
+	fxLayout="column"
+	fxLayoutAlign="space-evenly center"
+	fxLayoutGap="10px"
+>
+	<ng-container *ngFor="let item of dockBasicItems">
+		<a
+			class="mw-menu__item"
+			fxLayout="column"
+			fxLayoutAlign="center center"
+			[routerLink]="item.routerLink"
+			routerLinkActive="mw-menu__item__active"
+		>
+			<div fxLayoutAlign="center center" class="mw-menu__item__icon">
+				<mat-icon color="primary">{{item.icon}}</mat-icon>
+			</div>
+			<div class="mw-menu__label">{{item.label}}</div>
+		</a>
+	</ng-container>
+</nav>

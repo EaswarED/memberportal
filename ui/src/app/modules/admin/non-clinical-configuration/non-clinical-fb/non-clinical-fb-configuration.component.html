@@ -1,0 +1,74 @@
+<div class="mw-appointment-configuration" fxLayout="column" fxLayoutGap="30px">
+	<mat-card class="p-0">
+		<div fxLayout="row" fxLayoutAlign="start center">
+			<div>
+				<button
+					mat-icon-button
+					color="primary"
+					(click)="onBackAction()"
+				>
+					<mat-icon>keyboard_arrow_left</mat-icon>
+				</button>
+			</div>
+			<div>
+				<mat-card-title class="p-t-15"
+					><span fxFlex>Non Clinical</span></mat-card-title
+				>
+				<mat-card-subtitle>
+					Configure form builder...
+				</mat-card-subtitle>
+			</div>
+		</div>
+		<mat-divider></mat-divider>
+		<div
+			fxLayout="column"
+			fxLayout.lt-md="column"
+			class="p-t-25"
+			fxLayoutAlign="start center"
+		>
+			<div
+				fxFlex="100%"
+				fxLayout="row"
+				fxLayout.lt-md="column"
+				fxLayoutAlign="start center"
+				class="mw-appointment-configuration__w p-l-15 p-r-15"
+			>
+				<div fxFlex></div>
+			</div>
+			<!-- <mw-data-table
+				class="mw-appointment-configuration__w"
+				[columnDefs]="columnDefs"
+				[rowData]="tableData"
+				[frameworkComponents]="frameworkComponents"
+				[paginationPageSize]="paginationPageSize"
+				[defaultColDef]="defaultColDef"
+				[context]="context_data"
+				[sortModel]="sortModel"
+			>
+			</mw-data-table> -->
+			<div fxLayout="column">
+				<!-- <iframe
+						[src]="urlSafe"
+						width="850px"
+						height="600px"
+					></iframe
+				> -->
+
+				<mat-grid-list cols="1">
+					<mat-selection-list class="mw-onpatient_list">
+						<mat-list-option
+							class="mw-onpatient__listOption"
+							*ngFor="let config of tableData"
+						>
+							<div
+								(click)="onAddConfiguration(config.id, config.name)"
+							>
+								{{ config.name }}
+							</div>
+						</mat-list-option>
+					</mat-selection-list>
+				</mat-grid-list>
+			</div>
+		</div>
+	</mat-card>
+</div>

@@ -1,0 +1,44 @@
+@import '/src/app/@theme/colors';
+
+.dash-card {
+	.mat-button-disabled {
+		color: $primary-black-b1;
+		border: 0px;
+		font-size: 14px !important;
+		font-weight: normal;
+	}
+	&__item {
+		position: relative;
+		height: 50px;
+		border-bottom: 1px solid #e9ecef;
+		padding: 0 9px;
+	}
+
+	&__btn {
+		font-size: 14px;
+	}
+	&__timer {
+		font: 400 12px / 20px 'Poppins';
+		color: red;
+	}
+	&__scroll {
+		height: 150px;
+		overflow: auto;
+	}
+	&__loading {
+		position: absolute;
+		width: 100%;
+		background: rgb(255 255 255 / 50%);
+		z-index: 1;
+		margin-left: -30px;
+	}
+}
+
+@media only screen and (max-width: 1024px) {
+	.dash-card {
+		&__btn {
+			font-size: 11px;
+			padding: 0px 0px;
+		}
+	}
+}

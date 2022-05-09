@@ -1,0 +1,377 @@
+<mat-card fxFill fxFlex class="personal-information p-0">
+	<mat-card-title class="p-l-15 p-t-15">Personal Information</mat-card-title>
+	<mat-card-subtitle class="p-l-15"
+		>Personal Information's informationdisplays here
+	</mat-card-subtitle>
+	<mat-divider> </mat-divider>
+
+	<mat-card-content>
+		<div
+			class="personal-information__step1 p-30"
+			fxLayout.lt-lg="column"
+			fxLayout="row"
+			fxLayoutGap="70px"
+			fxLayoutAlign="center center"
+		>
+			<div fxFlex fxLayout="column" fxLayoutGap="12px">
+				<span class="personal-information__step1__title"
+					>Personal Information</span
+				>
+				<div
+					fxFlex
+					fxLayoutAlign="center center"
+					fxLayout="row"
+					fxLayoutGap="10px"
+				>
+					<div
+						fxLayoutAlign="center center"
+						class="personal-information__step1__avtarBox"
+					>
+						<div
+							*ngIf="filePath"
+							mat-card-avatar
+							class="personal-information__step1__avtarBox__avtar"
+							style="background-image: url('{{ filePath }}');"
+						></div>
+						<div
+							*ngIf="!filePath"
+							mat-card-avatar
+							class="personal-information__step1__avtarBox__avtar"
+							style="
+								background-image: url('../../../../../assets/images/no_user.png');
+							"
+						></div>
+						<span
+							class="
+								personal-information__step1__avtarBox__create-icon
+							"
+							><mat-icon
+								class="
+									personal-information__step1__avtarBox__create-icon1
+								"
+								>create</mat-icon
+							><input
+								class="
+									personal-information__step1__avtarBox__create-files
+								"
+								type="file"
+								accept="image/*"
+								[(ngModel)]="imagePreviewMoodel"
+								(change)="imagePreview($event)"
+						/></span>
+					</div>
+				</div>
+				<div
+					fxLayout.lt-md="column"
+					fxLayout="row"
+					fxLayoutGap="20px"
+					fxLayoutAlign="space-between center"
+				>
+					<mat-form-field
+						fxFlex
+						fxFlex.lt-md="80px"
+						appearance="outline"
+					>
+						<mat-label class="">First Name</mat-label>
+						<input matInput [(ngModel)]="fnameModel" />
+					</mat-form-field>
+					<mat-form-field
+						fxFlex
+						fxFlex.lt-md="80px"
+						appearance="outline"
+					>
+						<mat-label>Last Name</mat-label>
+						<input matInput [(ngModel)]="lnameModel" />
+					</mat-form-field>
+				</div>
+
+				<div
+					fxLayout.lt-md="column"
+					fxLayout="row"
+					fxLayoutGap="20px"
+					fxLayoutAlign="space-between center"
+				>
+					<mat-form-field
+						appearance="outline"
+						fxFlex
+						fxFlex.lt-md="80px"
+					>
+						<mat-label>Date of Birth</mat-label>
+						<input
+							matInput
+							[matDatepicker]="picker"
+							[(ngModel)]="dobModel"
+						/>
+						<mat-datepicker-toggle
+							matSuffix
+							[for]="picker"
+						></mat-datepicker-toggle>
+						<mat-datepicker #picker></mat-datepicker>
+					</mat-form-field>
+
+					<mat-form-field
+						fxFlex
+						fxFlex.lt-md="80px"
+						appearance="outline"
+					>
+						<mat-label>Gender</mat-label>
+						<mat-select [(ngModel)]="genderModel">
+							<mat-option value="Male">Male</mat-option>
+							<mat-option value="Female">Fe-Male</mat-option>
+							<mat-option value="Other">others</mat-option>
+						</mat-select>
+					</mat-form-field>
+				</div>
+
+				<div
+					fxLayout.lt-md="column"
+					fxLayout="row"
+					fxLayoutGap="20px"
+					fxLayoutAlign="space-between center"
+				>
+					<mat-form-field
+						fxFlex
+						fxFlex.lt-md="80px"
+						appearance="outline"
+					>
+						<mat-label>Social Security</mat-label>
+						<input matInput />
+					</mat-form-field>
+					<mat-form-field
+						fxFlex
+						fxFlex.lt-md="80px"
+						appearance="outline"
+					>
+						<mat-label>Preferred Languages</mat-label>
+						<mat-select [(ngModel)]="langModel">
+							<mat-option value="eng">English</mat-option>
+							<mat-option value="fra">French</mat-option>
+							<mat-option value="ger">Germany</mat-option>
+						</mat-select>
+					</mat-form-field>
+				</div>
+
+				<div
+					fxLayout.lt-md="column"
+					fxLayout="row"
+					fxLayoutGap="20px"
+					fxLayoutAlign="space-between center"
+				>
+					<mat-form-field
+						fxFlex
+						fxFlex.lt-md="80px"
+						appearance="outline"
+					>
+						<mat-label>Race</mat-label>
+						<mat-select [(ngModel)]="raceModel">
+							<mat-option value="white">White</mat-option>
+							<mat-option value="r2">Race2</mat-option>
+							<mat-option value="r3">Race3</mat-option>
+						</mat-select>
+					</mat-form-field>
+					<mat-form-field
+						fxFlex
+						fxLayout.lt-md="column"
+						fxFlex.lt-md="80px"
+						appearance="outline"
+					>
+						<mat-label>Ethnicity</mat-label>
+						<input matInput [(ngModel)]="ethinModel" />
+					</mat-form-field>
+				</div>
+			</div>
+			<div
+				fxFlex
+				fxLayoutAlign="start start"
+				fxLayout="column"
+				fxLayoutGap="10px"
+			>
+				<span class="personal-information__step1__title"
+					>Contact Information</span
+				>
+				<div
+					fxLayout.lt-md="column"
+					fxLayout="row"
+					fxLayoutGap="20px"
+					fxLayoutAlign="space-between center"
+					style="width: 100%"
+				>
+					<mat-form-field
+						fxFlex="100%"
+						fxFlex.lt-md="80px"
+						appearance="outline"
+					>
+						<mat-label>Phone</mat-label>
+						<input matInput [(ngModel)]="phoneModel" />
+					</mat-form-field>
+					<mat-form-field
+						fxLayout.lt-md="column"
+						fxFlex.lt-md="80px"
+						fxFlex="100%"
+						appearance="outline"
+					>
+						<mat-label>Work Phone</mat-label>
+						<input matInput [(ngModel)]="wphoneModel" />
+					</mat-form-field>
+				</div>
+				<div
+					fxLayout.lt-md="column"
+					fxLayout="row"
+					fxLayoutGap="20px"
+					fxLayoutAlign="space-between center"
+					style="width: 100%"
+				>
+					<mat-form-field fxFlex appearance="outline">
+						<mat-label>
+							<mat-label>E-Mail</mat-label>
+						</mat-label>
+						<input matInput [(ngModel)]="emailModel" />
+					</mat-form-field>
+				</div>
+
+				<div
+					fxLayout.lt-md="column"
+					fxLayout="row"
+					fxLayoutGap="20px"
+					fxLayoutAlign="space-between center"
+					style="width: 100%"
+				>
+					<mat-form-field fxFlex appearance="outline">
+						<mat-label>
+							<mat-label>Address</mat-label>
+						</mat-label>
+						<input matInput [(ngModel)]="addressModel" />
+					</mat-form-field>
+				</div>
+				<div
+					fxLayout.lt-md="column"
+					fxLayout="row"
+					fxLayoutGap="10px"
+					fxLayoutAlign="space-between center"
+				>
+					<div
+						fxLayout="row"
+						fxLayoutGap="10px"
+						fxLayout.lt-lg="column"
+					>
+						<mat-form-field
+							fxFlex="150px"
+							fxFlex.lt-lg="80px"
+							fxFlex.lt-md
+							appearance="outline"
+						>
+							<mat-label>
+								<mat-label>City</mat-label>
+							</mat-label>
+							<input matInput [(ngModel)]="cityModel" />
+						</mat-form-field>
+						<mat-form-field
+							fxFlex="150px"
+							fxFlex.lt-lg="80px"
+							fxFlex.lt-md
+							appearance="outline"
+						>
+							<mat-label>
+								<mat-label>State</mat-label>
+							</mat-label>
+							<mat-select [(ngModel)]="stateModel">
+								<mat-option
+									*ngFor="let city of cities"
+									[value]="city.code"
+								>
+									{{city.name}}
+								</mat-option>
+							</mat-select>
+						</mat-form-field>
+					</div>
+					<div
+						fxLayout="row"
+						fxLayoutGap="10px"
+						fxLayout.lt-lg="column"
+					>
+						<mat-form-field
+							fxFlex="150px"
+							fxFlex.lt-lg="80px"
+							fxFlex.lt-md
+							appearance="outline"
+						>
+							<mat-label>
+								<mat-label>Country</mat-label>
+							</mat-label>
+							<mat-select [(ngModel)]="countryModel">
+								<mat-option
+									*ngFor="let country of countries"
+									[value]="country.code"
+								>
+									{{country.name}}
+								</mat-option>
+							</mat-select>
+						</mat-form-field>
+						<mat-form-field
+							fxFlex="150px"
+							fxFlex.lt-lg="80px"
+							fxFlex.lt-md
+							appearance="outline"
+						>
+							<mat-label>
+								<mat-label>Postal</mat-label>
+							</mat-label>
+							<input matInput [(ngModel)]="postalModel" />
+						</mat-form-field>
+					</div>
+				</div>
+				<div
+					fxLayout.lt-md="column"
+					fxLayout="row"
+					fxLayoutGap="20px"
+					fxLayoutAlign="space-between center"
+					style="width: 100%"
+				>
+					<mat-form-field
+						fxFlex="100%"
+						fxFlex.lt-lg="250px"
+						fxFlex.lt-md
+						appearance="outline"
+					>
+						<mat-label>Emergency Contact</mat-label>
+						<input
+							matInput
+							[(ngModel)]="econtactModel"
+							[disabled]="true"
+						/>
+					</mat-form-field>
+					<mat-form-field
+						fxLayout.lt-md="column"
+						fxFlex.lt-lg="250px"
+						fxFlex="100%"
+						fxFlex.lt-md
+						appearance="outline"
+					>
+						<mat-label>Emergency Phone</mat-label>
+						<input
+							matInput
+							[(ngModel)]="econtactpModel"
+							[disabled]="true"
+						/>
+					</mat-form-field>
+				</div>
+			</div>
+		</div>
+		<div
+			fxLayout="row"
+			class="personal-information__Actions"
+			fxLayoutAlign="end end"
+			class="p-t-0 p-b-20 p-r-20"
+		>
+			<button
+				_ngcontent-lpj-c325=""
+				mat-stroked-button=""
+				mat-raised-button
+				color="primary"
+				(click)="btnSubmited($event)"
+			>
+				<span> Submit</span>
+			</button>
+		</div>
+	</mat-card-content>
+</mat-card>

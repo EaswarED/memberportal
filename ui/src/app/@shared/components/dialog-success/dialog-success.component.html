@@ -1,0 +1,29 @@
+<!-- cancelled Appointment, Classes and Groups -->
+<div class="mw-dialog-cancel">
+	<div
+		fxLayout="column"
+		fxLayoutGap="10px"
+		class="mw-dialog-congrat__close"
+		fxLayoutAlign="end end"
+	>
+		<button mat-icon-button (click)="handleNo()">
+			<mat-icon>close</mat-icon>
+		</button>
+	</div>
+
+	<div fxLayout="column" fxLayoutGap="10px" fxLayoutAlign="center center">
+		<div fxFlex fxLayout="column">
+			<img src="assets/images/party.png" class="p-r-15" />
+			<div class="mw-dialog-congrat__title">Success</div>
+		</div>
+		<div class="mw-dialog-congrat__sub-title m-t-10 m-b-20">
+			{{type}} is booked successfully!
+		</div>
+		<div
+			fxFlex
+			fxLayout="row"
+			fxLayoutGap="30px"
+			class="mw-dialog-congrat__info p-20"
+		></div>
+	</div>
+</div>

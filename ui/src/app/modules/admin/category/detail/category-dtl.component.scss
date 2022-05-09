@@ -1,0 +1,58 @@
+:host {
+	padding-right: 12px;
+	margin-left: 6.5rem;
+	display: block;
+}
+
+.mw-categories {
+	padding: 12px 0px;
+	&__card {
+		display: block !important;
+	}
+	&__actions {
+		width: 100% !important;
+	}
+	&__backBTN {
+		font: 400 20px / 20px 'Poppins';
+	}
+}
+mw-data-table {
+	width: 100%;
+}
+
+mat-tab-group {
+	flex-direction: row;
+
+	::ng-deep {
+		mat-tab-header {
+			flex-direction: column;
+			border-bottom: 0px solid transparent;
+			border-right: 1px solid rgba(0, 0, 0, 0.12);
+
+			.mat-tab-label-container {
+				flex-direction: column;
+
+				.mat-tab-labels {
+					flex-direction: column;
+				}
+
+				mat-ink-bar {
+					left: initial !important;
+					bottom: initial;
+					right: 0;
+					width: 2px !important;
+					height: initial;
+				}
+			}
+		}
+	}
+
+	::ng-deep .mat-tab-body-wrapper {
+		flex-direction: column;
+		width: 100%;
+	}
+}
+
+:host-context(.dark) mat-tab-group[vertical] ::ng-deep mat-tab-header {
+	border-right: 1px solid rgba(255, 255, 255, 0.12);
+}

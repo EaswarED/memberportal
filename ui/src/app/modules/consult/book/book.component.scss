@@ -1,0 +1,124 @@
+@import 'src/app/@theme/colors';
+:host {
+	display: block;
+	padding: 5px 0;
+	margin-left: 5px;
+
+	::ng-deep .mw-sign-in-section {
+		.mat-dialog-container {
+			padding: 0px !important;
+		}
+	}
+}
+
+.book-a-consult {
+	&__step1 {
+		&__bg-section {
+			position: relative;
+		}
+		&__date-title {
+			font: 500 18px / 20px 'Poppins';
+			color: $primary-grey-g2;
+		}
+		&__bg {
+			position: relative;
+			background: url('../../../../assets/images/mbjoinus.png') 100% 50%
+				no-repeat fixed;
+			height: 100%;
+			max-width: 250px;
+			min-width: 250px;
+			border-radius: 10px;
+		}
+		&__dd {
+			font-size: 10px;
+		}
+		&__dpicker {
+			width: 1px;
+			visibility: hidden;
+		}
+		&__circle {
+			height: 100px;
+			width: 100px;
+			border: 5px solid $primary-yellow;
+			border-radius: 50%;
+		}
+		&__content {
+			font-size: 16px;
+			font-weight: 600;
+			color: $bg-white;
+			text-align: center;
+			&__span {
+				font-size: 25px;
+				display: block;
+			}
+		}
+		&__w {
+			width: 100% !important;
+		}
+	}
+	&__stepActions {
+		padding: 20px;
+		&__btn {
+			color: $primary-yellow !important;
+			border: 1px solid $primary-yellow !important;
+		}
+	}
+	&__loading {
+		position: absolute;
+		width: 100%;
+		background: rgba(255, 255, 255, 0.5);
+		height: 100%;
+		z-index: 1;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+	}
+	&__step2 {
+		&__info {
+			background: rgb(164, 230, 231);
+			border-radius: 10px;
+			&__title {
+				font-size: 14px;
+				font-weight: 600;
+			}
+			&__sub-title {
+				font-size: 14px;
+			}
+		}
+		&__confirm {
+			border: 1px solid $primary-grey-g2;
+			width: 100%;
+			&__w {
+				width: 100%;
+			}
+			&__title {
+				font-size: 20px;
+				font-weight: 600;
+				color: $primary-yellow;
+			}
+			&__sub-title {
+				font-size: 20px;
+				font-weight: 600;
+				color: $primary-grey-g2;
+			}
+			&__Actions {
+				&__btn {
+					color: $primary-yellow;
+					border: 1px solid $primary-yellow;
+				}
+			}
+		}
+		&__call-section {
+			color: $primary-grey-g2;
+			font-style: italic;
+		}
+	}
+}
+
+.mw-create-profile-section {
+	.mat-dialog-container {
+		padding: 0 !important;
+		border-radius: 30px;
+	}
+}

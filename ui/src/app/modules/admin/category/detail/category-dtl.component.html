@@ -1,0 +1,110 @@
+<div class="mw-categories">
+	<mat-card class="p-0 mw-categories__card">
+		<div fxLayout="row" fxLayoutAlign="start center">
+			<div>
+				<button
+					class="mw-categories__backBTN"
+					mat-icon-button
+					(click)="goBack()"
+					color="primary"
+				>
+					<mat-icon>keyboard_arrow_left</mat-icon>
+				</button>
+			</div>
+			<div>
+				<mat-card-title class="p-t-15 p-b-10"
+					>{{pageTitle}}</mat-card-title
+				>
+			</div>
+		</div>
+		<mat-divider></mat-divider>
+
+		<form class="example-container p-30" #options="ngForm">
+			<div fxLayout="row">
+				<div fxLayout="column" style="width: 100%">
+					<mat-spinner *ngIf="!pageTitle"> </mat-spinner>
+					<div fxLayout="row" fxLayoutAlign="start center">
+						<mat-label fxFlex="150px">Name </mat-label>
+						<mat-form-field fxFlex="300px" appearance="outline">
+							<input
+								[(ngModel)]="name"
+								name="name"
+								matInput
+								required
+							/>
+						</mat-form-field>
+					</div>
+					<div fxLayout="row" fxLayoutAlign="start center">
+						<mat-lable fxFlex="150px">Description </mat-lable>
+						<mat-form-field
+							fxFlex="300px"
+							fxFlex.lt-md
+							appearance="outline"
+						>
+							<textarea
+								#txt="ngModel"
+								class="text-error"
+								name="description"
+								cols="35"
+								matInput
+								rows="8"
+								[(ngModel)]="description"
+								required
+							></textarea>
+						</mat-form-field>
+					</div>
+
+					<div fxLayout="row" fxLayoutAlign="start center">
+						<mat-label fxFlex="150px">Type</mat-label>
+						<mat-form-field
+							fxFlex="300px"
+							fxFlex.lt-md
+							appearance="outline"
+						>
+							<mat-select
+								[(ngModel)]="type"
+								required
+								name="type"
+								[(value)]="type"
+							>
+								<mat-option
+									*ngFor="let rec of typeList"
+									[value]="rec.code"
+									>{{ rec.name }}</mat-option
+								>
+							</mat-select>
+							<mat-error> Type is Required! </mat-error>
+						</mat-form-field>
+					</div>
+				</div>
+				<div fxLayout="column" style="width: 100%">
+					<div fxLayout="row" fxLayoutAlign="start center">
+						<mat-label fxFlex="150px">Image Url </mat-label>
+						<mat-form-field fxFlex="300px" appearance="outline">
+							<textarea
+								#txt="ngModel"
+								class="text-error"
+								name="imageUrl"
+								cols="35"
+								matInput
+								rows="8"
+								[(ngModel)]="imageUrl"
+								required
+							></textarea>
+						</mat-form-field>
+					</div>
+				</div>
+			</div>
+			<div fxLayoutAlign="end end" fxLayoutGap="15px">
+				<button
+					mat-raised-button
+					color="primary"
+					[disabled]="!options.valid"
+					(click)="save()"
+				>
+					Save
+				</button>
+			</div>
+		</form>
+	</mat-card>
+</div>

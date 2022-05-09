@@ -1,0 +1,26 @@
+{
+    "status": {
+        "code": 1,
+        "err": null,
+        "msg": null,
+        "totalRecords": 1
+    },
+    "data": [
+        {
+            "firstName": "Joselin", 
+            "lastName": "Vaneesa", 
+            "birthDate": "2000-11-22T00:00:00", 
+            "id": "100015626", 
+            "country": "US", 
+            "state": "NY", 
+            "email": "boss@mail.com", 
+            "mobilePhone": 8596748956, 
+            "addressLine1": "West Street", 
+            "city": "SCHENECTADY", 
+            "postalCode": "12345", 
+            "gender": "Male", 
+            "sendAccountEmails": true, 
+            "sendAccountTexts": false,
+            "photoUrl":"https://clients-content.mindbodyonline.com/studios/demoapisandboxrestore/clients/100015626_large.jpg?osv=637604730200000000"
+            }
+    ]}

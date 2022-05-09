@@ -1,0 +1,766 @@
+<mat-card fxFill fxFlex class="create-app p-t-20">
+	<mat-card-title class="p-l-20">Book Appointment</mat-card-title>
+	<mat-card-subtitle class="p-l-20"
+		>Please follow this workflow to schedule a new
+		appointment.</mat-card-subtitle
+	>
+	<mat-divider></mat-divider>
+	<mat-card-content>
+		<form [formGroup]="appFormGroup">
+			<mat-stepper
+				#appointmentStepper="matStepper"
+				[orientation]="(stepperOrientation | async)!"
+				formArrayName="formArray"
+				labelPosition="bottom"
+				[selectedIndex]="selectedIndexstep"
+				linear
+			>
+				<mat-step
+					formGroupName="0"
+					[stepControl]="formArray?.get([0])!"
+				>
+					<ng-template matStepLabel
+						>Choose Appointment and Provider</ng-template
+					>
+
+					<ng-template matStepContent>
+						<div
+							class="create-app__step1 p-30"
+							fxLayout.lt-md="column"
+							fxLayout="row"
+							fxLayoutGap="40px"
+							fxLayoutAlign="center start"
+							fxLayoutAlign.lt-md="center center"
+						>
+							<div
+								fxFlex.gt-sm="400px"
+								fxLayout="column"
+								fxLayoutGap="12px"
+							>
+								<div
+									fxLayout="row"
+									fxLayout.lt-md="column"
+									fxLayoutAlign="space-between center"
+								>
+									<span class="p-b-15"> Category</span>
+									<mat-form-field
+										fxFlex="235px"
+										fxFlex.lt-md
+										appearance="outline"
+									>
+										<mat-label>Choose a Category</mat-label>
+										<mat-select
+											formControlName="appCatCtrl"
+											required
+											(selectionChange)="onCategoryChange($event)"
+											[(value)]="categoryId"
+											[disabled]="disabledSelectedProID"
+										>
+											<mat-option
+												*ngFor="let rec of categoryList$ | async"
+												[value]="rec.id"
+												>{{ rec.name }}</mat-option
+											>
+										</mat-select>
+										<mat-error>
+											Category is Required!
+										</mat-error>
+									</mat-form-field>
+								</div>
+
+								<div
+									fxLayout="row"
+									fxLayout.lt-md="column"
+									fxLayoutAlign="space-between center"
+									*ngIf="sessionList || categoryId"
+								>
+									<span class="p-b-15">
+										Appointment Type</span
+									>
+									<mat-form-field
+										fxFlex="235px"
+										fxFlex.lt-md
+										appearance="outline"
+									>
+										<mat-label
+											>Choose an Appt Type</mat-label
+										>
+										<mat-select
+											formControlName="appTypeCtrl"
+											required
+											(selectionChange)="onSessionChange($event)"
+											[(value)]="sessionId"
+											[disabled]="disabledSelectedTypeID"
+										>
+											<mat-option
+												*ngFor="let rec of sessionList"
+												[value]="rec.id"
+												>{{ rec.name }}
+											</mat-option>
+										</mat-select>
+										<mat-error>
+											Type is Required!
+										</mat-error>
+									</mat-form-field>
+								</div>
+							</div>
+							<div
+								fxLayout="column"
+								fxLayoutAlign="center start"
+								fxLayoutAlign.lt-md="center center"
+							>
+								<div
+									fxLayout="row"
+									fxLayout.lt-md="column"
+									fxLayoutGap="20px"
+									fxLayoutAlign="space-between center"
+									*ngIf="staffList$ || sessionId"
+								>
+									<span class="p-b-15"> Provider</span>
+									<mat-form-field
+										fxFlex="235px"
+										fxFlex.lt-md
+										appearance="outline"
+									>
+										<mat-label>Choose a Provider</mat-label>
+										<mat-select
+											formControlName="appProviderCtrl"
+											required
+											(selectionChange)="onStaffChange($event)"
+											[(value)]="staffId"
+											[disabled]="disabledSelectedStaffID"
+										>
+											<mat-option
+												*ngFor="let rec of staffList"
+												[value]="rec.id"
+												>{{ rec.firstName }} {{
+												rec.lastName }}
+											</mat-option>
+										</mat-select>
+										<mat-error>
+											Provider is Required!
+										</mat-error>
+									</mat-form-field>
+								</div>
+								<div
+									fxFlex
+									fxLayoutAlign="start center"
+									fxLayout="row"
+									fxLayoutGap="10px"
+									*ngFor="let rec of staff"
+								>
+									<div
+										fxLayoutAlign="start center"
+										class="create-app__step1__avtarBox"
+										*ngIf="rec.firstName && rec.lastName"
+									>
+										<div
+											mat-card-avatar
+											class="
+												create-app__step1__avtarBox__avtar
+											"
+										></div>
+									</div>
+									<div
+										fxLayout="column"
+										fxLayoutAlign="start start"
+									>
+										<div
+											class="mat-body-2"
+											*ngIf="rec.firstName && rec.lastName"
+										>
+											{{ rec.firstName }} {{ rec.lastName
+											}}
+										</div>
+										<div
+											class="mat-caption"
+											*ngIf="rec.bio"
+										>
+											{{ rec.bio | mworxTruncate:
+											maxLenBIO:true:"" }}
+											<button
+												(click)="onReadMoreLess('M')"
+												*ngIf="readBTN && rec.bio && rec.bio !== ''"
+												class="
+													create-app__step1__moreBtn
+												"
+												mat-button
+												type="button"
+											>
+												Read More...
+											</button>
+											<button
+												(click)="onReadMoreLess('L')"
+												*ngIf="!readBTN && rec.bio && rec.bio !== ''"
+												class="
+													create-app__step1__moreBtn
+												"
+												mat-button
+												type="button"
+											>
+												Read less
+											</button>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div
+								fxFlex
+								fxLayoutAlign="center center"
+								fxLayout="row"
+								fxLayoutGap="10px"
+							></div>
+						</div>
+						<mat-divider></mat-divider>
+
+						<div
+							class="create-app__stepActions"
+							fxLayoutAlign="center center"
+							fxLayoutGap="15px"
+						>
+							<div fxFlex></div>
+							<button
+								mat-stroked-button
+								type="button"
+								color="primary"
+								(click)="onCancelAppt()"
+							>
+								Cancel
+							</button>
+							<button
+								mat-stroked-button
+								color="primary"
+								matStepperNext
+								type="button"
+							>
+								Next
+							</button>
+						</div>
+					</ng-template>
+				</mat-step>
+
+				<mat-step
+					formGroupName="1"
+					[stepControl]="formArray?.get([1])!"
+				>
+					<ng-template matStepLabel>Choose Date & Time</ng-template>
+
+					<ng-template matStepContent>
+						<div
+							class="create-app__step2 p-30"
+							fxLayout.lt-md="column"
+							fxLayout="row"
+							fxLayoutGap="70px"
+							fxLayoutAlign="start start"
+						>
+							<div
+								fxLayout="column"
+								class="create-app__step2__calendarsection"
+								fxFlex.lt-md="100%"
+								fxLayoutGap="20px"
+							>
+								<div class="m-b-25">Select Date</div>
+								<mat-calendar
+									required
+									class="create-app__step2__calendar"
+									[selected]="dates"
+									[dateClass]="isSelected"
+									[minDate]="today"
+									(selectedChange)="onDateChanges($event)"
+								></mat-calendar>
+							</div>
+							<div
+								fxLayout.lt-md="column"
+								fxLayoutGap="20px"
+								*ngIf="bookable_time"
+							>
+								<div class="m-l-15 m-b-20">Select Time</div>
+								<div
+									fxLayout="row"
+									fxLayoutAlign="start center"
+								>
+									<div class="p-20">Morning</div>
+									<div
+										fxLayout="row wrap"
+										fxLayoutAlign="start center"
+										fxLayoutGap="20px"
+									>
+										<ng-container
+											*ngFor="let rec of bookable_time; let i = index"
+										>
+											<span
+												*ngIf="rec.startisAM === true"
+											>
+												<button
+													fxFlex="90px"
+													class="
+														create-app__step2__timeBtn
+													"
+													*ngIf="rec.startisAM === true"
+													mat-stroked-button
+													color="primary"
+													required
+													type="button"
+													(click)="timeSlotSelected(i, rec.Time)"
+													[ngClass]="{
+                      'create-app__step2__timeBtn__selected':
+                        selectedTimeSlotIndex === i
+                    }"
+												>
+													{{ rec.Time }}
+												</button>
+											</span>
+										</ng-container>
+									</div>
+								</div>
+
+								<div
+									fxLayout="row"
+									fxLayoutAlign="start center"
+									class="m-t-25"
+								>
+									<div class="p-20">Evening</div>
+									<div
+										fxLayout="row wrap"
+										fxLayoutAlign="start center"
+										fxLayoutGap="20px"
+									>
+										<ng-container
+											*ngFor="let rec of bookable_time; let i = index"
+										>
+											<span
+												*ngIf="rec.startisAM !== true"
+											>
+												<button
+													fxFlex="90px"
+													class="
+														create-app__step2__timeBtn
+													"
+													mat-stroked-button
+													color="primary"
+													required
+													type="button"
+													(click)="timeSlotSelected(i, rec.Time)"
+													[ngClass]="{
+                      'create-app__step2__timeBtn__selected':
+                        selectedTimeSlotIndex === i
+                    }"
+												>
+													{{ rec.Time }}
+												</button>
+											</span>
+										</ng-container>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<mat-divider></mat-divider>
+
+						<div
+							class="create-app__stepActions"
+							fxLayoutAlign="center center"
+							fxLayoutGap="15px"
+						>
+							<div fxFlex></div>
+							<button
+								mat-stroked-button
+								color="primary"
+								type="button"
+								(click)="onCancelAppt()"
+							>
+								Cancel
+							</button>
+							<button
+								mat-stroked-button
+								color="primary"
+								matStepperPrevious
+								type="button"
+							>
+								Back
+							</button>
+							<button
+								mat-stroked-button
+								color="primary"
+								matStepperNext
+								type="button"
+							>
+								Next
+							</button>
+						</div>
+					</ng-template>
+				</mat-step>
+
+				<mat-step
+					formGroupName="2"
+					[stepControl]="formArray?.get([2])!"
+				>
+					<ng-template matStepLabel>
+						<div>Choose Payment Option</div>
+					</ng-template>
+					<ng-template matStepContent>
+						<div
+							class="create-app__step2 p-30"
+							fxLayout.lt-md="column"
+							fxLayout="row"
+							fxLayoutGap="30px"
+							fxLayoutAlign="space-around start"
+						>
+							<div
+								fxLayout="column"
+								fxFlex="100%"
+								class="create-app__step2__price"
+								fxLayoutGap="30px"
+								fxLayoutAlign="center start"
+							>
+								<mat-label>Select Payment Option</mat-label>
+								<mat-radio-group
+									fxLayoutGap="15px"
+									fxLayoutAlign="center start"
+									color="primary"
+									fxLayout="column"
+									formControlName="priceCtrl"
+									required
+									[(ngModel)]="priceSection"
+								>
+									<div *ngFor="let client of clientServices">
+										<div
+											class="
+												create-app__step2__price__prepaid
+											"
+											fxFill
+											fxFlex="100%"
+											fxLayoutGap="30px"
+											fxLayoutAlign="start center"
+											[ngClass]="{'create-app__step3__prepaidDisabled' :client.remaining ===0}"
+										>
+											<mat-radio-button
+												fxFlex="30px"
+												[value]="client.id"
+												[disabled]="client.remaining ===0"
+												required
+												(change)="onPriceChange('prepaid')"
+											>
+											</mat-radio-button>
+											<span fxFlex
+												>Use Prepaid Session
+											</span>
+											<span
+												fxFlex="100px"
+												*ngIf="client.remaining; else na"
+												>{{ client.remaining }}
+												Remaining</span
+											>
+											<ng-template #na>
+												Not Available
+											</ng-template>
+										</div>
+									</div>
+									<ng-template #notest>No Data</ng-template>
+									<div
+										fxLayout="row"
+										fxLayoutAlign="start center"
+										style="width: 100%"
+										class="m-t-20 m-b-20"
+									>
+										<div
+											fxLayout="row wrap"
+											fxLayoutAlign="start center"
+											fxLayoutGap="20px"
+											style="width: 100%"
+										>
+											<span class="create-app__step2__or">
+												OR
+											</span>
+										</div>
+									</div>
+									<div
+										class="
+											create-app__step2__price__prepaid
+										"
+										fxLayoutGap="30px"
+										fxLayoutAlign="center center"
+									>
+										<div fxFlex="30px"></div>
+										<span fxFlex>Type</span>
+										<span fxFlex="100px">Price</span>
+									</div>
+
+									<div
+										*ngIf="serviceprice?.length !== 0; else noprice"
+										fxLayout="column"
+									>
+										<div
+											*ngFor="let session of serviceprice"
+											class="
+												create-app__step2__price__session
+											"
+											fxFill
+											fxFlex="100%"
+											fxLayoutGap="30px"
+											fxLayoutAlign="start center"
+										>
+											<mat-radio-button
+												fxFlex="30px"
+												[value]="session.price"
+												required
+												(change)="onPriceChange('service')"
+											>
+											</mat-radio-button>
+											<span fxFlex
+												>{{ session.name }}</span
+											>
+											<span fxFlex="100px"
+												>{{ session.price | currency
+												}}</span
+											>
+										</div>
+									</div>
+									<ng-template #noprice>
+										No Data
+									</ng-template>
+								</mat-radio-group>
+							</div>
+						</div>
+
+						<mat-divider></mat-divider>
+
+						<div
+							class="create-app__stepActions"
+							fxLayoutAlign="center center"
+							fxLayoutGap="15px"
+						>
+							<div fxFlex></div>
+							<button
+								mat-stroked-button
+								type="button"
+								color="primary"
+								(click)="onCancelAppt()"
+							>
+								Cancel
+							</button>
+							<button
+								mat-stroked-button
+								color="primary"
+								matStepperPrevious
+								type="button"
+							>
+								Back
+							</button>
+							<button
+								mat-stroked-button
+								color="primary"
+								type="button"
+								*ngIf="bookBTN"
+								(click)="onCreateBookApptBTN($event)"
+							>
+								Book
+							</button>
+							<button
+								mat-stroked-button
+								color="primary"
+								matStepperNext
+								type="button"
+								*ngIf="paybtn"
+								(click)="onGetApptDetails()"
+							>
+								proceed to pay
+							</button>
+						</div>
+					</ng-template>
+				</mat-step>
+
+				<mat-step
+					formGroupName="3"
+					[stepControl]="formArray?.get([3])!"
+				>
+					<ng-template matStepLabel>Pay</ng-template>
+					<ng-template matStepContent>
+						<div
+							class="create-app__step4 p-20"
+							fxLayout.lt-md="column"
+							fxLayout="row"
+							fxLayoutGap="70px"
+							fxFlexAlign.lt-md="center start"
+							fxLayoutAlign="space-evenly start"
+						>
+							<div fxLayout="column" fxLayoutGap="20px">
+								<span class="mat-title p-b-15">
+									Appointment Summary</span
+								>
+								<div
+									fxLayout="row"
+									fxLayoutGap="20px"
+									fxLayoutAlign="space-between center"
+								>
+									<span fxFlex="140px"
+										>Appointment Date:</span
+									>
+									<span fxFlex
+										>{{ selectedApptDate | date }}</span
+									>
+								</div>
+								<div
+									fxLayout="row"
+									fxLayoutGap="20px"
+									fxLayoutAlign="space-between center"
+								>
+									<span fxFlex="140px"
+										>Appointment Time:</span
+									>
+									<span fxFlex
+										>{{ selectedApptTime | date: "HH:mm
+										z"}}</span
+									>
+								</div>
+								<div
+									fxLayout="row"
+									fxLayoutGap="20px"
+									fxLayoutAlign="space-between center"
+									*ngFor="let rec of selectedSessionId"
+								>
+									<span fxFlex="140px"
+										>Appointment Type:</span
+									>
+									<span fxFlex>{{ rec.name }}</span>
+								</div>
+								<div
+									fxLayout="row"
+									fxLayoutGap="20px"
+									fxLayoutAlign="space-between center"
+								>
+									<span fxFlex="140px">Price:</span>
+									<span fxFlex
+										>{{ selectedPriceSection | currency
+										}}</span
+									>
+								</div>
+							</div>
+							<div
+								ngClass.gt-sm="create-app__step4__payment"
+								fxLayout="column"
+								fxLayoutGap="30px"
+								fxLayoutAlign="center stretch"
+							>
+								<div class="mat-title">Payment Details</div>
+								<mat-radio-group
+									fxLayoutGap="20px"
+									color="primary"
+									formControlName="paymentTypeCtrl"
+									[(ngModel)]="paymentType"
+								>
+									<mat-radio-button
+										value="1"
+										(change)="onPaymentTypeChange(1)"
+										>Credit Card on File</mat-radio-button
+									>
+									<mat-radio-button
+										value="2"
+										(change)="onPaymentTypeChange(2)"
+										>Credit Card</mat-radio-button
+									>
+								</mat-radio-group>
+								<mat-form-field
+									appearance="fill"
+									*ngIf="paymentTypeMethod"
+								>
+									<mat-label>Name on Card</mat-label>
+									<input
+										matInput
+										[(ngModel)]="nameOnCard"
+										formControlName="nameOncardCtrl"
+									/>
+								</mat-form-field>
+								<mat-form-field
+									appearance="fill"
+									*ngIf="paymentTypeMethod"
+								>
+									<mat-label>Card Number</mat-label>
+									<input
+										matInput
+										[(ngModel)]="cardNumber"
+										formControlName="cardNumberCtrl"
+									/>
+								</mat-form-field>
+								<div
+									fxLayout="row"
+									fxLayout.lt-md="column"
+									fxLayoutGap="9px"
+									*ngIf="paymentTypeMethod"
+								>
+									<mat-form-field appearance="fill">
+										<mat-label>Valid Through</mat-label>
+										<input
+											matInput
+											type="date"
+											[(ngModel)]="expiry"
+											formControlName="expiryCtrl"
+										/>
+									</mat-form-field>
+									<mat-form-field appearance="fill">
+										<mat-label>CVV</mat-label>
+										<input
+											matInput
+											[(ngModel)]="cvv"
+											formControlName="cvvCtrl"
+										/>
+									</mat-form-field>
+								</div>
+								<div
+									fxLayoutAlign="center center"
+									*ngIf="paymentTypeMethodBtn"
+								>
+									<button
+										mat-raised-button
+										color="primary"
+										type="button"
+										(click)="onCreateApptBTN($event)"
+									>
+										Pay {{ selectedPriceSection | currency
+										}}
+									</button>
+								</div>
+								<div
+									fxLayoutAlign="center center"
+									*ngIf="paymentTypeMethod"
+								>
+									<img
+										class="
+											create-app__step4__payment__payTypes
+										"
+										src="assets/images/payment-types.png"
+									/>
+								</div>
+							</div>
+						</div>
+						<mat-divider></mat-divider>
+
+						<div
+							class="create-app__stepActions"
+							fxLayoutAlign="center center"
+							fxLayoutGap="15px"
+						>
+							<div fxFlex></div>
+							<button
+								mat-stroked-button
+								type="button"
+								color="primary"
+								(click)="onCancelAppt()"
+							>
+								Cancel
+							</button>
+							<button
+								mat-stroked-button
+								color="primary"
+								matStepperPrevious
+								type="button"
+							>
+								Back
+							</button>
+						</div>
+					</ng-template>
+				</mat-step>
+			</mat-stepper>
+		</form>
+	</mat-card-content>
+</mat-card>

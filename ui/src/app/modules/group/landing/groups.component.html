@@ -1,0 +1,89 @@
+<div class="mw-groups" fxLayout="column" fxLayoutGap="30px">
+	<mat-card class="p-0">
+		<mat-card-title class="p-l-15 p-t-15 p-b-15">My Groups</mat-card-title>
+		<mat-card-subtitle class="p-l-15">
+			<span
+				innerHTML="{{(isReadMore) ? description : description | slice:0:57}}"
+			></span>
+			<span *ngIf="!isReadMore">...</span>
+			<a
+				href="javascript:;"
+				class="mw-groups__moreBtn"
+				(click)="handleMoreLess()"
+				>{{ isReadMore ? 'Read Less': 'Read More' }}</a
+			>
+		</mat-card-subtitle>
+		<mat-divider></mat-divider>
+		<div
+			fxLayout.lt-md="column"
+			class="p-l-15 p-r-15 p-t-15"
+			fxLayoutAlign="start center"
+		>
+			<button mat-raised-button color="primary" (click)="bookGroups()">
+				<mat-icon inline>add_circle_outline</mat-icon>
+				<span>&nbsp; Book</span>
+			</button>
+			<div fxFlex></div>
+			<div
+				fxLayout="row"
+				fxLayoutAlign="start center"
+				fxLayout.lt-md="row"
+			>
+				<div class="mw-groups__dd p-t-15">
+					<mat-form-field appearance="outline">
+						<mat-label>Time Period</mat-label>
+						<mat-select
+							[(value)]="selectedFilter"
+							(selectionChange)="refreshList()"
+						>
+							<mat-option
+								*ngFor="let item of dateFilterList"
+								[value]="item.code"
+							>
+								{{item.name}}
+							</mat-option>
+						</mat-select>
+					</mat-form-field>
+
+					<mat-form-field class="mw-groups__dpicker">
+						<mat-label>Choose a date</mat-label>
+						<input matInput [matDatepicker]="picker" />
+						<mat-datepicker #picker></mat-datepicker>
+					</mat-form-field>
+					<button mat-icon-button (click)="openCalendar()">
+						<mat-icon color="primary">date_range</mat-icon>
+					</button>
+					<button mat-icon-button></button>
+				</div>
+			</div>
+		</div>
+		<mw-data-table
+			[columnDefs]="columnDefs"
+			[rowData]="filteredGridList"
+			[frameworkComponents]="frameworkComponents"
+			[context]="gridContext"
+			[paginationPageSize]="CONST.LANDING_GRID_PAGE_SIZE"
+		>
+		</mw-data-table>
+	</mat-card>
+
+	<div class="mat-title">Browse our group services</div>
+
+	<mw-carousel-card
+		fxFlex="300px"
+		[carouselData]="categoryData$ | async"
+		(clickEvent)="openCard($event)"
+		[isDisplay]="!showCard"
+		*ngIf="!showCard"
+	></mw-carousel-card>
+
+	<mw-card-data
+		[cardList]="cardList"
+		[title]="selectedCategory['Details.Name']"
+		(closeEvent)="handleClose()"
+		(doActions)="callToAction($event)"
+		[code]="CONST.CLASS_TYPE_GROUP"
+		*ngIf="showCard"
+	>
+	</mw-card-data>
+</div>

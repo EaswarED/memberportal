@@ -1,0 +1,200 @@
+@import '/src/app/@theme/colors';
+
+::ng-deep.mw-create-profile {
+	.mat-dialog-container {
+		padding: 0px;
+		border-radius: 30px;
+	}
+
+	.mat-form-field-wrapper {
+		padding: 0 !important;
+	}
+}
+
+.mw-create-profile {
+	padding: 0;
+	position: relative;
+	&__close {
+		position: absolute;
+		z-index: 1;
+		right: 5px;
+		top: 6px;
+		color: $primary-grey-g2;
+	}
+	&__search {
+		cursor: pointer;
+		color: $primary-yellow;
+	}
+	&__title {
+		color: $primary-grey-g2;
+		font-weight: 600;
+	}
+	&__htitle {
+		font-size: 14px;
+		color: $primary-grey-g2;
+		font-weight: 600;
+	}
+	&__loading {
+		position: absolute;
+		width: 100%;
+		background: rgb(255 255 255 / 50%);
+		height: 100%;
+		z-index: 1;
+		margin-left: -30px;
+	}
+	&__step1 {
+		height: 224px;
+		overflow: auto;
+		&__form-field {
+			max-width: 100%;
+			min-width: 100%;
+		}
+		&__section {
+			width: 100%;
+		}
+		&__agr-header {
+			font-weight: 600;
+		}
+		&__agr-sub-header {
+			font-weight: 600;
+		}
+		&__label1 {
+			font-size: 12px;
+			color: $primary-grey-g2;
+		}
+		&__section {
+			border: 1px solid $primary-grey-g2;
+
+			height: 150px;
+			overflow: auto;
+		}
+
+		&__label {
+			font-size: 14px;
+			font-weight: 500;
+			color: $primary-grey-g2;
+			padding-bottom: 0 !important;
+			position: relative;
+			&__option {
+				font-size: 14px;
+				color: $primary-grey-g2 !important;
+				font-weight: 600;
+			}
+			&__select {
+				width: 100%;
+				color: $primary-grey-g2;
+			}
+		}
+	}
+
+	&__step2 {
+		&__calendar {
+			border: 1px solid $primary-grey-border;
+			border-radius: 5px;
+		}
+		&__label {
+			font-size: 14px;
+			font-weight: 500;
+			color: $primary-grey-g2;
+		}
+		&__timeBtn {
+			margin: 15px;
+			padding: 3px 15px;
+			border-radius: 5px !important;
+			color: $primary-grey-g2;
+			border: 1px solid $primary-grey-g2;
+			&__selected {
+				color: $primary-bg;
+				background-color: $primary-grey-g2;
+			}
+		}
+	}
+
+	&__step3 {
+		width: 450px;
+		// max-height: 500px;
+		overflow: auto;
+		&__prepaid {
+			background-color: $primary-grey-g1;
+			padding: 12px;
+			border-radius: 5px;
+		}
+
+		&__prepaidDisabled {
+			color: $grey-text-g1;
+		}
+
+		&__session {
+			padding: 12px;
+			font-size: 12px;
+			&__price {
+				font-size: 14px;
+				color: $primary-grey-g2;
+			}
+			&__type {
+				font-size: 14px;
+				color: $primary-grey-g2;
+			}
+		}
+		&__label {
+			font-size: 14px;
+			font-weight: 500;
+			color: $primary-grey-g2;
+			position: relative;
+		}
+	}
+
+	&__stepActions {
+		&__btn {
+			color: $primary-grey-g2 !important;
+			border: 1px solid $primary-grey-g2 !important;
+		}
+		&__signin {
+			color: $primary-grey-g2 !important;
+			&__a {
+				color: $primary-yellow !important;
+			}
+		}
+	}
+	&__started-section {
+		background: $primary-grey-bg;
+		width: 100%;
+	}
+	&__logo {
+		width: 100%;
+	}
+	&__content {
+		color: $bg-white;
+		font: 500 24px / 20px 'Poppins';
+	}
+	&__find {
+		font: 500 14px / 20px 'Poppins';
+		color: $bg-black-lighter;
+	}
+	&__bright {
+		color: $primary-yellow;
+	}
+	&__circle {
+		height: 100px;
+		width: 100px;
+		border-radius: 50%;
+		border: 5px solid #fed268;
+		margin: 0 auto;
+	}
+	&__started-img-section {
+		width: 200px;
+	}
+	&__logo {
+		width: 100%;
+	}
+}
+
+.mw-create-profile-section {
+	.mat-dialog-container {
+		padding: 0 !important;
+		border-radius: 30px;
+	}
+}
+::ng-deep .mat-horizontal-stepper-header {
+	pointer-events: none !important;
+}

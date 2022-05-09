@@ -1,0 +1,149 @@
+<mat-card fxFill fxFlex class="create-app p-t-20">
+	<mat-card-title class="p-l-20">Cancel {{ pageTitle }}</mat-card-title>
+	<mat-card-subtitle
+		*ngIf="!selectedSummary;else earlycan"
+	></mat-card-subtitle>
+	<ng-template #earlycan>
+		<mat-card-subtitle
+			class="p-l-20"
+			*ngIf="cancelstate!=='L'; else lateTem"
+			>Please confirm that you would like to cancel this {{ pageTitle |
+			lowercase }}.
+			<span *ngIf="classType!=='C'">
+				Based on our cancellation policy you
+				<span class="mw-ccc__sub-title-prop"> will </span>
+				get a service credit for this cancellation
+			</span>
+		</mat-card-subtitle>
+
+		<ng-template #lateTem>
+			<mat-card-subtitle class="p-l-20" *ngIf="freebie !=='1';else free">
+				<span *ngIf="classType!=='C'">
+					Per our cancelation policy, any request (cancel or
+					reschedule) made within 24hrs of your booked appointment
+					<span class="mw-ccc__sub-title-prop"> will not </span> be
+					refunded.
+				</span>
+				<span *ngIf="classType==='C'">
+					Please confirm that you would like to cancel this {{
+					pageTitle | lowercase }}.
+				</span>
+			</mat-card-subtitle>
+			<ng-template #free
+				><mat-card-subtitle class="p-l-20">
+					<span *ngIf="classType!=='C'">
+						Per our cancelation policy, any request (cancel or
+						reschedule) made within 24hrs of your booked appointment
+						<span class="mw-ccc__sub-title-prop"> will </span> be
+						refunded.
+					</span>
+					<span *ngIf="classType==='C'">
+						Please confirm that you would like to cancel this {{
+						pageTitle | lowercase }}.
+					</span>
+				</mat-card-subtitle>
+			</ng-template>
+		</ng-template>
+	</ng-template>
+	<mat-divider></mat-divider>
+
+	<!--cancel summary-->
+	<div fxLayout="row" fxLayoutAlign="center start" class="p-t-15">
+		<div fxLayout="column" fxLayoutGap="20px">
+			<span class="mat-title"> Cancellation Summary</span>
+			<div
+				*ngIf="isLoading"
+				fxLayoutAlign="center center"
+				class="mw-ccc__loading"
+			>
+				<mat-spinner style="margin: 0 auto"></mat-spinner>
+			</div>
+			<ng-container *ngIf="selectedSummary;else summary">
+				<div
+					fxLayout="row"
+					fxLayoutGap="20px"
+					class="m-l-30"
+					fxLayoutAlign="center center"
+				>
+					<span>Date:</span>
+					<span fxFlex>{{selectedSummary.startDate | date}}</span>
+				</div>
+				<div
+					class="m-l-30"
+					fxLayout="row"
+					fxLayoutGap="20px"
+					fxLayoutAlign="space-between center"
+				>
+					<span>Time:</span>
+					<span fxFlex>{{selectedSummary.time}}</span>
+				</div>
+				<div
+					class="m-l-25"
+					fxLayout="row"
+					fxLayoutGap="20px"
+					fxLayoutAlign="space-between center"
+				>
+					<span class="m-r-18">Name:</span>
+					<span fxFlex>{{selectedSummary.serviceName}}</span>
+				</div>
+				<!-- <div
+					class="m-l-30"
+					fxLayout="row"
+					fxLayoutGap="20px"
+					fxLayoutAlign="space-between center"
+				>
+					<span>Price:</span>
+					<span fxFlex *ngIf="selectedSummary.price; else noprice"
+						>{{selectedSummary.price | currency}}</span
+					>
+					<ng-template #noprice
+						><span fxFlex>$0.00</span></ng-template
+					>
+				</div> -->
+				<div fxLayout="row" fxLayoutAlign="center start">
+					<mat-divider class="m-t-25"></mat-divider>
+					<mat-card-title class="m-t-40 m-b-25"
+						>Are you sure</mat-card-title
+					>
+				</div>
+				<div fxLayout="row" fxLayoutAlign="center start">
+					<div fxLayoutAlign="center center">
+						<button
+							mat-raised-button
+							(click)="handleYes()"
+							color="primary"
+						>
+							Yes
+						</button>
+					</div>
+					<div fxLayoutAlign="start center">
+						<div class="mw-ccc__sub m-t-10 p-l-10 p-r-10">(OR)</div>
+					</div>
+					<div fxLayoutAlign="start center">
+						<button
+							mat-raised-button
+							(click)="cancel()"
+							color="primary"
+						>
+							No
+						</button>
+					</div>
+				</div>
+			</ng-container>
+			<ng-template #summary>
+				<span> No Payment Available</span>
+				<div fxLayout="row" fxLayoutAlign="center start">
+					<div fxLayoutAlign="center center">
+						<button
+							mat-raised-button
+							(click)="cancel()"
+							color="primary"
+						>
+							Cancel
+						</button>
+					</div>
+				</div>
+			</ng-template>
+		</div>
+	</div>
+</mat-card>

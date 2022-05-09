@@ -1,0 +1,54 @@
+@import 'src/app/@theme/colors';
+
+.mw-cc {
+	position: relative;
+
+	&__card {
+		height: 300px;
+		max-width: 300px;
+	}
+	&__image {
+		height: 150px;
+	}
+	&__title {
+		font-size: 16px;
+		font-weight: 300;
+	}
+
+	&__btn {
+		position: absolute;
+		top: 46%;
+		line-height: 24px;
+		font-size: 9px;
+	}
+	&__moreBtn {
+		font-size: 11px;
+		padding-left: 3px;
+		line-height: 14px;
+		color: $primary-black;
+	}
+
+	&__desc {
+		color: $grey-text-g1;
+	}
+
+	@mixin swiper-nav {
+		height: 99%;
+		top: 0;
+		background-color: $bg-black-lighter;
+		width: 45px;
+		margin-top: 0;
+	}
+
+	::ng-deep .swiper-button-prev {
+		left: 0;
+		right: auto;
+		@include swiper-nav;
+	}
+
+	::ng-deep .swiper-button-next {
+		left: auto;
+		right: 0;
+		@include swiper-nav;
+	}
+}

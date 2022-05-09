@@ -1,0 +1,20 @@
+@import '/src/app/@theme/colors';
+
+.mw-content {
+	margin-bottom: -400px;
+	height: 100%;
+}
+@media only screen and (max-width: 412px) {
+	.mw-content {
+		top: 100px;
+		margin-top: 150px;
+		height: 100%;
+	}
+}
+@media only screen and (max-width: 736px) {
+	.mw-content {
+		top: 100px;
+		margin-top: 150px;
+		height: 100%;
+	}
+}

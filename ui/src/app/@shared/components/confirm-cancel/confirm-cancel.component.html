@@ -1,0 +1,249 @@
+<mat-card fxFill fxFlex class="create-app p-t-20">
+	<mat-card-title class="p-l-20">Cancel {{title}}</mat-card-title>
+	<mat-card-subtitle class="p-l-20"
+		>Please confirm that you would like to cancel this {{title |
+		lowercase}}. Based on our cancellation policy you
+		<span class="mw-ccc__sub-title-prop"> (will/willnot) </span>
+		get a service credit for this cancellation
+	</mat-card-subtitle>
+	<mat-divider></mat-divider>
+
+	<!--cancel summary-->
+	<div fxLayout="row" fxLayoutAlign="center start" class="p-t-15">
+		<div fxLayout="column" fxLayoutGap="20px">
+			<span class="mat-title"> Cancellation Summary</span>
+			<ng-container *ngIf="code === 'A'">
+				<ng-container *ngFor="let rec of tableData">
+					<div
+						fxLayout="row"
+						fxLayoutGap="20px"
+						class="m-l-30"
+						fxLayoutAlign="center center"
+					>
+						<span>Date:</span>
+						<span fxFlex>{{rec.startDateTime | date}}</span>
+					</div>
+					<div
+						class="m-l-30"
+						fxLayout="row"
+						fxLayoutGap="20px"
+						fxLayoutAlign="space-between center"
+					>
+						<span>Time:</span>
+						<span fxFlex
+							>{{rec.startDateTime | date: "HH:mm a"}}</span
+						>
+					</div>
+					<div
+						class="m-l-30"
+						fxLayout="row"
+						fxLayoutGap="20px"
+						fxLayoutAlign="space-between center"
+					>
+						<span> Type:</span>
+						<span fxFlex>{{rec.appointmentName}}</span>
+					</div>
+					<div
+						class="m-l-30"
+						fxLayout="row"
+						fxLayoutGap="20px"
+						fxLayoutAlign="space-between center"
+					>
+						<span>Price:</span>
+						<span fxFlex *ngIf="rec.price; else noprice"
+							>{{rec.price | currency}}</span
+						>
+						<ng-template #noprice
+							><span fxFlex>$0.00</span></ng-template
+						>
+					</div>
+					<div fxLayout="row" fxLayoutAlign="center start">
+						<mat-divider class="m-t-25"></mat-divider>
+						<mat-card-title class="m-t-40 m-b-25"
+							>Are you sure</mat-card-title
+						>
+					</div>
+					<div fxLayout="row" fxLayoutAlign="center start">
+						<div fxLayoutAlign="center center">
+							<button
+								mat-raised-button
+								(click)="onYesClass(code,rec)"
+								color="primary"
+							>
+								Yes
+							</button>
+						</div>
+						<div fxLayoutAlign="start center">
+							<div class="mw-ccc__sub m-t-10 p-l-10 p-r-10">
+								(OR)
+							</div>
+						</div>
+						<div fxLayoutAlign="start center">
+							<button
+								mat-raised-button
+								(click)="onNoClass(code)"
+								color="primary"
+							>
+								No
+							</button>
+						</div>
+					</div>
+				</ng-container>
+			</ng-container>
+
+			<ng-container *ngIf="code === 'G'">
+				<ng-container *ngFor="let rec of tableData">
+					<div
+						fxLayout="row"
+						fxLayoutGap="20px"
+						class="m-l-30"
+						fxLayoutAlign="center center"
+					>
+						<span>Date:</span>
+						<span fxFlex>{{rec.startDateTime | date}}</span>
+					</div>
+					<div
+						class="m-l-30"
+						fxLayout="row"
+						fxLayoutGap="20px"
+						fxLayoutAlign="space-between center"
+					>
+						<span>Time:</span>
+						<span fxFlex
+							>{{rec.startDateTime | date: "HH:mm a"}}</span
+						>
+					</div>
+					<div
+						class="m-l-30"
+						fxLayout="row"
+						fxLayoutGap="20px"
+						fxLayoutAlign="space-between center"
+					>
+						<span> Type:</span>
+						<span fxFlex>{{rec.appointmentName}}</span>
+					</div>
+					<div
+						class="m-l-30"
+						fxLayout="row"
+						fxLayoutGap="20px"
+						fxLayoutAlign="space-between center"
+					>
+						<span>Price:</span>
+						<span fxFlex *ngIf="rec.price; else noprice"
+							>{{rec.price | currency}}</span
+						>
+						<ng-template #noprice
+							><span fxFlex>$0.00</span></ng-template
+						>
+					</div>
+					<div fxLayout="row" fxLayoutAlign="center start">
+						<mat-divider class="m-t-25"></mat-divider>
+						<mat-card-title class="m-t-40 m-b-25"
+							>Are you sure</mat-card-title
+						>
+					</div>
+					<div fxLayout="row" fxLayoutAlign="center start">
+						<div fxLayoutAlign="center center">
+							<button
+								mat-raised-button
+								(click)="onYesClass(code,rec)"
+								color="primary"
+							>
+								Yes
+							</button>
+						</div>
+						<div fxLayoutAlign="start center">
+							<div class="mw-ccc__sub m-t-10 p-l-10 p-r-10">
+								(OR)
+							</div>
+						</div>
+						<div fxLayoutAlign="start center">
+							<button
+								mat-raised-button
+								(click)="onNoClass(code)"
+								color="primary"
+							>
+								No
+							</button>
+						</div>
+					</div>
+				</ng-container>
+			</ng-container>
+
+			<ng-container *ngIf="code === 'C'">
+				<ng-container *ngFor="let rec of tableData">
+					<div
+						fxLayout="row"
+						fxLayoutGap="20px"
+						class="m-l-30"
+						fxLayoutAlign="center center"
+					>
+						<span>Date:</span>
+						<span fxFlex>{{rec.startDateTime | date}}</span>
+					</div>
+					<div
+						class="m-l-30"
+						fxLayout="row"
+						fxLayoutGap="20px"
+						fxLayoutAlign="space-between center"
+					>
+						<span>Time:</span>
+						<span fxFlex
+							>{{rec.startDateTime | date: "HH:mm a"}}</span
+						>
+					</div>
+					<div
+						class="m-l-30"
+						fxLayout="row"
+						fxLayoutGap="20px"
+						fxLayoutAlign="space-between center"
+					>
+						<span> Type:</span>
+						<span fxFlex>{{rec.className}}</span>
+					</div>
+					<div
+						class="m-l-30"
+						fxLayout="row"
+						fxLayoutGap="20px"
+						fxLayoutAlign="space-between center"
+						*ngIf="rec.price"
+					>
+						<span>Price:</span>
+						<span fxFlex>{{rec.price | currency}}</span>
+					</div>
+					<div fxLayout="row" fxLayoutAlign="center start">
+						<mat-divider class="m-t-25"></mat-divider>
+						<mat-card-title class="m-t-40 m-b-25"
+							>Are you sure</mat-card-title
+						>
+					</div>
+					<div fxLayout="row" fxLayoutAlign="center start">
+						<div fxLayoutAlign="center center">
+							<button
+								mat-raised-button
+								(click)="onYesClass(code,rec)"
+								color="primary"
+							>
+								Yes
+							</button>
+						</div>
+						<div fxLayoutAlign="start center">
+							<div class="mw-ccc__sub m-t-10 p-l-10 p-r-10">
+								(OR)
+							</div>
+						</div>
+						<div fxLayoutAlign="start center">
+							<button
+								mat-raised-button
+								(click)="onNoClass(code)"
+								color="primary"
+							>
+								No
+							</button>
+						</div>
+					</div>
+				</ng-container>
+			</ng-container>
+		</div>
+	</div>
+</mat-card>

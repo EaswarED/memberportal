@@ -1,0 +1,16 @@
+{
+    "status":
+     {"code": 1, 
+     "err": null, 
+     "msg": null, 
+     "totalRecords": 1
+     }, 
+     "data": 
+     [
+        {
+            "id": 27,
+            "name": "Yoga"
+        }
+     
+     ]
+     }

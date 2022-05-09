@@ -1,0 +1,32 @@
+{
+    "status": 
+    {"code": 1, 
+    "err": null, 
+    "msg": null, 
+    "totalRecords": 4}, 
+    "data": 
+    [{
+		"name": "Generalized Anxiety Group", 
+        "isglobal":true,
+		"companies": 2, 
+		"clients": 3
+    },
+		{
+            "name": "Mindworx New Moms Group", 
+            "isglobal":false,
+            "companies": 2, 
+            "clients": 2
+		}, 
+		{
+            "name": "Mindworx Mindfullness", 
+            "isglobal":false,
+            "companies": 4, 
+            "clients": 3
+        },
+		{
+            "name": "Coaching", 
+            "isglobal":true,
+            "companies": 2, 
+            "clients": 3}
+		]
+    }

@@ -1,0 +1,71 @@
+<div class="mw-online-form-configuration" fxLayout="column" fxLayoutGap="30px">
+	<mat-card class="p-0">
+		<div fxLayout="row" fxLayoutAlign="start center">
+			<div>
+				<button mat-icon-button color="primary" (click)="goBack()">
+					<mat-icon>keyboard_arrow_left</mat-icon>
+				</button>
+			</div>
+			<div>
+				<mat-card-title class="p-t-15">
+					<span fxFlex>Forms</span>
+				</mat-card-title>
+				<mat-card-subtitle>
+					Select a Clinical (Dr Chrono) or Non-Clinical (JotForm) form
+					below to edit its configuration.
+				</mat-card-subtitle>
+			</div>
+		</div>
+		<mat-divider></mat-divider>
+		<div fxLayoutAlign="center center">
+			<mat-tab-group
+				#tabGroup
+				(selectedTabChange)="tabChanged($event)"
+				mat-align-tabs="center"
+				style="
+					flex-direction: column;
+					box-sizing: border-box;
+					display: flex;
+					width: 100%;
+				"
+			>
+				<mat-tab
+					style="
+						flex-direction: column;
+						box-sizing: border-box;
+						display: flex;
+						width: 100%;
+					"
+					mat-align-tabs="center"
+				>
+					<ng-template mat-tab-label>
+						<mat-icon class="p-r-10">style</mat-icon>
+						Clinical
+					</ng-template>
+
+					<mw-data-table
+						[columnDefs]="columnDefs"
+						[rowData]="gridDataClinical$ | async"
+						[frameworkComponents]="frameworkComponents"
+						[context]="gridContext"
+					>
+					</mw-data-table>
+				</mat-tab>
+
+				<mat-tab>
+					<ng-template mat-tab-label>
+						<mat-icon class="p-r-10">settings</mat-icon>
+						Non-Clinical
+					</ng-template>
+					<mw-data-table
+						[columnDefs]="columnDefs"
+						[rowData]="gridDataNonClinical$ | async"
+						[frameworkComponents]="frameworkComponents"
+						[context]="gridContext"
+					>
+					</mw-data-table>
+				</mat-tab>
+			</mat-tab-group>
+		</div>
+	</mat-card>
+</div>

@@ -1,0 +1,29 @@
+<div class="mw-company-profile" fxLayout="column" fxLayoutGap="30px">
+	<mat-card class="p-0">
+		<div fxLayout="row" fxLayoutAlign="start center">
+			<div>
+				<button mat-icon-button color="primary" (click)="goBack()">
+					<mat-icon>keyboard_arrow_left</mat-icon>
+				</button>
+			</div>
+			<div>
+				<mat-card-title class="p-t-15"
+					><span fxFlex>Company</span></mat-card-title
+				>
+				<mat-card-subtitle>
+					Select a company below to edit its configuration.
+				</mat-card-subtitle>
+			</div>
+		</div>
+
+		<mat-divider></mat-divider>
+		<mw-data-table
+			[columnDefs]="columnDefs"
+			[rowData]="gridData$ | async"
+			[frameworkComponents]="frameworkComponents"
+			[paginationPageSize]="paginationPageSize"
+			[context]="gridContext"
+		>
+		</mw-data-table>
+	</mat-card>
+</div>

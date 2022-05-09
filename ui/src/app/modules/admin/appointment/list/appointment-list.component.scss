@@ -1,0 +1,97 @@
+@import 'src/app/@theme/colors';
+
+:host {
+	padding-right: 12px;
+	margin-left: 6.5rem;
+	display: block;
+}
+::ng-deep.mw-appointment-configuration {
+	&__w {
+		width: 100%;
+	}
+	&__expansion-panel {
+		box-shadow: none;
+	}
+	&__expansion-panel-title {
+		font-size: 14px;
+		font-weight: 400;
+	}
+	&__header-title {
+		margin-bottom: 0px;
+	}
+}
+
+.mw-appointment-configuration {
+	padding: 12px 0px;
+	&__w {
+		width: 100%;
+	}
+	&__expansion-panel {
+		box-shadow: none;
+	}
+	&__expansion-panel-title {
+		font-size: 14px;
+		font-weight: 400;
+	}
+	&__header-title {
+		margin-bottom: 0px;
+	}
+	&__grid-list {
+		width: 100% !important;
+	}
+	&__grid-list-tile {
+		max-width: 350px !important;
+		min-width: 350px;
+	}
+	&__border-bottom {
+		border-bottom: 1px solid $grey-text-g1;
+	}
+
+	&__border-left {
+		border-left: 1px solid $grey-text-g1;
+	}
+	&__border-right {
+		border-right: 1px solid $grey-text-g1;
+	}
+	&__grid-list-thumb {
+		position: relative;
+		&__icon-thumb {
+			position: relative;
+			&__icon {
+				font-size: 25px;
+			}
+			&__icon-small {
+				bottom: 0px;
+				left: 45px;
+				position: absolute;
+			}
+		}
+		&__title {
+			font: 500 14px / 20px 'Poppins';
+			color: $primary-grey-g2;
+		}
+	}
+}
+@media only screen and (max-width: 1192px) {
+	.mw-appointment-configuration {
+		&__grid-list-tile {
+			max-width: 35% !important;
+			min-width: 35%;
+		}
+	}
+}
+
+@media only screen and (max-width: 959px) {
+	.mw-appointment-configuration {
+		&__grid-list-tile {
+			max-width: 350px !important;
+			min-width: 350px;
+		}
+		&__border-left {
+			border-left: 0px solid $primary-grey-g2;
+		}
+		&__border-right {
+			border-right: 0px solid $primary-grey-g2;
+		}
+	}
+}

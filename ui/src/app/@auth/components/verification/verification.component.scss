@@ -1,0 +1,23 @@
+@import 'src/app/@theme/colors';
+
+.mw-verification-profile {
+	padding: 0;
+	position: relative;
+	&__title {
+		color: $primary-grey-g2;
+		font-weight: 600;
+	}
+	&__htitle {
+		font-size: 14px;
+		color: $primary-grey-g2;
+		font-weight: 600;
+	}
+	&__loading {
+		position: absolute;
+		width: 100%;
+		background: rgb(255 255 255 / 50%);
+		height: 70%;
+		z-index: 1;
+		margin-left: -30px;
+	}
+}

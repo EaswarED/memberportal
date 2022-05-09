@@ -1,0 +1,272 @@
+service: ${self:custom.parentFile.service}-srvc-class
+org: ${self:custom.parentFile.org}
+app: ${self:custom.parentFile.app}
+
+frameworkVersion: '3'
+useDotenv: true
+projectDir: ../..
+
+provider:
+  name: aws
+  runtime: python3.8
+  lambdaHashingVersion: 20201221
+  region: ${self:custom.parentFile.provider.region}
+  stage: ${self:custom.parentFile.provider.stage}
+  profile: ${self:custom.parentFile.provider.profile}
+  timeout: ${self:custom.parentFile.provider.timeout}
+  environment: ${file(../../env-${self:provider.stage}.yml)}
+  layers:
+    - arn:aws:lambda:us-east-1:770693421928:layer:Klayers-python38-numpy:25
+    - arn:aws:lambda:us-east-1:770693421928:layer:Klayers-python38-pandas:48
+  iam:
+    role:
+      statements:
+        - Effect: 'Allow'
+          Action:
+            - secretsmanager:GetSecretValue
+          Resource:
+            - ${self:custom.parentFile.custom.${self:provider.stage}.secret_arn_cognito}
+            - ${self:custom.parentFile.custom.${self:provider.stage}.secret_arn_mindbody}
+            - ${self:custom.parentFile.custom.${self:provider.stage}.secret_arn_drchrono}
+            - ${self:custom.parentFile.custom.${self:provider.stage}.secret_arn_vimeo}
+            - ${self:custom.parentFile.custom.${self:provider.stage}.secret_arn_jotform}
+            - ${self:custom.parentFile.custom.${self:provider.stage}.secret_arn_twilio}
+        - Effect: Allow
+          Action:
+            - dynamodb:DescribeTable
+            - dynamodb:Query
+            - dynamodb:Scan
+            - dynamodb:GetItem
+            - dynamodb:PutItem
+            - dynamodb:UpdateItem
+            - dynamodb:DeleteItem
+          Resource:
+            - arn:aws:dynamodb:*:*:table/${self:provider.stage}-Mworx-Client
+            - arn:aws:dynamodb:*:*:table/${self:provider.stage}-Mworx-Config
+            - arn:aws:dynamodb:*:*:table/${self:provider.stage}-Mworx-Self-Care
+            - arn:aws:dynamodb:*:*:table/atomic_ids
+        - Effect: Allow
+          Action:
+            - s3:GetObject
+            - s3:PutObject
+            - s3:ListBucket
+          Resource:
+            - "arn:aws:s3:::bucket-for-content/*"
+
+resources:
+  Resources:
+    MindworxApiAuthorizer:
+      Type: AWS::ApiGateway::Authorizer
+      Properties:
+        Name: MindworxApiUser
+        AuthorizerResultTtlInSeconds: 300
+        IdentitySource: method.request.header.Authorization
+        RestApiId: !Ref ApiGatewayRestApi
+        Type: COGNITO_USER_POOLS
+        ProviderARNs:
+           - ${self:custom.parentFile.custom.${self:provider.stage}.cognito_arn}
+
+functions:
+  class_visits:
+    handler: handlers/client_visit.class_visits
+    events:
+      - http:
+          path: /landing/classes
+          method: GET
+          cors : true
+
+  group_visits:
+    handler: handlers/client_visit.group_visits
+    events:
+      - http:
+          path: /landing/groups
+          method: GET
+          cors : true
+
+  list_class:
+    handler: handlers/class.list_class
+    events:
+      - http:
+          path: /class_name
+          method: GET
+          cors : true
+
+  request_to_join:
+    handler: handlers/group.request_to_join
+    events:
+      - http:
+          path: /request/{id}
+          method: GET
+          cors : true
+
+  process_request:
+    handler: handlers/group.process_request
+    events:
+      - http:
+          path: /process/{id}
+          method: GET
+          cors : true
+
+  list_class_detail:
+    handler: handlers/client_visit.list_class_detail
+    events:
+      - http:
+          path: /class_detail/{id}
+          method: GET
+          cors : true
+
+  class_schedules:
+    handler: handlers/class.class_schedules
+    events:
+      - http:
+          path: /schedule
+          method: GET
+          cors : true
+
+  
+  cancel_visit:
+    handler: handlers/class.cancel_visit
+    events:
+      - http:
+          path: /cancel/visit
+          method: GET
+          cors : true
+
+  class_descriptions:
+     handler: handlers/class.class_descriptions
+     events:
+      - http:
+          path: /description
+          method: GET
+          cors : true
+
+  cancel_class:
+    handler: handlers/class.cancel_class
+    events:
+      - http:
+          path: /cancel/{id}
+          method: GET
+          cors: true
+
+  book_class:
+    handler: handlers/class.book_class
+    events:
+      - http:
+          path: /book_class/{id}
+          method: GET
+          cors : true
+
+  create_class:
+    handler: handlers/client_visit.create_class
+    events:
+      - http:
+          path: /book/classes
+          method: GET
+          cors : true
+
+  create_group:
+    handler: handlers/client_visit.create_group
+    events:
+      - http:
+          path: /book/groups
+          method: GET
+          cors : true
+
+  buy_class:
+    handler: handlers/class.buy_class
+    events:
+      - http:
+          path: /class/pay
+          method: POST
+          cors : true
+
+  get_cancel_class:
+    handler: handlers/class.get_cancel_class
+    events:
+      - http:
+          path: /summary/{id}
+          method: GET
+          cors : true
+
+  list_categories:
+    handler: handlers/class.list_categories
+    events:
+      - http:
+          path: /categories/{type}
+          method: GET
+          cors : true
+  #Class
+  list_classes:
+    handler: handlers/class.list_classes
+    events:
+      - http:
+          path: /classes_list
+          method: GET
+          cors: true
+  #Class
+  list_groups:
+    handler: handlers/class.list_groups
+    events:
+      - http:
+          path: /group_list
+          method: GET
+          cors: true
+
+  class_join_now:
+    handler: handlers/class.class_join_now
+    events:
+      - http:
+          path: /join/{id}
+          method: GET
+          cors : true
+  group_join_now:
+    handler: handlers/class.group_join_now
+    events:
+      - http:
+          path: /group_join/{id}
+          method: GET
+          cors : true
+  class_checkin:
+    handler: handlers/class.class_checkin
+    events:
+      - http:
+          path: /checkin/{id}
+          method: GET
+          cors : true
+custom:
+  parentFile: ${file(../../serverless.yml)}
+
+  customDomain:
+    domainName: ${self:custom.parentFile.custom.customDomain.domainName}
+    basePath: 'class'
+    stage: '${self:provider.stage}'
+    createRoute53Record: true
+
+  packageExternal:
+    external:
+      - '../../shared'
+      - '../../infrastructure'
+      - '../../providers'
+
+  pythonRequirements:
+    usePoetry: true
+    useDownloadCache: true
+    useStaticCache: false
+    invalidateCaches: false
+    slim: true
+
+    noDeploy:
+      - pytest
+
+package:
+  individually: false
+  excludeDevDependencies: false
+  patterns:
+    - '!.vscode/**'
+    - '!.pytest_cache/**'
+    - '!.aws-sam/**'
+
+plugins:
+  - serverless-domain-manager
+  - serverless-python-requirements
+  - serverless-package-external

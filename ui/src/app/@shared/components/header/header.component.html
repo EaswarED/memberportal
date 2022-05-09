@@ -1,0 +1,126 @@
+<mat-toolbar class="mw-header mat-elevation-z3" fxLayoutGap="9px">
+	<button class="mw-header__hamburger" mat-icon-button (click)="toggleMenu()">
+		<mat-icon>menu </mat-icon>
+	</button>
+
+	<a href="/"
+		><img
+			class="mw-header__logo"
+			src="assets/images/mindworx.png"
+			title="Home"
+			alt="Home"
+	/></a>
+
+	<span fxFlex></span>
+
+	<mat-card-title class="m-0 mw-header__ddText mw-header__clientDD"
+		>Test Account</mat-card-title
+	>
+
+	<div class="mw-header__dd mw-header__clientDD p-l-15 p-t-25 p-b-10">
+		<mat-form-field appearance="outline">
+			<mat-select
+				(selectionChange)="refreshClient($event)"
+				[(value)]="clientId"
+			>
+				<mat-option *ngFor="let item of client" [value]="item.id"
+					>{{ item.client }}</mat-option
+				>
+			</mat-select>
+		</mat-form-field>
+	</div>
+
+	<button mat-icon-button [matMenuTriggerFor]="notification">
+		<mat-icon
+			matBadge="3"
+			matBadgeOverlap="true"
+			matBadgeSize="small"
+			matBadgeColor="warn"
+			>notifications</mat-icon
+		>
+	</button>
+
+	<mat-menu class="mw-header__notification" #notification="matMenu">
+		<div fxFlex fxLayout="column">
+			<table mat-table [dataSource]="dataList">
+				<!--- Note that these columns can be defined in any order.
+					  The actual rendered columns are set as a property on the row definition" -->
+
+				<!-- Position Column -->
+
+				<!-- Name Column -->
+				<ng-container matColumnDef="fullname">
+					<th mat-header-cell *matHeaderCellDef>From</th>
+					<td
+						style="width: 100px"
+						mat-cell
+						*matCellDef="let element"
+						class="p-r-10"
+					>
+						{{element.fullname}}
+					</td>
+				</ng-container>
+
+				<!-- Weight Column -->
+				<ng-container matColumnDef="subject">
+					<th mat-header-cell *matHeaderCellDef>Messages</th>
+					<td
+						class="p-r-10"
+						mat-cell
+						*matCellDef="let element"
+						innerHtml="{{element.subject | slice:0:65}}"
+					></td>
+				</ng-container>
+
+				<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+				<tr
+					mat-row
+					*matRowDef="let row; columns: displayedColumns;"
+				></tr>
+			</table>
+			<div fxFlex fxLayout="row" fxLayoutAlign="center center">
+				<button
+					mat-stroked-button
+					color="primary"
+					(click)="onBtnClicked(2)"
+					type="button"
+				>
+					View All
+				</button>
+			</div>
+		</div>
+	</mat-menu>
+
+	<!-- <button
+		mat-icon-button
+		[matMenuTriggerFor]="menu"
+		img
+		src="assets/images/no_user.png"
+	></button> -->
+	<div class="mw-header__thumb" [matMenuTriggerFor]="menu">
+		<img
+			*ngIf="clientPicture;else noPicture"
+			mat-card-avatar
+			style="width: 100%"
+			src="{{clientPicture}}"
+		/>
+		<ng-template #noPicture>
+			<div class="mw-header__thumbText">{{getInitials(clientName)}}</div>
+		</ng-template>
+	</div>
+
+	<!-- <div mat-card-avatar class="mw-header__avatar" [matMenuTriggerFor]="menu">
+		<mat-avatar icon-src="/assets/images/no_user.png"></mat-avatar>
+	</div> -->
+	<mat-menu class="mw-header__account_menu" #menu="matMenu">
+		<button mat-menu-item (click)="onProfileClicked()">
+			<mat-icon>work</mat-icon>Profile
+		</button>
+		<button mat-menu-item (click)="onBillingClicked()">
+			<mat-icon>assignment</mat-icon>Billing
+		</button>
+		<button mat-menu-item (click)="handleLogout()">
+			<mat-icon>power_settings_new</mat-icon>Logout
+		</button>
+	</mat-menu>
+</mat-toolbar>

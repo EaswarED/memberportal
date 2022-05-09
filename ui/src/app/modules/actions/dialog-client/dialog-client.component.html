@@ -1,0 +1,27 @@
+<div
+	fxLayout="row"
+	fxLayoutGap="10px"
+	class="p-t-20 p-l-20 p-r-20"
+	fxLayoutAlign="start center"
+>
+	<h4>Clients</h4>
+	<span fxFlex></span>
+	<button mat-icon-button (click)="handleClose()">
+		<mat-icon>close</mat-icon>
+	</button>
+</div>
+<div
+	class="mw-appt-dialog__loading"
+	*ngIf="isLoading"
+	fxLayoutAlign="center center"
+>
+	<mat-spinner style="margin: 0 auto"> </mat-spinner>
+</div>
+<mw-data-table
+	[columnDefs]="columnDefs"
+	[rowData]="gridData"
+	[frameworkComponents]="frameworkComponents"
+	[context]="gridContext"
+	[paginationPageSize]="CONST.LANDING_GRID_PAGE_SIZE"
+>
+</mw-data-table>

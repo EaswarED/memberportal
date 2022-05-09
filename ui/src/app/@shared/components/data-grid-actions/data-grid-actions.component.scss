@@ -1,0 +1,20 @@
+@import 'src/app/@theme/colors';
+.mw-btn {
+	&__appt-btn {
+		max-width: 120px;
+		min-width: 120px;
+	}
+}
+.mw-grid-action {
+	&__timer {
+		line-height: 20px;
+		color: $primary_yellow;
+		font: 400 14px / 20px 'Poppins';
+		max-width: 100px;
+		min-width: 100px;
+	}
+	&__start {
+		font: 400 10px / 20px 'Poppins';
+		color: $primary_grey_g2 !important;
+	}
+}

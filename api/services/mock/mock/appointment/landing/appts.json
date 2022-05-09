@@ -1,0 +1,33 @@
+{
+    "status": {
+    "code": 1, 
+    "err": null, 
+    "msg": null, 
+    "totalRecords": 3}, 
+    "data": 
+    [
+    {"id": 100046493, 
+    "name": "60 min 2on1", 
+    "staffName": "Erik Iversen", 
+    "startDateTime": "2022-01-06T12:30:00", 
+    "staffId": 100000108,
+    "type":"A"
+    }, 
+    {
+    "id": 100046492, 
+    "name": "Nutrition Consultation", 
+    "staffName": "Carrie Cakan", 
+    "startDateTime": "2022-01-05T09:30:00", 
+    "staffId": 100000258,
+    "type":"A"
+    },
+    {
+        "id": 100046494, 
+        "name": "60 min 2on1", 
+        "staffName": "Carrie Cakan", 
+        "startDateTime": "2022-01-06T11:30:00", 
+        "staffId": 100000258,
+        "type":"A"
+        }
+    ]
+    }

@@ -1,0 +1,71 @@
+{
+    "status": {
+        "code": 1,
+        "err": null,
+        "msg": null,
+        "totalRecords": 5
+    },
+    "data": [
+        
+            {
+                "classId": 24062, 
+                "className": "Body Pump",
+                "staffName": "Carrie Cakan", 
+                "startDateTime": "2021-01-03T14:00:00", 
+                "programId":26,
+                "sessionTypeId":206,
+                "staffId":100000258,
+                "appointmentStatus": "Booked",
+                "visitid":100143808,
+                "price":55.00
+
+    }  ,
+    {
+        "classId": 24063, 
+        "className": "Zumba",
+        "staffName": "Carrie Cakan", 
+        "startDateTime": "2021-01-03T10:00:00", 
+        "programId":26,
+        "sessionTypeId":207,
+        "staffId":100000258,
+        "appointmentStatus": "Booked",
+        "visitid":100143809,
+        "price":0.00
+
+    } ,
+    {
+        "classId": 22001, 
+        "className": "Daily Work Out", 
+        "staffName": "Jake Hay", 
+        "startDateTime": "2021-01-04T06:30:00", 
+        "appointmentStatus": "Booked", 
+        "visitid": 100143800, 
+        "id": 100000259, 
+        "staffId": 100000259,
+        "price":55.00
+        }, 
+        {
+        "classId": 22379, 
+        "className": "Yoga", 
+        "staffName": "Ashley Knight", 
+        "startDateTime": "2021-01-04T16:30:00", 
+        "appointmentStatus": "Cancelled", 
+        "visitid": 100143801, 
+        "id": 100000279, 
+        "staffId": 100000279,
+        "price":108.00
+        },
+        {
+            "classId": 20095, 
+            "className": "Sweat", 
+            "staffName": "Kristin Gause", 
+            "startDateTime": "2021-01-04T16:00:00", 
+            "appointmentStatus": "Booked", 
+            "visitid": 100143801, 
+            "id": 100000280, 
+            "staffId": 100000280,
+            "price":108.00
+            }
+
+        ]
+        }

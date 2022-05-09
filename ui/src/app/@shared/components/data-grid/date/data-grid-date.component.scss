@@ -1,0 +1,11 @@
+@import 'src/app/@theme/colors';
+.mw-date {
+	&__datesection {
+		line-height: 21px;
+	}
+
+	&__timesection {
+		line-height: 10px;
+		color: $grey-text-g1;
+	}
+}

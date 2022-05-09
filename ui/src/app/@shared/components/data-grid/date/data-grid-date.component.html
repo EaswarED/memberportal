@@ -1,0 +1,12 @@
+<div
+	class="mw-date"
+	fxLayout="column"
+	fxLayoutAlign="start start"
+	fxLayoutGap="9px"
+	*ngIf="params?.value !==0"
+>
+	<span class="mw-date__datesection">{{ params?.value | date }} </span>
+	<span class="mw-date__timesection"
+		>{{ params?.value | date:'h:mm a' }}
+	</span>
+</div>

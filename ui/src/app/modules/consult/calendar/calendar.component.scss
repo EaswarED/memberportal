@@ -1,0 +1,64 @@
+@import '/src/app/@theme/colors';
+:host {
+	display: block;
+}
+::ng-deep .mw-consult-calendar {
+	.cal-week-view .cal-header.cal-today {
+		background-color: $primary-yellow-bg !important;
+	}
+	.cal-week-view .cal-event {
+		background-color: $primary-yellow-bg !important;
+		border-color: $primary-yellow-bg !important;
+		color: $primary-black !important;
+	}
+
+	.cal-week-view .cal-day-selected .cal-event{
+		background-color: $primary-yellow !important;
+		border-color: $primary-black !important;
+	}
+	
+	.cal-week-view .cal-header {
+		b {
+			letter-spacing: 1px;
+			font: 500 14px / 20px 'Poppins';
+		}
+		span {
+			letter-spacing: 1px;
+			font: 500 14px / 20px 'Poppins';
+		}
+	}
+	.cal-week-view .cal-time {
+		font: 500 14px / 20px 'Poppins';
+	}
+	.cal-current-time-marker {
+		background-color: $primary-blue;
+	}
+	.cal-event {
+		background-color: $primary-yellow !important;
+		border-color: $primary-yellow !important;
+		color: $primary-yellow !important;
+	}
+}
+.mw-consult-calendar {
+	&__active {
+		background: $primary-yellow !important;
+		color: $primary-black !important;
+	}
+}
+.cal-week-view .cal-header.cal-today {
+	background-color: $primary-yellow !important;
+}
+.date_title {
+	cursor: pointer;
+}
+.loading {
+	position: absolute;
+	width: 100%;
+	background: rgba(255, 255, 255, 0.5);
+	height: 1000px;
+	z-index: 1;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+}

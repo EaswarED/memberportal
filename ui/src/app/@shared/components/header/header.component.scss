@@ -1,0 +1,54 @@
+@import 'src/app/@theme/colors';
+
+::ng-deep .mat-menu-panel {
+	max-width: 450px !important;
+}
+
+.mw-header {
+	background-color: $primary-bg;
+	position: fixed;
+	top: 0;
+	z-index: 999;
+
+	&__logo {
+		width: 150px;
+		height: 40px;
+	}
+	&__thumb {
+		width: 40px;
+		height: 40px;
+		border: 1px solid $primary-yellow;
+		border-radius: 50%;
+		cursor: pointer;
+	}
+	&__thumbText {
+		text-align: center;
+		top: 6px;
+		position: relative;
+		cursor: pointer;
+	}
+	&__dd {
+		font-size: 12px;
+	}
+	&__ddText {
+		font-size: 15px;
+	}
+	&__avatar {
+		background-size: cover;
+	}
+}
+@media only screen and (min-width: 960px) {
+	.mw-header {
+		&__hamburger {
+			visibility: hidden;
+		}
+	}
+}
+
+@media only screen and (max-width: 960px) {
+	.mw-header {
+		&__clientDD {
+			display: none;
+		}
+	}
+}

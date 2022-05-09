@@ -1,0 +1,87 @@
+{
+    "status": {
+        "code": 1,
+        "err": null,
+        "msg": null,
+        "totalRecords": 15
+    },
+    "data":[{
+        "id": 9, 
+        "name": "Aerobics", 
+        "programId": 12
+        }, 
+        {
+        "id": 10, 
+        "name": "Cycling", 
+        "programId": 12
+        }, 
+        {
+        "id": 15, 
+        "name": "Bank Service Charges", 
+        "programId": 15
+        }, 
+        {
+        "id": 48, 
+        "name": "Childcare", 
+        "programId": 12
+        }, 
+        {
+        "id": 68, 
+        "name": "Yoga ", 
+        "programId": 26
+        }, 
+        {
+        "id": 70, 
+        "name": "Pilates ", 
+        "programId": 26
+        }, 
+        {
+        "id": 206, 
+        "name": "Les Mills", 
+        "programId": 26
+        }, 
+        {
+        "id": 207, 
+        "name": "Spinning", 
+        "programId": 26
+        }, 
+        {
+        "id": 211, 
+        "name": "Fitness Assessments", 
+        "programId": 22
+        }, 
+        {
+        "id": 242, 
+        "name": "Group Swim Lessons", 
+        "programId": 26
+        }, 
+        
+        {
+        "id": 251, 
+        "name": "Work out of the day", 
+        "programId": 26
+        }, 
+        
+        {
+        "id": 253, 
+        "name": "Swim", 
+        "programId": 26
+        }, 
+        {
+        "id": 254, 
+        "name": "Kickboxing", 
+        "programId": 26
+        }, 
+        {
+        "id": 257, 
+        "name": "Explosive Speed Training", 
+        "programId": 26
+        }, 
+        {
+        "id": 258, 
+        "name": "Goalie Training", 
+        "programId": 26
+        }
+    
+    ]
+}

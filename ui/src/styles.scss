@@ -1,0 +1,87 @@
+/* You can add global styles to this file, and also import other style files */
+@import './app/@theme/mindworks_theme';
+@import './app/@theme/typography';
+@import './app/@theme/margins';
+@import './app/@theme/colors';
+@import '~ag-grid-community/dist/styles/ag-grid.css';
+@import '~ag-grid-community/dist/styles/ag-theme-material.css';
+@import 'swiper/scss';
+@import 'swiper/scss/autoplay';
+@import 'swiper/scss/effect-coverflow';
+@import 'swiper/scss/navigation';
+@import 'swiper/scss/pagination';
+@import '~ngx-toastr/toastr.css';
+
+body,
+html {
+	height: 100%;
+}
+
+body {
+	font-family: 'Poppins', sans-serif;
+	margin: 0;
+	height: 100vh;
+	background-color: $primary-bg;
+}
+
+h1 {
+	font-weight: lighter;
+	font-size: 37px;
+}
+
+h2 {
+	font-weight: normal;
+	font-size: 37px;
+}
+
+h3 {
+	font-weight: normal;
+	font-size: 24px;
+}
+
+h4 {
+	font-weight: lighter;
+	font-size: 18px;
+}
+
+.ag-theme-material {
+	font-family: 'Poppins', sans-serif !important;
+}
+@media only screen and (orientation: portrait) {
+	body,
+	html {
+		height: 100%;
+		overflow-x: hidden;
+	}
+
+	body {
+		font-family: 'Poppins', sans-serif;
+		margin: 0;
+		height: 100vh;
+		background-color: $primary-bg;
+	}
+
+	h1 {
+		font-weight: lighter;
+		font-size: 37px;
+	}
+
+	h2 {
+		font-weight: normal;
+		font-size: 37px;
+	}
+
+	h3 {
+		font-weight: normal;
+		font-size: 24px;
+	}
+
+	h4 {
+		font-weight: lighter;
+		font-size: 18px;
+	}
+
+	.ag-theme-material {
+		font-family: 'Poppins', sans-serif !important;
+	}
+}

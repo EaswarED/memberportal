@@ -1,0 +1,572 @@
+<mat-card fxFill fxFlex class="create-medical p-t-20">
+	<mat-card-title class="create-medical__header p-l-20"
+		>Medical Information</mat-card-title
+	>
+	<mat-card-subtitle class="p-l-20"
+		>Medical Information's. Information display here...</mat-card-subtitle
+	>
+	<mat-divider></mat-divider>
+	<mat-card-content>
+		<form [formGroup]="medicalFormGroup">
+			<mat-stepper
+				#medicalStepper="matStepper"
+				[orientation]="(stepperOrientation | async)!"
+				formArrayName="formArray"
+				labelPosition="bottom"
+			>
+				<mat-step
+					formGroupName="0"
+					[stepControl]="formArray?.get([0])!"
+				>
+					<ng-template matStepLabel>Medications Changes</ng-template>
+
+					<ng-template matStepContent>
+						<div
+							class="create-medical__step1 p-30"
+							fxLayout.lt-md="column"
+							fxLayout="row"
+							fxLayoutGap="70px"
+							fxLayoutAlign="center center"
+						>
+							<div
+								fxLayout="column"
+								fxLayoutGap="12px"
+								class="create-medical__step1__w"
+							>
+								<div
+									fxLayout="column"
+									fxLayoutGap="10px"
+									fxLayoutAlign="start"
+								>
+									<span class="create-medical__step1__label"
+										>Changes to Medications</span
+									>
+
+									<div
+										fxLayout="column"
+										fxLayoutAlign="center start"
+										color="primary"
+										class="create-medical__step1__section"
+									>
+										<table
+											mat-table
+											[dataSource]="medicationList"
+											class="
+												create-medical__step1__section-table
+											"
+										>
+											<!--- Note that these columns can be defined in any order.
+												  The actual rendered columns are set as a property on the row definition" -->
+
+											<!-- Name Column -->
+											<ng-container matColumnDef="name">
+												<th
+													mat-header-cell
+													*matHeaderCellDef
+												>
+													Medical & Dosage
+												</th>
+												<td
+													mat-cell
+													*matCellDef="let element"
+												>
+													{{element.name}}
+												</td>
+											</ng-container>
+
+											<!-- Name Column -->
+											<ng-container
+												matColumnDef="indication"
+											>
+												<th
+													mat-header-cell
+													*matHeaderCellDef
+												>
+													Indications
+												</th>
+												<td
+													mat-cell
+													*matCellDef="let element"
+												>
+													{{element.indication}}
+												</td>
+											</ng-container>
+
+											<tr
+												mat-header-row
+												*matHeaderRowDef="displayedMedicalColumns"
+											></tr>
+											<tr
+												mat-row
+												*matRowDef="let row; columns: displayedMedicalColumns;"
+											></tr>
+										</table>
+									</div>
+								</div>
+
+								<div
+									fxLayout="column"
+									fxLayoutGap="10px"
+									fxLayoutAlign="start"
+								>
+									<span class="create-medical__step1__label"
+										>Changes to Allegries</span
+									>
+
+									<div
+										fxLayout="column"
+										fxLayoutAlign="center start"
+										color="primary"
+										class="create-medical__step1__section"
+									>
+										<table
+											class="
+												create-medical__step1__section-table
+											"
+											mat-table
+											[dataSource]="allergyList"
+										>
+											<!--- Note that these columns can be defined in any order.
+												  The actual rendered columns are set as a property on the row definition" -->
+
+											<!-- Name Column -->
+											<ng-container matColumnDef="notes">
+												<th
+													mat-header-cell
+													*matHeaderCellDef
+												>
+													Allegry
+												</th>
+												<td
+													mat-cell
+													*matCellDef="let element"
+												>
+													{{element.notes}}
+												</td>
+											</ng-container>
+
+											<!-- Name Column -->
+											<ng-container
+												matColumnDef="reaction"
+											>
+												<th
+													mat-header-cell
+													*matHeaderCellDef
+												>
+													Reaction
+												</th>
+												<td
+													mat-cell
+													*matCellDef="let element"
+												>
+													{{element.reaction}}
+												</td>
+											</ng-container>
+
+											<tr
+												mat-header-row
+												*matHeaderRowDef="displayedAllegriesColumns"
+											></tr>
+											<tr
+												mat-row
+												*matRowDef="let row; columns: displayedAllegriesColumns;"
+											></tr>
+										</table>
+									</div>
+								</div>
+
+								<div
+									fxLayout="column"
+									fxLayoutGap="10px"
+									fxLayoutAlign="start"
+								>
+									<span class="create-medical__step1__label"
+										>Changes to Medical Conditions</span
+									>
+
+									<div
+										fxLayout="column"
+										fxLayoutAlign="center start"
+										color="primary"
+										class="create-medical__step1__section"
+									>
+										<table
+											mat-table
+											[dataSource]="problemList"
+											class="
+												create-medical__step1__section-table
+											"
+										>
+											<!--- Note that these columns can be defined in any order.
+												  The actual rendered columns are set as a property on the row definition" -->
+
+											<!-- Name Column -->
+											<ng-container matColumnDef="name">
+												<th
+													mat-header-cell
+													*matHeaderCellDef
+												>
+													Name
+												</th>
+												<td
+													mat-cell
+													*matCellDef="let element"
+												>
+													{{element.name}}
+												</td>
+											</ng-container>
+
+											<!-- Weight Column -->
+											<ng-container
+												matColumnDef="description"
+											>
+												<th
+													mat-header-cell
+													*matHeaderCellDef
+												>
+													Descriptions
+												</th>
+												<td
+													mat-cell
+													*matCellDef="let element"
+												>
+													{{element.description}}
+												</td>
+											</ng-container>
+
+											<!-- Symbol Column -->
+											<ng-container
+												matColumnDef="date_diagnosis"
+											>
+												<th
+													mat-header-cell
+													*matHeaderCellDef
+												>
+													Date Diagnosis
+												</th>
+												<td
+													mat-cell
+													*matCellDef="let element"
+												>
+													{{element.date_diagnosis}}
+												</td>
+											</ng-container>
+
+											<tr
+												mat-header-row
+												*matHeaderRowDef="displayedColumns"
+											></tr>
+											<tr
+												mat-row
+												*matRowDef="let row; columns: displayedColumns;"
+											></tr>
+										</table>
+									</div>
+								</div>
+							</div>
+							<div
+								fxLayout="column"
+								fxLayoutGap="12px"
+								class="create-medical__step1__w"
+							>
+								<div
+									fxLayout="column"
+									fxLayoutGap="10px"
+									fxLayoutAlign="start"
+								>
+									<span class="create-medical__step1__label">
+										Any Changes in medications</span
+									>
+									<mat-form-field
+										appearance="outline"
+										class="
+											create-medical__step1__form-field
+										"
+									>
+										<textarea
+											matInput
+											required
+											formControlName="medication"
+											[(ngModel)]="medicationsNotes"
+											class="
+												create-medical__step1__label__select
+											"
+										></textarea>
+									</mat-form-field>
+								</div>
+
+								<div
+									fxLayout="column"
+									fxLayoutGap="10px"
+									fxLayoutAlign="start"
+								>
+									<span class="create-medical__step1__label">
+										Any Changes in Allegries</span
+									>
+									<mat-form-field
+										appearance="outline"
+										class="
+											create-medical__step1__form-field
+										"
+									>
+										<textarea
+											matInput
+											required
+											formControlName="allegries"
+											[(ngModel)]="allegriesNotes"
+											class="
+												create-medical__step1__label__select
+											"
+										></textarea>
+									</mat-form-field>
+								</div>
+
+								<div
+									fxLayout="column"
+									fxLayoutGap="10px"
+									fxLayoutAlign="start"
+								>
+									<span class="create-medical__step1__label">
+										Any Changes in medications
+										Conditions</span
+									>
+
+									<mat-form-field
+										appearance="outline"
+										class="
+											create-medical__step1__form-field
+										"
+									>
+										<textarea
+											matInput
+											required
+											formControlName="problems"
+											[(ngModel)]="problemsNotes"
+											class="
+												create-medical__step1__label__select
+											"
+										></textarea>
+									</mat-form-field>
+								</div>
+							</div>
+						</div>
+
+						<mat-divider></mat-divider>
+
+						<div
+							class="create-medical__stepActions"
+							fxLayoutAlign="center center"
+							fxLayoutGap="15px"
+						>
+							<div fxFlex></div>
+							<button
+								mat-raised-button
+								color="primary"
+								type="button"
+								(click)="btnClicked()"
+							>
+								Back
+							</button>
+							<button
+								mat-raised-button
+								color="primary"
+								(click)="btnMedicationsClicked()"
+								matStepperNext
+								type="button"
+							>
+								Next
+							</button>
+						</div>
+					</ng-template>
+				</mat-step>
+
+				<mat-step
+					formGroupName="1"
+					[stepControl]="formArray?.get([1])!"
+				>
+					<ng-template matStepLabel>
+						<div>Reason to visit</div>
+					</ng-template>
+
+					<ng-template matStepContent>
+						<div
+							class="create-app__step2 p-l-30 p-r-30 p-t-15"
+							fxLayout="column"
+							fxLayoutGap="70px"
+							fxLayoutAlign="center center"
+						>
+							<ng-container
+								*ngFor="let rec of medicalList; let i = index"
+							>
+								<div
+									fxFlex
+									fxLayout="column"
+									fxLayoutGap="10px"
+									style="width: 100%"
+									*ngIf="rec.allowed_values === []"
+								>
+									<mat-form-field
+										class="example-full-width"
+										appearance="outline"
+									>
+										<mat-label>{{rec.name}}</mat-label>
+										<input
+											matInput
+											formControlName="visit_{{i}}"
+										/>
+									</mat-form-field>
+								</div>
+							</ng-container>
+						</div>
+						<div
+							class="create-medical__step2 p-30"
+							fxLayout.lt-md="column"
+							fxLayout="row"
+							fxLayoutGap="70px"
+							fxLayoutAlign="center center"
+						>
+							<div
+								fxLayout="column"
+								fxLayoutGap="12px"
+								class="create-medical__step1__w"
+							>
+								<ng-container
+									*ngFor="let rec of medicalList; let i = index"
+								>
+									<div
+										fxFlex
+										fxLayout="column"
+										fxLayoutGap="30px"
+										*ngIf="i<=2"
+									>
+										<div
+											fxLayout="column"
+											fxLayoutAlign="start start"
+										>
+											<mat-label
+												class="
+													create-medical__step2__section__label
+												"
+												>{{rec.name}}</mat-label
+											>
+											<mat-selection-list
+												*ngFor="let item of rec.allowed_values"
+												class="
+													create-medical__step2__section__select
+												"
+												formControlName="visit_{{i}}"
+											>
+												<mat-list-option
+													class="
+														create-medical__step2__section__select__option
+													"
+													value="{{item}}"
+													>{{item}}</mat-list-option
+												>
+											</mat-selection-list>
+
+											<input
+												formControlName="visit_template_{{i}}"
+												value="{{rec.clinical_note_template}}"
+												type="hidden"
+												[(ngModel)]="rec.clinical_note_template"
+											/>
+											<input
+												formControlName="visit_id_{{i}}"
+												value="{{rec.id}}"
+												type="hidden"
+												[(ngModel)]="rec.id"
+											/>
+										</div>
+									</div>
+								</ng-container>
+							</div>
+							<div
+								fxLayout="column"
+								fxLayoutGap="12px"
+								class="create-medical__step1__w"
+							>
+								<ng-container
+									*ngFor="let rec of medicalList; let i = index"
+								>
+									<div
+										fxFlex
+										fxLayout="column"
+										fxLayoutGap="30px"
+										*ngIf="i>2"
+									>
+										<div
+											fxLayout="column"
+											fxLayoutAlign="start start"
+										>
+											<mat-label
+												class="
+													create-medical__step2__section__label
+												"
+												>{{rec.name}}</mat-label
+											>
+											<mat-selection-list
+												*ngFor="let item of rec.allowed_values"
+												class="
+													create-medical__step2__section__select
+												"
+												formControlName="visit_{{i}}"
+											>
+												<mat-list-option
+													class="
+														create-medical__step2__section__select__option
+													"
+													value="{{item}}"
+													>{{item}}</mat-list-option
+												>
+											</mat-selection-list>
+											<input
+												formControlName="visit_template_{{i}}"
+												value="{{rec.clinical_note_template}}"
+												type="hidden"
+												[(ngModel)]="rec.clinical_note_template"
+											/>
+											<input
+												formControlName="visit_id_{{i}}"
+												value="{{rec.id}}"
+												type="hidden"
+												[(ngModel)]="rec.id"
+											/>
+										</div>
+									</div>
+								</ng-container>
+							</div>
+						</div>
+						<mat-divider></mat-divider>
+
+						<div
+							class="create-medical__stepActions"
+							fxLayoutAlign="center center"
+							fxLayoutGap="15px"
+						>
+							<div fxFlex></div>
+
+							<button
+								_ngcontent-lpj-c325=""
+								mat-raised-button
+								color="primary"
+								matStepperPrevious
+							>
+								<span> Back</span>
+							</button>
+
+							<button
+								_ngcontent-lpj-c325=""
+								mat-raised-button
+								color="primary"
+								(click)="btnClicked()"
+							>
+								<span> Submit</span>
+							</button>
+						</div>
+					</ng-template>
+				</mat-step>
+			</mat-stepper>
+		</form>
+	</mat-card-content>
+</mat-card>

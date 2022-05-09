@@ -1,0 +1,37 @@
+<div *ngIf="isLoading" fxLayoutAlign="center center" class="mw-ccc__loading">
+	<mat-spinner style="margin-top: 20px"></mat-spinner>
+</div>
+<div fxLayout="column" fxLayoutGap="10px">
+	<div *ngIf="success" fxLayout="column" fxLayoutAlign="center center">
+		<div fxFlex fxLayout="column" class="m-t-50">
+			<img
+				src="assets/images/party.png"
+				style="width: 80px"
+				class="p-l-15 p-b-15"
+			/>
+			<div class="mw-dialog-congrat__title">Thank You!!</div>
+		</div>
+		<div class="mw-dialog-congrat__sub-title m-t-10 m-b-20">
+			Your Payment is done Successfully!
+		</div>
+	</div>
+	<div *ngIf="failed" fxLayout="column" fxLayoutAlign="center center">
+		<div fxFlex fxLayout="column" class="m-t-50">
+			<img
+				src="assets/images/cancel.png"
+				style="width: 30px"
+				class="p-l-15 p-b-15"
+			/>
+			<div class="mw-dialog-congrat__title">Error!!</div>
+		</div>
+		<div class="mw-dialog-congrat__sub-title m-t-35 m-b-20">{{failed}}</div>
+	</div>
+	<div class="m-t-10 m-b-20" fxLayoutAlign="center center">
+		<a (click)="goChecckIn()" class="mw-dialog-congrat__sub-title"
+			><button mat-icon-button color="primary">
+				<mat-icon>keyboard_arrow_left</mat-icon>
+			</button>
+			BACK TO CHECK IN</a
+		>
+	</div>
+</div>

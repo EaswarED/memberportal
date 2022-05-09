@@ -1,0 +1,29 @@
+
+    {"status": {
+        "code": 1,
+        "err": null,
+        "msg": null,
+        "totalRecords": 3
+    },
+    "data": [
+        {
+            "appointmentId": 0, 
+            "bookingId": 25721, 
+            "name": "Beginner Level", 
+            "startDateTime": "2022-01-03T16:00:00", 
+            "sessionId": 252, 
+            "progId": 27
+            }, 
+            {
+            "appointmentId": 0, 
+            "bookingId": 25405, 
+            "name": "Healthy Yoga", 
+            "startDateTime": "2022-01-04T08:15:00", 
+            "sessionId": 250, 
+            "progId": 27
+            } 
+            
+            
+            
+    ]
+}

@@ -1,0 +1,524 @@
+service: ${self:custom.parentFile.service}-srvc-admin
+org: ${self:custom.parentFile.org}
+app: ${self:custom.parentFile.app}
+
+frameworkVersion: '3'
+useDotenv: true
+projectDir: ../..
+
+provider:
+  name: aws
+  runtime: python3.8
+  lambdaHashingVersion: 20201221
+  region: ${self:custom.parentFile.provider.region}
+  stage: ${self:custom.parentFile.provider.stage}
+  profile: ${self:custom.parentFile.provider.profile}
+  timeout: ${self:custom.parentFile.provider.timeout}
+  environment: ${file(../../env-${self:provider.stage}.yml)}
+  layers:
+    - arn:aws:lambda:us-east-1:770693421928:layer:Klayers-python38-numpy:25
+    - arn:aws:lambda:us-east-1:770693421928:layer:Klayers-python38-pandas:48
+  iam:
+    role:
+      statements:
+        - Effect: 'Allow'
+          Action:
+            - secretsmanager:GetSecretValue
+          Resource:
+            - ${self:custom.parentFile.custom.${self:provider.stage}.secret_arn_cognito}
+            - ${self:custom.parentFile.custom.${self:provider.stage}.secret_arn_mindbody}
+            - ${self:custom.parentFile.custom.${self:provider.stage}.secret_arn_drchrono}
+            - ${self:custom.parentFile.custom.${self:provider.stage}.secret_arn_vimeo}
+            - ${self:custom.parentFile.custom.${self:provider.stage}.secret_arn_jotform}
+            - ${self:custom.parentFile.custom.${self:provider.stage}.secret_arn_twilio}
+        - Effect: Allow
+          Action:
+            - dynamodb:DescribeTable
+            - dynamodb:Query
+            - dynamodb:Scan
+            - dynamodb:GetItem
+            - dynamodb:PutItem
+            - dynamodb:UpdateItem
+            - dynamodb:DeleteItem
+          Resource:
+            - arn:aws:dynamodb:*:*:table/${self:provider.stage}-Mworx-Client
+            - arn:aws:dynamodb:*:*:table/${self:provider.stage}-Mworx-Config
+            - arn:aws:dynamodb:*:*:table/${self:provider.stage}-Mworx-Self-Care
+            - arn:aws:dynamodb:*:*:table/atomic_ids
+        - Effect: Allow
+          Action:
+            - s3:GetObject
+            - s3:PutObject
+            - s3:ListBucket
+          Resource:
+            - "arn:aws:s3:::bucket-for-content/*"
+
+resources:
+  Resources:
+    MindworxApiAuthorizer:
+      Type: AWS::ApiGateway::Authorizer
+      Properties:
+        Name: MindworxApiUser
+        AuthorizerResultTtlInSeconds: 300
+        IdentitySource: method.request.header.Authorization
+        RestApiId: !Ref ApiGatewayRestApi
+        Type: COGNITO_USER_POOLS
+        ProviderARNs:
+           - ${self:custom.parentFile.custom.${self:provider.stage}.cognito_arn}
+
+functions:
+  #Category
+  list_category:
+    handler: handlers/category.list_category
+    events:
+      - http:
+          path: /categories/{type}
+          method: GET
+          cors: true
+      - http:
+          path: /categories
+          method: GET
+          cors: true
+
+  get_category:
+    handler: handlers/category.get_category
+    events:
+      - http:
+          path: /category/{id}
+          method: GET
+          cors: true
+
+  save_category:
+    handler: handlers/category.save_category
+    events:
+      - http:
+          path: /category/save
+          method: POST
+          cors: true
+
+  delete_category:
+    handler: handlers/category.delete_category
+    events:
+      - http:
+          path: /category/del/{id}
+          method: POST
+          cors: true
+
+  #Online Form
+  list_form:
+    handler: handlers/online_form.list_form
+    events:
+      - http:
+          path: /forms/{type}
+          method: GET
+          cors: true
+          # authorizer:
+          #   type: COGNITO_USER_POOLS
+          #   authorizerId:
+          #     Ref: MindworxApiAuthorizer
+
+  get_clinical_form:
+    handler: handlers/online_form.get_clinical_form
+    events:
+      - http:
+          path: /cform/{id}
+          method: GET
+          cors: true
+  get_non_clinical_form:
+    handler: handlers/online_form.get_non_clinical_form
+    events:
+      - http:
+          path: /nform/{id}
+          method: GET
+          cors: true
+  save_form:
+    handler: handlers/online_form.save_form
+    events:
+      - http:
+          path: /form/save
+          method: POST
+          cors: true
+
+  #Company
+  list_company:
+    handler: handlers/company.list_company
+    events:
+      - http:
+          path: /company
+          method: GET
+          cors: true
+          
+  select_company:
+    handler: handlers/company.select_company
+    events:
+      - http:
+          path: /select_company
+          method: GET
+          cors: true
+
+  get_company:
+    handler: handlers/company.get_company
+    events:
+      - http:
+          path: /company/{id}
+          method: GET
+          cors: true
+
+  save_company:
+    handler: handlers/company.save_company
+    events:
+      - http:
+          path: /company/save
+          method: POST
+          cors: true
+  #Add and Delete Company from class/appt/group/content
+  add_class_company:
+    handler: handlers/company.add_class_company
+    events:
+      - http:
+          path: /add_company
+          method: POST
+          cors: true
+
+  delete_class_list:
+    handler: handlers/company.delete_class_list
+    events:
+      - http:
+          path: /delete_company
+          method: POST
+          cors: true
+  #Provider
+  instructor_list:
+    handler: handlers/instructor.instructor_list
+    events:
+      - http:
+          path: /instructor_list
+          method: GET
+          cors: true
+
+  add_class_staff:
+    handler: handlers/instructor.add_class_staff
+    events:
+      - http:
+          path: /add_staff
+          method: POST
+          cors: true
+
+  delete_class_staff:
+    handler: handlers/instructor.delete_class_staff
+    events:
+      - http:
+          path: /remove_staff
+          method: POST
+          cors: true
+
+  get_instructor:
+    handler: handlers/instructor.get_instructor
+    events:
+      - http:
+          path: /instructor/{id}
+          method: GET
+          cors: true
+
+  save_instructor:
+    handler: handlers/instructor.save_instructor
+    events:
+      - http:
+          path: /instructor/save
+          method: POST
+          cors: true
+
+  #Appt
+  list_appt:
+    handler: handlers/appt.list_appt
+    events:
+      - http:
+          path: /appts
+          method: GET
+          cors: true
+  save_appt:
+    handler: handlers/appt.save_appt
+    events:
+      - http:
+          path: /appt/save
+          method: POST
+          cors: true
+  get_appt:
+    handler: handlers/appt.get_appt
+    events:
+      - http:
+          path: /appt/{id}
+          method: GET
+          cors: true
+  #Class
+  list_class:
+    handler: handlers/admin_class.list_class
+    events:
+      - http:
+          path: /classes
+          method: GET
+          cors: true
+
+  save_class:
+    handler: handlers/admin_class.save
+    events:
+      - http:
+          path: /class/save
+          method: POST
+          cors: true
+      - http:
+          path: /group/save
+          method: POST
+          cors: true
+  
+  get_class:
+    handler: handlers/admin_class.get
+    events:
+      - http:
+          path: /class/{id}
+          method: GET
+          cors: true
+      - http:
+          path: /group/{id}
+          method: GET
+          cors: true
+
+  list_group:
+    handler: handlers/admin_class.list_group
+    events:
+      - http:
+          path: /groups
+          method: GET
+          cors: true
+
+  #Selfcare
+  list_content:
+    handler: handlers/content.list_content
+    events:
+      - http:
+          path: /contents
+          method: GET
+          cors: true
+  get_content:
+    handler: handlers/content.get_content
+    events:
+      - http:
+          path: /content/{id}
+          method: GET
+          cors: true
+  save_content:
+    handler: handlers/content.save_content
+    events:
+      - http:
+          path: /content/save
+          method: POST
+          cors: true
+  upload_content:
+    handler: handlers/content.upload_content
+    events:
+      - http:
+          path: /content/upload
+          method: POST
+          cors: true
+  read_content:
+    handler: handlers/content.read_content
+    events:
+      - http:
+          path: /content/read/{id}
+          method: GET
+          cors: true
+
+  list_staff:
+    handler: handlers/staff.list_staff
+    events:
+      - http:
+          path: /list_staff
+          method: GET
+          cors: true
+
+  # Promotions
+  list_promotions:
+    handler: handlers/promotion.list_promotions
+    events:
+      - http:
+          path: /promotions/{type}
+          method: GET
+          cors: true
+  add_promotion:
+    handler: handlers/promotion.add_promotion
+    events:
+      - http:
+          path: /promotion/add
+          method: POST
+          cors: true
+  update_promotion:
+    handler: handlers/promotion.update_promotion
+    events:
+      - http:
+          path: /promotion/update
+          method: POST
+          cors: true
+
+  # Access
+  list_access:
+    handler: handlers/access.list_access
+    events:
+      - http:
+          path: /access/{type}
+          method: GET
+          cors: true
+  add_access:
+    handler: handlers/access.add_access
+    events:
+      - http:
+          path: /access/add
+          method: POST
+          cors: true
+  update_access:
+    handler: handlers/access.update_access
+    events:
+      - http:
+          path: /access/update
+          method: POST
+          cors: true
+
+  list_promo_company:
+    handler: handlers/promotion.list_promo_company
+    events:
+      - http:
+          path: /promo_company
+          method: POST
+          cors: true
+
+  list_promo_client:
+    handler: handlers/promotion.list_promo_client
+    events:
+      - http:
+          path: /promo_client
+          method: POST
+          cors: true
+  list_access_company:
+    handler: handlers/access.list_access_company
+    events:
+      - http:
+          path: /access_company
+          method: POST
+          cors: true
+  list_access_client:
+    handler: handlers/access.list_access_client
+    events:
+      - http:
+          path: /access_client
+          method: POST
+          cors: true
+  remove_promo_list:
+    handler: handlers/promotion.remove_promo_list
+    events:
+      - http:
+          path: /remove_promo
+          method: POST
+          cors: true
+  remove_access_list:
+    handler: handlers/access.remove_access_list
+    events:
+      - http:
+          path: /remove_access
+          method: POST
+          cors: true
+  client_search:
+    handler: handlers/client.client_search
+    events:
+      - http:
+          path: /search/{searchText}
+          method: GET
+          cors: true
+  list_users:
+    handler: handlers/client.list_users
+    events:
+      - http:
+          path: /users
+          method: GET
+          cors: true
+  
+  save_client:
+    handler: handlers/client.save_client
+    events:
+      - http:
+          path: /save
+          method: POST
+          cors : true
+
+  pending_request:
+    handler: handlers/group.pending_request
+    events:
+      - http:
+          path: /pending/{id}
+          method: GET
+          cors: true
+
+  approved_request:
+    handler: handlers/group.approved_request
+    events:
+      - http:
+          path: /approved/{id}
+          method: GET
+          cors: true
+
+  denied_request:
+    handler: handlers/group.denied_request
+    events:
+      - http:
+          path: /denied/{id}
+          method: GET
+          cors: true
+
+  
+  process_request:
+    handler: handlers/group.process_request
+    events:
+      - http:
+          path: /process
+          method: POST
+          cors : true
+      - http:
+          path: /deny
+          method: POST
+          cors : true
+
+custom:
+  parentFile: ${file(../../serverless.yml)}
+
+  customDomain:
+    domainName: ${self:custom.parentFile.custom.customDomain.domainName}
+    basePath: 'admin'
+    stage: '${self:provider.stage}'
+    createRoute53Record: true
+
+  packageExternal:
+    external:
+      - '../../shared'
+      - '../../infrastructure'
+      - '../../providers'
+
+  pythonRequirements:
+    usePoetry: true
+    useDownloadCache: true
+    useStaticCache: false
+    invalidateCaches: false
+    slim: true
+
+    noDeploy:
+      - pytest
+
+package:
+  individually: false
+  excludeDevDependencies: false
+  patterns:
+    - '!.vscode/**'
+    - '!.pytest_cache/**'
+    - '!.aws-sam/**'
+
+plugins:
+  - serverless-domain-manager
+  - serverless-python-requirements
+  - serverless-package-external

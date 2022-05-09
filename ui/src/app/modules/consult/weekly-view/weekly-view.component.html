@@ -1,0 +1,128 @@
+<div
+	fxLayout="row"
+	fxFlex="100%"
+	fxLayoutGap="20px"
+	fxLayoutAlign="start start"
+>
+	<div
+		fxLayout="column"
+		fxFlex="100%"
+		fxLayoutGap="20px"
+		fxLayoutAlign="start start"
+	>
+		<div
+			fxLayout="row"
+			fxLayoutGap="90px"
+			fxLayoutAlign="space-around start"
+			class="m-l-0"
+			style="width: 100%"
+		>
+			<button mat-icon-button>
+				<mat-icon (click)="changePage(-5,started,ended)"
+					>keyboard_arrow_left</mat-icon
+				>
+			</button>
+
+			<span *ngFor="let rec of result_date;  let i = index">
+				<div fxLayout="column" class="m-l-0 p-l-0">
+					<button mat-button type="button">
+						{{rec.date_format}}
+					</button>
+				</div>
+				<div fxFlex></div>
+			</span>
+			<button mat-icon-button>
+				<mat-icon (click)="changePage(5,started,ended)"
+					>keyboard_arrow_right</mat-icon
+				>
+			</button>
+		</div>
+		<div fxLayout="column" style="width: 100%" fxLayoutAlign="center start">
+			<div fxLayout="row" style="width: 100%" fxLayoutAlign="start start">
+				<div
+					*ngIf="isLoading"
+					fxLayoutAlign="center center"
+					class="mw-weekly-view__loading"
+				>
+					<mat-spinner style="margin: 0 auto"></mat-spinner>
+				</div>
+				<div class="mw-weekly-view__card">
+					<div fxFlex class="m-t-50 m-b-100 p-t-15">Morning</div>
+				</div>
+
+				<div
+					style="width: 100%"
+					fxLayout="column"
+					fxLayoutGap="40px"
+					fxLayoutAlign="space-around center"
+				>
+					<div
+						fxLayout="row"
+						fxLayoutGap="20px"
+						fxLayoutAlign="space-around center"
+						class="m-t-10"
+					>
+						<div
+							fxLayout="column"
+							class="m-l-20 p-l-20 m-r-20 p-r-20"
+							*ngFor="let rec of result_date"
+						>
+							<ng-container *ngFor="let eTime of rec?.items">
+								<button
+									mat-stroked-button
+									color="primary"
+									class="m-l-10 m-b-10"
+									*ngIf="eTime.startisAM === true"
+									(click)="onOpenTime(eTime)"
+									[ngClass]="{'mw-weekly-view__timeBtn__selected': eTime.time === selectedBooking}"
+								>
+									{{eTime.time}}-{{eTime.endtime}}
+								</button>
+							</ng-container>
+						</div>
+						<div fxFlex></div>
+					</div>
+				</div>
+			</div>
+			<div fxLayout="row" style="width: 100%" fxLayoutAlign="start start">
+				<div class="mw-weekly-view__card">
+					<div class="m-t-50 m-b-100 p-t-15">Afternoon</div>
+				</div>
+
+				<div
+					style="width: 100%"
+					fxLayout="column"
+					fxLayoutGap="40px"
+					fxLayoutAlign="space-around center"
+				>
+					<div
+						fxLayout="row"
+						fxLayoutGap="20px"
+						fxLayoutAlign="space-around center"
+						class="m-t-10"
+					>
+						<div
+							fxLayout="column"
+							class="m-l-20 p-l-20 m-r-20 p-r-20"
+							*ngFor="let rec of result_date"
+						>
+							<ng-container *ngFor="let eTime of rec?.items">
+								<button
+									mat-stroked-button
+									color="primary"
+									class="m-l-10 m-b-10"
+									*ngIf="eTime.startisAM !== true"
+									(click)="onOpenTime(eTime)"
+									[ngClass]="{'mw-weekly-view__timeBtn__selected': eTime.time === selectedBooking}"
+								>
+									{{eTime.time}}
+								</button>
+							</ng-container>
+						</div>
+						<div fxFlex></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

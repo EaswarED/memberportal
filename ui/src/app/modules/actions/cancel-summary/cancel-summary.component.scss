@@ -1,0 +1,23 @@
+@import '/src/app/@theme/colors';
+
+:host {
+	padding: 24px 20px 0 0;
+	margin-left: 6.5rem;
+}
+
+.mw-ccc {
+	&__sub {
+		font-size: 14px;
+	}
+	&__sub-title-prop {
+		font-weight: bold;
+	}
+	&__loading {
+		position: absolute;
+		width: 100%;
+		background: rgb(255 255 255 / 50%);
+		height: 100%;
+		z-index: 1;
+		left: 0;
+	}
+}

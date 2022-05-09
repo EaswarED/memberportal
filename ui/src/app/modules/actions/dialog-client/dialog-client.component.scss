@@ -1,0 +1,59 @@
+@import 'src/app/@theme/colors';
+:host {
+	padding: 0px;
+}
+::ng-deep {
+	.mat-dialog-container {
+		padding: 0% !important;
+		border-radius: 10px;
+	}
+}
+.mw-appt-dialog {
+	position: relative;
+	&__close {
+		position: absolute;
+		top: 10px;
+		right: 10px;
+		color: $primary-grey-g2;
+	}
+	&__loading {
+		position: absolute;
+		background: $bg-op-white;
+		width: 70%;
+		height: 30%;
+		z-index: 2;
+	}
+}
+.mw-dialog-congrat {
+	&__close {
+		color: $primary-grey-g2;
+	}
+	&__title {
+		font-size: 25px;
+		font-weight: 500;
+		color: $primary-grey-g2;
+	}
+	&__sub-title {
+		font-size: 14px;
+		font-weight: 500;
+		text-align: center;
+		color: $primary-grey-g2;
+	}
+	&__info {
+		background: rgb(164, 230, 231);
+		width: 100%;
+		&__icon {
+			color: $primary-grey-g2;
+		}
+		&__title {
+			color: $primary-grey-g2;
+		}
+	}
+}
+
+.mw-create-profile-section {
+	.mat-dialog-container {
+		padding: 0 !important;
+		border-radius: 30px;
+	}
+}

@@ -1,0 +1,522 @@
+<div fxFlex class="user-profile">
+	<mat-card class="p-t-20">
+		<div fxLayout="row">
+			<div
+				fxLayout="column"
+				style="width: 100%"
+				fxLayoutAlign="start start"
+			>
+				<mat-card-title>User Profile</mat-card-title>
+				<mat-card-subtitle
+					>Your user profile will be listed below. You can update your
+					information</mat-card-subtitle
+				>
+			</div>
+			<div
+				fxLayout="column"
+				fxLayoutAlign="space-around start"
+				style="width: 20%"
+				class="user-profile__dd p-t-5"
+			>
+				<mat-form-field appearance="outline">
+					<mat-label>Company Name</mat-label>
+					<mat-select [(ngModel)]="companyId" [disabled]="companyId">
+						<mat-option
+							*ngFor="let comp of companyList"
+							[value]="comp.Id"
+						>
+							{{comp.FirstName}}
+						</mat-option>
+					</mat-select>
+				</mat-form-field>
+			</div>
+			<div fxLayoutAlign="end end" class="user-profile__step1__avtarBox">
+				<div
+					*ngIf="photoUrl"
+					mat-card-avatar
+					class="user-profile__step1__avtarBox__avtar"
+					style="background-image: url({{photoUrl}})"
+				></div>
+				<div
+					*ngIf="!photoUrl"
+					mat-card-avatar
+					class="user-profile__step1__avtarBox__avtar"
+					style="
+						background-image: url('../../../../../assets/images/no_user.png');
+					"
+				></div>
+				<span class="user-profile__step1__avtarBox__create-icon"
+					><mat-icon
+						class="user-profile__step1__avtarBox__create-icon1"
+						>create</mat-icon
+					><input
+						class="user-profile__step1__avtarBox__create-files"
+						type="file"
+						accept="image/*"
+						[(ngModel)]="imagePreviewModel"
+						(change)="imagePreview($event)"
+					/>
+				</span>
+			</div>
+		</div>
+		<mat-divider></mat-divider>
+		<mat-card-content>
+			<div
+				*ngIf="isLoading"
+				fxLayoutAlign="center center"
+				class="user-profile__loading"
+			>
+				<mat-spinner style="margin: 0 auto"></mat-spinner>
+			</div>
+			<mat-tab-group
+				mat-align-tabs="start"
+				[(selectedIndex)]="tabIndex"
+				[orientation]=""
+				fxFlex
+				fxFlexLayout="column"
+				style="place-content: start"
+			>
+				<mat-tab fxFlexLayout="column" fxLayout.lt-lg="column">
+					<ng-template mat-tab-label>
+						<mat-icon class="p-r-10">account_circle</mat-icon>
+						User Info
+					</ng-template>
+
+					<div
+						class="user-profile__step1 p-30"
+						fxLayout.lt-lg="column"
+						fxLayout="column"
+						fxLayoutGap="20px"
+						fxLayoutAlign="center center"
+					>
+						<div
+							fxFlex
+							fxLayout="row"
+							fxLayoutGap="25px"
+							class="user-profile__w"
+							fxLayout.lt-lg="column"
+						>
+							<mat-form-field
+								fxFlex
+								appearance="outline"
+								fxLayout.lt-lg="column"
+							>
+								<mat-label class="">First Name</mat-label>
+								<input matInput [(ngModel)]="fname" />
+							</mat-form-field>
+
+							<!-- Email -->
+							<mat-form-field
+								fxFlex
+								fxLayout.lt-lg="column"
+								appearance="outline"
+								fxFlex.md-lt
+							>
+								<mat-label class="">Last Name</mat-label>
+								<input matInput [(ngModel)]="lname" />
+							</mat-form-field>
+						</div>
+						<div
+							fxFlex
+							fxLayout="row"
+							fxLayoutGap="25px"
+							fxLayout.lt-lg="column"
+							class="user-profile__w"
+						>
+							<div
+								fxFlex
+								fxLayout="column"
+								fxLayout.lt-lg="column"
+							>
+								<mat-form-field
+									fxFlex
+									fxLayout.lt-lg="column"
+									appearance="outline"
+									class="user-profile__w"
+								>
+									<mat-label>No gender selected</mat-label>
+									<mat-select [(ngModel)]="gender">
+										<mat-option value="Male"
+											>Male</mat-option
+										>
+										<mat-option value="Female"
+											>Female</mat-option
+										>
+										<mat-option value="Other"
+											>Would rather not say</mat-option
+										>
+									</mat-select>
+								</mat-form-field>
+							</div>
+
+							<!-- Date picker -->
+							<mat-form-field
+								appearance="outline"
+								fxFlex
+								fxLayout.lt-lg="column"
+							>
+								<mat-label>Date of Birth</mat-label>
+								<input
+									matInput
+									[matDatepicker]="picker"
+									[(ngModel)]="dob"
+								/>
+								<mat-datepicker-toggle
+									matSuffix
+									[for]="picker"
+								></mat-datepicker-toggle>
+								<mat-datepicker #picker></mat-datepicker>
+							</mat-form-field>
+						</div>
+						<div
+							fxFlex
+							fxLayout="row"
+							fxLayoutGap="25px"
+							class="user-profile__w"
+							fxLayout.lt-lg="column"
+						>
+							<mat-form-field
+								fxFlex
+								fxLayout.lt-lg="column"
+								appearance="outline"
+							>
+								<mat-label class="">Email</mat-label>
+								<input matInput [(ngModel)]="email" />
+							</mat-form-field>
+
+							<!-- Email -->
+							<mat-form-field
+								fxFlex
+								fxLayout.lt-lg="column"
+								appearance="outline"
+							>
+								<mat-label class="">Phone</mat-label>
+								<input matInput [(ngModel)]="phone" />
+							</mat-form-field>
+						</div>
+						<div
+							fxFlex
+							fxLayoutAlign="center center"
+							fxLayout="row"
+							fxLayoutGap="25px"
+							class="user-profile__w"
+						>
+							<mat-form-field
+								fxFlex
+								fxLayout.lt-lg="column"
+								appearance="outline"
+							>
+								<mat-label class="">Address</mat-label>
+								<input matInput [(ngModel)]="address" />
+							</mat-form-field>
+						</div>
+						<div
+							fxLayout.lt-md="column"
+							fxLayout="row"
+							fxLayoutGap="10px"
+							fxLayoutAlign="space-between center"
+							class="user-profile__w"
+						>
+							<div
+								fxLayout="row"
+								fxLayoutGap="25px"
+								fxLayout.lt-lg="column"
+								class="user-profile__w"
+							>
+								<mat-form-field
+									fxFlex
+									fxFlex.lt-lg="80px"
+									fxFlex.lt-md
+									appearance="outline"
+								>
+									<mat-label>
+										<mat-label>City</mat-label>
+									</mat-label>
+									<input matInput [(ngModel)]="city" />
+								</mat-form-field>
+								<mat-form-field
+									fxFlex
+									fxFlex.lt-lg="80px"
+									fxFlex.lt-md
+									appearance="outline"
+								>
+									<mat-label>
+										<mat-label>State</mat-label>
+									</mat-label>
+									<mat-select [(ngModel)]="state">
+										<mat-option
+											*ngFor="let city of cities"
+											[value]="city.code"
+										>
+											{{city.name}}
+										</mat-option>
+									</mat-select>
+								</mat-form-field>
+							</div>
+							<div
+								fxLayout="row"
+								fxLayoutGap="25px"
+								fxLayout.lt-lg="column"
+								class="user-profile__w"
+							>
+								<mat-form-field
+									fxFlex
+									fxFlex.lt-lg="80px"
+									fxFlex.lt-md
+									appearance="outline"
+								>
+									<mat-label>
+										<mat-label>Country</mat-label>
+									</mat-label>
+									<mat-select [(ngModel)]="country">
+										<mat-option
+											*ngFor="let country of countries"
+											[value]="country.code"
+										>
+											{{country.name}}
+										</mat-option>
+									</mat-select>
+								</mat-form-field>
+								<mat-form-field
+									fxFlex
+									fxFlex.lt-lg="80px"
+									fxFlex.lt-md
+									appearance="outline"
+								>
+									<mat-label>
+										<mat-label>Postal</mat-label>
+									</mat-label>
+									<input matInput [(ngModel)]="postal" />
+								</mat-form-field>
+							</div>
+						</div>
+
+						<div
+							fxFlex
+							fxLayoutAlign="center center"
+							fxLayout="row"
+							class="user-profile__w"
+						>
+							<div fxLayout="column" class="user-profile__w">
+								<mat-label class="m-b-15"
+									>Contact Preference</mat-label
+								>
+								<mat-radio-group [(ngModel)]="contact_per">
+									<mat-radio-button
+										color="primary"
+										value="E"
+										class="m-r-50"
+										(change)="onChangeContact($event)"
+										>Email</mat-radio-button
+									>
+									<mat-radio-button
+										value="P"
+										color="primary"
+										(change)="onChangeContact($event)"
+										>Phone</mat-radio-button
+									>
+								</mat-radio-group>
+							</div>
+						</div>
+
+						<!-- Submit -->
+						<div
+							fxFlex
+							fxLayoutAlign="end end"
+							fxLayout="row"
+							class="user-profile__w"
+						>
+							<button
+								(click)="submitForm()"
+								mat-flat-button
+								color="primary"
+							>
+								Save Changes
+							</button>
+						</div>
+					</div>
+				</mat-tab>
+				<!-- <mat-tab>
+					<ng-template mat-tab-label>
+						<mat-icon class="p-r-10">account_balance</mat-icon>
+						Accounts
+					</ng-template>
+					<mw-data-table
+						[columnDefs]="columnDefs"
+						[rowData]="accountList"
+						[frameworkComponents]="frameworkComponents"
+					>
+					</mw-data-table>
+					<div
+						fxFlex
+						fxFlexLayout="column"
+						fxLayoutAlign="start start"
+					>
+						<div fxFlex="350px">
+							<div class="user-profile__fundingsource">
+								<span>Funding Source</span>
+								<span fxFlex></span>
+								<span
+									><button mat-stroked-button>
+										<mat-icon>refresh</mat-icon>Replace
+									</button></span
+								>
+							</div>
+							<div
+								fxFlexLayout="column"
+								fxLayoutAlign="start start"
+								class="p-t-20"
+							>
+								<span fxFlex="70px"
+									><img
+										style="width: 100%"
+										src="assets/images/Mastercardlogo.png"
+										alt=""
+								/></span>
+								<span fxFlexLayout="column"
+									><div>MasterCard.....8134</div>
+									<div>Expires: 07/25</div></span
+								>
+
+								<span fxFlexLayout="column" class="p-l-10"
+									><mat-icon>more_vert</mat-icon></span
+								>
+							</div>
+						</div>
+					</div>
+				</mat-tab> -->
+				<mat-tab fxLayout.lt-lg="column">
+					<ng-template mat-tab-label>
+						<mat-icon class="p-r-10">notifications</mat-icon>
+						Notifications
+					</ng-template>
+					<mw-notifications></mw-notifications>
+				</mat-tab>
+				<mat-tab>
+					<ng-template mat-tab-label>
+						<mat-icon class="p-r-10">security</mat-icon>
+						Change Password
+					</ng-template>
+					<div
+						class="user-profile__step1"
+						fxLayout.lt-lg="column"
+						fxLayout="column"
+						fxLayoutAlign="center center"
+					>
+						<div
+							fxFlex
+							fxLayoutAlign="center center"
+							fxLayout="row"
+							class="user-profile__w"
+						>
+							<!-- <mat-label class="m-r-10"
+								>Enter Old Password</mat-label
+							> -->
+
+							<mat-form-field appearance="outline" class="m-t-10">
+								<mat-label>Enter Old Password</mat-label>
+								<input
+									matInput
+									[(ngModel)]="oldPassword"
+									[type]="pwdhide ? 'password' : 'text'"
+								/>
+								<button
+									mat-icon-button
+									matSuffix
+									(click)="pwdhide = !pwdhide"
+									[attr.aria-label]="'Hide password'"
+									[attr.aria-pressed]="pwdhide"
+								>
+									<mat-icon
+										>{{pwdhide ? 'visibility_off' :
+										'visibility'}}</mat-icon
+									>
+								</button>
+							</mat-form-field>
+						</div>
+						<div
+							fxFlex
+							fxLayoutAlign="center center"
+							fxLayout="row"
+							class="user-profile__w"
+						>
+							<!-- <mat-label class="m-r-10"
+								>Enter New Password</mat-label
+							> -->
+							<mat-form-field appearance="outline" class="m-t-0">
+								<mat-label>Enter New Password </mat-label>
+								<input
+									matInput
+									[(ngModel)]="newPassword"
+									[type]="pwhide ? 'password' : 'text'"
+								/>
+								<button
+									mat-icon-button
+									matSuffix
+									(click)="pwhide = !pwhide"
+									[attr.aria-label]="'Hide password'"
+									[attr.aria-pressed]="pwhide"
+								>
+									<mat-icon
+										>{{pwhide ? 'visibility_off' :
+										'visibility'}}</mat-icon
+									>
+								</button>
+							</mat-form-field>
+						</div>
+						<div
+							fxFlex
+							fxLayoutAlign="center center"
+							fxLayout="row"
+							class="user-profile__w"
+						>
+							<!-- <mat-label class="m-l-5 m-r-15"
+								>Confirm Password</mat-label
+							> -->
+							<mat-form-field appearance="outline" class="m-t-0">
+								<mat-label>Confirm Password </mat-label>
+								<input
+									matInput
+									[(ngModel)]="confirmPassword"
+									[type]="hide ? 'password' : 'text'"
+								/>
+
+								<button
+									mat-icon-button
+									matSuffix
+									(click)="hide = !hide"
+									[attr.aria-label]="'Hide password'"
+									[attr.aria-pressed]="hide"
+								>
+									<mat-icon
+										>{{hide ? 'visibility_off' :
+										'visibility'}}</mat-icon
+									>
+								</button>
+							</mat-form-field>
+						</div>
+						<div
+							*ngIf="newPassword !== confirmPassword"
+							style="
+								color: red;
+								font-size: 12px;
+								margin-top: -10px;
+								margin-bottom: 8px;
+							"
+						>
+							New Password and Confirm Password must be Same.
+						</div>
+						<button
+							[disabled]="newPassword !== confirmPassword || newPassword==='' || oldPassword ===''"
+							mat-flat-button
+							color="primary"
+							(click)="reset()"
+						>
+							Save Password
+						</button>
+					</div>
+				</mat-tab>
+			</mat-tab-group>
+		</mat-card-content>
+	</mat-card>
+</div>

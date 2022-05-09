@@ -1,0 +1,41 @@
+<div class="mw-appointment-configuration" fxLayout="column" fxLayoutGap="30px">
+	<mat-card class="p-0">
+		<div fxLayout="row" fxLayoutAlign="start center">
+			<div>
+				<button
+					mat-icon-button
+					color="primary"
+					(click)="onBackAction()"
+				>
+					<mat-icon>keyboard_arrow_left</mat-icon>
+				</button>
+			</div>
+			<div>
+				<mat-card-title class="p-t-15"
+					><span fxFlex>Classes</span></mat-card-title
+				>
+				<mat-card-subtitle>
+					Please select a class below to edit its configuration or to
+					convert a class to a group.
+				</mat-card-subtitle>
+			</div>
+		</div>
+		<mat-divider></mat-divider>
+		<div
+			fxLayout="column"
+			fxLayout.lt-md="column"
+			class="p-t-25"
+			fxLayoutAlign="start center"
+		>
+			<mw-data-table
+				class="mw-appointment-configuration__w"
+				[columnDefs]="columnDefs"
+				[rowData]="gridData$ | async"
+				[frameworkComponents]="frameworkComponents"
+				[defaultColDef]="defaultColDef"
+				[context]="gridContext"
+			>
+			</mw-data-table>
+		</div>
+	</mat-card>
+</div>

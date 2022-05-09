@@ -1,0 +1,70 @@
+@import '/src/app/@theme/colors';
+
+::ng-deep .mw-forget-password-section {
+	.mat-dialog-container {
+		padding: 0px;
+		border-radius: 30px;
+	}
+}
+
+.mw-forget-password {
+	position: relative;
+	&__close {
+		position: absolute;
+		z-index: 1;
+		right: 5px;
+		top: 6px;
+		color: $primary-grey-g2;
+	}
+	&__started-section {
+		background: #dadada;
+		// background: $grey-text-g1;
+	}
+	&__logo {
+		width: 100%;
+	}
+	&__primarycolor {
+		color: $primary-yellow;
+		font: 500 14px / 20px 'Poppins';
+		cursor: pointer;
+	}
+	&__bright {
+		color: $primary-yellow;
+		font: 500 14px / 20px 'Poppins';
+	}
+	&__forget {
+		color: $primary-yellow;
+		font: 500 24px / 20px 'Poppins';
+	}
+	&__labeltext {
+		font-size: 12px;
+	}
+	&__white {
+		color: $primary-bg;
+		font: 500 24px / 24px 'Poppins';
+	}
+	&__w {
+		width: 100%;
+	}
+	&__grey {
+		color: $primary-black;
+		border: 1px solid $primary-black;
+	}
+	&__find {
+		color: $bg-black-lighter;
+	}
+	&__not-account {
+		font-size: 14px;
+		color: $primary-grey-g2;
+	}
+	&__size {
+		font-size: 10px;
+	}
+	&__circle {
+		height: 100px;
+		width: 100px;
+		border-radius: 50%;
+		border: 5px solid #fed268;
+		margin: 0 auto;
+	}
+}

@@ -1,0 +1,34 @@
+{
+    "total": 10,
+    "page": 1,
+    "per_page": 25,
+    "paging": {
+        "next": null,
+        "previous": null,
+        "first": "/categories?page=1",
+        "last": "/categories?page=1"
+    },
+    "data": 
+        [{ 
+            "categoryId": "1007", 
+            "type": "SC", 
+            "name": "Meditation"
+            },  
+            {
+            "categoryId": "1008", 
+            "type": "SC", 
+            "name": "Coaching"
+            }, 
+            {
+           
+            "categoryId": "1009", 
+            "type": "SC",  
+            "name": "Mental Health"
+            }, 
+             {
+             "categoryId": "1010", 
+             "type": "SC", 
+             "name":"Health Care"
+             }
+             ]
+}

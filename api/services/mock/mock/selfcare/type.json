@@ -1,0 +1,31 @@
+{
+    "status": 
+    {
+    "code": 1, 
+    "err": null, 
+    "msg": null, 
+    "totalRecords": 4
+    }, 
+    "data": [
+    {
+    "sK":"200",
+    "type": "P", 
+    "name": "PDF"
+    }, 
+    {
+        "sK":"201",
+        "type": "W", 
+        "name": "Webpage"
+    }, 
+    {
+        "sK":"202",
+        "type": "V", 
+        "name": "Video"
+    }, 
+    {
+        "sK":"203",
+        "type": "A", 
+        "name": "Article"
+    }
+    ]
+    }

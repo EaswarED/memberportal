@@ -1,0 +1,62 @@
+<div class="mw-appointment-configuration" fxLayout="column" fxLayoutGap="30px">
+	<mat-card class="p-0">
+		<div fxLayout="row" fxLayoutAlign="start center">
+			<div>
+				<button
+					mat-icon-button
+					color="primary"
+					(click)="onBackAction()"
+				>
+					<mat-icon>keyboard_arrow_left</mat-icon>
+				</button>
+			</div>
+			<div>
+				<mat-card-title class="p-t-15"
+					><span fxFlex>User profile</span></mat-card-title
+				>
+				<mat-card-subtitle>
+					Lorem ipsum began as scrambled, nonsensical Latin derived
+					from Cicero's 1st-century
+				</mat-card-subtitle>
+			</div>
+		</div>
+		<mat-divider></mat-divider>
+		<div
+			fxLayout="row"
+			fxLayoutAlign="center center"
+			class="p-r-15 p-b-0 m-b-0 p-t-15"
+		>
+			<mat-form-field fxFlex="200px" appearance="outline">
+				<mat-label>Search by name</mat-label>
+				<input matInput [(ngModel)]="searchByEmail" />
+			</mat-form-field>
+			<div class="p-b-15 m-l-10">
+				<button
+					mat-icon-button
+					color="primary"
+					(click)="onSearch()"
+					[disabled]="!searchByEmail"
+				>
+					<mat-icon style="font-size: 35px">search</mat-icon>
+				</button>
+			</div>
+		</div>
+		<div
+			fxLayout="column"
+			fxLayout.lt-md="column"
+			class="p-t-0"
+			fxLayoutAlign="start center"
+			*ngIf="gridData$"
+		>
+			<mw-data-table
+				class="mw-appointment-configuration__w"
+				[columnDefs]="columnDefs"
+				[frameworkComponents]="frameworkComponents"
+				[context]="gridContext"
+				[rowData]="gridData$ | async"
+				[paginationPageSize]="paginationPageSize"
+			>
+			</mw-data-table>
+		</div>
+	</mat-card>
+</div>

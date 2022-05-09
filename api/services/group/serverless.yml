@@ -1,0 +1,162 @@
+service: ${self:custom.parentFile.service}-srvc-group
+org: ${self:custom.parentFile.org}
+app: ${self:custom.parentFile.app}
+
+frameworkVersion: '3'
+useDotenv: true
+projectDir: ../..
+
+provider:
+  name: aws
+  runtime: python3.8
+  lambdaHashingVersion: 20201221
+  region: ${self:custom.parentFile.provider.region}
+  stage: ${self:custom.parentFile.provider.stage}
+  profile: ${self:custom.parentFile.provider.profile}
+  timeout: ${self:custom.parentFile.provider.timeout}
+  environment: ${file(../../env-${self:provider.stage}.yml)}
+  layers:
+    - arn:aws:lambda:us-east-1:770693421928:layer:Klayers-python38-numpy:22
+    - arn:aws:lambda:us-east-1:770693421928:layer:Klayers-python38-pandas:48
+  iam:
+    role:
+      statements:
+        - Effect: 'Allow'
+          Action:
+            - secretsmanager:GetSecretValue
+          Resource:
+            - ${self:custom.parentFile.custom.${self:provider.stage}.secret_arn_cognito}
+            - ${self:custom.parentFile.custom.${self:provider.stage}.secret_arn_mindbody}
+            - ${self:custom.parentFile.custom.${self:provider.stage}.secret_arn_drchrono}
+            - ${self:custom.parentFile.custom.${self:provider.stage}.secret_arn_vimeo}
+            - ${self:custom.parentFile.custom.${self:provider.stage}.secret_arn_jotform}
+            - ${self:custom.parentFile.custom.${self:provider.stage}.secret_arn_twilio}
+        - Effect: Allow
+          Action:
+            - dynamodb:DescribeTable
+            - dynamodb:Query
+            - dynamodb:Scan
+            - dynamodb:GetItem
+            - dynamodb:PutItem
+            - dynamodb:UpdateItem
+            - dynamodb:DeleteItem
+          Resource:
+            - arn:aws:dynamodb:*:*:table/${self:provider.stage}-Mworx-Client
+            - arn:aws:dynamodb:*:*:table/${self:provider.stage}-Mworx-Config
+            - arn:aws:dynamodb:*:*:table/${self:provider.stage}-Mworx-Self-Care
+            - arn:aws:dynamodb:*:*:table/atomic_ids
+        - Effect: Allow
+          Action:
+            - s3:GetObject
+            - s3:PutObject
+            - s3:ListBucket
+          Resource:
+            - "arn:aws:s3:::bucket-for-content/*"
+
+resources:
+  Resources:
+    MindworxApiAuthorizer:
+      Type: AWS::ApiGateway::Authorizer
+      Properties:
+        Name: MindworxApiUser
+        AuthorizerResultTtlInSeconds: 300
+        IdentitySource: method.request.header.Authorization
+        RestApiId: !Ref ApiGatewayRestApi
+        Type: COGNITO_USER_POOLS
+        ProviderARNs:
+           - ${self:custom.parentFile.custom.${self:provider.stage}.cognito_arn}
+
+functions:
+  class_schedule:
+    handler: handlers/group.class_schedule
+    events:
+      - http:
+          path: /schedules
+          method: GET
+          cors : true
+  enroll_visits:
+    handler: handlers/group_visit.enroll_visits
+    events:
+      - http:
+          path: /group/visit
+          method: GET
+          cors : true
+  enroll_client:
+    handler: handlers/group.enroll_client
+    events:
+      - http:
+          path: /group/enroll/client
+          method: POST
+          cors: true
+
+  list_class:
+    handler: handlers/group.list_class
+    events:
+      - http:
+          path: /landing/group
+          method: GET
+          cors : true
+
+  request_to_join:
+    handler: handlers/group.request_to_join
+    events:
+      - http:
+          path: /request
+          method: GET
+          cors : true
+
+  process_request:
+    handler: handlers/group.process_request
+    events:
+      - http:
+          path: /process
+          method: GET
+          cors : true
+
+  group_descriptions:
+    handler: handlers/group.group_descriptions
+    events:
+      - http:
+          path: /description
+          method: GET
+          cors : true
+
+  
+
+custom:
+  parentFile: ${file(../../serverless.yml)}
+
+  customDomain:
+    domainName: ${self:custom.parentFile.custom.customDomain.domainName}
+    basePath: 'group'
+    stage: '${self:provider.stage}'
+    createRoute53Record: true
+
+  packageExternal:
+    external:
+      - '../../shared'
+      - '../../infrastructure'
+      - '../../providers'
+
+  pythonRequirements:
+    usePoetry: true
+    useDownloadCache: true
+    useStaticCache: false
+    invalidateCaches: false
+    slim: true
+
+    noDeploy:
+      - pytest
+
+package:
+  individually: false
+  excludeDevDependencies: false
+  patterns:
+    - '!.vscode/**'
+    - '!.pytest_cache/**'
+    - '!.aws-sam/**'
+
+plugins:
+  - serverless-domain-manager
+  - serverless-python-requirements
+  - serverless-package-external

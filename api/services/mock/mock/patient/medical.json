@@ -1,0 +1,84 @@
+{
+    "previous": null,
+    "results": [
+        {
+            "archived": false,
+            "id": 116551853,
+            "name": "Feel Sad",
+            "data_type": "String",
+            "required": false,
+            "clinical_note_template": 4256776,
+            "allowed_values": [
+                "Currently",
+                "Past",
+                "N/A"
+            ]
+        },
+        {
+            "archived": false,
+            "id": 116551854,
+            "name": "Insmnia",
+            "data_type": "String",
+            "required": false, 
+            "clinical_note_template": 4256776,
+            "allowed_values": [
+                "Currently",
+                "Past",
+                "N/A"
+            ]
+        },
+        {
+            "archived": false,
+            "id": 116551855,
+            "name": "Thoughts of sucide",
+            "data_type": "String",
+            "required": false,
+            "clinical_note_template": 4256776,
+            "allowed_values": [
+                "Currently",
+                "Past",
+                "N/A"
+            ]
+        },
+        {
+            "archived": false,
+            "id": 116551856,
+            "name": "Loss on Interest",
+            "data_type": "String",
+            "required": false,
+            "clinical_note_template": 4256776,
+            "allowed_values": [
+                "Currently",
+                "Past",
+                "N/A"
+            ]
+        },
+        {
+            "archived": false,
+            "id": 116551857,
+            "name": "Anxiety",
+            "data_type": "String",
+            "required": false,
+            "clinical_note_template": 4256776,
+            "allowed_values": [
+                "Yes extreme",
+                "Yes,mild",
+                "In the Past"
+            ]
+        },
+        {
+            "archived": false,
+            "id": 116551858,
+            "name": "Feel on Edge",
+            "data_type": "String",
+            "required": false,
+            "clinical_note_template": 4256776,
+            "allowed_values": [
+                "Yes extreme",
+                "Yes,mild",
+                "In the Past"
+            ]
+        }
+    ],
+    "next": null
+}

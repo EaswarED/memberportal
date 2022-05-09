@@ -1,0 +1,101 @@
+{
+    "status": {
+        "code": 1,
+        "err": null,
+        "msg": null,
+        "totalRecords": 18
+    },
+    "data": [
+        {
+            "id": 267,
+            "name":"60 min 2on1",
+            "price": 0.0
+        },
+        {
+            "id": 23,
+            "name":"Nutrition Consulatation",
+            "price": 30.0
+        },
+        {
+            "id": 208,
+            "name":"Intense Bootcamp",
+            "price": 100.0
+        },
+        {
+            "id": 208,
+            "name":"Six Week Bootcamp",
+            "price": 200.0
+        },
+        {
+            "id": 208,
+            "name":"Optimum Performance",
+            "price": 570.0
+        },
+        {
+            "id": 58, 
+            "price": 570.0, 
+            "name": "Optimum Performance"
+        },
+        {
+            "id": 58, 
+            "price": 100.0, 
+            "name": "Intense Bootcamp"
+        },
+        {
+            "id": 68, 
+            "price": 130.0, 
+            "name": "1 Month Unlimited"
+        },
+        {
+            "id": 68, 
+            "price": 100.0, 
+            "name": "10 Class Card"
+        },
+        {
+            "id": 206, 
+            "price": 100.0, 
+            "name": "10 Class Card"
+        }, 
+        {
+            "id": 206, 
+            "price": 55.0, 
+            "name": "5 Class Card"
+        },
+        {
+            "id": 207, 
+            "price": 55.0, 
+            "name": "5 Class Card"
+        }, 
+        {
+            "id": 68,
+            "price": 0.0, 
+            "name": "Groupon 5 Class Intro Series"
+        }, 
+        
+        {
+            "id": 206, 
+            "price": 0.0, 
+            "name": "Groupon 5 Class Intro Series"
+        },
+        {
+            "id": 251, 
+            "price": 100.0, 
+            "name": "10 Class Card"
+        }, 
+        {
+            "id": 251, 
+            "price": 55.0, 
+            "name": "5 Class Card"
+        }, 
+        {
+            "id": 70, 
+            "price": 55.0, 
+            "name": "5 Class Card"
+        }, 
+        {
+            "id": 207, 
+            "price": 0.0, 
+            "name": "Groupon 5 Class Intro Series"
+        }
+            ]
+        }

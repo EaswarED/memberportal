@@ -1,0 +1,234 @@
+service: ${self:custom.parentFile.service}-srvc-mock
+org: ${self:custom.parentFile.org}
+app: ${self:custom.parentFile.app}
+
+frameworkVersion: '3'
+useDotenv: true
+projectDir: ../..
+
+provider:
+  name: aws
+  runtime: python3.8
+  lambdaHashingVersion: 20201221
+  region: ${self:custom.parentFile.provider.region}
+  stage: ${self:custom.parentFile.provider.stage}
+  profile: ${self:custom.parentFile.provider.profile}
+  timeout: ${self:custom.parentFile.provider.timeout}
+  environment: ${file(../../env-${self:provider.stage}.yml)}
+  
+functions:
+  get_data:
+    handler: handlers/mock-data.get_data
+    events:
+      - http:
+          path: /appointment/landing/appts
+          method: GET 
+      - http:
+          path: /appointment/available/dates
+          method: GET
+      - http:
+          path: /appointment/bookable/items
+          method: GET
+      - http:
+          path: /client/services
+          method: GET
+      - http:
+          path: /client/view
+          method: GET
+      - http:
+          path: /client/check_in
+          method: GET
+      - http:
+          path: /client/join_now
+          method: GET
+      - http:
+          path: /dashboard/recommend/appts
+          method: GET
+      - http:
+          path: /dashboard/recommend/groups
+          method: GET          
+      - http:
+          path: /dashboard/recommend/classes
+          method: GET
+      - http:
+          path: /dashboard/upcoming/activities
+          method: GET
+      - http:
+          path: /service/prices
+          method: GET
+      - http:
+          path: /site/program/appts
+          method: GET
+      - http:
+          path: /site/session/appts
+          method: GET
+      - http:
+          path: /staff/staffs
+          method: GET
+      - http:
+          path: /staff/staffs/{id}
+          method: GET
+      - http:
+          path: /patient/personal_info
+          method: GET
+      - http:
+          path: /patient/phq9
+          method: GET
+      - http:
+          path: /patient/medical
+          method: GET
+      - http:
+          path: /patient/medication
+          method: GET
+      - http:
+          path: /patient/allergies
+          method: GET
+      - http:
+          path: /patient/problems
+          method: GET    
+      - http:
+          path: /patient/template
+          method: GET   
+      - http:
+          path: /patient/messages
+          method: GET 
+      - http:
+          path: /site/program/classes
+          method: GET 
+      - http:
+          path: /site/program/groups
+          method: GET
+      - http:
+          path: /site/session/classes
+          method: GET
+      - http:
+          path: class/landing/classes
+          method: GET
+      - http:
+          path: class/schedule
+          method: GET
+      - http:
+          path: class/bookable_class
+          method: GET
+      - http:
+          path: class/class_name
+          method: GET 
+      - http:
+          path: group/landing/group
+          method: GET
+      - http:
+          path: /group/description
+          method: GET
+      - http:
+          path: site/session/groups
+          method: GET
+      - http:
+          path: /group/cname
+          method: GET    
+      - http:
+          path: /group/schedules
+          method: GET
+      - http:
+          path: /consult/calender
+          method: GET   
+      - http:
+          path: /admin_portal/categories
+          method: GET 
+      - http:
+          path: /vimeo/type
+          method: GET 
+      - http:
+          path: /vimeo/content_type
+          method: GET   
+      - http:
+          path: /vimeo/categories
+          method: GET 
+      - http:
+          path: /vimeo/video_list
+          method: GET 
+      - http:
+          path: /vimeo/related_videos
+          method: GET 
+      - http:
+          path: /vimeo/get_comments
+          method: GET  
+      - http:
+          path: /vimeo/get_likes
+          method: GET   
+      - http:
+          path: /dashboard/recommend/content
+          method: GET
+      - http:
+          path: /admin_portal/selfcare
+          method: GET 
+      - http:
+          path: /admin_portal/groups
+          method: GET
+      - http:
+          path: /admin_portal/classes
+          method: GET
+      - http:
+          path: /admin_portal/jot_form
+          method: GET
+      - http:
+          path: /admin_portal/appt
+          method: GET
+      - http:
+          path: /admin_portal/chrono_form
+          method: GET
+      - http:
+          path: /admin_portal/company
+          method: GET
+      - http:
+          path: /admin_portal/cdetails
+          method: GET
+      - http:
+          path: /admin_portal/non_clinical
+          method: GET
+      - http:
+          path: /admin_portal/instructor_list
+          method: GET
+      - http:
+          path: /appointment/cancel/summary/{id}
+          method: GET   
+      - http:
+          path: /admin/promotion
+          method: GET   
+
+custom:
+  parentFile: ${file(../../serverless.yml)}
+
+  customDomain:
+    domainName: ${self:custom.parentFile.custom.customDomain.domainName}
+    basePath: 'mock'
+    stage: "${self:provider.stage}"
+    createRoute53Record: true
+
+  packageExternal:
+    external:
+      - '../../shared'
+      - '../../infrastructure'
+      - '../../providers'
+
+  pythonRequirements:
+    usePoetry: true
+    useDownloadCache: true
+    useStaticCache: false
+    invalidateCaches: false
+    slim: true
+    
+    noDeploy:
+      - pytest
+
+package:
+  individually: false
+  excludeDevDependencies: false
+  patterns:
+    - '!.vscode/**'
+    - '!.pytest_cache/**'
+    - '!.aws-sam/**'
+
+plugins:
+  - serverless-domain-manager
+  - serverless-python-requirements
+  - serverless-package-external

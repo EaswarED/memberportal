@@ -1,0 +1,55 @@
+{
+    "status": {
+        "code": 1,
+        "err": null,
+        "msg": null,
+        "totalRecords": 2
+    },
+    "data":[
+        {
+            "Id": 2265, 
+            "DescId": 223, 
+            "SessionTypeId": 250, 
+            "DescName": "Yoga", 
+            "SessionTypeName": "Hatha Yoga", 
+            "ProgramId": 27, 
+            "StaffId": 100000285, 
+            "StaffLName": "Ken", 
+            "StaffFName": "Berry", 
+            "sDate": "2021-12-14", 
+            "Times": "06.20 AM", 
+            "eDate": "2021-12-14", 
+            "ETimes": "07.20 AM", 
+            "DaySunday": true, 
+            "DayMonday": true, 
+            "DayTuesday": true, 
+            "DayWednesday": true, 
+            "DayThursday": false, 
+            "DayFriday": false, 
+            "DaySaturday": true
+            }, 
+            {
+            "Id": 2255, 
+            "DescId": 327, 
+            "SessionTypeId": 252, 
+            "DescName": "Beginner Level", 
+            "SessionTypeName": "Bikram", 
+            "ProgramId": 27, 
+            "StaffId": 100000108, 
+            "StaffLName": "Erik ", 
+            "StaffFName": "Iversen",
+            "sDate": "2021-12-15", 
+            "Times": "07:00 AM", 
+            "eDate": "2021-12-15", 
+            "ETimes": "08:00 AM", 
+            "DaySunday": false, 
+            "DayMonday": true, 
+            "DayTuesday": false, 
+            "DayWednesday": true, 
+            "DayThursday": true, 
+            "DayFriday": true, 
+            "DaySaturday": false
+            }
+            
+        ]
+    }

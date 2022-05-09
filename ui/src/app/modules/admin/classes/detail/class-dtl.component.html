@@ -1,0 +1,220 @@
+<div fxFlex class="mw-create-class-config">
+	<mat-card class="p-0">
+		<div fxLayout="row" fxLayoutAlign="start center">
+			<div>
+				<button
+					mat-icon-button
+					color="primary"
+					(click)="onBackAction()"
+				>
+					<mat-icon>keyboard_arrow_left</mat-icon>
+				</button>
+			</div>
+			<div>
+				<mat-card-title class="p-t-15" *ngIf="name; else nameTemplate"
+					>{{name}}</mat-card-title
+				>
+				<ng-template #nameTemplate>
+					<mat-card-title class="p-t-15">New class</mat-card-title>
+				</ng-template>
+				<mat-card-subtitle
+					*ngIf="description"
+					[innerHtml]="description | mworxTruncate: 100:true:'...' "
+				>
+				</mat-card-subtitle>
+			</div>
+		</div>
+		<mat-divider></mat-divider>
+		<mat-card-content>
+			<mat-spinner *ngIf="isLoading"> </mat-spinner>
+			<form class="example-container p-30" #options="ngForm">
+				<div fxLayout="column">
+					<mat-tab-group
+						[(selectedIndex)]="tabIndex"
+						[orientation]=""
+						fxFlex
+						fxFlexLayout="column"
+					>
+						<mat-tab fxFlexLayout="column">
+							<ng-template mat-tab-label>
+								<mat-icon class="p-r-10">style</mat-icon>
+								Type
+							</ng-template>
+
+							<div
+								fxLayout="row"
+								fxFlex="100"
+								class="p-t-15 p-l-15 p-b-10"
+								fxLayoutAlign="start start"
+							>
+								<div fxLayout="column">
+									<div
+										fxLayout="row"
+										fxLayoutAlign="space-between center"
+									>
+										<mat-label fxFlex="120px" class="p-b-15"
+											>Category</mat-label
+										>
+										<mat-form-field
+											fxFlex
+											appearance="outline"
+										>
+											<mat-select
+												required
+												name="categoryId"
+												[(ngModel)]="categoryId"
+											>
+												<mat-option
+													*ngFor="let rec of categoryList"
+													[value]="rec.SK"
+													>{{ rec['Details.Name']
+													}}</mat-option
+												>
+											</mat-select>
+										</mat-form-field>
+									</div>
+									<div
+										fxLayout="row"
+										fxLayoutAlign="space-between center"
+									>
+										<div
+											fxFlex
+											fxLayoutAlign="space-between center"
+											fxLayout="row"
+											class="mw-create-class-config__w"
+										>
+											<mat-label
+												fxFlex="120px"
+												class="p-b-15"
+												>Zoom Link Override</mat-label
+											>
+											<mat-form-field
+												fxFlex="380px"
+												appearance="outline"
+											>
+												<textarea
+													matInput
+													name="url"
+													required
+													[(ngModel)]="url"
+												></textarea>
+											</mat-form-field>
+										</div>
+									</div>
+								</div>
+								<div
+									fxLayout="column"
+									fxflex
+									style="width: 100%"
+									class="p-t-5 m-r-20"
+									fxLayoutAlign="end end"
+								>
+									<mat-button-toggle-group
+										color="primary"
+										[(ngModel)]="type"
+									>
+										<mat-button-toggle value="C"
+											>Class</mat-button-toggle
+										>
+										<mat-button-toggle
+											value="G"
+											(change)="onGroupChange()"
+											>Group</mat-button-toggle
+										>
+									</mat-button-toggle-group>
+								</div>
+							</div>
+						</mat-tab>
+
+						<mat-tab>
+							<ng-template mat-tab-label>
+								<mat-icon class="p-r-10">settings</mat-icon>
+								Settings
+							</ng-template>
+							<div
+								fxFlex
+								fxFlexLayout="column"
+								fxLayoutAlign="start start"
+							>
+								<section
+									class="
+										example-section
+										mw-create-class-config__w
+										p-20
+										m-r-20
+									"
+								>
+									<h4>Choose Access:</h4>
+									<p>
+										<mat-checkbox
+											color="primary"
+											[checked]="isPublished"
+											(change)="onChangePublish($event)"
+											>Publish</mat-checkbox
+										>
+									</p>
+								</section>
+
+								<section
+									class="
+										example-section
+										p-20
+										mw-create-class-config__w
+									"
+								></section>
+							</div>
+						</mat-tab>
+
+						<mat-tab>
+							<ng-template mat-tab-label>
+								<mat-icon class="p-r-10"
+									>settings_system_daydream</mat-icon
+								>
+								Forms
+							</ng-template>
+							<div
+								fxFlex
+								fxFlexLayout="column"
+								fxLayoutAlign="start start"
+							>
+								<section
+									class="
+										example-section
+										p-20
+										mw-create-class-config__w
+									"
+								>
+									<h4>Choose Non-Clinical Forms:</h4>
+									<p *ngFor="let rec of nonClinicalFormsList">
+										<mat-checkbox
+											[value]="rec.SK"
+											color="primary"
+											[checked]="savedForms && savedForms.indexOf(rec.SK) > -1"
+											(change)="onFormChange($event, rec)"
+											>{{rec.Name}}</mat-checkbox
+										>
+									</p>
+								</section>
+							</div>
+						</mat-tab>
+					</mat-tab-group>
+					<mat-toolbar
+						class="mw-create-class-config__actions p-20"
+						fxFlex
+						fxLayoutAlign="end center"
+						fxLayoutGap="20px"
+					>
+						<button
+							mat-flat-button
+							color="primary"
+							[disabled]="!options.valid"
+							(click)="doSave()"
+						>
+							Save
+						</button>
+					</mat-toolbar>
+				</div>
+			</form>
+		</mat-card-content>
+	</mat-card>
+</div>

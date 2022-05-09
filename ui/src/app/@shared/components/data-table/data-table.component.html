@@ -1,0 +1,24 @@
+<ag-grid-angular
+	fxFlex
+	class="ag-theme-material"
+	[rowData]="rowData"
+	[columnDefs]="columnDefs"
+	[frameworkComponents]="frameworkComponents"
+	domLayout="autoHeight"
+	(gridSizeChanged)="onGridSizeChanged($event)"
+	(onResize)="onGridSizeChanged($event)"
+	[pagination]="true"
+	[paginationPageSize]="paginationPageSize"
+	[defaultColDef]="defaultColDef"
+	[sortModel]="sortModel"
+	[debounceVerticalScrollbar]="true"
+	[context]="context"
+	(gridReady)="onGridReady($event)"
+	[gridOptions]="gridOptions"
+	(rowClicked)="onRowClicked($event)"
+	[rowSelection]="rowSelection"
+	[rowMultiSelectWithClick]="rowSelection === 'multiple'"
+	(selectionChanged)="onSelectionChanged($event)"
+	[suppressFieldDotNotation]="true"
+>
+</ag-grid-angular>

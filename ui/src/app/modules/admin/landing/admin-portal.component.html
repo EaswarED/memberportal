@@ -1,0 +1,190 @@
+<div class="mw-admin-portal-configuration" fxLayout="column" fxLayoutGap="30px">
+	<mat-card class="p-0">
+		<mat-card-title class="p-l-20 p-t-15">Configuration</mat-card-title>
+		<mat-card-subtitle class="p-l-20">
+			Please select the configuration category below
+		</mat-card-subtitle>
+		<mat-divider></mat-divider>
+		<div
+			fxLayout="column"
+			fxLayout.lt-md="column"
+			class="p-50"
+			fxLayoutAlign="start center"
+		>
+			<div
+				class="mw-admin-portal-configuration__grid-list p-t-25"
+				fxLayout="row"
+				fxLayout.lt-md="column"
+				fxFlex="100%"
+				fxLayoutAlign="center center"
+			>
+				<div
+					fxFlex="100%"
+					fxLayoutAlign="center center"
+					*ngFor="let config of configuration | slice:0:4; let i = index"
+					class="
+						mw-admin-portal-configuration__grid-list-tile
+						mw-admin-portal-configuration__border-bottom
+						mw-admin-portal-configuration__border-right
+						p-25
+					"
+					[ngClass]="i !== 3 ? '' : 'mw-admin-portal-configuration__no-border-right'"
+					(click)="onConfigURL(config)"
+				>
+					<div
+						fxFlex
+						fxLayout="column"
+						fxLayoutAlign="center center"
+						class="mw-admin-portal-configuration__grid-list-thumb"
+					>
+						<div
+							class="
+								mw-admin-portal-configuration__grid-list-thumb__icon-thumb
+							"
+						>
+							<span
+								class="
+									mw-admin-portal-configuration__grid-list-thumb__icon-thumb__icon
+								"
+							>
+								<mat-icon>{{config.icon}} </mat-icon>
+							</span>
+
+							<span
+								class="
+									mw-admin-portal-configuration__grid-list-thumb__icon-thumb__icon-small
+								"
+							>
+								<mat-icon>settings</mat-icon>
+							</span>
+						</div>
+						<div
+							fxLayoutAlign="center center"
+							class="
+								mw-admin-portal-configuration__grid-list-thumb__title
+							"
+						>
+							{{config.name}}
+						</div>
+					</div>
+				</div>
+			</div>
+			<div
+				class="mw-admin-portal-configuration__grid-list"
+				fxLayout="row"
+				fxLayout.lt-md="column"
+				fxFlex="100%"
+				fxLayoutAlign="center center"
+			>
+				<div
+					fxFlex="100%"
+					fxLayoutAlign="center center"
+					*ngFor="let config of configuration | slice:4:8; let i = index"
+					class="
+						mw-admin-portal-configuration__grid-list-tile
+						mw-admin-portal-configuration__border-bottom
+						mw-admin-portal-configuration__border-right
+						p-25
+					"
+					[ngClass]="{'mw-admin-portal-configuration__no-border-right':i === 3 }"
+					(click)="onConfigURL(config)"
+				>
+					<div
+						fxFlex
+						fxLayout="column"
+						fxLayoutAlign="center center"
+						class="mw-admin-portal-configuration__grid-list-thumb"
+					>
+						<div
+							class="
+								mw-admin-portal-configuration__grid-list-thumb__icon-thumb
+							"
+						>
+							<span
+								class="
+									mw-admin-portal-configuration__grid-list-thumb__icon-thumb__icon
+								"
+							>
+								<mat-icon>{{config.icon}}</mat-icon>
+							</span>
+
+							<span
+								class="
+									mw-admin-portal-configuration__grid-list-thumb__icon-thumb__icon-small
+								"
+							>
+								<mat-icon>settings</mat-icon>
+							</span>
+						</div>
+						<div
+							fxLayoutAlign="center center"
+							class="
+								mw-admin-portal-configuration__grid-list-thumb__title
+							"
+						>
+							{{config.name}}
+						</div>
+					</div>
+				</div>
+			</div>
+			<div
+				class="mw-admin-portal-configuration__grid-list"
+				fxLayout="row"
+				fxLayout.lt-md="column"
+				fxFlex="100%"
+				fxLayoutAlign="center center"
+			>
+				<div
+					fxFlex="100%"
+					fxLayoutAlign="center center"
+					*ngFor="let config of configuration | slice:8:13; let i = index"
+					class="
+						mw-admin-portal-configuration__grid-list-tile
+						mw-admin-portal-configuration__no-border-right
+						mw-admin-portal-configuration__border-left
+						p-25
+					"
+					[ngClass]="{'mw-admin-portal-configuration__border-bottom':breakpoint !== true , 'mw-admin-portal-configuration__no-border-right':i === 1 }"
+					(click)="onConfigURL(config)"
+				>
+					<div
+						fxFlex
+						fxLayout="column"
+						fxLayoutAlign="center center"
+						class="mw-admin-portal-configuration__grid-list-thumb"
+					>
+						<div
+							class="
+								mw-admin-portal-configuration__grid-list-thumb__icon-thumb
+							"
+						>
+							<span
+								class="
+									mw-admin-portal-configuration__grid-list-thumb__icon-thumb__icon
+								"
+							>
+								<mat-icon>{{config.icon}}</mat-icon>
+							</span>
+
+							<span
+								class="
+									mw-admin-portal-configuration__grid-list-thumb__icon-thumb__icon-small
+								"
+							>
+								<mat-icon>settings</mat-icon>
+							</span>
+						</div>
+						<div
+							fxLayoutAlign="center center"
+							class="
+								mw-admin-portal-configuration__grid-list-thumb__title
+							"
+						>
+							{{config.name}}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</mat-card>
+</div>

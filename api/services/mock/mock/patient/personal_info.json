@@ -1,0 +1,29 @@
+{
+    "previous": null,
+    "results": [
+        {
+            "id": 98235260,
+            "chart_id": "WIPE000001",
+            "first_name": "peter",
+            "last_name": "William",
+            "date_of_birth": "2000-02-15",
+            "gender": "Male",
+            "social_security_number": "222-2222",
+            "race": "white",
+            "ethnicity": "blank",
+            "preferred_language": "eng",
+            "home_phone": "+(444) 222-2222",
+            "cell_phone": "8025634569",
+            "office_phone": "",
+            "email": "peter@mail.com",
+            "address": "West street",
+            "city": "Sunnyvale",
+            "state": "california",
+            "zip_code": 94085,
+            "emergency_contact_name": "Bossy",
+            "emergency_contact_phone": "7895632145"
+        }
+            
+    ]
+    
+}

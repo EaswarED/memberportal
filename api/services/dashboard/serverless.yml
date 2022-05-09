@@ -1,0 +1,144 @@
+service: ${self:custom.parentFile.service}-srvc-dashboard
+org: ${self:custom.parentFile.org}
+app: ${self:custom.parentFile.app}
+
+frameworkVersion: '3'
+useDotenv: true
+projectDir: ../..
+
+provider:
+  name: aws
+  runtime: python3.8
+  lambdaHashingVersion: 20201221
+  region: ${self:custom.parentFile.provider.region}
+  stage: ${self:custom.parentFile.provider.stage}
+  profile: ${self:custom.parentFile.provider.profile}
+  timeout: ${self:custom.parentFile.provider.timeout}
+  environment: ${file(../../env-${self:provider.stage}.yml)}
+  layers:
+    - arn:aws:lambda:us-east-1:770693421928:layer:Klayers-python38-numpy:25
+    - arn:aws:lambda:us-east-1:770693421928:layer:Klayers-python38-pandas:48
+  iam:
+    role:
+      statements:
+        - Effect: 'Allow'
+          Action:
+            - secretsmanager:GetSecretValue
+          Resource:
+            - ${self:custom.parentFile.custom.${self:provider.stage}.secret_arn_cognito}
+            - ${self:custom.parentFile.custom.${self:provider.stage}.secret_arn_mindbody}
+            - ${self:custom.parentFile.custom.${self:provider.stage}.secret_arn_drchrono}
+            - ${self:custom.parentFile.custom.${self:provider.stage}.secret_arn_vimeo}
+            - ${self:custom.parentFile.custom.${self:provider.stage}.secret_arn_jotform}
+            - ${self:custom.parentFile.custom.${self:provider.stage}.secret_arn_twilio}
+        - Effect: Allow
+          Action:
+            - dynamodb:DescribeTable
+            - dynamodb:Query
+            - dynamodb:Scan
+            - dynamodb:GetItem
+            - dynamodb:PutItem
+            - dynamodb:UpdateItem
+            - dynamodb:DeleteItem
+          Resource:
+            - arn:aws:dynamodb:*:*:table/${self:provider.stage}-Mworx-Client
+            - arn:aws:dynamodb:*:*:table/${self:provider.stage}-Mworx-Config
+            - arn:aws:dynamodb:*:*:table/${self:provider.stage}-Mworx-Self-Care
+            - arn:aws:dynamodb:*:*:table/atomic_ids
+        - Effect: Allow
+          Action:
+            - s3:GetObject
+            - s3:PutObject
+            - s3:ListBucket
+          Resource:
+            - "arn:aws:s3:::bucket-for-content/*"
+
+resources:
+  Resources:
+    MindworxApiAuthorizer:
+      Type: AWS::ApiGateway::Authorizer
+      Properties:
+        Name: MindworxApiUser
+        AuthorizerResultTtlInSeconds: 300
+        IdentitySource: method.request.header.Authorization
+        RestApiId: !Ref ApiGatewayRestApi
+        Type: COGNITO_USER_POOLS
+        ProviderARNs:
+           - ${self:custom.parentFile.custom.${self:provider.stage}.cognito_arn}
+            
+functions:
+  list_recommended_appt:
+    handler: handlers/recommend.list_recommended_appt
+    events:
+      - http:
+          path: /recommend/appts
+          method: GET
+          cors : true
+
+  list_recommended_class:
+    handler: handlers/recommend.list_recommended_class
+    events:
+      - http:
+          path: /recommend/classes
+          method: GET
+          cors : true
+  list_recommended_group:
+    handler: handlers/recommend.list_recommended_group
+    events:
+      - http:
+          path: /recommend/groups
+          method: GET
+          cors : true
+  list_client_visit:
+    handler: handlers/upcoming_activity.list_client_visit
+    events:
+      - http:
+          path: /upcoming/activities
+          method: GET
+          cors : true
+  
+  get_data:
+    handler: handlers/recommend.get_data
+    events:
+      - http:
+          path: /recommend/content
+          method: GET
+          cors : true
+  
+custom:
+  parentFile: ${file(../../serverless.yml)}
+
+  customDomain:
+    domainName: ${self:custom.parentFile.custom.customDomain.domainName}
+    basePath: 'dashboard'
+    stage: '${self:provider.stage}'
+    createRoute53Record: true
+
+  packageExternal:
+    external:
+      - '../../shared'
+      - '../../infrastructure'
+      - '../../providers'
+
+  pythonRequirements:
+    usePoetry: true
+    useDownloadCache: true
+    useStaticCache: false
+    invalidateCaches: false
+    slim: true
+
+    noDeploy:
+      - pytest
+
+package:
+  individually: false
+  excludeDevDependencies: false
+  patterns:
+    - '!.vscode/**'
+    - '!.pytest_cache/**'
+    - '!.aws-sam/**'
+
+plugins:
+  - serverless-domain-manager
+  - serverless-python-requirements
+  - serverless-package-external

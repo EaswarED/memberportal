@@ -1,0 +1,99 @@
+{
+    "total": 6,
+    "page": 1,
+    "per_page": 25,
+    "paging": {
+        "next": null,
+        "previous": null,
+        "first": "/users/112969140/videos?page=1",
+        "last": "/users/112969140/videos?page=1"
+    },
+    "data": [
+        {
+            "type": "video",
+            "name": "Friday Morning Meditation 12.10.21",
+            "description": "We’ve all seen how different food can affect our bodies, but did you know that certain foods provide us with more energy, and some diets can boost our mood or make us less anxious? \nA Mindworx Health and Nutrition Coach will provide participants with an understanding of nutrition basics and how the food we eat affects our mood and mental wellness. We will discuss the importance of different nutrients and where to find them, the gut-brain connection, the gut microbiome, and the role of inflammation in our mental wellness and how best to eat to avoid it. \nParticipants will come away from this presentation with an understanding of how our food can affect our mood and which foods we should turn to for optimal physical and mental health. We will discuss small changes people can make that can make a big difference.",
+            "categories":"Coaching",
+            "link": "https://vimeo.com/656705897",
+            "uri": "/videos/656705897",
+            "duration": 804,
+            "base_link": "https://i.vimeocdn.com/video/1325750007-e14b4a85bef48746bd1c721f10042849eb980d5efe023cc7a83554124cfe35b0-d",
+            "embed_html": "<iframe src='https://player.vimeo.com/video/656705897?h=5105176c47&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=222394' width='1280' height='720' frameborder='0' allow='autoplay; fullscreen; picture-in-picture' allowfullscreen title='Friday Morning Meditation 12.10.21'></iframe>"
+           
+        },
+        {
+            "type": "video",
+            "name": "Camping - Tent",
+            "description": "We’ve all seen how different food can affect our bodies, but did you know that certain foods provide us with more energy, and some diets can boost our mood or make us less anxious? \nA Mindworx Health and Nutrition Coach will provide participants with an understanding of nutrition basics and how the food we eat affects our mood and mental wellness. We will discuss the importance of different nutrients and where to find them, the gut-brain connection, the gut microbiome, and the role of inflammation in our mental wellness and how best to eat to avoid it. \nParticipants will come away from this presentation with an understanding of how our food can affect our mood and which foods we should turn to for optimal physical and mental health. We will discuss small changes people can make that can make a big difference.",
+            "categories":"Coaching",
+            "link": "https://vimeo.com/659002553",
+            "uri": "/videos/659002553",
+            "duration": 5,
+            "base_link": "https://i.vimeocdn.com/video/1330903599-d01c0c986b20b5aff4e2fef7deaff99a945f5b96fc37e2c4a09508c9180f3b38-d",
+            "embed_html": "<iframe src='https://player.vimeo.com/video/659002553?h=845b22df5e&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=222394' width='1920' height='1080' frameborder='0' allow='autoplay; fullscreen; picture-in-picture' allowfullscreen title='Camping - Tent'></iframe>"
+           
+        },
+       
+       
+        {
+            "type": "video",
+            "name": "Holiday Meditation 2: Holiday Stress Management",
+            "categories":"HealthCare",
+            "description": "With the holiday season midway, many of us anticipate traveling and being with family which can be a challenge. \nJoin our meditation and take a moment to focus on the NOW and your own inner peace, and see if you can change your outlook instead of circumstances.",
+            "link": "https://vimeo.com/656608110/",
+            "uri": "/videos/656608110",
+            "duration":930,
+            "base_link": "https://i.vimeocdn.com/video/1325572175-9b2c13792ed018bc4001e2a3c4322fa0914df2828c3b3b4d46064d5b96403314-d",
+            "embed_html": "<iframe src='https://player.vimeo.com/video/656608110?h=281ff09164&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=222394' width='1280' height='720' frameborder='0' allow='autoplay; fullscreen; picture-in-picture' allowfullscreen title='Holiday Meditation 2: Holiday Stress Management'></iframe>"
+            
+        },
+        {
+            "type": "video",
+            "name": "Coping with Grief & Loss During the Holidays",
+            "categories":"Meditation",
+            "description": "While the holidays can be full of cheer for many, there are also those who feel grief and loss particularly strongly at this time. The holidays can be a time of navigating loss and loneliness, feeling overwhelmed, facing strained family relationships, and missing traditions that have been lost as we age and lose people from our lives. \n\nA Mindworx expert will teach employees strategies to cope with current or unexpected grief and loss during the holidays, which can also be applicable to other moments throughout your life when it comes to experiencing tragic events.",
+            "link": "https://vimeo.com/656208757",
+            "uri": "/videos/656208757",
+            "duration":2526,
+            "base_link": "https://i.vimeocdn.com/video/1324794268-6e37a390c16ee09ba6eae3cf3218b5de26f54b5ba90a6a7094fbff497acee211-d",
+            "embed_html":"<iframe src='https://player.vimeo.com/video/656208757?h=00cbd872e7&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=222394' width='1920' height='1080' frameborder='0' allow='autoplay; fullscreen; picture-in-picture' allowfullscreen title='Coping with Grief &amp;amp; Loss During the Holidays'></iframe>"
+            
+        },
+        {
+            "type": "video",
+            "name": "Meditation Day - 2 minute meditation",
+            "categories":"Meditation",
+            "description": "World Meditation day",
+            "link": "https://vimeo.com/651933855",
+            "uri": "/videos/651933855",
+            "duration":172,
+            "base_link": "https://i.vimeocdn.com/video/1315472413-2ab328782b219997c14acae9c1ec336244373e11b8da38793ddea28c99a1f811-d",
+            "embed_html":"<iframe src='https://player.vimeo.com/video/651933855?h=4211fec737&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=221643' width='640' height='360' frameborder='0' allow='autoplay; fullscreen; picture-in-picture' allowfullscreen title='Meditation Day - 2 minute meditation'></iframe>"
+           
+            },
+        {
+            "type": "video",
+            "name": "Graduation Celebration",
+            "categories":"Mental Health",
+            "description": "Some foods are good for pain and some foods are not so good. Professor Clare Collins will guide you through dietary changes designed to help reduce your pain levels.",
+            "link": "https://vimeo.com/653851096/eae408ed59",
+            "uri": "/videos/653851096",
+            "duration":8,
+            "base_link": "https://i.vimeocdn.com/video/1315478417-7944fa486cc04c911e520de8a48930c6551fe7e4ac6a5f9cdb887d557d49cc41-d",
+            "embed_html":"<iframe src='https://player.vimeo.com/video/653851096?h=eae408ed59&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=222394' width='1920' height='1080' frameborder='0' allow='autoplay; fullscreen; picture-in-picture' allowfullscreen title='Graduation Celebration'></iframe>"
+            
+        },
+        {
+            "type": "video",
+            "name": "Recording Button",
+            "categories":"Mental Health",
+            "description": "Recording data",
+            "link": "https://vimeo.com/653845846/60d602cf9d",
+            "uri": "/videos/653845846",
+            "duration":16,
+            "base_link": "https://i.vimeocdn.com/video/1319662207-af19d8ae83f21dcf74549b45fbc16c04afbf4e8674fbcb59abaf2d6d39d0a09f-d",
+            "embed_html":"<iframe src='https://player.vimeo.com/video/653845846?h=60d602cf9d&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=222394' width='1920' height='1080' frameborder='0' allow='autoplay; fullscreen; picture-in-picture' allowfullscreen title='Recording Button'></iframe>"
+            
+        }
+        
+        ]}

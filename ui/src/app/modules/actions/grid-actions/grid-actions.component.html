@@ -1,0 +1,71 @@
+<div
+	fxFlex
+	fxLayoutAlign="start center"
+	fxLayout="row"
+	fxLayoutGap="9px"
+	class="mw-grid-action p-t-5"
+>
+	<div
+		fxLayoutAlign="center center"
+		class="mw-grid-action__loading"
+		*ngIf="isLoading"
+	>
+		<mat-spinner [diameter]="30"></mat-spinner>
+	</div>
+	<button
+		*ngIf="bookingStatusLabel; else readOnlyStatus;"
+		mat-stroked-button
+		(click)="handleClick('GR')"
+		[ngClass]="data.BookingId | bookingStatusButtonAccent"
+		class="mw-btn__appt-btn"
+		[disabled]="bookingStatusLabel === CONST.LABEL_BUTTON_JOIN_PENDING || bookingStatusLabel === CONST.LABEL_BUTTON_BOOKED || bookingStatusLabel === CONST.LABEL_BUTTON_CHECKEDIN"
+	>
+		{{ bookingStatusLabel }}
+	</button>
+	<ng-template #readOnlyStatus>
+		<mat-label
+			class="mat-accent dash-card__btn p-l-15 m-l-10"
+			fxLayoutAlign="center center"
+		>
+			{{ data.AppointmentStatus }}
+		</mat-label>
+		<span fxFlex></span>
+	</ng-template>
+	<span
+		fxLayout="column"
+		fxLayoutAlign="center center"
+		class="mw-grid-action__timer"
+		*ngIf="bookingStatusLabel && (data.StartDateTime | countdown | async); let countdownVal"
+	>
+		<span class="mw-grid-action__start">Time to Start</span>
+		<span fxFlex
+			>{{ countdownVal | callback: watchBookingStatus : this }}
+		</span>
+	</span>
+
+	<span fxFlex></span>
+	<ng-container>
+		<button
+			mat-icon-button
+			[matMenuTriggerFor]="menu"
+			*ngIf="bookingStatusLabel === CONST.LABEL_BUTTON_JOIN || bookingStatusLabel === CONST.LABEL_BUTTON_CHECKIN  || data.AppointmentStatus === CONST.LABEL_BUTTON_BOOKED || bookingStatusLabel === CONST.LABEL_BUTTON_CHECKEDIN"
+		>
+			<mat-icon>more_vert</mat-icon>
+		</button>
+		<mat-menu #menu="matMenu">
+			<button mat-menu-item (click)="handleClick('C')">
+				<mat-icon>cancel</mat-icon>
+				<span>Cancel</span>
+			</button>
+
+			<button
+				mat-menu-item
+				(click)="handleClick('R')"
+				*ngIf="classType ==='A' || classType ==='Appointment' && data.Name!=='Consult'"
+			>
+				<mat-icon>contact_mail</mat-icon>
+				<span>Reschedule</span>
+			</button>
+		</mat-menu>
+	</ng-container>
+</div>
